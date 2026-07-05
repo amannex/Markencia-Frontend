@@ -1,0 +1,53 @@
+.head {
+  margin-bottom: 3.5rem;
+}
+
+.centered {
+  text-align: center;
+}
+
+.centered .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  background: rgba(255, 180, 0, 0.15);
+  border: 1px solid rgba(255, 180, 0, 0.35);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.2rem;
+  color: var(--mk-secondary);
+  display: block;
+}
+
+.centered .badge {
+  display: inline-block;
+}
+
+.title {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.title :global(.mk-highlight-text),
+.title :global(.mk-accent-text) {
+  color: var(--mk-secondary);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--mk-text-muted);
+  max-width: 620px;
+  line-height: 1.7;
+}
+
+/* Light variant (on dark backgrounds) */
+.light .title { color: #fff; }
+.light .subtitle { color: rgba(255,255,255,0.75); }

@@ -1,0 +1,70 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: var(--mk-radius-pill);
+  font-family: var(--mk-font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: var(--mk-transition);
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary */
+.primary {
+  background: var(--mk-primary);
+  color: #fff;
+  border-color: var(--mk-primary);
+  box-shadow: 0 4px 15px rgba(0, 56, 24, 0.25);
+}
+
+.primary:hover {
+  background: var(--mk-primary-hover);
+  border-color: var(--mk-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 56, 24, 0.35);
+}
+
+/* Secondary (Gold) */
+.secondary {
+  background: transparent;
+  color: var(--mk-text-main);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.secondary:hover {
+  background: var(--mk-bg-alt);
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
+  transform: translateY(-2px);
+}
+
+/* Outline */
+.outline {
+  background: transparent;
+  color: var(--mk-primary);
+  border-color: var(--mk-primary);
+}
+
+.outline:hover {
+  background: var(--mk-primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Full width */
+.fullWidth {
+  width: 100%;
+}

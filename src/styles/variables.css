@@ -1,0 +1,66 @@
+/* ============================================================
+   MARKENCIA DESIGN TOKENS
+   Ported from WordPress theme css/styles.css
+   ============================================================ */
+
+:root {
+  /* Brand Colors */
+  --mk-primary: #003818;
+  --mk-primary-hover: #004d22;
+  --mk-secondary: #FFB400;
+  --mk-secondary-hover: #e6a200;
+
+  /* Backgrounds */
+  --mk-bg-main: #FFFFFF;
+  --mk-bg-alt: #F8FAFC;
+  --mk-bg-dark: #0f172a;
+  --mk-bg-card: #FFFFFF;
+
+  /* Text */
+  --mk-text-main: #0f172a;
+  --mk-text-muted: #64748B;
+  --mk-text-light: #94A3B8;
+  --mk-text-white: #FFFFFF;
+
+  /* Glass / Border */
+  --mk-glass-border: rgba(0, 0, 0, 0.08);
+  --mk-glass-bg: rgba(255, 255, 255, 0.08);
+  --mk-glass-bg-hover: rgba(255, 255, 255, 0.15);
+
+  /* Shadows */
+  --mk-shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.04);
+  --mk-shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --mk-shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.12);
+  --mk-shadow-green: 0 20px 40px rgba(0, 56, 24, 0.15);
+
+  /* Border Radius */
+  --mk-radius-sm: 8px;
+  --mk-radius-md: 16px;
+  --mk-radius-lg: 24px;
+  --mk-radius-xl: 32px;
+  --mk-radius-pill: 50px;
+
+  /* Spacing */
+  --mk-section-py: 7rem;
+  --mk-container-max: 1200px;
+  --mk-container-px: 2rem;
+
+  /* Typography */
+  --mk-font-heading: 'Outfit', sans-serif;
+  --mk-font-body: 'Plus Jakarta Sans', sans-serif;
+  --mk-font-mono: 'Fira Code', monospace;
+
+  /* Transitions */
+  --mk-transition: all 0.3s ease;
+  --mk-transition-slow: all 0.5s ease;
+  --mk-transition-fast: all 0.15s ease;
+
+  /* Z-index */
+  --mk-z-header: 1000;
+  --mk-z-modal: 2000;
+  --mk-z-overlay: 1500;
+
+  /* Documentation layout */
+  --mk-doc-sidebar-w: 280px;
+  --mk-doc-border: #E2E8F0;
+}

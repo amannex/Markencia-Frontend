@@ -1,0 +1,219 @@
+.footer {
+  background: var(--mk-primary);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 0;
+}
+
+/* Giant background typography */
+.giantText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--mk-font-heading);
+  font-size: clamp(5rem, 14vw, 14rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.025);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -4px;
+}
+
+/* Glowing orbs */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.glow1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 180, 0, 0.12);
+  top: -150px;
+  right: -100px;
+}
+
+.glow2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 180, 0, 0.07);
+  bottom: 50px;
+  left: -80px;
+}
+
+.container {
+  max-width: var(--mk-container-max);
+  margin: 0 auto;
+  padding: 0 var(--mk-container-px);
+  position: relative;
+  z-index: 2;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: 4rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Brand Col */
+.brandCol {}
+
+.brandName {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.brandDot { color: var(--mk-secondary); }
+
+.brandDesc {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 340px;
+}
+
+/* Newsletter form */
+.newsletterForm {
+  display: flex;
+  gap: 0;
+  border-radius: var(--mk-radius-pill);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07);
+}
+
+.newsletterForm input {
+  flex: 1;
+  padding: 0.85rem 1.2rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  box-shadow: none;
+}
+
+.newsletterForm input::placeholder { color: rgba(255,255,255,0.45); }
+.newsletterForm input:focus { box-shadow: none; border-color: transparent; }
+
+.newsletterForm button {
+  background: var(--mk-secondary);
+  color: var(--mk-primary);
+  border: none;
+  padding: 0 1.4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--mk-transition);
+  flex-shrink: 0;
+}
+
+.newsletterForm button:hover {
+  background: var(--mk-secondary-hover);
+}
+
+.newsletterSuccess {
+  color: var(--mk-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+}
+
+/* Links Wrapper */
+.linksWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.linksCol h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.2rem;
+}
+
+.linksCol ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.linksCol a {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.linksCol a:hover {
+  color: var(--mk-secondary);
+}
+
+/* Bottom */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0 2rem;
+}
+
+.bottom p {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: var(--mk-transition);
+}
+
+.socialLink:hover {
+  background: var(--mk-secondary);
+  border-color: var(--mk-secondary);
+  color: var(--mk-primary);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .brandDesc { max-width: 100%; }
+}
+
+@media (max-width: 600px) {
+  .linksWrapper { grid-template-columns: repeat(2, 1fr); }
+  .bottom { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+@media (max-width: 400px) {
+  .linksWrapper { grid-template-columns: 1fr; }
+}

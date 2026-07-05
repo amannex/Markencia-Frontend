@@ -1,0 +1,127 @@
+.hero {
+  padding: 7rem 2rem 5rem;
+  position: relative;
+}
+
+.back {
+  display: inline-block;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+}
+.back:hover { color: #fff; }
+
+.category {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(255,180,0,0.2);
+  border: 1px solid rgba(255,180,0,0.35);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--mk-secondary);
+  margin-bottom: 1.5rem;
+  display: block;
+  width: fit-content;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: #fff;
+  font-weight: 800;
+  line-height: 1.15;
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+.meta {
+  display: flex;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  font-weight: 500;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Article Body */
+.articleSection { padding: 5rem 0; }
+
+.articleBody {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.lead {
+  font-size: 1.2rem;
+  color: var(--mk-text-main);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.articleBody p {
+  font-size: 1.05rem;
+  color: var(--mk-text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.quote {
+  border-left: 4px solid var(--mk-secondary);
+  padding: 1.5rem 2rem;
+  background: var(--mk-bg-alt);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  margin: 2.5rem 0;
+  font-size: 1.15rem;
+  color: var(--mk-text-main);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.quote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--mk-text-muted);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Not found */
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  gap: 1rem;
+  padding: 4rem 2rem;
+}
+
+.notFound h1 { font-size: 2.5rem; }
+.notFound p { color: var(--mk-text-muted); }
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.8rem;
+  background: var(--mk-primary);
+  color: #fff;
+  font-weight: 700;
+  border-radius: var(--mk-radius-pill);
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: var(--mk-transition);
+}
+
+.backBtn:hover {
+  background: var(--mk-primary-hover);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,383 @@
+/* ──────────────────────────────────────────────
+   HOME PAGE STYLES
+────────────────────────────────────────────── */
+
+/* ── HERO ── */
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 30% 50%, rgba(0, 56, 24, 0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 20%, rgba(255, 180, 0, 0.06) 0%, transparent 50%),
+              var(--mk-bg-main);
+  padding: 8rem 2rem 6rem;
+}
+
+.heroShape1 {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 56, 24, 0.08) 0%, transparent 70%);
+  top: -200px; left: -200px;
+  pointer-events: none;
+}
+
+.heroShape2 {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 180, 0, 0.07) 0%, transparent 70%);
+  bottom: -150px; right: -150px;
+  pointer-events: none;
+}
+
+.heroContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--mk-text-main);
+  letter-spacing: -1px;
+}
+
+.heroAccent {
+  color: var(--mk-secondary);
+  position: relative;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--mk-text-muted);
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.2rem;
+  background: var(--mk-primary);
+  color: #fff;
+  font-family: var(--mk-font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--mk-radius-pill);
+  text-decoration: none;
+  transition: var(--mk-transition);
+  box-shadow: 0 6px 20px rgba(0, 56, 24, 0.3);
+}
+
+.btnPrimary:hover {
+  background: var(--mk-primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 56, 24, 0.4);
+}
+
+.btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 2.2rem;
+  background: transparent;
+  color: var(--mk-text-main);
+  font-family: var(--mk-font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--mk-radius-pill);
+  text-decoration: none;
+  border: 2px solid var(--mk-glass-border);
+  transition: var(--mk-transition);
+}
+
+.btnSecondary:hover {
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
+  background: rgba(0, 56, 24, 0.04);
+  transform: translateY(-2px);
+}
+
+/* ── SERVICES GRID ── */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+/* ── WHY US ── */
+.whyWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.whyContent h2 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  margin-bottom: 1.2rem;
+}
+
+.whyContent > p {
+  color: var(--mk-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.whyList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.whyList li {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.2rem;
+  border-left: 3px solid var(--mk-secondary);
+  gap: 0.25rem;
+  font-size: 0.95rem;
+  color: var(--mk-text-muted);
+}
+
+.whyList li strong {
+  color: var(--mk-text-main);
+  font-size: 1.05rem;
+  font-family: var(--mk-font-heading);
+}
+
+.whyVisual {}
+
+.glassPanel {
+  background: var(--mk-primary);
+  border-radius: var(--mk-radius-lg);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.comparisonRow h4 {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.barTrack {
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--mk-radius-pill);
+  height: 10px;
+  overflow: hidden;
+}
+
+.barSlow {
+  height: 100%;
+  width: 35%;
+  background: rgba(255,255,255,0.3);
+  border-radius: var(--mk-radius-pill);
+  animation: growBar 1.5s ease-out forwards;
+}
+
+.barFast {
+  height: 100%;
+  width: 90%;
+  background: linear-gradient(90deg, var(--mk-secondary), #ffd452);
+  border-radius: var(--mk-radius-pill);
+  animation: growBar 1.8s ease-out 0.2s both;
+  box-shadow: 0 0 12px rgba(255, 180, 0, 0.4);
+}
+
+@keyframes growBar {
+  from { width: 0; }
+}
+
+/* ── PROCESS ── */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: calc(12.5%);
+  width: 75%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mk-glass-border) 15%, var(--mk-glass-border) 85%, transparent);
+}
+
+.step {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; height: 64px;
+  background: var(--mk-bg-main);
+  border: 2px solid var(--mk-primary);
+  border-radius: 50%;
+  font-family: var(--mk-font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--mk-primary);
+  margin: 0 auto 1.5rem;
+}
+
+.step h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.7rem;
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: var(--mk-text-muted);
+  line-height: 1.65;
+}
+
+/* ── RESULTS ── */
+.results {
+  background: var(--mk-primary);
+  padding: var(--mk-section-py) 0;
+}
+
+.resultsWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.resultText h2 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.resultText p {
+  color: rgba(255,255,255,0.65);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.statBox {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--mk-radius-md);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--mk-transition);
+}
+
+.statBox:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-4px);
+}
+
+.statBox h3 {
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.statBox p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── INDUSTRIES ── */
+.industryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.indCard {
+  background: var(--mk-bg-card);
+  border: 1px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-md);
+  padding: 1.4rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--mk-transition);
+  cursor: default;
+}
+
+.indCard span { font-size: 1.4rem; }
+
+.indCard:hover {
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--mk-shadow-green);
+}
+
+/* ── TESTIMONIALS ── */
+.testiGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .timeline { grid-template-columns: repeat(2, 1fr); }
+  .timeline::before { display: none; }
+}
+
+@media (max-width: 900px) {
+  .servicesGrid { grid-template-columns: repeat(2, 1fr); }
+  .whyWrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+  .resultsWrapper { grid-template-columns: 1fr; }
+  .testiGrid { grid-template-columns: 1fr; }
+  .industryGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .servicesGrid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr; }
+  .statsGrid { grid-template-columns: 1fr 1fr; }
+  .industryGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 400px) {
+  .statsGrid { grid-template-columns: 1fr; }
+  .industryGrid { grid-template-columns: 1fr; }
+}

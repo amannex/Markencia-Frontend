@@ -1,0 +1,110 @@
+.hero {
+  background: radial-gradient(circle at top right, rgba(255, 180, 0, 0.15), transparent 60%), var(--mk-primary);
+  padding: 8rem 2rem 6rem;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+  max-width: 800px;
+}
+
+.accent { color: var(--mk-secondary); }
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 640px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Service Item */
+.serviceItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--mk-glass-border);
+}
+
+.serviceItem:last-child { border-bottom: none; }
+
+.reverse { direction: rtl; }
+.reverse > * { direction: ltr; }
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+}
+
+.serviceContent h2 {
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.serviceContent p {
+  color: var(--mk-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.8rem;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.featureList li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--mk-text-main);
+  font-weight: 500;
+}
+
+.featureList li::before {
+  content: '✓';
+  color: var(--mk-secondary);
+  font-weight: 800;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Visual panel */
+.serviceVisual {
+  border-radius: var(--mk-radius-xl);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mk-visual-1 { background: linear-gradient(135deg, #003818 0%, #005c28 100%); }
+.mk-visual-2 { background: linear-gradient(135deg, #FFB400 0%, #e09200 100%); }
+.mk-visual-3 { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+.mk-visual-4 { background: linear-gradient(135deg, #003818 0%, #FFB400 100%); }
+
+.abstractCard {
+  font-family: var(--mk-font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.9);
+  text-align: center;
+  padding: 2rem;
+}
+
+@media (max-width: 900px) {
+  .serviceItem { grid-template-columns: 1fr; gap: 2rem; }
+  .reverse { direction: ltr; }
+  .serviceVisual { min-height: 200px; }
+}

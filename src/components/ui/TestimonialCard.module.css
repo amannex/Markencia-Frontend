@@ -1,0 +1,64 @@
+.card {
+  background: var(--mk-bg-card);
+  border: 1px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-lg);
+  padding: 2.5rem 2rem;
+  transition: var(--mk-transition);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--mk-shadow-green);
+  border-color: rgba(0, 56, 24, 0.15);
+}
+
+.stars {
+  color: var(--mk-secondary);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.review {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--mk-text-muted);
+  font-style: italic;
+  flex: 1;
+  margin: 0;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mk-primary), var(--mk-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mk-font-heading);
+  font-weight: 800;
+  color: #fff;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--mk-text-main);
+  margin: 0 0 0.2rem;
+}
+
+.role {
+  font-size: 0.85rem;
+  color: var(--mk-text-muted);
+}

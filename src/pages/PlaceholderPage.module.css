@@ -1,0 +1,237 @@
+/* Shared hero used by stub pages */
+.hero {
+  background: radial-gradient(circle at top right, rgba(255,180,0,0.15), transparent 60%), var(--mk-primary);
+  padding: 8rem 2rem 6rem;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+
+.accent { color: var(--mk-secondary); }
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Pricing Grid */
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.planCard {
+  border: 1.5px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-xl);
+  padding: 2.5rem 2rem;
+  background: var(--mk-bg-card);
+  position: relative;
+  transition: var(--mk-transition);
+}
+
+.planCard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--mk-shadow-green);
+}
+
+.popular {
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 1px var(--mk-primary), var(--mk-shadow-green);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--mk-secondary);
+  color: var(--mk-primary);
+  font-family: var(--mk-font-heading);
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 0.35rem 1.2rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.planCard h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-family: var(--mk-font-heading);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--mk-primary);
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.price span {
+  font-size: 1rem;
+  color: var(--mk-text-muted);
+  font-weight: 500;
+}
+
+.planCard > p {
+  color: var(--mk-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 2rem;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  color: var(--mk-text-main);
+}
+
+.features li::before {
+  content: '✓';
+  color: var(--mk-secondary);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.planBtn {
+  display: block;
+  text-align: center;
+  padding: 0.9rem 1.5rem;
+  border-radius: var(--mk-radius-pill);
+  font-family: var(--mk-font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--mk-transition);
+}
+
+.planBtnPrimary {
+  background: var(--mk-primary);
+  color: #fff;
+}
+
+.planBtnPrimary:hover {
+  background: var(--mk-primary-hover);
+  transform: translateY(-2px);
+}
+
+.planBtnOutline {
+  border: 2px solid var(--mk-primary);
+  color: var(--mk-primary);
+}
+
+.planBtnOutline:hover {
+  background: var(--mk-primary);
+  color: #fff;
+}
+
+/* Career / Works / Case Studies grid */
+.simpleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.simpleCard {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-lg);
+  transition: var(--mk-transition);
+  background: var(--mk-bg-card);
+}
+
+.simpleCard:hover {
+  border-color: var(--mk-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--mk-shadow-green);
+}
+
+/* FAQ accordion */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  border: 1px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-md);
+  overflow: hidden;
+  transition: var(--mk-transition);
+}
+
+.faqItem.open {
+  border-color: var(--mk-primary);
+  box-shadow: var(--mk-shadow-sm);
+}
+
+.faqQuestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.8rem;
+  cursor: pointer;
+  font-family: var(--mk-font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  background: var(--mk-bg-card);
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: var(--mk-text-main);
+  gap: 1rem;
+}
+
+.faqChevron {
+  color: var(--mk-primary);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+.faqItem.open .faqChevron { transform: rotate(180deg); }
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faqItem.open .faqAnswer { max-height: 400px; }
+
+.faqAnswer p {
+  padding: 0 1.8rem 1.5rem;
+  color: var(--mk-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .pricingGrid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .simpleGrid { grid-template-columns: 1fr; }
+}

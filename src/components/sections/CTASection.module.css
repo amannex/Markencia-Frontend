@@ -1,0 +1,107 @@
+.section {
+  background: var(--mk-bg-alt);
+}
+
+.box {
+  background: var(--mk-primary);
+  border-radius: var(--mk-radius-xl);
+  padding: 5rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--mk-shadow-green);
+}
+
+/* Glowing orbs inside the box */
+.glowLeft {
+  position: absolute;
+  width: 350px; height: 350px;
+  background: rgba(255, 180, 0, 0.18);
+  filter: blur(90px);
+  border-radius: 50%;
+  top: -120px; left: -100px;
+  pointer-events: none;
+}
+
+.glowRight {
+  position: absolute;
+  width: 300px; height: 300px;
+  background: rgba(255, 180, 0, 0.1);
+  filter: blur(80px);
+  border-radius: 50%;
+  bottom: -80px; right: -80px;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.content h2 :global(.mk-highlight-text),
+.content h2 :global(.mk-accent-text) {
+  color: var(--mk-secondary);
+}
+
+.content > p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.form input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 260px;
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: var(--mk-radius-sm);
+}
+
+.form input::placeholder { color: rgba(255,255,255,0.5); }
+.form input:focus { border-color: var(--mk-secondary); box-shadow: 0 0 0 3px rgba(255,180,0,0.2); }
+
+.disclaimer {
+  margin-top: 1.2rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.1);
+  border-radius: var(--mk-radius-md);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.success span { font-size: 2rem; }
+.success p { color: #fff; font-weight: 600; margin: 0; font-size: 1.05rem; }
+
+@media (max-width: 768px) {
+  .box { padding: 3rem 1.5rem; }
+  .form { flex-direction: column; }
+  .form input { max-width: 100%; min-width: 0; width: 100%; }
+}
