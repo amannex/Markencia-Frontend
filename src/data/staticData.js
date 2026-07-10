@@ -11,9 +11,11 @@ export const SITE_INFO = {
   phone: '+91 6395543772',
   address: 'Noida, Uttar Pradesh, India',
   social: {
-    instagram: '#',
-    youtube: '#',
-    linkedin: '#',
+    instagram: 'https://www.instagram.com/_markencia/',
+    youtube: 'https://www.youtube.com/channel/UCpokzJAQqnw9sL7KLwQqaKg',
+    linkedin: 'https://www.linkedin.com/company/markencio/?viewAsMember=true',
+    reddit: ' https://www.reddit.com/user/Markencia/',
+    x: 'https://x.com/markencia_',
   },
 };
 
