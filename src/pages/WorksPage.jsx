@@ -16,7 +16,7 @@ export default function WorksPage() {
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Portfolio</div>
-          <h1 className={styles.heroTitle}>Our <span className={styles.accent}>Works</span></h1>
+          <h1 className={styles.heroTitle}>Our Client <span className={styles.accent}>Success </span>Stories</h1>
           <p className={styles.heroSubtitle}>A showcase of campaigns, designs, and growth systems we've engineered for ambitious brands.</p>
         </div>
       </section>
