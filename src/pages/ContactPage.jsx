@@ -19,14 +19,16 @@ export default function ContactPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className="mk-container">
-          <div className="mk-hero-badge">Get In Touch</div>
-          <h1 className={styles.heroTitle}>
-            Let's Build Your <span className={styles.accent}>Growth</span> Engine
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Ready to stop guessing and start scaling? Connect with our team of AI growth specialists
-            to discover how Markencia can engineer predictable revenue for your brand.
-          </p>
+          <div className={styles.heroContent}>
+            <div className="mk-hero-badge">Get In Touch</div>
+            <h1 className={styles.heroTitle}>
+              Let's Build Your <span className={styles.accent}>Growth</span> Engine
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Ready to stop guessing and start scaling? Connect with our team of AI growth specialists
+              to discover how Markencia can engineer predictable revenue for your brand.
+            </p>
+          </div>
         </div>
       </section>
 

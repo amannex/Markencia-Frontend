@@ -2,7 +2,48 @@
    MARKENCIA GLOBAL STYLES
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
 @import './variables.css';
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-mk-primary:         #003818;
+  --color-mk-primary-hover:   #004d22;
+  --color-mk-secondary:       #FFB400;
+  --color-mk-secondary-hover: #e6a200;
+
+  /* Background Colors */
+  --color-mk-bg-main:  #FFFFFF;
+  --color-mk-bg-alt:   #F8FAFC;
+  --color-mk-bg-dark:  #0f172a;
+  --color-mk-bg-card:  #FFFFFF;
+
+  /* Text Colors */
+  --color-mk-text-main:  #0f172a;
+  --color-mk-text-muted: #64748B;
+  --color-mk-text-light: #94A3B8;
+  --color-mk-text-white: #FFFFFF;
+
+  /* Font Families — prefixed to avoid overriding Tailwind's font-mono etc. */
+  --font-mk-heading: 'Outfit', sans-serif;
+  --font-mk-body:    'Plus Jakarta Sans', sans-serif;
+  --font-mk-mono:    'Fira Code', monospace;
+
+
+  /* Border Radius — prefixed to avoid overriding Tailwind's rounded-sm etc. */
+  --radius-mk-sm:   8px;
+  --radius-mk-md:   16px;
+  --radius-mk-lg:   24px;
+  --radius-mk-xl:   32px;
+  --radius-mk-pill: 50px;
+
+  /* Custom Shadows */
+  --shadow-mk-sm:    0 4px 15px rgba(0, 0, 0, 0.04);
+  --shadow-mk-md:    0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-mk-lg:    0 20px 50px rgba(0, 0, 0, 0.12);
+  --shadow-mk-green: 0 20px 40px rgba(0, 56, 24, 0.15);
+}
 
 /* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

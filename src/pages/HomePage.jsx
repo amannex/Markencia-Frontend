@@ -35,10 +35,13 @@ export default function HomePage() {
         </div>
       </section>
 
+
+
       {/* ── 2. SERVICES ── */}
       <section className="mk-section" id="services">
         <div className="mk-container">
           <SectionHead
+            centered
             title='Our <span class="mk-highlight-text">AI-Powered</span> Arsenal'
             subtitle="Data-backed strategies designed to scale your business predictably."
           />

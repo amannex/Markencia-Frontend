@@ -8,15 +8,17 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className={styles.hero}>
         <div className="mk-container">
-          <div className="mk-hero-badge">Our Services</div>
-          <h1 className={styles.heroTitle}>
-            Dominate Your Market with{' '}
-            <span className={styles.accent}>AI Solutions</span>
-          </h1>
-          <p className={styles.heroSubtitle}>
-            We don't just offer services; we build end-to-end growth ecosystems. Discover how
-            our AI-driven strategies can scale your business to new heights.
-          </p>
+          <div className={styles.heroContent}>
+            <div className="mk-hero-badge">Our Services</div>
+            <h1 className={styles.heroTitle}>
+              Engineered for{' '}
+              <span className={styles.accent}>Your</span> Growth
+            </h1>
+            <p className={styles.heroSubtitle}>
+              We don't just offer services; we build end-to-end growth ecosystems. Discover how
+              our AI-driven strategies can scale your business to new heights.
+            </p>
+          </div>
         </div>
       </section>
 

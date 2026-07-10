@@ -8,7 +8,7 @@
   --mk-primary: #003818;
   --mk-primary-hover: #004d22;
   --mk-secondary: #FFB400;
-  --mk-secondary-hover: #e6a200;
+  --mk-secondary-hover: #FFC733;
 
   /* Backgrounds */
   --mk-bg-main: #FFFFFF;
@@ -47,8 +47,8 @@
 
   /* Typography */
   --mk-font-heading: 'Outfit', sans-serif;
-  --mk-font-body: 'Plus Jakarta Sans', sans-serif;
-  --mk-font-mono: 'Fira Code', monospace;
+  --mk-font-body:    'Plus Jakarta Sans', sans-serif;
+  --mk-font-mono:    'Fira Code', monospace;
 
   /* Transitions */
   --mk-transition: all 0.3s ease;
