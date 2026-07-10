@@ -1,0 +1,60 @@
+/* ============================================================
+   PostShare.module.css
+   Inline share bar displayed below the article body.
+   ============================================================ */
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-end; */
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 1rem 0 1rem;
+  /* border-bottom: 1px solid rgba(0, 56, 24, 0.1); */
+}
+
+.label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: #64748B;
+  margin-right: 0.25rem;
+}
+
+/* Each circular icon button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #F1F5F9;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  color: #475569;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn:hover {
+  background: var(--mk-primary);
+  color: #fff;
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
+/* Copy button with transient "copied" state */
+.btnCopied {
+  background: #ecfdf5;
+  color: #10b981;
+  border-color: #a7f3d0;
+}
+
+.btnCopied:hover {
+  background: #10b981;
+  color: #fff;
+  border-color: transparent;
+}

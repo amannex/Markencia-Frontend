@@ -49,7 +49,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Blog Grid */}
-      <section className="mk-section mk-bg-texture">
+      <section className={`mk-section mk-bg-texture`}>
         <div className="mk-container">
           {/* Filters */}
           <div className={styles.filters}>

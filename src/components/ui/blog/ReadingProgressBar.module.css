@@ -1,0 +1,29 @@
+/* ============================================================
+   ReadingProgressBar.module.css
+   Fixed thin bar beneath the sticky header showing how far
+   into the article the reader has scrolled (0–100%).
+   ============================================================ */
+
+.bar {
+  /* Sit above the header to appear as an inline accent line */
+  position: fixed;
+  top: 72px;       /* Match header height — adjust if header height changes */
+  left: 0;
+  height: 6px;
+  background: var(--mk-secondary);
+  z-index: 1001;
+
+  width: 100%;
+  transform-origin: left;
+  /* Transform is hardware-accelerated for buttery smooth 120fps scrolling */
+  transition: transform 0.15s ease-out;
+
+  /* Promote to compositor layer to avoid layout/paint during scroll */
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* Mobile headers may be shorter — keep the bar attached */
+@media (max-width: 480px) {
+  .bar { top: 64px; }
+}

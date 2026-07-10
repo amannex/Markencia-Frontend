@@ -256,6 +256,7 @@ export const BLOG_POSTS = [
     date: 'Oct 24, 2024',
     readTime: '8 min read',
     featured: true,
+    featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #003818, #001f0d)',
   },
   {
@@ -268,6 +269,7 @@ export const BLOG_POSTS = [
     date: 'Oct 18, 2024',
     readTime: '5 min read',
     featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #FFB400, #b37e00)',
   },
   {
@@ -280,6 +282,7 @@ export const BLOG_POSTS = [
     date: 'Oct 10, 2024',
     readTime: '6 min read',
     featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #0f172a, #334155)',
   },
   {
@@ -292,6 +295,7 @@ export const BLOG_POSTS = [
     date: 'Oct 02, 2024',
     readTime: '4 min read',
     featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #475569, #cbd5e1)',
   },
   {
@@ -304,6 +308,7 @@ export const BLOG_POSTS = [
     date: 'Sep 28, 2024',
     readTime: '10 min read',
     featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #003818, #FFB400)',
   },
 ];

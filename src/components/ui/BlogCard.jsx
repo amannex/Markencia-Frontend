@@ -7,7 +7,16 @@ export default function BlogCard({ post, featured = false }) {
   return (
     <article className={[styles.card, featured ? styles.featured : ''].filter(Boolean).join(' ')}>
       <div className={styles.imageWrapper}>
-        <div className={styles.imagePlaceholder} style={{ background: gradient }} />
+        {post.featuredImage ? (
+          <img 
+            src={post.featuredImage} 
+            alt={post.imageAlt || title} 
+            className={styles.imagePlaceholder} 
+            style={{ objectFit: 'cover' }} 
+          />
+        ) : (
+          <div className={styles.imagePlaceholder} style={{ background: gradient }} />
+        )}
         <span className={styles.tag}>{category}</span>
       </div>
       <div className={styles.content}>
@@ -22,7 +31,7 @@ export default function BlogCard({ post, featured = false }) {
           : <h3 className={styles.title}><Link to={`/blogs/${slug}`}>{title}</Link></h3>
         }
         <p className={styles.excerpt}>{excerpt}</p>
-        <Link to={`/blogs/${slug}`} className={styles.readMore}>Read Full Article →</Link>
+        <Link to={`/blogs/${slug}`} className={styles.readMore}>Read Full Article</Link>
       </div>
     </article>
   );

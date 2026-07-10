@@ -1,16 +1,18 @@
 .card {
-  background: var(--mk-bg-card);
-  border: 1px solid var(--mk-glass-border);
-  border-radius: var(--mk-radius-lg);
+  background: var(--mk-bg-card, #ffffff);
+  border: 1px solid rgba(0, 56, 24, 0.08);
+  border-radius: var(--mk-radius-lg, 16px);
   overflow: hidden;
-  transition: var(--mk-transition);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 56, 24, 0.08);
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(0, 56, 24, 0.12);
+  border-color: rgba(0, 56, 24, 0.15);
 }
 
 /* Featured card — spans 2 cols and goes horizontal */
@@ -22,6 +24,20 @@
 .imageWrapper {
   position: relative;
   overflow: hidden;
+}
+
+.imageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,31,13,0.6) 0%, transparent 60%);
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card:hover .imageWrapper::after {
+  opacity: 0.3;
 }
 
 /* Default image height */
@@ -49,15 +65,17 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background: #fff;
-  color: var(--mk-primary);
-  padding: 0.35rem 0.9rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px);
+  color: var(--mk-primary, #003818);
+  padding: 0.4rem 1rem;
   border-radius: 50px;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  z-index: 2;
 }
 
 .content {
@@ -115,16 +133,30 @@
 
 .readMore {
   margin-top: 1.5rem;
-  display: inline-block;
-  color: var(--mk-primary);
-  font-weight: 700;
-  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--mk-primary, #003818);
+  font-weight: 800;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
-.readMore:hover { color: var(--mk-secondary); }
+
+.readMore::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.card:hover .readMore { 
+  color: #FFB400; 
+}
+
+.card:hover .readMore::after {
+  transform: translateX(5px);
+}
 
 /* Responsive */
 @media (max-width: 992px) {

@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import BlogsPage from './pages/BlogsPage';
-import BlogPostPage from './pages/BlogPostPage';
+import SingleBlog from './pages/blog/SingleBlog';
 import CaseStudiesPage from './pages/CaseStudiesPage';
 import CaseStudyPostPage from './pages/CaseStudyPostPage';
 import ContactPage from './pages/ContactPage';
@@ -25,7 +25,7 @@ export default function App() {
           <Route path="about" element={<AboutPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="blogs" element={<BlogsPage />} />
-          <Route path="blogs/:slug" element={<BlogPostPage />} />
+          <Route path="blogs/:slug" element={<SingleBlog />} />
           <Route path="case-studies" element={<CaseStudiesPage />} />
           <Route path="case-studies/:slug" element={<CaseStudyPostPage />} />
           <Route path="contact" element={<ContactPage />} />

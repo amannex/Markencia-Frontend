@@ -1,0 +1,40 @@
+/* ============================================================
+   RelatedPosts.module.css
+   Section containing a grid of related blog post cards.
+   ============================================================ */
+
+.section {
+  padding: 2rem 0 5rem;
+  background: transparent;
+  /* Grid Texture */
+  background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--mk-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.75rem;
+}

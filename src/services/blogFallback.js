@@ -201,7 +201,7 @@ export function mapStaticPost(staticPost) {
     content: getStaticPostContent(staticPost.slug),
     authorAvatar: null,
     authorBio: 'AI, Automation, and WordPress development specialists at Markencia.',
-    featuredImage: null,
+    featuredImage: staticPost.featuredImage || null,
     imageAlt: staticPost.title
   };
 }

@@ -38,9 +38,8 @@ import PostShare          from '../../components/ui/blog/PostShare';
 import PostSkeleton       from '../../components/ui/blog/PostSkeleton';
 import PostError          from '../../components/ui/blog/PostError';
 import TableOfContents    from '../../components/ui/blog/TableOfContents';
-
-// ── Section components (blog) ────────────────────────────────
-import RelatedPosts      from '../../components/sections/blog/RelatedPosts';
+import BlogCTA            from '../../components/ui/blog/BlogCTA';
+import RelatedPosts from '../../components/sections/blog/RelatedPosts';
 import NewsletterSection from '../../components/sections/blog/NewsletterSection';
 
 // ── Existing global sections ─────────────────────────────────
@@ -115,11 +114,15 @@ export default function SingleBlog() {
         setRelatedPosts(rawRelated.map(mapWordPressPost));
       } catch {
         // Static fallback: match by category string when WP API is offline.
-        const fallback = BLOG_POSTS
-          .filter((p) => p.category === resolvedPost.category && p.slug !== slug)
-          .slice(0, 3)
-          .map(mapStaticPost);
-        setRelatedPosts(fallback);
+        let fallback = BLOG_POSTS
+          .filter((p) => p.category === resolvedPost.category && p.slug !== slug);
+        
+        // If no posts in the same category, just show the latest posts
+        if (fallback.length === 0) {
+          fallback = BLOG_POSTS.filter((p) => p.slug !== slug);
+        }
+        
+        setRelatedPosts(fallback.slice(0, 3).map(mapStaticPost));
       }
 
     }
@@ -165,7 +168,7 @@ export default function SingleBlog() {
 
   // ── Layout ───────────────────────────────────────────────
   return (
-    <>
+    <div>
       {/* ── SEO ── */}
       <Helmet>
         <title>{seoTitle}</title>
@@ -187,22 +190,26 @@ export default function SingleBlog() {
       {/* ── Hero: category, title, meta, featured image ── */}
       <PostHero post={post} readingTime={readingTime} minutes={minutes} />
 
+      <div className="mk-container" style={{ marginTop: '2.5rem', maxWidth: '1350px' }}>
+        <PostShare
+          post={post}
+          copied={copied}
+          onCopy={copy}
+        />
+      </div>
+
       {/* ── Article body + sidebar grid ── */}
-      <section className={styles.articleSection}>
-        <div className="mk-container">
-          <div className={styles.grid}>
+      <section className={styles.articleSection} style={{ paddingTop: '0.5rem' }}>
+        <div className="mk-container" style={{ maxWidth: '1350px' }}>
+          <div className={styles.layout}>
 
             {/* Main content column */}
-            <main className={styles.main} id="article-body" role="main">
+            <main className={styles.mainContent} id="article-body" role="main">
               <PostBody content={processedContent} />
 
-              <PostShare
-                post={post}
-                copied={copied}
-                onCopy={copy}
-              />
-
               <PostAuthor post={post} />
+              
+              <BlogCTA category={post.category} />
 
               {/* Comments — deferred; resolves after paint */}
               <Suspense fallback={null}>
@@ -233,7 +240,6 @@ export default function SingleBlog() {
       {/* ── Below-fold sections ── */}
       <RelatedPosts posts={relatedPosts} currentCategory={post.category} />
       <NewsletterSection />
-      <CTASection />
-    </>
+    </div>
   );
 }

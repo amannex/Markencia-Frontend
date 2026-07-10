@@ -106,6 +106,16 @@
   box-shadow: none;
 }
 
+.newsletterForm input:-webkit-autofill,
+.newsletterForm input:-webkit-autofill:hover,
+.newsletterForm input:-webkit-autofill:focus,
+.newsletterForm input:-webkit-autofill:active {
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #fff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #fff !important;
+}
+
 .newsletterForm input::placeholder {
   color: rgba(255, 255, 255, 0.45);
 }

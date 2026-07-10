@@ -1,0 +1,61 @@
+/* ============================================================
+   SingleBlog.module.css
+   Layout grid for the single blog post page.
+   ============================================================ */
+
+.layout {
+  display: grid;
+  /* 
+     Mobile/tablet: single column
+     Desktop: Main content column (1fr) + Fixed sidebar (320px) 
+  */
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding: 3.5rem 0;
+}
+
+/* On desktop, switch to a 2-column layout */
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr 280px;
+    gap: 3.5rem;
+  }
+}
+
+.mainContent {
+  /* Ensure images in prose don't blow out the container width */
+  min-width: 0;
+}
+
+/* Sidebar sticky container */
+.sidebar {
+  display: none;
+}
+
+.sidebarSticky {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    /* Adjust top offset to clear the global site header (assuming ~80px) */
+    top: 100px;
+    height: max-content;
+    /* Max height allows scrolling inside sidebar if it gets too tall */
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    /* Hide scrollbar for cleaner look */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+}
