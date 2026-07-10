@@ -183,23 +183,36 @@
 .whyVisual {}
 
 .glassPanel {
-  background: var(--mk-primary);
+  background: var(--mk-bg-main);
   border-radius: var(--mk-radius-lg);
+  border: 1px solid var(--mk-glass-border);
   padding: 2.5rem;
+  box-shadow: var(--mk-shadow);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
+.glassPanel:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 56, 24, 0.1);
+  border-color: var(--mk-secondary);
+}
+
+.comparisonRow {
+  margin-bottom: 1rem;
+}
+
 .comparisonRow h4 {
-  color: rgba(255,255,255,0.75);
-  font-size: 0.9rem;
+  color: var(--mk-text-main);
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.7rem;
 }
 
 .barTrack {
-  background: rgba(255,255,255,0.1);
+  background: rgba(0, 0, 0, 0.1);
   border-radius: var(--mk-radius-pill);
   height: 10px;
   overflow: hidden;
@@ -208,7 +221,7 @@
 .barSlow {
   height: 100%;
   width: 35%;
-  background: rgba(255,255,255,0.3);
+  background: var(--mk-text-main);
   border-radius: var(--mk-radius-pill);
   animation: growBar 1.5s ease-out forwards;
 }
