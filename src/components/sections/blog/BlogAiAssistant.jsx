@@ -8,6 +8,14 @@ export default function BlogAiAssistant({ post }) {
     setQuery(text);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      alert('The Markencia AI assistant is coming soon! Stay tuned.');
+      setQuery('');
+    }
+  };
+
   return (
     <div className={styles.widget} aria-label="AI Assistant">
       <div className={styles.header}>
@@ -42,7 +50,7 @@ export default function BlogAiAssistant({ post }) {
           </button>
         </div>
         
-        <div className={styles.inputRow}>
+        <form className={styles.inputRow} onSubmit={handleSubmit}>
           <input 
             type="text" 
             className={styles.input} 
@@ -50,13 +58,13 @@ export default function BlogAiAssistant({ post }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className={styles.sendBtn} aria-label="Send">
+          <button type="submit" className={styles.sendBtn} aria-label="Send">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </button>
-        </div>
+        </form>
         
         <p className={styles.comingSoon}>AI features coming soon</p>
       </div>

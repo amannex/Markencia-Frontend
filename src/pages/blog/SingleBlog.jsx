@@ -190,14 +190,6 @@ export default function SingleBlog() {
       {/* ── Hero: category, title, meta, featured image ── */}
       <PostHero post={post} readingTime={readingTime} minutes={minutes} />
 
-      <div className="mk-container" style={{ marginTop: '2.5rem', maxWidth: '1350px' }}>
-        <PostShare
-          post={post}
-          copied={copied}
-          onCopy={copy}
-        />
-      </div>
-
       {/* ── Article body + sidebar grid ── */}
       <section className={styles.articleSection} style={{ paddingTop: '0.5rem' }}>
         <div className="mk-container" style={{ maxWidth: '1350px' }}>
@@ -210,6 +202,14 @@ export default function SingleBlog() {
               <PostAuthor post={post} />
               
               <BlogCTA category={post.category} />
+
+              <div style={{ marginTop: '3rem', marginBottom: '1rem' }}>
+                <PostShare
+                  post={post}
+                  copied={copied}
+                  onCopy={copy}
+                />
+              </div>
 
               {/* Comments — deferred; resolves after paint */}
               <Suspense fallback={null}>

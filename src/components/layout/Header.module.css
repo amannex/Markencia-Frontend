@@ -61,7 +61,7 @@
 
 .navLink {
   padding: 0.5rem 0.9rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--mk-text-muted);
   text-decoration: none;
@@ -149,19 +149,21 @@
 .mobileMenu {
   display: none;
   flex-direction: column;
-  padding: 1rem var(--mk-container-px) 1.5rem;
+  padding: 0 var(--mk-container-px);
   background: rgba(255, 255, 255, 0.97);
-  border-top: 1px solid var(--mk-glass-border);
+  border-top: 1px solid transparent;
   gap: 0.25rem;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease, border-color 0.4s ease;
 }
 
 .mobileMenu.mobileOpen {
   max-height: 600px;
   opacity: 1;
+  padding: 1rem var(--mk-container-px) 1.5rem;
+  border-top: 1px solid var(--mk-glass-border);
 }
 
 .mobileLink {
