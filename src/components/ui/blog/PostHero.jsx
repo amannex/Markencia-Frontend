@@ -38,7 +38,7 @@ export default function PostHero({ post, readingTime }) {
         </div>
       )}
 
-      <div className="mk-container" >
+      <div className="mk-container" style={{ maxWidth: '1350px', width: '100%' }}>
         <div className={styles.inner}>
           {/* Back navigation */}
           <Link to="/blogs" className={styles.back}>

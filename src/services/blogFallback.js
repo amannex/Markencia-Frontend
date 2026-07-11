@@ -188,7 +188,8 @@ export function mapWordPressPost(wpPost) {
     category,
     featuredImage,
     imageAlt,
-    gradient: 'linear-gradient(135deg, #003818, #001f0d)'
+    gradient: 'linear-gradient(135deg, #003818, #001f0d)',
+    faqs: wpPost.acf?.faqs || []
   };
 }
 
@@ -202,6 +203,7 @@ export function mapStaticPost(staticPost) {
     authorAvatar: null,
     authorBio: 'AI, Automation, and WordPress development specialists at Markencia.',
     featuredImage: staticPost.featuredImage || null,
-    imageAlt: staticPost.title
+    imageAlt: staticPost.title,
+    faqs: staticPost.faqs || []
   };
 }

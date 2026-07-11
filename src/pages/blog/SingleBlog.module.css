@@ -10,14 +10,14 @@
      Desktop: Main content column (1fr) + Fixed sidebar (320px) 
   */
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 4rem;
   padding: 3.5rem 0;
 }
 
 /* On desktop, switch to a 2-column layout */
 @media (min-width: 1024px) {
   .layout {
-    grid-template-columns: 1fr 280px;
+    grid-template-columns: 1fr 320px; /* Increased from 280px */
     gap: 3.5rem;
   }
 }

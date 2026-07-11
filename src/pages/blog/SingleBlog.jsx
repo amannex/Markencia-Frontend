@@ -39,6 +39,7 @@ import PostSkeleton       from '../../components/ui/blog/PostSkeleton';
 import PostError          from '../../components/ui/blog/PostError';
 import TableOfContents    from '../../components/ui/blog/TableOfContents';
 import BlogCTA            from '../../components/ui/blog/BlogCTA';
+import BlogFaq            from '../../components/ui/blog/BlogFaq';
 import RelatedPosts from '../../components/sections/blog/RelatedPosts';
 import NewsletterSection from '../../components/sections/blog/NewsletterSection';
 
@@ -203,7 +204,9 @@ export default function SingleBlog() {
               
               <BlogCTA category={post.category} />
 
-              <div style={{ marginTop: '3rem', marginBottom: '1rem' }}>
+              <BlogFaq faqs={post.faqs} />
+
+              <div style={{ marginTop: '3rem'}}>
                 <PostShare
                   post={post}
                   copied={copied}

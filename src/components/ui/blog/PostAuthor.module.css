@@ -73,3 +73,10 @@
   color: var(--mk-primary, #003818);
   border-color: #cbd5e0;
 }
+
+@media (max-width: 480px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

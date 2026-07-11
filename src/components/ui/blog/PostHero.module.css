@@ -4,7 +4,7 @@
    ============================================================ */
 
 .hero {
-  padding: 9rem 0 5.5rem;
+  padding: 6rem 0 5.5rem;
   position: relative;
   overflow: hidden;
   color: #fff;
@@ -46,7 +46,6 @@
 .inner {
   position: relative;
   z-index: 2;
-  max-width: 1350px;
 }
 
 /* Back link */
@@ -64,7 +63,7 @@
 }
 
 .back:hover {
-  color: var(--mk-secondary);
+  color: var(--mk-secondary-hover);
 }
 
 /* Category badge */
@@ -116,4 +115,8 @@
 @media (max-width: 640px) {
   .hero { padding: 7rem 0 3.5rem; }
   .title { font-size: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 4rem 0 4rem; }  
 }

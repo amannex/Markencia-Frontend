@@ -18,7 +18,7 @@ export default function RelatedPosts({ posts = [], currentCategory }) {
 
   return (
     <section className={styles.section} aria-labelledby="related-posts-heading">
-      <div className="mk-container" style={{ maxWidth: '1350px' }}>
+      <div className="mk-container">
         <header className={styles.header}>
           <span className={styles.eyebrow}>
             {currentCategory ? `More in ${currentCategory}` : 'Continue Reading'}
