@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
 import styles from './PlaceholderPage.module.css';
@@ -12,6 +13,11 @@ const CASE_STUDIES = [
 export default function CaseStudiesPage() {
   return (
     <>
+      <Helmet>
+        <title>Case Studies | Markencia</title>
+        <meta name="description" content="Discover how we've helped leading brands scale their revenue through AI and data-driven marketing." />
+        <link rel="canonical" href="https://markencia.com/case-studies" />
+      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Proof of Work</div>

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
 import styles from './PlaceholderPage.module.css';
 
@@ -11,6 +12,11 @@ const OPENINGS = [
 export default function CareerPage() {
   return (
     <>
+      <Helmet>
+        <title>Careers | Markencia</title>
+        <meta name="description" content="Join our collective of data scientists, creative strategists, and growth hackers." />
+        <link rel="canonical" href="https://markencia.com/career" />
+      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Join Our Team</div>

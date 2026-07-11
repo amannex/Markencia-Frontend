@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { BLOG_POSTS, BLOG_CATEGORIES } from '../data/staticData';
 import BlogCard from '../components/ui/BlogCard';
@@ -19,6 +20,11 @@ export default function BlogsPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Journal & Insights | Markencia</title>
+        <meta name="description" content="Data-backed strategies, deep dives, and expert perspectives on AI-driven marketing and growth." />
+        <link rel="canonical" href="https://markencia.com/blogs" />
+      </Helmet>
       {/* Hero */}
       <section className={styles.hero}>
         <div className="mk-container">

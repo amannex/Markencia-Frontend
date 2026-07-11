@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import CTASection from '../components/sections/CTASection';
 import styles from './PlaceholderPage.module.css';
@@ -16,6 +17,11 @@ export default function FaqsPage() {
 
   return (
     <>
+      <Helmet>
+        <title>FAQs | Markencia</title>
+        <meta name="description" content="Frequently asked questions about Markencia's AI marketing services." />
+        <link rel="canonical" href="https://markencia.com/faqs" />
+      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Help Center</div>

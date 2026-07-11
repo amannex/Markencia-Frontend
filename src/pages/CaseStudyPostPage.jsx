@@ -1,11 +1,17 @@
+import { Helmet } from 'react-helmet-async';
 import { useParams, Link } from 'react-router-dom';
-import styles from './BlogPostPage.module.css';
+import styles from './CaseStudyPostPage.module.css';
 import CTASection from '../components/sections/CTASection';
 
 export default function CaseStudyPostPage() {
   const { slug } = useParams();
   return (
     <>
+      <Helmet>
+        <title>Case Study: {slug} | Markencia</title>
+        <meta name="description" content="An in-depth analysis of how Markencia delivered exceptional results for this client." />
+        <link rel="canonical" href={`https://markencia.com/case-studies/${slug}`} />
+      </Helmet>
       <section className={styles.hero} style={{ background: 'linear-gradient(135deg, #003818, #FFB400)' }}>
         <div className="mk-container">
           <Link to="/case-studies" className={styles.back}>← Back to Case Studies</Link>

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
 import styles from './PlaceholderPage.module.css';
@@ -35,6 +36,11 @@ const PRICING_PLANS = [
 export default function PricingPage() {
   return (
     <>
+      <Helmet>
+        <title>Pricing | Markencia</title>
+        <meta name="description" content="Transparent pricing for AI-powered marketing growth systems." />
+        <link rel="canonical" href="https://markencia.com/pricing" />
+      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Simple Pricing</div>

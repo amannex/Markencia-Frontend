@@ -385,7 +385,6 @@ export const FOOTER_LINKS = {
     { label: 'Careers', path: '/career' },
   ],
   contact: [
-    { label: 'contact@markencia.com', path: 'mailto:contact@markencia.com', external: true },
     { label: '+91 6395543772', path: 'tel:+916395543772', external: true },
     { label: 'Help & FAQs', path: '/faqs' },
     { label: 'Documentations', path: '/documentations' },

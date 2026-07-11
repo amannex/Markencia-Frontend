@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { SERVICES_DETAIL } from '../data/staticData';
 import CTASection from '../components/sections/CTASection';
 import styles from './ServicesPage.module.css';
@@ -5,6 +6,11 @@ import styles from './ServicesPage.module.css';
 export default function ServicesPage() {
   return (
     <>
+      <Helmet>
+        <title>Our Services | Markencia</title>
+        <meta name="description" content="Precision-engineered marketing services designed to scale your business predictably." />
+        <link rel="canonical" href="https://markencia.com/services" />
+      </Helmet>
       {/* Hero */}
       <section className={styles.hero}>
         <div className="mk-container">

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { CONTACT_INTERESTS, SITE_INFO } from '../data/staticData';
 import styles from './ContactPage.module.css';
@@ -16,6 +17,11 @@ export default function ContactPage() {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Us | Markencia</title>
+        <meta name="description" content="Get in touch with Markencia to scale your brand with AI-driven creative marketing." />
+        <link rel="canonical" href="https://markencia.com/contact" />
+      </Helmet>
       {/* Hero */}
       <section className={styles.hero}>
         <div className="mk-container">

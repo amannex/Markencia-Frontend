@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { TESTIMONIALS } from '../data/staticData';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import SectionHead from '../components/ui/SectionHead';
@@ -7,6 +8,11 @@ import styles from './PlaceholderPage.module.css';
 export default function TestimonialsPage() {
   return (
     <>
+      <Helmet>
+        <title>Testimonials | Markencia</title>
+        <meta name="description" content="Hear from ambitious founders who scaled their business with Markencia." />
+        <link rel="canonical" href="https://markencia.com/testimonials" />
+      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Client Success</div>

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { SERVICES, STATS, WHY_US_POINTS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
 import ServiceCard from '../components/ui/ServiceCard';
@@ -9,6 +10,11 @@ import styles from './HomePage.module.css';
 export default function HomePage() {
   return (
     <>
+      <Helmet>
+        <title>Markencia | AI-Powered Creative Marketing Agency</title>
+        <meta name="description" content="Scale your brand with AI-driven creative marketing. We combine predictive analytics, automation, and viral creativity to build unstoppable growth systems." />
+        <link rel="canonical" href="https://markencia.com/" />
+      </Helmet>
       {/* ── 1. HERO ── */}
       <section className={styles.hero}>
         <div className={styles.heroShape1} aria-hidden="true" />

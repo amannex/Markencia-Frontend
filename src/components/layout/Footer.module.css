@@ -67,7 +67,7 @@
 .brandCol {}
 
 .brandName {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #fff;
   margin-bottom: 1rem;
@@ -79,7 +79,7 @@
 
 .brandDesc {
   color: rgba(255, 255, 255, 0.65);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.7;
   margin-bottom: 2rem;
   max-width: 340px;
@@ -93,17 +93,21 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.07);
+  max-width: 400px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.5rem;
 }
 
 .newsletterForm input {
   flex: 1;
-  padding: 0.85rem 1.2rem;
+  padding: 0 1.2rem;
   background: transparent;
   border: none;
   border-radius: 0;
   color: #fff;
   font-size: 0.9rem;
   box-shadow: none;
+  outline: none;
 }
 
 .newsletterForm input:-webkit-autofill,
@@ -135,16 +139,23 @@
   cursor: pointer;
   transition: var(--mk-transition);
   flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .newsletterForm button:hover {
   background: var(--mk-secondary-hover);
+  transform: rotate(-45deg);
 }
 
 .newsletterSuccess {
   color: var(--mk-secondary);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   padding: 0.5rem 0;
 }
 
@@ -156,29 +167,67 @@
 }
 
 .linksCol h4 {
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 1.2rem;
+  color: var(--mk-text-white);
+  margin: 0 0 2rem 0;
+  position: relative;
+  display: inline-block;
+
+}
+
+.linksCol h4::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--mk-secondary);
 }
 
 .linksCol ul {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .linksCol a {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: var(--mk-transition);
+  display: inline-flex;
+  align-items: center;
+}
+
+.linksCol a::before {
+  content: '-';
+  color: var(--mk-secondary);
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  margin-right: 0;
+  width: 0;
+  overflow: hidden;
 }
 
 .linksCol a:hover {
   color: var(--mk-secondary);
+  transform: translateX(2px);
+}
+
+.linksCol a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+  margin-right: 4px;
+  width: 10px;
 }
 
 /* Bottom */
@@ -191,7 +240,7 @@
 
 .bottom p {
   color: rgba(255, 255, 255, 0.45);
-  font-size: 0.88rem;
+  font-size: 1rem;
   margin: 0;
 }
 
