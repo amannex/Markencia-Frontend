@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { CONTACT_INTERESTS, SITE_INFO } from '../data/staticData';
+import { submitContactForm } from '../services/wpApi';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import styles from './ContactPage.module.css';
@@ -8,13 +9,30 @@ import styles from './ContactPage.module.css';
 export default function ContactPage() {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '', interest: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: wire up to WP REST API custom endpoint
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMsg('');
+    
+    try {
+      const response = await submitContactForm(form);
+      // CF7 returns status 'mail_sent' on success
+      if (response && response.status === 'mail_sent') {
+        setSubmitted(true);
+      } else {
+        setErrorMsg(response.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMsg('Failed to connect to the server. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -136,7 +154,10 @@ export default function ContactPage() {
                   <label htmlFor="message">Message</label>
                   <textarea id="message" name="message" rows={5} placeholder="Tell us about your project goals..." value={form.message} onChange={handleChange} required />
                 </div>
-                <button type="submit" className={styles.submitBtn} id="contact-submit-btn">Send Message</button>
+                {errorMsg && <div className={styles.errorMsg}>{errorMsg}</div>}
+                <button type="submit" className={styles.submitBtn} id="contact-submit-btn" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
               </form>
             )}
           </div>
