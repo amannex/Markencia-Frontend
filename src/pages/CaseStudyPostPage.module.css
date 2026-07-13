@@ -1,64 +1,16 @@
 /* ============================================================
-   MARKENCIA — Single Blog Page CSS Modules
+   MARKENCIA — Case Study Post Page CSS
    ============================================================ */
 
-/* 1. Reading Progress Indicator */
-.progressBar {
-  position: fixed;
-  top: 72px; /* Placed directly under the sticky header */
-  left: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--mk-primary) 0%, var(--mk-secondary) 100%);
-  z-index: 1001; /* Layered just above header */
-  transition: width 0.15s ease-out;
-}
-
-@media (max-width: 480px) {
-  .progressBar {
-    top: 64px; /* Mobile header height */
-  }
-}
-
-/* 2. Hero Section */
 .hero {
   padding: 8rem 0 5rem;
   position: relative;
   overflow: hidden;
   color: #fff;
+  text-align: center;
 }
 
-.heroBgWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.heroBgImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.heroOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(0, 56, 24, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
-  z-index: 2;
-}
-
-.heroInner {
-  position: relative;
-  z-index: 3;
-}
-
-.backLink {
+.back {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -70,12 +22,12 @@
   transition: var(--mk-transition);
 }
 
-.backLink:hover {
+.back:hover {
   color: #fff;
   transform: translateX(-4px);
 }
 
-.categoryBadge {
+.category {
   display: inline-block;
   padding: 0.4rem 1.1rem;
   background: rgba(255, 180, 0, 0.2);
@@ -87,6 +39,7 @@
   letter-spacing: 1.5px;
   color: var(--mk-secondary);
   margin-bottom: 1.5rem;
+  margin-left: 1rem;
 }
 
 .title {
@@ -94,14 +47,14 @@
   font-weight: 800;
   line-height: 1.15;
   color: #fff;
-  max-width: 900px;
   margin-bottom: 2rem;
   letter-spacing: -0.5px;
 }
 
-.metaRow {
+.meta {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1.25rem;
   color: rgba(255, 255, 255, 0.75);
@@ -109,485 +62,28 @@
   font-weight: 500;
 }
 
-.metaItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.metaSeparator {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-/* 3. Article Layout Grid */
 .articleSection {
   padding: 5rem 0;
   background: var(--mk-bg-main);
 }
 
-.gridContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
+.articleBody {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--mk-text-main);
 }
 
-@media (min-width: 1024px) {
-  .gridContainer {
-    grid-template-columns: minmax(0, 1fr) 300px;
-  }
-}
-
-.mainContent {
-  width: 100%;
-}
-
-.excerptLead {
+.lead {
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--mk-text-main);
   line-height: 1.7;
   margin-bottom: 2.5rem;
-  padding-left: 1.25rem;
-  border-left: 3px solid var(--mk-primary);
 }
 
-/* 4. Mobile Share Section */
-.mobileShareSection {
-  margin: 3.5rem 0;
-  padding: 2rem 0;
-  border-top: 1px solid var(--mk-glass-border);
-  border-bottom: 1px solid var(--mk-glass-border);
-}
-
-.mobileShareSection h4 {
+.articleBody p {
   font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: var(--mk-text-main);
-}
-
-.shareButtonsRow {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.shareBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--mk-radius-pill);
-  background: var(--mk-bg-alt);
-  border: 1px solid var(--mk-glass-border);
-  color: var(--mk-text-muted);
-  cursor: pointer;
-  transition: var(--mk-transition);
-}
-
-.shareBtn:hover {
-  background: var(--mk-primary);
-  color: #fff;
-  border-color: var(--mk-primary);
-  transform: translateY(-2px);
-}
-
-/* 5. Author Card */
-.authorCard {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  background: var(--mk-bg-alt);
-  border: 1px solid var(--mk-glass-border);
-  border-radius: var(--mk-radius-lg);
-  padding: 2.5rem;
-  margin-top: 4rem;
-}
-
-.authorAvatar {
-  width: 72px;
-  height: 72px;
-  border-radius: var(--mk-radius-pill);
-  object-fit: cover;
-}
-
-.authorInitials {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 72px;
-  height: 72px;
-  border-radius: var(--mk-radius-pill);
-  background: var(--mk-primary);
-  color: #fff;
-  font-family: var(--mk-font-heading);
-  font-weight: 800;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.authorInfo h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: var(--mk-text-main);
-}
-
-.authorInfo p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--mk-text-muted);
-}
-
-@media (max-width: 640px) {
-  .authorCard {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-  }
-}
-
-/* 6. Sidebar (Sticky Desktop) */
-.sidebarColumn {
-  position: relative;
-}
-
-.stickyContainer {
-  position: sticky;
-  top: 100px;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.sidebarWidget {
-  background: #fff;
-  border: 1px solid var(--mk-glass-border);
-  border-radius: var(--mk-radius-md);
-  padding: 1.75rem;
-  box-shadow: var(--mk-shadow-sm);
-}
-
-.widgetTitle {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--mk-text-main);
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.tocList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.tocItem {
-  list-style: none;
-}
-
-.tocSubItem {
-  padding-left: 0.75rem;
-}
-
-.tocLink {
-  display: block;
-  font-size: 0.88rem;
-  color: var(--mk-text-muted);
-  text-decoration: none;
-  line-height: 1.4;
-  border-left: 2px solid transparent;
-  padding-left: 0.6rem;
-  transition: var(--mk-transition-fast);
-}
-
-.tocLink:hover {
-  color: var(--mk-primary);
-}
-
-.tocLinkActive {
-  color: var(--mk-primary);
-  font-weight: 700;
-  border-left-color: var(--mk-secondary);
-}
-
-.shareGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-
-.sidebarShareLink,
-.sidebarShareLinkButton {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--mk-radius-sm);
-  background: var(--mk-bg-alt);
-  border: 1px solid var(--mk-glass-border);
-  color: var(--mk-text-muted);
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: left;
-  transition: var(--mk-transition);
-  width: 100%;
-}
-
-.sidebarShareLink:hover,
-.sidebarShareLinkButton:hover {
-  background: var(--mk-primary);
-  color: #fff;
-  border-color: var(--mk-primary);
-}
-
-/* 7. Related Reads Section */
-.relatedSection {
-  background: var(--mk-bg-alt);
-  padding: 6rem 0;
-  border-top: 1px solid var(--mk-glass-border);
-}
-
-.relatedTitle {
-  font-size: 2rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  color: var(--mk-text-main);
-}
-
-.relatedGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .relatedGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.relatedCard {
-  background: #fff;
-  border-radius: var(--mk-radius-md);
-  overflow: hidden;
-  box-shadow: var(--mk-shadow-sm);
-  border: 1px solid var(--mk-glass-border);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  transition: var(--mk-transition);
-}
-
-.relatedCard:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--mk-shadow-md);
-}
-
-.relatedCardMedia {
-  height: 180px;
-  width: 100%;
-}
-
-.relatedCardContent {
-  padding: 1.75rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.relatedCardCategory {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--mk-secondary);
-  letter-spacing: 1px;
-  margin-bottom: 0.75rem;
-}
-
-.relatedCardContent h3 {
-  font-size: 1.15rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.4;
-  color: var(--mk-text-main);
-}
-
-.relatedCardContent h3 a {
-  text-decoration: none;
-}
-
-.relatedCardContent h3 a:hover {
-  color: var(--mk-primary);
-}
-
-.relatedCardContent p {
-  font-size: 0.9rem;
-  color: var(--mk-text-muted);
-  line-height: 1.5;
+  line-height: 1.8;
   margin-bottom: 1.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.relatedCardReadMore {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--mk-primary);
-  text-decoration: none;
-  margin-top: auto;
-  transition: var(--mk-transition);
-}
-
-.relatedCardReadMore:hover {
-  color: var(--mk-primary-hover);
-  transform: translateX(3px);
-}
-
-/* 8. Error & Not Found */
-.notFound {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 70vh;
-  text-align: center;
-  padding: 4rem 2rem;
-  gap: 1.5rem;
-}
-
-.notFound h1 {
-  font-size: 3rem;
-  color: var(--mk-text-main);
-}
-
-.notFound p {
   color: var(--mk-text-muted);
-  max-width: 500px;
-}
-
-.backBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.8rem 2rem;
-  background: var(--mk-primary);
-  color: #fff;
-  font-weight: 700;
-  border-radius: var(--mk-radius-pill);
-  text-decoration: none;
-  transition: var(--mk-transition);
-}
-
-.backBtn:hover {
-  background: var(--mk-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--mk-shadow-green);
-}
-
-/* 9. Skeleton Loading Shimmers */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.shimmerBase {
-  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite linear;
-}
-
-.skeletonContainer {
-  padding: 5rem 0;
-}
-
-.skeletonBack {
-  composes: shimmerBase;
-  width: 120px;
-  height: 20px;
-  border-radius: 4px;
-  margin-bottom: 2rem;
-}
-
-.skeletonHero {
-  margin-bottom: 3.5rem;
-}
-
-.skeletonBadge {
-  composes: shimmerBase;
-  width: 100px;
-  height: 28px;
-  border-radius: var(--mk-radius-pill);
-  margin-bottom: 1.5rem;
-}
-
-.skeletonTitle {
-  composes: shimmerBase;
-  width: 85%;
-  height: 48px;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-.skeletonMeta {
-  composes: shimmerBase;
-  width: 250px;
-  height: 18px;
-  border-radius: 4px;
-}
-
-.skeletonGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
-}
-
-@media (min-width: 1024px) {
-  .skeletonGrid {
-    grid-template-columns: minmax(0, 1fr) 300px;
-  }
-}
-
-.skeletonBody {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.skeletonImage {
-  composes: shimmerBase;
-  width: 100%;
-  height: 380px;
-  border-radius: var(--mk-radius-md);
-  margin-bottom: 2rem;
-}
-
-.skeletonLine {
-  composes: shimmerBase;
-  width: 100%;
-  height: 18px;
-  border-radius: 4px;
-}
-
-.skeletonSidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.skeletonCard {
-  composes: shimmerBase;
-  width: 100%;
-  height: 250px;
-  border-radius: var(--mk-radius-md);
 }

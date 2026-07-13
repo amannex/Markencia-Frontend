@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
-import styles from './PlaceholderPage.module.css';
+import styles from './SharedPages.module.css';
 
 const WORKS = [
   { title: 'Markencia Brand Identity', category: 'Branding', gradient: 'linear-gradient(135deg, #003818, #FFB400)' },

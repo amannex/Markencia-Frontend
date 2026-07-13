@@ -1,16 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { NAV_LINKS } from '../../data/staticData';
+import { ChevronDown } from 'lucide-react';
+import { NAV_LINKS, MEGA_MENU_SERVICES } from '../../data/staticData';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpenDesktop, setServicesOpenDesktop] = useState(false);
+  const [servicesOpenMobile, setServicesOpenMobile] = useState(false);
+  
   const { pathname } = useLocation();
   const menuRef = useRef(null);
+  const hideTimeoutRef = useRef(null);
 
-  // Close mobile menu on route change
-  useEffect(() => { setMobileOpen(false); }, [pathname]);
+  // Close mobile menu and mega menu on route change
+  useEffect(() => { 
+    setMobileOpen(false); 
+    setServicesOpenDesktop(false);
+    setServicesOpenMobile(false);
+  }, [pathname]);
 
   // Sticky header shadow on scroll
   useEffect(() => {
@@ -31,6 +40,17 @@ export default function Header() {
     return () => document.removeEventListener('mousedown', handler);
   }, [mobileOpen]);
 
+  const handleMouseEnter = () => {
+    clearTimeout(hideTimeoutRef.current);
+    setServicesOpenDesktop(true);
+  };
+
+  const handleMouseLeave = () => {
+    hideTimeoutRef.current = setTimeout(() => {
+      setServicesOpenDesktop(false);
+    }, 150); // slight delay to prevent flickering
+  };
+
   return (
     <header className={[styles.header, scrolled ? styles.scrolled : ''].join(' ')} role="banner">
       <div className={styles.container} ref={menuRef}>
@@ -42,15 +62,60 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className={styles.desktopNav} aria-label="Primary Navigation" id="nav-links">
-          {NAV_LINKS.filter(l => l.label !== 'Contact').map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) => [styles.navLink, isActive ? styles.active : ''].join(' ')}
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {NAV_LINKS.filter(l => l.label !== 'Contact').map((link) => {
+            if (link.path === '/services') {
+              return (
+                <div 
+                  key={link.path}
+                  className={styles.megaMenuWrapper}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) => [styles.navLink, isActive || servicesOpenDesktop ? styles.active : ''].join(' ')}
+                  >
+                    {link.label}
+                    <ChevronDown className={[styles.chevron, servicesOpenDesktop ? styles.chevronOpen : ''].join(' ')} size={16} />
+                  </NavLink>
+                  
+                  {/* Mega Menu Dropdown */}
+                  <div className={[styles.megaMenuDropdown, servicesOpenDesktop ? styles.megaMenuOpen : ''].join(' ')}>
+                    <div className={styles.megaMenuGrid}>
+                      {MEGA_MENU_SERVICES.map((col, idx) => (
+                        <div key={idx} className={styles.megaMenuColumn}>
+                          <h4 className={styles.megaMenuCategory}>{col.category}</h4>
+                          <ul className={styles.megaMenuList}>
+                            {col.items.map(item => (
+                              <li key={item.path}>
+                                <Link to={item.path} className={styles.megaMenuItem}>
+                                  <span className={styles.megaMenuIcon}>{item.icon}</span>
+                                  <div>
+                                    <span className={styles.megaMenuItemLabel}>{item.label}</span>
+                                    <span className={styles.megaMenuItemDesc}>{item.desc}</span>
+                                  </div>
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) => [styles.navLink, isActive ? styles.active : ''].join(' ')}
+              >
+                {link.label}
+              </NavLink>
+            );
+          })}
         </nav>
 
         {/* Actions */}
@@ -81,16 +146,49 @@ export default function Header() {
         aria-label="Mobile Navigation"
         aria-hidden={!mobileOpen}
       >
-        {NAV_LINKS.map((link) => (
-          <NavLink
-            key={link.path}
-            to={link.path}
-            className={({ isActive }) => [styles.mobileLink, isActive ? styles.active : ''].join(' ')}
-          >
-            {link.label}
-          </NavLink>
-        ))}
-        <Link to="/contact" className={styles.mobileCta}>Free AI Strategy</Link>
+        <div className={styles.mobileNavContainer}>
+          {NAV_LINKS.map((link) => {
+            if (link.path === '/services') {
+              return (
+                <div key={link.path} className={styles.mobileMegaMenuWrapper}>
+                  <button 
+                    className={styles.mobileLink} 
+                    onClick={() => setServicesOpenMobile(!servicesOpenMobile)}
+                  >
+                    {link.label}
+                    <ChevronDown className={[styles.chevron, servicesOpenMobile ? styles.chevronOpen : ''].join(' ')} size={18} />
+                  </button>
+                  <div className={[styles.mobileMegaMenuDropdown, servicesOpenMobile ? styles.mobileMegaMenuOpen : ''].join(' ')}>
+                    {MEGA_MENU_SERVICES.map((col, idx) => (
+                      <div key={idx} className={styles.mobileMegaMenuColumn}>
+                        <h4 className={styles.mobileMegaMenuCategory}>{col.category}</h4>
+                        <ul className={styles.mobileMegaMenuList}>
+                          {col.items.map(item => (
+                            <li key={item.path}>
+                              <Link to={item.path} className={styles.mobileMegaMenuItem}>
+                                {item.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) => [styles.mobileLink, isActive ? styles.active : ''].join(' ')}
+              >
+                {link.label}
+              </NavLink>
+            );
+          })}
+          <Link to="/contact" className={styles.mobileCta}>Free AI Strategy</Link>
+        </div>
       </nav>
     </header>
   );

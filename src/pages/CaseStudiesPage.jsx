@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
-import styles from './PlaceholderPage.module.css';
+import styles from './SharedPages.module.css';
 
 const CASE_STUDIES = [
   { title: 'From $50k to $250k MRR in 6 Months', client: 'ScaleFactor Fintech', category: 'SaaS', result: '5x Revenue Growth', gradient: 'linear-gradient(135deg, #003818, #FFB400)' },

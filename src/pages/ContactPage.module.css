@@ -169,6 +169,60 @@
 .success h3 { font-size: 1.8rem; }
 .success p { color: var(--mk-text-muted); max-width: 350px; line-height: 1.65; margin: 0; }
 
+/* Phone Input Override */
+.phoneInput {
+  display: flex;
+  align-items: center;
+  background: var(--mk-bg-main);
+  border: 1.5px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-sm);
+  padding: 0 1.2rem;
+  transition: var(--mk-transition);
+}
+
+.phoneInput:focus-within {
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px rgba(0, 56, 24, 0.1);
+}
+
+.phoneInput :global(.PhoneInputCountry) {
+  margin-right: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.phoneInput :global(.PhoneInputCountrySelect) {
+  padding: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.phoneInput :global(.PhoneInputCountryIcon) {
+  width: 24px;
+  height: 16px;
+  border: 1px solid var(--mk-glass-border);
+  box-shadow: none;
+  background: transparent;
+}
+
+.phoneInput :global(.PhoneInputInput) {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 0.9rem 0;
+  font-family: var(--mk-font-body);
+  font-size: 1rem;
+  color: var(--mk-text-main);
+  outline: none;
+  box-shadow: none;
+}
+
+.phoneInput :global(.PhoneInputInput)::placeholder {
+  color: var(--mk-text-light);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .wrapper { grid-template-columns: 1fr; }

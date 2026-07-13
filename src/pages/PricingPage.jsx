@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
-import styles from './PlaceholderPage.module.css';
+import styles from './SharedPages.module.css';
 
 const PRICING_PLANS = [
   {

@@ -22,11 +22,35 @@ export const SITE_INFO = {
 export const NAV_LINKS = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
-  { label: 'Services', path: '/services' },
+  { label: 'What we do', path: '/services' },
   { label: 'Case Studies', path: '/case-studies' },
   { label: 'Our Works', path: '/our-works' },
   { label: 'Blogs', path: '/blogs' },
   { label: 'Contact', path: '/contact' },
+];
+
+export const MEGA_MENU_SERVICES = [
+  {
+    category: 'Strategy & Growth',
+    items: [
+      { label: 'AI-Driven Marketing Strategy', path: '/services#ai-strategy', icon: '🧠', desc: 'Predictive analytics & behavioral learning.' },
+      { label: 'Performance Marketing', path: '/services#performance-marketing', icon: '🚀', desc: 'High-ROI paid advertising on Meta & Google.' },
+    ]
+  },
+  {
+    category: 'Creative & Content',
+    items: [
+      { label: 'Brand Identity & Creative', path: '/services#brand-identity', icon: '🎨', desc: 'Strategic branding and viral creatives.' },
+      { label: 'Organic SEO & Content', path: '/services#organic-seo', icon: '✍️', desc: 'Data-backed search domination & articles.' },
+    ]
+  },
+  {
+    category: 'Development',
+    items: [
+      { label: 'Sales Funnels & Web Dev', path: '/services#web-dev', icon: '⚡', desc: 'Lightning-fast, high-converting pages.' },
+      { label: 'Industry AI Solutions', path: '/services#ai-solutions', icon: '🎯', desc: 'Custom AI frameworks for your niche.' },
+    ]
+  }
 ];
 
 export const SERVICES = [
@@ -256,7 +280,7 @@ export const BLOG_POSTS = [
     date: 'Oct 24, 2024',
     readTime: '8 min read',
     featured: true,
-    featuredImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #003818, #001f0d)',
     faqs: [
       {
@@ -356,7 +380,7 @@ export const BLOG_POSTS = [
     date: 'Sep 28, 2024',
     readTime: '10 min read',
     featured: false,
-    featuredImage: 'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     gradient: 'linear-gradient(135deg, #003818, #FFB400)',
     faqs: [
       {

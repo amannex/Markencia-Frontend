@@ -1,10 +1,12 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { CONTACT_INTERESTS, SITE_INFO } from '../data/staticData';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import styles from './ContactPage.module.css';
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', company: '', interest: '', message: '' });
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', company: '', interest: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -105,6 +107,18 @@ export default function ContactPage() {
                 <div className={styles.formGroup}>
                   <label htmlFor="email">Work Email</label>
                   <input type="email" id="email" name="email" placeholder="john@company.com" value={form.email} onChange={handleChange} required />
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="phone">Phone Number</label>
+                  <PhoneInput
+                    defaultCountry="US"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter phone number"
+                    value={form.phone}
+                    onChange={(val) => setForm(f => ({ ...f, phone: val }))}
+                    className={styles.phoneInput}
+                  />
                 </div>
                 <div className={styles.formGroup}>
                   <label htmlFor="company">Company Name</label>
