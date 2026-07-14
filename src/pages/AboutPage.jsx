@@ -64,7 +64,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── 3. CORE VALUES ── */}
-      <section className="mk-section">
+      <section className={`mk-section ${styles.coreValuesSection}`}>
         <div className="mk-container">
           <SectionHead
             centered

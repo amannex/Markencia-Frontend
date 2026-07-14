@@ -1,4 +1,6 @@
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
 import styles from './SharedPages.module.css';
@@ -12,6 +14,8 @@ const PRICING_PLANS = [
     features: ['AI Market Research', '2 Ad Campaigns/month', 'Email Automation Setup', 'Monthly Report', 'Dedicated Account Manager'],
     cta: 'Get Started',
     popular: false,
+    stripePriceId: 'price_1TseyWK1238yEf796RNfXJ14', // ⚠️ REPLACE THIS
+    isCustom: false,
   },
   {
     name: 'Growth',
@@ -21,6 +25,8 @@ const PRICING_PLANS = [
     features: ['Full Predictive Analytics Suite', 'Unlimited Ad Campaigns', 'WhatsApp + Email Automation', 'Weekly Reports & Optimization', 'Landing Page Development', 'CRM Integration'],
     cta: 'Most Popular',
     popular: true,
+    stripePriceId: 'price_1TsdSPK1238yEf79Tv1PEe4p', // ⚠️ REPLACE THIS
+    isCustom: false,
   },
   {
     name: 'Enterprise',
@@ -30,10 +36,48 @@ const PRICING_PLANS = [
     features: ['Everything in Growth', 'Custom AI Models', 'Dedicated Team of Specialists', 'Priority 24/7 Support', 'Quarterly Strategy Summits', 'White-label Solutions'],
     cta: 'Contact Us',
     popular: false,
+    stripePriceId: null,
+    isCustom: true, // true lets us skip Stripe processing and handle manually
   },
 ];
 
 export default function PricingPage() {
+
+  // Track which plan is currently waiting on the API to prevent double-clicks
+  const [loadingPlan, setLoadingPlan] = useState(null);
+
+  const handlePlanSelection = async (plan) => {
+    // If it's the custom enterprise tier, immediately forward them to your contact forms
+    if (plan.isCustom) {
+      window.location.href = '/contact';
+      return;
+    }
+
+    try {
+      setLoadingPlan(plan.name);
+      
+      // ⚠️ REPLACE THIS DOMAIN WITH YOUR ACTUAL LIVE WORDPRESS BACKEND DOMAIN ADDRESS
+      const wpBackendUrl = 'http://localhost:8888/wp-json/markencia/v1/create-checkout';
+
+      // Request a checkout session from WordPress
+      const response = await axios.post(wpBackendUrl, {
+        priceId: plan.stripePriceId
+      });
+
+      // Redirect the client to the hosted Stripe checkout session screen
+      if (response.data && response.data.checkoutUrl) {
+        window.location.href = response.data.checkoutUrl;
+      } else {
+        throw new Error("Invalid URL signature returned from API");
+      }
+
+    } catch (error) {
+      console.error("Stripe Checkout Redirect Failed:", error);
+      alert("System busy. We couldn't connect to the payment gateway. Please try again.");
+    } finally {
+      setLoadingPlan(null);
+    }
+  };
   return (
     <>
       <Helmet>
@@ -61,7 +105,16 @@ export default function PricingPage() {
                 <ul className={styles.features}>
                   {plan.features.map((f) => <li key={f}>{f}</li>)}
                 </ul>
-                <a href="/contact" className={[styles.planBtn, plan.popular ? styles.planBtnPrimary : styles.planBtnOutline].join(' ')}>{plan.cta}</a>
+
+                {/* Replaced old static anchor link layout tagging with custom interactive buttons */}
+                <button 
+                  onClick={() => handlePlanSelection(plan)}
+                  disabled={loadingPlan !== null}
+                  className={[styles.planBtn, plan.popular ? styles.planBtnPrimary : styles.planBtnOutline].join(' ')}
+                  style={{ width: '100%', cursor: 'pointer', border: 'none', textAlign: 'center' }}
+                >
+                  {loadingPlan === plan.name ? 'Connecting Securely...' : plan.cta}
+                </button>
               </div>
             ))}
           </div>

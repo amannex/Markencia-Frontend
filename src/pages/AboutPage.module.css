@@ -33,30 +33,51 @@
   align-items: center;
 }
 
+.missionImage {
+  position: relative;
+  padding: 1rem;
+}
+
 .glassCard {
   background: var(--mk-primary);
   border-radius: var(--mk-radius-lg);
-  padding: 3rem 2.5rem;
+  padding: 4rem 3rem;
   position: relative;
+  box-shadow: 0 25px 50px rgba(0, 56, 24, 0.2);
+  transform: rotate(-2deg);
+  transition: transform 0.4s ease;
+}
+
+.glassCard:hover {
+  transform: rotate(0deg) scale(1.02);
 }
 
 .quoteIcon {
   font-size: 8rem;
-  line-height: 0.5;
+  line-height: 1.5;
   color: var(--mk-secondary);
-  opacity: 0.4;
-  font-family: Georgia, serif;
-  margin-bottom: 1rem;
+  font-family: var(--mk-font-display);
+  position: absolute;
+  top: -2rem;
+  left: 1.5rem;
+  opacity: 0.6;
 }
 
 .glassCard h3 {
-  font-size: 1.4rem;
-  color: #fff;
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #fff !important;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
-.glassCard p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin: 0; }
+.glassCard p { 
+  color: var(--mk-secondary); 
+  font-size: 0.9rem; 
+  font-weight: 600;
+  margin: 0; 
+}
 
 .missionText h2 {
   font-size: clamp(2rem, 3vw, 2.8rem);
@@ -88,25 +109,54 @@
   gap: 2rem;
 }
 
+.coreValuesSection {
+  background-color: var(--color-mk-bg-alt, #F8FAFC);
+}
+
 .valueCard {
+  background: var(--mk-bg-main);
   padding: 2.5rem 2rem;
   border: 1px solid var(--mk-glass-border);
   border-radius: var(--mk-radius-lg);
   transition: var(--mk-transition);
+  box-shadow: var(--mk-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.valueCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: var(--mk-secondary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
 }
 
 .valueCard:hover {
-  border-color: var(--mk-primary);
-  transform: translateY(-6px);
+  transform: translateY(-10px);
   box-shadow: var(--mk-shadow-green);
 }
 
+ .valueCard:hover::before {
+    transform: scaleX(1);
+  }
+
 .valueIcon {
   font-family: var(--mk-font-heading);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: var(--mk-secondary);
+  -webkit-text-stroke: 1px rgba(0, 56, 24, 0.2);
+  color: var(--mk-bg-alt);
   margin-bottom: 1.2rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.valueCard:hover .valueIcon {
+  color: var(--mk-primary);
+  -webkit-text-stroke: 0px;
 }
 
 .valueCard h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }

@@ -95,8 +95,11 @@ ul, ol { list-style: none; }
 }
 
 .mk-bg-texture {
-  background: var(--mk-bg-alt);
-  position: relative;
+  /* Grid Texture */
+  background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
 /* ---- Text Accents ---- */
