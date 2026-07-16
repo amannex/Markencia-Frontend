@@ -258,13 +258,27 @@
 }
 
 .step {
-  text-align: center;
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  text-align: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-10px);
+}
+
+.step:hover .stepNumber {
+  background: var(--mk-secondary);
+  color: var(--mk-text-main);
+  border-color: var(--mk-secondary);
+  box-shadow: 0 10px 25px rgba(255, 180, 0, 0.3);
+  transform: scale(1.1);
 }
 
 .stepNumber {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 64px; height: 64px;
@@ -276,6 +290,8 @@
   font-weight: 800;
   color: var(--mk-primary);
   margin: 0 auto 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 56, 24, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .step h3 {

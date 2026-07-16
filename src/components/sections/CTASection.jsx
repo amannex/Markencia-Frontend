@@ -12,6 +12,7 @@ export default function CTASection({
   showForm = true,
   buttonText = 'Book Your Strategy Call',
   buttonHref = '/contact',
+  buttonVariant = 'primary',
   disclaimer = 'No commitments. Just pure value and actionable strategies.',
 }) {
   const [name, setName] = useState('');
@@ -62,13 +63,13 @@ export default function CTASection({
                     id="cta-email"
                     aria-label="Your work email"
                   />
-                  <Button type="submit" variant="primary">
+                  <Button type="submit" variant="ctaButton">
                     Claim Free Strategy Session
                   </Button>
                 </form>
               )
             ) : (
-              <Button href={buttonHref} variant="primary">
+              <Button href={buttonHref} variant={buttonVariant}>
                 {buttonText}
               </Button>
             )}

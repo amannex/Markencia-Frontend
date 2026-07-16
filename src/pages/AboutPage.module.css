@@ -139,9 +139,9 @@
   box-shadow: var(--mk-shadow-green);
 }
 
- .valueCard:hover::before {
-    transform: scaleX(1);
-  }
+.valueCard:hover::before {
+  transform: scaleX(1);
+}
 
 .valueIcon {
   font-family: var(--mk-font-heading);
@@ -184,17 +184,21 @@
 }
 
 .teamPhoto {
-  width: 90px; height: 90px;
+  width: 200px; height: 200px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--mk-primary), var(--mk-secondary));
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--mk-font-heading);
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: #fff;
+  align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 1.5rem;
   margin: 0 auto 1.5rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.teamPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .teamMember h3 { font-size: 1.15rem; margin-bottom: 0.3rem; }

@@ -121,7 +121,13 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <CTASection showForm={false} title='Still Have <span class="mk-highlight-text">Questions?</span>' subtitle="Talk to our team and we'll build a custom plan around your exact goals." buttonText="Book a Free Call" buttonHref="/contact" />
+      <CTASection 
+        showForm={false} 
+        title='Still Have <span class="mk-highlight-text">Questions?</span>' 
+        subtitle="Talk to our team and we'll build a custom plan around your exact goals." 
+        buttonText="Book a Free Call" 
+        buttonHref="/contact" 
+      />
     </>
   );
 }

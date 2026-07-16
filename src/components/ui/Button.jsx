@@ -1,8 +1,8 @@
 import styles from './Button.module.css';
 
 /**
- * Button — supports primary, secondary, outline variants
- * @param {'primary'|'secondary'|'outline'} variant
+ * Button — supports primary, secondary, outline & ctaButton variants
+ * @param {'primary'|'secondary'|'outline'|'ctaButton'} variant
  */
 export default function Button({
   children,

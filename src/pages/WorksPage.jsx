@@ -39,7 +39,7 @@ export default function WorksPage() {
           </div>
         </div>
       </section>
-      <CTASection showForm={false} title='Ready to Join Our <span class="mk-highlight-text">Portfolio?</span>' subtitle="Let's create something remarkable together." buttonText="Start a Project" buttonHref="/contact" />
+      <CTASection showForm={false} title='Ready to Join Our <span class="mk-highlight-text">Portfolio?</span>' subtitle="Let's create something remarkable together." buttonText="Start a Project" buttonHref="/contact" buttonVariant='ctaButton' />
     </>
   );
 }

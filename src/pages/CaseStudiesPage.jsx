@@ -42,7 +42,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <CTASection showForm={false} title='Want Results Like <span class="mk-highlight-text">These?</span>' subtitle="Let's engineer a growth system tailored specifically to your business." buttonText="Start Your Case Study" buttonHref="/contact" />
+      <CTASection showForm={false} title='Want Results Like <span class="mk-highlight-text">These?</span>' subtitle="Let's engineer a growth system tailored specifically to your business." buttonText="Start Your Case Study" buttonHref="/contact" buttonVariant='ctaButton' />
     </>
   );
 }

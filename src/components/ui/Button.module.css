@@ -68,3 +68,20 @@
 .fullWidth {
   width: 100%;
 }
+
+/* ctaButton */
+.ctaButton {
+  background: var(--mk-secondary);
+  color: var(--mk-text-main);
+  border: none;
+  cursor: pointer;
+
+}
+
+.ctaButton:hover {
+  background: var(--mk-secondary-hover);
+  border-color: var(--mk-primary);
+  color: var(--mk-text-main);
+  transform: translateY(-2px);
+}
+

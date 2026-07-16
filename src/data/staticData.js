@@ -223,24 +223,24 @@ export const TESTIMONIALS = [
 export const TEAM_MEMBERS = [
   {
     id: 1,
-    name: 'Alex Mercer',
+    name: 'Aman Saifi',
     role: 'Founder & CEO',
     bio: 'Former tech lead turned marketing polymath, pioneering AI-integrated growth models.',
-    initials: 'AM',
+    photo: 'src/assets/images/founder&ceo.png',
   },
   {
     id: 2,
     name: 'Sarah Jenkins',
     role: 'Chief Strategy Officer',
     bio: 'Master of behavioral economics and high-converting funnel architecture.',
-    initials: 'SJ',
+    photo: '',
   },
   {
     id: 3,
     name: 'David Chen',
     role: 'Head of AI & Automation',
     bio: 'Data science savant building our proprietary predictive ad-buying algorithms.',
-    initials: 'DC',
+    photo: '',
   },
 ];
 

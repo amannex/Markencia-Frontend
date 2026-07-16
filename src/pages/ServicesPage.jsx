@@ -64,6 +64,7 @@ export default function ServicesPage() {
         showForm={false}
         buttonText="Book Your Strategy Call"
         buttonHref="/contact"
+        buttonVariant="ctaButton"
       />
     </>
   );
