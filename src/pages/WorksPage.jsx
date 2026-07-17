@@ -1,17 +1,24 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
 import styles from './SharedPages.module.css';
+import { WORKS_CATEGORIES } from '../data/staticData';
 
 const WORKS = [
-  { title: 'Markencia Brand Identity', category: 'Branding', gradient: 'linear-gradient(135deg, #003818, #FFB400)' },
+  { title: 'Markencia Brand Identity', category: 'Brand Identity', gradient: 'linear-gradient(135deg, #003818, #FFB400)' },
   { title: 'SaaS Landing Page Funnel', category: 'Web Design', gradient: 'linear-gradient(135deg, #0f172a, #334155)' },
-  { title: 'AI Chatbot UI/UX', category: 'Product Design', gradient: 'linear-gradient(135deg, #FFB400, #ff6b35)' },
+  { title: 'AI Chatbot UI/UX', category: 'AI Automation', gradient: 'linear-gradient(135deg, #FFB400, #ff6b35)' },
   { title: 'E-commerce Conversion Redesign', category: 'Web Design', gradient: 'linear-gradient(135deg, #475569, #0f172a)' },
-  { title: 'Healthcare Lead Gen Campaign', category: 'Performance Marketing', gradient: 'linear-gradient(135deg, #003818, #005c28)' },
-  { title: 'Real Estate WhatsApp Funnel', category: 'Automation', gradient: 'linear-gradient(135deg, #e09200, #003818)' },
+  { title: 'Healthcare Lead Gen Campaign', category: 'Ad Creatives', gradient: 'linear-gradient(135deg, #003818, #005c28)' },
+  { title: 'Real Estate WhatsApp Funnel', category: 'AI Automation', gradient: 'linear-gradient(135deg, #e09200, #003818)' },
 ];
 
 export default function WorksPage() {
+  const [activeFilter, setActiveFilter] = useState('All Projects');
+
+  const filteredWorks = activeFilter === 'All Projects'
+    ? WORKS
+    : WORKS.filter(w => w.category === activeFilter);
   return (
     <>
       <Helmet>
@@ -27,9 +34,23 @@ export default function WorksPage() {
         </div>
       </section>
       <section className="mk-section">
-        <div className="mk-container">
+        <div className="mk-container">  
+          {/* Filters */}
+          <div className={styles.filters}>
+            {WORKS_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                className={[styles.filterBtn, activeFilter === cat ? styles.active : ''].join(' ')}
+                onClick={() => setActiveFilter(cat)}
+                type="button"
+                id={`filter-${cat.replace(/\s+/g, '-').toLowerCase()}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
           <div className={styles.simpleGrid}>
-            {WORKS.map((w) => (
+            {filteredWorks.map((w) => (
               <div key={w.title} className={styles.simpleCard}>
                 <div style={{ background: w.gradient, borderRadius: '12px', height: '140px', marginBottom: '1.2rem' }} />
                 <span style={{ color: 'var(--mk-secondary)', fontSize: '0.78rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px' }}>{w.category}</span>

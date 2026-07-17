@@ -268,6 +268,7 @@ export const ABOUT_STATS = [
 ];
 
 export const BLOG_CATEGORIES = ['All Articles', 'AI Automation', 'Growth Strategy', 'Paid Media', 'Case Studies'];
+export const WORKS_CATEGORIES = ['All Projects', 'Web Design', 'Brand Identity', 'Ad Creatives', 'AI Automation'];
 
 export const BLOG_POSTS = [
   {
