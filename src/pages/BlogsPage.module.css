@@ -8,7 +8,10 @@
   padding: 7rem 2rem 5rem;
 }
 
-.heroContent { max-width: 800px; margin: 0 auto; }
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 .heroTitle {
   font-size: clamp(2.5rem, 5vw, 5rem);
@@ -18,11 +21,13 @@
   margin-bottom: 1.2rem;
 }
 
-.accent { color: var(--mk-secondary); }
+.accent {
+  color: var(--mk-secondary);
+}
 
 .heroSubtitle {
   font-size: 1.1rem;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   margin: 0 auto 2.5rem;
   line-height: 1.7;
   max-width: 650px;
@@ -46,7 +51,9 @@
   box-shadow: 0 10px 30px rgba(0, 56, 24, 0.25);
 }
 
-.searchBar input:focus { box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.804); }
+.searchBar input:focus {
+  box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.804);
+}
 
 .searchBar svg {
   position: absolute;
@@ -90,18 +97,16 @@
   border-color: var(--mk-primary);
 }
 
+.blogGridSection {
+  /* background: rgba(var(--mk-primary-rgb, 0, 180, 80), 0.05); */
+  background: var(--mk-bg-alt);
+}
+
 /* Blog grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
-}
-
-.mk-section {
-  background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.3) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 1px, transparent 1px);
-  background-size: 30px 30px;
 }
 
 .empty {
@@ -112,10 +117,6 @@
 }
 
 /* Newsletter */
-.newsletter {
-  background: var(--mk-bg-alt);
-}
-
 .newsletterBox {
   background: var(--mk-primary);
   border-radius: var(--mk-radius-xl);
@@ -129,11 +130,13 @@
 .newsletterBox::before {
   content: '';
   position: absolute;
-  width: 300px; height: 300px;
+  width: 300px;
+  height: 300px;
   background: rgba(255, 180, 0, 0.18);
   filter: blur(80px);
   border-radius: 50%;
-  top: -100px; right: -100px;
+  top: -100px;
+  right: -100px;
   pointer-events: none;
 }
 
@@ -146,7 +149,7 @@
 }
 
 .newsletterBox p {
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto 2.5rem;
@@ -166,13 +169,15 @@
 .newsletterForm input {
   flex: 1;
   max-width: 380px;
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
   color: #fff;
   border-radius: var(--mk-radius-pill);
 }
 
-.newsletterForm input::placeholder { color: rgba(255,255,255,0.4); }
+.newsletterForm input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
 
 .subscribeBtn {
   padding: 0.9rem 2rem;
@@ -193,9 +198,17 @@
 }
 
 @media (max-width: 992px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
 @media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
-  .newsletterBox { padding: 3rem 1.5rem; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletterBox {
+    padding: 3rem 1.5rem;
+  }
 }
