@@ -1,0 +1,48 @@
+.hero {
+  background: radial-gradient(circle at top right, rgba(255,180,0,0.15), transparent 60%), var(--mk-primary);
+  padding: 8rem 2rem 6rem;
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+
+.accent { color: var(--mk-secondary); }
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.simpleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.simpleCard {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-lg);
+  transition: var(--mk-transition);
+  background: var(--mk-bg-card);
+}
+
+.simpleCard:hover {
+  border-color: var(--mk-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--mk-shadow-green);
+}
+
+@media (max-width: 900px) {
+  .simpleGrid { grid-template-columns: 1fr; }
+}

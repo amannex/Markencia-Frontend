@@ -422,3 +422,12 @@ export const CONTACT_INTERESTS = [
   { value: 'Web Design', label: 'Web & Funnel Design' },
   { value: 'Other', label: 'Other / General Inquiry' },
 ];
+
+export const WORKS = [
+  { title: 'Markencia Brand Identity', link: 'https://markencia.com', category: 'Brand Identity', gradient: 'linear-gradient(135deg, #003818, #FFB400)', content: 'A complete brand overhaul for Markencia, defining core values and visual identity for future growth.', isLarge: true },
+  { title: 'SaaS Landing Page Funnel', link: 'https://example.com', category: 'Web Design', gradient: 'linear-gradient(135deg, #0f172a, #334155)', content: 'Designed a high-converting SaaS landing page with optimized user flows and clear calls to action.' },
+  { title: 'AI Chatbot UI/UX', link: 'https://example.com', category: 'AI Automation', gradient: 'linear-gradient(135deg, #FFB400, #ff6b35)', content: 'Created an intuitive user interface for an advanced AI chatbot, ensuring a seamless user experience.' },
+  { title: 'E-commerce Conversion Redesign', link: 'https://example.com', category: 'Web Design', gradient: 'linear-gradient(135deg, #475569, #0f172a)', content: 'Revamped the e-commerce checkout process, reducing cart abandonment and increasing sales by 25%.', isLarge: true },
+  { title: 'Healthcare Lead Gen Campaign', link: 'https://example.com', category: 'Ad Creatives', gradient: 'linear-gradient(135deg, #003818, #005c28)', content: 'Developed targeted ad creatives that significantly boosted lead generation for a healthcare provider.' },
+  { title: 'Real Estate WhatsApp Funnel', link: 'https://example.com', category: 'AI Automation', gradient: 'linear-gradient(135deg, #e09200, #003818)', content: 'Built an automated WhatsApp funnel that pre-qualifies real estate leads and schedules viewings.' },
+];

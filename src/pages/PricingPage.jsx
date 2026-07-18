@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
-import styles from './SharedPages.module.css';
+import styles from './PricingPage.module.css';
 
 const PRICING_PLANS = [
   {
