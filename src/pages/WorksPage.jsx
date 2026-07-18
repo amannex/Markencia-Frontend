@@ -70,7 +70,7 @@ export default function WorksPage() {
                     <div className={styles.workOverlay}>
                       <div className={styles.workInfo}>
                         <span className={styles.workCategory}>{w.category}</span>
-                        <h3 style={{ margin: '0.5rem 0 0', fontSize: '1.1rem' }}>{w.title}</h3>
+                        <h3 style={{ margin: '0.5rem 0 0.2rem', fontSize: '1.1rem' }}>{w.title}</h3>
                         <a href={w.link} target="_blank" rel="noopener noreferrer" className={styles.workLink}>View Project <span className={styles.arrow}>↗</span></a>
                       </div> 
                     </div>
