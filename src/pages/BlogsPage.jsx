@@ -80,8 +80,24 @@ export default function BlogsPage() {
               ))}
             </div>
           ) : (
-            <div className={styles.empty}>
-              <p>No articles found. Try a different filter or search term.</p>
+            <div className={styles.emptyState}>
+              <div className={styles.emptyStateIcon}>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <h3 className={styles.emptyStateTitle}>
+                {BLOG_POSTS.length === 0 ? "Journal Coming Soon" : "No Articles Found"}
+              </h3>
+              <p className={styles.emptyStateSubtitle}>
+                {BLOG_POSTS.length === 0 
+                  ? "We're currently writing our latest insights. Check back soon for deep dives into AI marketing and strategies." 
+                  : "We couldn't find any articles matching your search or category filter. Try clearing your search or checking other categories."}
+              </p>
             </div>
           )}
         </div>

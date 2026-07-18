@@ -109,11 +109,45 @@
   gap: 2.5rem;
 }
 
-.empty {
+.emptyState {
   text-align: center;
-  padding: 4rem 0;
-  color: var(--mk-text-muted);
+  padding: 6rem 20px;
+  background: var(--mk-bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--mk-glass-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.emptyStateIcon {
+  color: var(--mk-secondary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(var(--mk-secondary-rgb, 0, 180, 80), 0.1);
+}
+
+.emptyStateTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--mk-text-primary);
+  margin-bottom: 1rem;
+}
+
+.emptyStateSubtitle {
   font-size: 1.1rem;
+  color: var(--mk-text-secondary);
+  max-width: 500px;
+  line-height: 1.6;
 }
 
 /* Newsletter */
