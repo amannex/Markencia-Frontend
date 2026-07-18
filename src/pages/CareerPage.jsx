@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
-import styles from './SharedPages.module.css';
+import styles from './CareerPage.module.css';
 
 const OPENINGS = [
   { title: 'Senior Performance Marketing Manager', type: 'Full-time', location: 'Noida, India / Remote', dept: 'Marketing' },

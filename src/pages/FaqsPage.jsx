@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import CTASection from '../components/sections/CTASection';
-import styles from './SharedPages.module.css';
+import styles from './FaqsPage.module.css';
 
 const FAQS = [
   { q: 'What makes Markencia different from other marketing agencies?', a: "We don't just run ads—we engineer growth systems. By merging AI, automation, and deep creative strategy, we deliver measurable ROI, not vanity metrics. Every campaign is data-backed and tested." },

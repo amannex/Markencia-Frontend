@@ -3,7 +3,7 @@ import { TESTIMONIALS } from '../data/staticData';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
-import styles from './SharedPages.module.css';
+import styles from './TestimonialsPage.module.css';
 
 export default function TestimonialsPage() {
   return (
