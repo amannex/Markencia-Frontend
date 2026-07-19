@@ -271,129 +271,129 @@ export const BLOG_CATEGORIES = ['All Articles', 'AI Automation', 'Growth Strateg
 export const WORKS_CATEGORIES = ['All Projects', 'Web Design', 'Brand Identity', 'Ad Creatives', 'AI Automation'];
 
 export const BLOG_POSTS = [
-  // {
-  //   id: 1,
-  //   slug: 'death-of-traditional-advertising',
-  //   category: 'AI Automation',
-  //   title: 'The Death of Traditional Advertising: Why Predictive AI is the New Standard',
-  //   excerpt: 'How machine learning algorithms are outperforming human media buyers by 300% and what it means for the future of your agency\'s paid acquisition engine.',
-  //   author: 'Alex Mercer',
-  //   date: 'Oct 24, 2024',
-  //   readTime: '8 min read',
-  //   featured: true,
-  //   featuredImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-  //   gradient: 'linear-gradient(135deg, #003818, #001f0d)',
-  //   faqs: [
-  //     {
-  //       question: 'What exactly is Predictive AI in advertising?',
-  //       answer: 'Predictive AI uses machine learning algorithms to evaluate thousands of real-time signals (like browsing behavior and device data) to predict the likelihood of a conversion before placing a bid on an ad impression.'
-  //     },
-  //     {
-  //       question: 'Do I need a large budget to use AI-driven ads?',
-  //       answer: 'While larger datasets help algorithms learn faster, modern AI tools have democratized access. Even campaigns with moderate budgets can benefit from automated bidding and predictive targeting if their first-party data is structured correctly.'
-  //     },
-  //     {
-  //       question: 'How does this work without third-party cookies?',
-  //       answer: 'By relying on server-side tracking (like the Conversions API) and first-party identity resolution. We match offline or direct conversions to ad interactions using secure, hashed customer profiles instead of relying on fragile browser cookies.'
-  //     }
-  //   ]
-  // },
-  // {
-  //   id: 2,
-  //   slug: 'conversion-rate-optimization-b2b-saas',
-  //   category: 'Growth Strategy',
-  //   title: '3 Conversion Rate Optimization Hacks for B2B SaaS',
-  //   excerpt: 'Stop losing high-intent traffic. Implement these three friction-reducing strategies to double your lead volume in 30 days.',
-  //   author: 'Sarah Jenkins',
-  //   date: 'Oct 18, 2024',
-  //   readTime: '5 min read',
-  //   featured: false,
-  //   featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-  //   gradient: 'linear-gradient(135deg, #FFB400, #b37e00)',
-  //   faqs: [
-  //     {
-  //       question: 'Why do extra form fields reduce conversions so drastically?',
-  //       answer: 'Friction is the enemy of action. Every additional field requires cognitive load and trust from the user. For B2B SaaS, asking for a phone number or company size upfront often feels intrusive, causing users to abandon the form.'
-  //     },
-  //     {
-  //       question: 'What is dynamic enrichment?',
-  //       answer: 'Dynamic enrichment uses APIs like Clearbit or ZoomInfo to automatically append company data (like industry, employee count, and revenue) to a lead based solely on their business email address, saving the user from typing it.'
-  //     },
-  //     {
-  //       question: 'How much impact does page speed really have on SaaS signups?',
-  //       answer: 'Massive. Studies show a 1-second delay in page load time can reduce conversions by up to 7%. Fast pages keep users engaged, while slow pages cause them to bounce before your value proposition even loads.'
-  //     }
-  //   ]
-  // },
-  // {
-  //   id: 3,
-  //   slug: 'scaling-google-ads-cookieless',
-  //   category: 'Paid Media',
-  //   title: 'Scaling Google Ads in a Cookieless World',
-  //   excerpt: 'Navigating the new privacy landscape with enhanced conversions and first-party data architecture.',
-  //   author: 'David Chen',
-  //   date: 'Oct 10, 2024',
-  //   readTime: '6 min read',
-  //   featured: false,
-  //   featuredImage: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-  //   gradient: 'linear-gradient(135deg, #0f172a, #334155)',
-  //   faqs: [
-  //     {
-  //       question: 'Is Google Ads dead without third-party cookies?',
-  //       answer: 'Not at all. Google is shifting from tracking-based ad delivery to model-based delivery. By using Consent Mode v2 and server-side tracking, you can recover a significant portion of lost conversion data.'
-  //     },
-  //     {
-  //       question: 'What are Google Enhanced Conversions?',
-  //       answer: 'Enhanced Conversions securely send hashed, first-party customer data (like an email address) from your website to Google. Google then matches this data against logged-in Google accounts to track conversions accurately while preserving user privacy.'
-  //     }
-  //   ]
-  // },
-  // {
-  //   id: 4,
-  //   slug: 'building-reusable-content-engine',
-  //   category: 'Growth Strategy',
-  //   title: 'Building a Reusable Content Engine',
-  //   excerpt: 'How to turn one cornerstone piece of content into 40+ micro-assets across all social channels with zero extra effort.',
-  //   author: 'Alex Mercer',
-  //   date: 'Oct 02, 2024',
-  //   readTime: '4 min read',
-  //   featured: false,
-  //   featuredImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-  //   gradient: 'linear-gradient(135deg, #475569, #cbd5e1)',
-  //   faqs: [
-  //     {
-  //       question: 'What is the Hub-and-Spoke content model?',
-  //       answer: 'It is a strategy where you create one comprehensive, high-quality "Hub" piece (like a long-form blog post) and then break it down into dozens of smaller "Spoke" pieces (like tweets, carousels, and short videos) for distribution across different channels.'
-  //     },
-  //     {
-  //       question: 'How can AI help with content repurposing?',
-  //       answer: 'AI tools can take your completed Hub article and automatically rewrite key sections into platform-native formats. For example, it can extract statistics for an infographic or generate a script for a TikTok video, saving hours of manual rewriting.'
-  //     }
-  //   ]
-  // },
-  // {
-  //   id: 5,
-  //   slug: 'scalefactor-story',
-  //   category: 'Case Studies',
-  //   title: 'From $50k to $250k MRR: The ScaleFactor Story',
-  //   excerpt: 'A breakdown of the exact funnel and ad creative we used to 5x a fintech startup\'s revenue in just 6 months.',
-  //   author: 'Sarah Jenkins',
-  //   date: 'Sep 28, 2024',
-  //   readTime: '10 min read',
-  //   featured: false,
-  //   featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-  //   gradient: 'linear-gradient(135deg, #003818, #FFB400)',
-  //   faqs: [
-  //     {
-  //       question: 'Why did ScaleFactor move away from social media awareness campaigns?',
-  //       answer: 'Their target audience (CFOs) rarely browse social media looking for B2B software. They only search when they experience a specific pain point. Shifting to high-intent search capture proved far more effective for generating qualified pipeline.'
-  //     },
-  //     {
-  //       question: 'What are interactive demo funnels?',
-  //       answer: 'Instead of forcing prospects to book a 30-minute sales call or read a boring PDF, an interactive demo allows the user to click through a simulated version of the software on their own time, immediately demonstrating value and qualifying the lead.'
-  //     }
-  //   ]
-  // },
+  {
+    id: 1,
+    slug: 'death-of-traditional-advertising',
+    category: 'AI Automation',
+    title: 'The Death of Traditional Advertising: Why Predictive AI is the New Standard',
+    excerpt: 'How machine learning algorithms are outperforming human media buyers by 300% and what it means for the future of your agency\'s paid acquisition engine.',
+    author: 'Alex Mercer',
+    date: 'Oct 24, 2024',
+    readTime: '8 min read',
+    featured: true,
+    featuredImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #003818, #001f0d)',
+    faqs: [
+      {
+        question: 'What exactly is Predictive AI in advertising?',
+        answer: 'Predictive AI uses machine learning algorithms to evaluate thousands of real-time signals (like browsing behavior and device data) to predict the likelihood of a conversion before placing a bid on an ad impression.'
+      },
+      {
+        question: 'Do I need a large budget to use AI-driven ads?',
+        answer: 'While larger datasets help algorithms learn faster, modern AI tools have democratized access. Even campaigns with moderate budgets can benefit from automated bidding and predictive targeting if their first-party data is structured correctly.'
+      },
+      {
+        question: 'How does this work without third-party cookies?',
+        answer: 'By relying on server-side tracking (like the Conversions API) and first-party identity resolution. We match offline or direct conversions to ad interactions using secure, hashed customer profiles instead of relying on fragile browser cookies.'
+      }
+    ]
+  },
+  {
+    id: 2,
+    slug: 'conversion-rate-optimization-b2b-saas',
+    category: 'Growth Strategy',
+    title: '3 Conversion Rate Optimization Hacks for B2B SaaS',
+    excerpt: 'Stop losing high-intent traffic. Implement these three friction-reducing strategies to double your lead volume in 30 days.',
+    author: 'Sarah Jenkins',
+    date: 'Oct 18, 2024',
+    readTime: '5 min read',
+    featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #FFB400, #b37e00)',
+    faqs: [
+      {
+        question: 'Why do extra form fields reduce conversions so drastically?',
+        answer: 'Friction is the enemy of action. Every additional field requires cognitive load and trust from the user. For B2B SaaS, asking for a phone number or company size upfront often feels intrusive, causing users to abandon the form.'
+      },
+      {
+        question: 'What is dynamic enrichment?',
+        answer: 'Dynamic enrichment uses APIs like Clearbit or ZoomInfo to automatically append company data (like industry, employee count, and revenue) to a lead based solely on their business email address, saving the user from typing it.'
+      },
+      {
+        question: 'How much impact does page speed really have on SaaS signups?',
+        answer: 'Massive. Studies show a 1-second delay in page load time can reduce conversions by up to 7%. Fast pages keep users engaged, while slow pages cause them to bounce before your value proposition even loads.'
+      }
+    ]
+  },
+  {
+    id: 3,
+    slug: 'scaling-google-ads-cookieless',
+    category: 'Paid Media',
+    title: 'Scaling Google Ads in a Cookieless World',
+    excerpt: 'Navigating the new privacy landscape with enhanced conversions and first-party data architecture.',
+    author: 'David Chen',
+    date: 'Oct 10, 2024',
+    readTime: '6 min read',
+    featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #0f172a, #334155)',
+    faqs: [
+      {
+        question: 'Is Google Ads dead without third-party cookies?',
+        answer: 'Not at all. Google is shifting from tracking-based ad delivery to model-based delivery. By using Consent Mode v2 and server-side tracking, you can recover a significant portion of lost conversion data.'
+      },
+      {
+        question: 'What are Google Enhanced Conversions?',
+        answer: 'Enhanced Conversions securely send hashed, first-party customer data (like an email address) from your website to Google. Google then matches this data against logged-in Google accounts to track conversions accurately while preserving user privacy.'
+      }
+    ]
+  },
+  {
+    id: 4,
+    slug: 'building-reusable-content-engine',
+    category: 'Growth Strategy',
+    title: 'Building a Reusable Content Engine',
+    excerpt: 'How to turn one cornerstone piece of content into 40+ micro-assets across all social channels with zero extra effort.',
+    author: 'Alex Mercer',
+    date: 'Oct 02, 2024',
+    readTime: '4 min read',
+    featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #475569, #cbd5e1)',
+    faqs: [
+      {
+        question: 'What is the Hub-and-Spoke content model?',
+        answer: 'It is a strategy where you create one comprehensive, high-quality "Hub" piece (like a long-form blog post) and then break it down into dozens of smaller "Spoke" pieces (like tweets, carousels, and short videos) for distribution across different channels.'
+      },
+      {
+        question: 'How can AI help with content repurposing?',
+        answer: 'AI tools can take your completed Hub article and automatically rewrite key sections into platform-native formats. For example, it can extract statistics for an infographic or generate a script for a TikTok video, saving hours of manual rewriting.'
+      }
+    ]
+  },
+  {
+    id: 5,
+    slug: 'scalefactor-story',
+    category: 'Case Studies',
+    title: 'From $50k to $250k MRR: The ScaleFactor Story',
+    excerpt: 'A breakdown of the exact funnel and ad creative we used to 5x a fintech startup\'s revenue in just 6 months.',
+    author: 'Sarah Jenkins',
+    date: 'Sep 28, 2024',
+    readTime: '10 min read',
+    featured: false,
+    featuredImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    gradient: 'linear-gradient(135deg, #003818, #FFB400)',
+    faqs: [
+      {
+        question: 'Why did ScaleFactor move away from social media awareness campaigns?',
+        answer: 'Their target audience (CFOs) rarely browse social media looking for B2B software. They only search when they experience a specific pain point. Shifting to high-intent search capture proved far more effective for generating qualified pipeline.'
+      },
+      {
+        question: 'What are interactive demo funnels?',
+        answer: 'Instead of forcing prospects to book a 30-minute sales call or read a boring PDF, an interactive demo allows the user to click through a simulated version of the software on their own time, immediately demonstrating value and qualifying the lead.'
+      }
+    ]
+  },
 ];
 
 export const FOOTER_LINKS = {

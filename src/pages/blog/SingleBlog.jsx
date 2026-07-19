@@ -198,13 +198,14 @@ export default function SingleBlog() {
 
             {/* Main content column */}
             <main className={styles.mainContent} id="article-body" role="main">
-              <PostBody content={processedContent} />
-
-              <PostAuthor post={post} />
-              
-              <BlogCTA category={post.category} />
+              <PostBody 
+                content={processedContent} 
+                ctaNode={<BlogCTA category={post.category} />}
+              />
 
               <BlogFaq faqs={post.faqs} />
+
+              <PostAuthor post={post} />
 
               <div style={{ marginTop: '3rem'}}>
                 <PostShare
