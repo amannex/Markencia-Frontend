@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -17,27 +18,30 @@ import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* All routes share the Layout (Header + Footer) */}
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="services" element={<ServicesPage />} />
-          <Route path="blogs" element={<BlogsPage />} />
-          <Route path="blogs/:slug" element={<SingleBlog />} />
-          <Route path="case-studies" element={<CaseStudiesPage />} />
-          <Route path="case-studies/:slug" element={<CaseStudyPostPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="pricing" element={<PricingPage />} />
-          <Route path="career" element={<CareerPage />} />
-          <Route path="faqs" element={<FaqsPage />} />
-          <Route path="our-works" element={<WorksPage />} />
-          <Route path="testimonials" element={<TestimonialsPage />} />
-          {/* Catch-all 404 */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          {/* All routes share the Layout (Header + Footer) */}
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="services" element={<ServicesPage />} />
+            <Route path="blogs" element={<BlogsPage />} />
+            <Route path="blogs/:slug" element={<SingleBlog />} />
+            <Route path="case-studies" element={<CaseStudiesPage />} />
+            <Route path="case-studies/:slug" element={<CaseStudyPostPage />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="pricing" element={<PricingPage />} />
+            <Route path="career" element={<CareerPage />} />
+            <Route path="faqs" element={<FaqsPage />} />
+            <Route path="our-works" element={<WorksPage />} />
+            <Route path="testimonials" element={<TestimonialsPage />} />
+            {/* Catch-all 404 */}
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <SpeedInsights />
+    </>
   );
 }
