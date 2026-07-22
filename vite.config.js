@@ -16,4 +16,22 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-syntax-highlighter')) {
+              return 'syntax-highlighter';
+            }
+            if (id.includes('lucide-react')) {
+              return 'lucide-icons';
+            }
+            return 'vendor'; // all other node_modules
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600, // Increase slightly if needed
+  },
 })
