@@ -218,6 +218,22 @@ export const TESTIMONIALS = [
     role: 'Real Estate Broker',
     initials: 'ER',
   },
+  {
+    id: 4,
+    stars: 5,
+    review: '"We saw our inbound lead volume triple within the first quarter. The predictive analytics they use for targeting is almost scary in its accuracy."',
+    name: 'Michael Chang',
+    role: 'CEO, Nexus Health Tech',
+    initials: 'MC',
+  },
+  {
+    id: 5,
+    stars: 5,
+    review: '"Working with Markencia felt like adding an entire elite growth team to our company. Their attention to detail and data-driven creatives are unmatched."',
+    name: 'Jessica Reynolds',
+    role: 'VP of Marketing, FitCore',
+    initials: 'JR',
+  },
 ];
 
 export const TEAM_MEMBERS = [

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { SERVICES, STATS, WHY_US_POINTS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
@@ -8,6 +9,69 @@ import CTASection from '../components/sections/CTASection';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
+  const testiRef = useRef(null);
+
+  useEffect(() => {
+    const container = testiRef.current;
+    if (!container) return;
+
+    let animationFrameId;
+    let isPaused = false;
+
+    const scroll = () => {
+      if (!isPaused) {
+        container.scrollLeft += 1;
+        // Seamless loop trick if we duplicate items (but we won't duplicate for simplicity, just bounce or reset)
+        // Let's just reset to 0 when reaching the end, or implement a smooth bounce.
+        if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 1) {
+          container.scrollLeft = 0;
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          animationFrameId = requestAnimationFrame(scroll);
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(container);
+
+    const pause = () => (isPaused = true);
+    const resume = () => (isPaused = false);
+
+    container.addEventListener('mouseenter', pause);
+    container.addEventListener('mouseleave', resume);
+    container.addEventListener('touchstart', pause, { passive: true });
+    container.addEventListener('touchend', resume);
+    container.addEventListener('wheel', pause, { passive: true });
+
+    // Resume after wheeling stops (simple timeout)
+    let wheelTimeout;
+    const handleWheel = () => {
+      pause();
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(resume, 1000);
+    };
+    container.addEventListener('wheel', handleWheel, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationFrameId);
+      container.removeEventListener('mouseenter', pause);
+      container.removeEventListener('mouseleave', resume);
+      container.removeEventListener('touchstart', pause);
+      container.removeEventListener('touchend', resume);
+      container.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -169,9 +233,10 @@ export default function HomePage() {
             title='Don&apos;t Just Take <span class="mk-highlight-text">Our Word</span> For It'
             subtitle="Hear from ambitious founders who scaled with Markencia."
           />
-          <div className={styles.testiGrid}>
-            {TESTIMONIALS.map((t) => (
-              <TestimonialCard key={t.id} {...t} />
+          <div className={styles.testiGrid} ref={testiRef}>
+            {/* Duplicating testimonials to allow seamless infinite scrolling */}
+            {[...TESTIMONIALS, ...TESTIMONIALS].map((t, index) => (
+              <TestimonialCard key={`${t.id}-${index}`} {...t} />
             ))}
           </div>
         </div>
