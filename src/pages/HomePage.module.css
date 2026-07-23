@@ -397,9 +397,26 @@
 
 /* ── TESTIMONIALS ── */
 .testiGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  overflow-x: auto;
   gap: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testiGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.testiGrid > * {
+  /* Slightly wider than 1/3 so the 3rd item is clearly cut off, hinting at scrollability */
+  flex: 0 0 calc(40% - 1.5rem);
 }
 
 /* ── RESPONSIVE ── */
@@ -412,8 +429,10 @@
   .servicesGrid { grid-template-columns: repeat(2, 1fr); }
   .whyWrapper { grid-template-columns: 1fr; gap: 2.5rem; }
   .resultsWrapper { grid-template-columns: 1fr; }
-  .testiGrid { grid-template-columns: 1fr; }
   .industryGrid { grid-template-columns: repeat(2, 1fr); }
+  .testiGrid > * {
+    flex: 0 0 calc(60% - 1rem);
+  }
 }
 
 @media (max-width: 600px) {
@@ -421,6 +440,9 @@
   .timeline { grid-template-columns: 1fr; }
   .statsGrid { grid-template-columns: 1fr 1fr; }
   .industryGrid { grid-template-columns: 1fr 1fr; }
+  .testiGrid > * {
+    flex: 0 0 85%;
+  }
 }
 
 @media (max-width: 400px) {
