@@ -447,3 +447,50 @@ export const WORKS = [
   { title: 'Healthcare Lead Gen Campaign', link: 'https://example.com', category: 'Ad Creatives', gradient: 'linear-gradient(135deg, #003818, #005c28)', image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', content: 'Developed targeted ad creatives that significantly boosted lead generation for a healthcare provider.' },
   { title: 'Real Estate WhatsApp Funnel', link: 'https://example.com', category: 'AI Automation', gradient: 'linear-gradient(135deg, #e09200, #003818)', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80', content: 'Built an automated WhatsApp funnel that pre-qualifies real estate leads and schedules viewings.' },
 ];
+
+export const CASE_STUDIES_FILTERS = ['All Work', 'E-Commerce', 'SaaS & Tech', 'Real Estate', 'Education', 'Local Business', 'Healthcare'];
+
+export const CASE_STUDIES = [
+  {
+    id: 1,
+    slug: 'apex-lifestyle',
+    client: 'Apex Lifestyle',
+    category: 'E-Commerce',
+    headline: 'Scaling a D2C Fashion Brand to 7-Figures',
+    description: 'We implemented predictive modeling to segment high-LTV customers and deployed dynamic creative optimization, crushing their previous acquisition costs.',
+    stats: [
+      { value: '4.5x', label: 'ROAS' },
+      { value: '-42%', label: 'CPA DROP' },
+      { value: '6 Mo', label: 'TIMELINE' },
+    ],
+    bgClass: 'bgEcom',
+  },
+  {
+    id: 2,
+    slug: 'cloudsync',
+    client: 'CloudSync',
+    category: 'SaaS & Tech',
+    headline: 'Booking 150+ Enterprise Demos in 30 Days',
+    description: 'By restructuring their outbound funnel and utilizing AI-driven personalized email sequences paired with LinkedIn automation, we flooded their calendar.',
+    stats: [
+      { value: '150+', label: 'DEMOS' },
+      { value: '3.2x', label: 'PIPELINE' },
+      { value: '85%', label: 'OPEN RATE' },
+    ],
+    bgClass: 'bgSaas',
+  },
+  {
+    id: 3,
+    slug: 'prime-realty-group',
+    client: 'Prime Realty Group',
+    category: 'Real Estate',
+    headline: 'Automating Lead Nurture for High-Ticket Properties',
+    description: 'We built a smart WhatsApp and Email CRM automation framework that instantly nurtured leads based on their property viewing behavior.',
+    stats: [
+      { value: '25%', label: 'CLOSE RATE' },
+      { value: '24/7', label: 'NURTURING' },
+      { value: '$4M+', label: 'SOLD' },
+    ],
+    bgClass: 'bgRealEstate',
+  }
+];
