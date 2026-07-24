@@ -1,16 +1,15 @@
 import { Helmet } from 'react-helmet-async';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
 import styles from './CaseStudiesPage.module.css';
-
-const CASE_STUDIES = [
-  { title: 'From $50k to $250k MRR in 6 Months', client: 'ScaleFactor Fintech', category: 'SaaS', result: '5x Revenue Growth', gradient: 'linear-gradient(135deg, #003818, #FFB400)' },
-  { title: '40% Lower CPA for E-commerce Brand', client: 'Elevate Store', category: 'E-commerce', result: '40% CPA Reduction', gradient: 'linear-gradient(135deg, #FFB400, #b37e00)' },
-  { title: 'WhatsApp Automation Driving 200+ Leads/Day', client: 'RealEstate Pro', category: 'Real Estate', result: '200+ Daily Leads', gradient: 'linear-gradient(135deg, #0f172a, #334155)' },
-  { title: 'SaaS Trial Conversion Up 80% with AI Funnel', client: 'TechScale SaaS', category: 'SaaS', result: '80% Conversion Lift', gradient: 'linear-gradient(135deg, #003818, #005c28)' },
-];
+import { CASE_STUDIES, CASE_STUDIES_FILTERS } from '../data/staticData';
 
 export default function CaseStudiesPage() {
+  const [activeFilter, setActiveFilter] = useState('All Work');
+
+  const filteredCaseStudies = CASE_STUDIES.filter(cs => activeFilter === 'All Work' || cs.category === activeFilter);
   return (
     <>
       <Helmet>
@@ -28,14 +27,42 @@ export default function CaseStudiesPage() {
 
       <section className="mk-section">
         <div className="mk-container">
-          <div className={styles.simpleGrid}>
-            {CASE_STUDIES.map((cs) => (
-              <div key={cs.title} className={styles.simpleCard}>
-                <div style={{ background: cs.gradient, borderRadius: '12px', height: '120px', marginBottom: '1.5rem' }} />
-                <span style={{ color: 'var(--mk-secondary)', fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px' }}>{cs.category}</span>
-                <h3 style={{ margin: '0.6rem 0', fontSize: '1.2rem' }}>{cs.title}</h3>
-                <p style={{ margin: '0 0 1rem', fontSize: '0.92rem' }}>{cs.client}</p>
-                <div style={{ display: 'inline-block', padding: '0.4rem 1rem', background: 'rgba(0,56,24,0.08)', borderRadius: '50px', color: 'var(--mk-primary)', fontSize: '0.85rem', fontWeight: '700' }}>{cs.result}</div>
+          <div className={styles.filterBar}>
+            {CASE_STUDIES_FILTERS.map(f => (
+              <button 
+                key={f} 
+                className={`${styles.filterBtn} ${f === activeFilter ? styles.activeFilter : ''}`}
+                onClick={() => setActiveFilter(f)}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+
+          <div className={styles.caseGrid}>
+            {filteredCaseStudies.map(cs => (
+              <div key={cs.id} className={styles.caseCard}>
+                <div className={`${styles.cardHeader} ${styles[cs.bgClass]}`}>
+                  <span className={styles.categoryPill}>{cs.category}</span>
+                  <h2 className={styles.clientName}>{cs.client}</h2>
+                </div>
+                <div className={styles.cardBody}>
+                  <h3 className={styles.cardHeadline}>{cs.headline}</h3>
+                  <p className={styles.cardDesc}>{cs.description}</p>
+                  
+                  <div className={styles.statsBox}>
+                    {cs.stats.map((stat, idx) => (
+                      <div key={idx} className={styles.statItem}>
+                        <span className={styles.statValue}>{stat.value}</span>
+                        <span className={styles.statLabel}>{stat.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <Link to={`/case-studies/${cs.slug}`} className={styles.readMore}>
+                    Read Full Case Study <span className={styles.arrow}>→</span>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
