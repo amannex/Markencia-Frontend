@@ -29,7 +29,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services listing */}
-      <section className="mk-section mk-bg-texture">
+      <section className="mk-section">
         <div className="mk-container">
           {SERVICES_DETAIL.map((service) => (
             <div
@@ -37,7 +37,9 @@ export default function ServicesPage() {
               className={[styles.serviceItem, service.reverse ? styles.reverse : ''].join(' ')}
             >
               <div className={styles.serviceContent}>
-                <div className={styles.serviceIcon}>{service.icon}</div>
+                <div className={styles.serviceIcon}>
+                  <span className={styles.iconInner}>{service.icon}</span>
+                </div>
                 <h2>
                   {service.title.replace(service.highlightWord, '')}{' '}
                   <span className="mk-highlight-text">{service.highlightWord}</span>
