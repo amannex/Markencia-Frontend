@@ -19,7 +19,7 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // ── Services ────────────────────────────────────────────────
-import { getPostBySlug, getRelatedPosts } from '../../services/blog/wordpress';
+import { getPostBySlug, getRelatedPosts, getFaqsBySearch } from '../../services/blog/wordpress';
 import { mapWordPressPost, mapStaticPost } from '../../services/blogFallback';
 import { BLOG_POSTS } from '../../data/staticData';
 
@@ -106,6 +106,28 @@ export default function SingleBlog() {
 
       setPost(resolvedPost);
       setLoading(false);
+
+      // Automated FAQ Lookup: if no FAQs were manually selected for this article,
+      // dynamically query the WP REST API for FAQs matching the post title keywords!
+      if (resolvedPost && (!resolvedPost.faqs || resolvedPost.faqs.length === 0)) {
+        try {
+          const keywords = (resolvedPost.title || '')
+            .replace(/[^a-zA-Z0-9\s]/g, '')
+            .split(/\s+/)
+            .filter((word) => word.length > 3)
+            .slice(0, 3)
+            .join(' ');
+
+          if (keywords) {
+            const matchingFaqs = await getFaqsBySearch({ search: keywords, per_page: 5, signal });
+            if (matchingFaqs.length > 0) {
+              setPost((prev) => prev ? { ...prev, faqs: matchingFaqs } : prev);
+            }
+          }
+        } catch {
+          // Non-blocking: leave post.faqs as-is if search is offline
+        }
+      }
 
       // Related posts: non-blocking — a failure never blocks the article.
       // getRelatedPosts returns a raw array of WP objects (with _embed),

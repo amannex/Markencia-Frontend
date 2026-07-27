@@ -170,6 +170,15 @@ export function mapWordPressPost(wpPost) {
   const wordCount = textContent.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
   const readTime = `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 
+  // Extract FAQs selected via ACF Post Object ('related_faqs' CPT items)
+  const selectedFaqs = (wpPost.acf?.related_faqs || []).map((item) => ({
+    question: item.post_title || item.title?.rendered || item.title || '',
+    answer:   item.acf?.answer || item.post_content || '',
+  })).filter((faq) => Boolean(faq.question && faq.answer));
+
+  // Use selected CPT FAQs if available; otherwise fall back to inline ACF faqs
+  const faqs = selectedFaqs.length > 0 ? selectedFaqs : (wpPost.acf?.faqs || []);
+
   return {
     id: wpPost.id,
     slug: wpPost.slug,
@@ -189,7 +198,7 @@ export function mapWordPressPost(wpPost) {
     featuredImage,
     imageAlt,
     gradient: 'linear-gradient(135deg, #003818, #001f0d)',
-    faqs: wpPost.acf?.faqs || []
+    faqs
   };
 }
 

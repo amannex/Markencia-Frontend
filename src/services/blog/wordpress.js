@@ -277,3 +277,39 @@ export async function getTags({ per_page = 100, hide_empty = true, signal } = {}
   const { body } = await wpFetch(`${WP}/tags?${query}`, { signal });
   return body;
 }
+
+// ============================================================
+// PUBLIC API: FAQs (Custom Post Type)
+// ============================================================
+
+/**
+ * Fetches FAQs from the 'faq' Custom Post Type via WordPress REST API.
+ * Supports full-text keyword searching by title/content.
+ *
+ * @param {Object}       [options]
+ * @param {string}       [options.search]     Keywords to search FAQ titles/answers.
+ * @param {number}       [options.per_page=5] Max FAQs to return.
+ * @param {AbortSignal}  [options.signal]     AbortController signal.
+ * @returns {Promise<Array>} Array of formatted FAQ objects { question, answer }.
+ */
+export async function getFaqsBySearch({ search, per_page = 5, signal } = {}) {
+  const query = buildQuery({
+    search,
+    per_page,
+    _embed: true,
+    acf_format: 'standard',
+  });
+
+  try {
+    const { body } = await wpFetch(`${WP}/faqs?${query}`, { signal });
+    if (!Array.isArray(body)) return [];
+
+    return body.map((faq) => ({
+      question: faq.title?.rendered || '',
+      answer:   faq.acf?.answer || faq.content?.rendered || '',
+    })).filter((faq) => Boolean(faq.question && faq.answer));
+  } catch (err) {
+    if (err.name === 'AbortError') throw err;
+    return [];
+  }
+}
