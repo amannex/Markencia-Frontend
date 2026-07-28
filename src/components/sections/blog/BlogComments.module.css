@@ -151,3 +151,60 @@
   }
 }
 
+/* ---- Comment Shimmer Skeleton ---- */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 25%,
+    #e2e8f0 50%,
+    #f1f5f9 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.skeletonHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.skeletonAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeletonAuthor {
+  height: 16px;
+  width: 120px;
+  border-radius: 4px;
+}
+
+.skeletonLine1 {
+  height: 14px;
+  width: 90%;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.skeletonLine2 {
+  height: 14px;
+  width: 65%;
+  border-radius: 4px;
+}
+

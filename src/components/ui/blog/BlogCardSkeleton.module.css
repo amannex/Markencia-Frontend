@@ -1,0 +1,116 @@
+/* ============================================================
+   BlogCardSkeleton.module.css
+   Shimmer skeleton card for blog listing grid.
+   ============================================================ */
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 25%,
+    #e2e8f0 50%,
+    #f1f5f9 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.card {
+  background: var(--mk-bg-card, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--mk-radius-xl, 24px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.featured {
+  grid-column: span 2;
+  flex-direction: row;
+}
+
+.imageWrapper {
+  height: 240px;
+  width: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.featured .imageWrapper {
+  width: 50%;
+  height: auto;
+  min-height: 320px;
+}
+
+.content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+}
+
+.featured .content {
+  width: 50%;
+  padding: 3rem;
+  justify-content: center;
+}
+
+.lineMeta {
+  height: 14px;
+  width: 40%;
+  border-radius: 4px;
+}
+
+.lineTitle1 {
+  height: 24px;
+  width: 85%;
+  border-radius: 6px;
+}
+
+.lineTitle2 {
+  height: 24px;
+  width: 55%;
+  border-radius: 6px;
+}
+
+.lineExcerpt1 {
+  height: 16px;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.lineExcerpt2 {
+  height: 16px;
+  width: 75%;
+  border-radius: 4px;
+}
+
+.lineReadMore {
+  height: 18px;
+  width: 35%;
+  border-radius: 4px;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .featured {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+  .featured .imageWrapper {
+    width: 100%;
+    height: 240px;
+  }
+  .featured .content {
+    width: 100%;
+    padding: 2rem;
+  }
+}

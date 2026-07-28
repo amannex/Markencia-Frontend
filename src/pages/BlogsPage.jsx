@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { getAllPosts } from '../services/blog/wordpress';
 import { mapWordPressPost } from '../services/blogFallback';
 import BlogCard from '../components/ui/BlogCard';
+import BlogCardSkeleton from '../components/ui/blog/BlogCardSkeleton';
 import styles from './BlogsPage.module.css';
 
 export default function BlogsPage() {
@@ -121,16 +122,10 @@ export default function BlogsPage() {
 
           {/* Grid */}
           {loading ? (
-            <div className={styles.emptyState}>
-              <div className={styles.emptyStateIcon}>
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.spinner}>
-                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
-                </svg>
-              </div>
-              <h3 className={styles.emptyStateTitle}>Loading Journal...</h3>
-              <p className={styles.emptyStateSubtitle}>
-                Fetching the latest articles and insights from WordPress.
-              </p>
+            <div className={styles.grid}>
+              {Array.from({ length: 6 }).map((_, i) => (
+                <BlogCardSkeleton key={i} featured={i === 0 && activeFilter === 'All Articles'} />
+              ))}
             </div>
           ) : filtered.length > 0 ? (
             <div className={styles.grid}>

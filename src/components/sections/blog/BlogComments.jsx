@@ -98,7 +98,20 @@ export default function BlogComments({ postId, postSlug }) {
         Comments {comments.length > 0 && `(${comments.length})`}
       </h3>
 
-      {loading && <div className={styles.empty}>Loading comments...</div>}
+      {loading && (
+        <div className={styles.commentList} aria-hidden="true">
+          {[1, 2].map((i) => (
+            <div key={i} className={styles.skeletonItem}>
+              <div className={styles.skeletonHeader}>
+                <div className={`${styles.skeletonAvatar} ${styles.shimmer}`} />
+                <div className={`${styles.skeletonAuthor} ${styles.shimmer}`} />
+              </div>
+              <div className={`${styles.skeletonLine1} ${styles.shimmer}`} />
+              <div className={`${styles.skeletonLine2} ${styles.shimmer}`} />
+            </div>
+          ))}
+        </div>
+      )}
 
       {!loading && comments.length === 0 && (
         <div className={styles.empty}>

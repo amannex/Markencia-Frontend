@@ -163,6 +163,7 @@ export function mapWordPressPost(wpPost) {
   const authorSocial = {
     linkedin: authorObj.linkedin || authorObj.acf?.linkedin || '',
     twitter: authorObj.twitter || authorObj.acf?.twitter || '',
+    github: authorObj.github || authorObj.acf?.github || '',
     website: authorObj.website || authorObj.url || '',
   };
   
@@ -230,9 +231,10 @@ export function mapStaticPost(staticPost) {
     authorAvatar: null,
     authorBio: 'AI, Automation, and WordPress development specialists at Markencia.',
     authorSocial: {
-      linkedin: '',
-      twitter: '',
-      website: ''
+      linkedin: 'https://linkedin.com/company/markencia',
+      twitter: 'https://x.com/markencia',
+      github: 'https://github.com/markencia',
+      website: 'https://markencia.com'
     },
     featuredImage: staticPost.featuredImage || null,
     imageAlt: staticPost.title,
