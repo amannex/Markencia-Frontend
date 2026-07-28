@@ -7,16 +7,18 @@ export default function BlogCard({ post, featured = false }) {
   return (
     <article className={[styles.card, featured ? styles.featured : ''].filter(Boolean).join(' ')}>
       <div className={styles.imageWrapper}>
-        {post.featuredImage ? (
-          <img 
-            src={post.featuredImage} 
-            alt={post.imageAlt || title} 
-            className={styles.imagePlaceholder} 
-            style={{ objectFit: 'cover' }} 
-          />
-        ) : (
-          <div className={styles.imagePlaceholder} style={{ background: gradient }} />
-        )}
+        <Link to={`/blogs/${slug}`} className={styles.imageLink} aria-label={title}>
+          {post.featuredImage ? (
+            <img 
+              src={post.featuredImage} 
+              alt={post.imageAlt || title} 
+              className={styles.imagePlaceholder} 
+              style={{ objectFit: 'cover' }} 
+            />
+          ) : (
+            <div className={styles.imagePlaceholder} style={{ background: gradient }} />
+          )}
+        </Link>
         <span className={styles.tag}>{category}</span>
       </div>
       <div className={styles.content}>

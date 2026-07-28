@@ -4,11 +4,11 @@
    ============================================================ */
 
 .widget {
-  background: #fff;
+  background: var(--mk-bg-alt, #F8FAFC);
   border: 1px solid rgba(0, 56, 24, 0.09);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 /* Header bar */
@@ -77,7 +77,7 @@
 }
 
 .chip {
-  background: #F8FAFC;
+  background: #fff;
   border: 1px solid rgba(0, 56, 24, 0.09);
   border-radius: 8px;
   padding: 0.45rem 0.75rem;
@@ -104,7 +104,7 @@
   border: 1px solid rgba(0, 56, 24, 0.12);
   border-radius: 10px;
   padding: 0.3rem 0.3rem 0.3rem 0.75rem;
-  background: #F8FAFC;
+  background: #fff;
 }
 
 .input {

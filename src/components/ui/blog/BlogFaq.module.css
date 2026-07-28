@@ -6,10 +6,10 @@
 }
 
 .title {
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 2rem;
   color: var(--mk-text-main);
   margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
   font-family: var(--mk-font-heading);
 }
 
@@ -82,7 +82,7 @@
 
 @media (max-width: 640px) {
   .title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
   .summary {
     padding: 1rem 1.25rem;

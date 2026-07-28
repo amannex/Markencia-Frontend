@@ -135,6 +135,15 @@
   background: rgba(var(--mk-secondary-rgb, 0, 180, 80), 0.1);
 }
 
+.spinner {
+  animation: mk-spin 1s linear infinite;
+}
+
+@keyframes mk-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .emptyStateTitle {
   font-family: 'Outfit', sans-serif;
   font-size: 2rem;

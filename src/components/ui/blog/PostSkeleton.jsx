@@ -1,40 +1,80 @@
 // ============================================================
 // PostSkeleton.jsx
-// Displayed while the blog post is being fetched.
-// Mimics the final layout structure with shimmer placeholders
-// so the page doesn't jump when real content arrives.
+// High-fidelity shimmer skeleton displayed while a blog post
+// is being fetched. Matches the 2-column layout (content + TOC)
+// to prevent any layout shift.
 // ============================================================
 
 import styles from './PostSkeleton.module.css';
 
-// Small helper — compose shimmer + variant classes cleanly.
-function Bone({ variant }) {
-  return <div className={`${styles.shimmer} ${styles[variant]}`} aria-hidden="true" />;
+function Bone({ variant, dark = false }) {
+  return (
+    <div
+      className={`${dark ? styles.shimmerDark : styles.shimmer} ${styles[variant] || ''}`}
+      aria-hidden="true"
+    />
+  );
 }
 
 export default function PostSkeleton() {
   return (
     <div aria-label="Loading article…" aria-busy="true" role="status">
-      {/* Hero area */}
-      <Bone variant="hero" />
+      {/* 1. Full-width Hero placeholder */}
+      <section className={styles.hero}>
+        <div className={styles.heroContainer}>
+          <Bone variant="heroBadge" dark />
+          <Bone variant="heroTitle1" dark />
+          <Bone variant="heroTitle2" dark />
+          <Bone variant="heroMeta" dark />
+        </div>
+      </section>
 
-      {/* Body lines */}
-      <div className={styles.body}>
-        <Bone variant="lineTitle" />
-        <Bone variant="lineMeta" />
-        <div className={styles.spacer} />
+      {/* 2. 2-Column Article & Sidebar grid */}
+      <section className={styles.articleSection}>
+        <div className="mk-container" style={{ maxWidth: '1350px' }}>
+          <div className={styles.layout}>
+            {/* Main Content Column */}
+            <main className={styles.mainContent}>
+              <Bone variant="lineTitle" />
+              <div className={styles.spacer} />
 
-        {/* Simulate two paragraphs */}
-        {Array.from({ length: 4 }).map((_, i) => (
-          <Bone key={i} variant={i % 3 === 2 ? 'lineShort' : i % 3 === 1 ? 'lineMid' : 'lineFull'} />
-        ))}
-        <div className={styles.spacer} />
-        {Array.from({ length: 4 }).map((_, i) => (
-          <Bone key={`b${i}`} variant={i % 3 === 0 ? 'lineFull' : i % 3 === 1 ? 'lineMid' : 'lineShort'} />
-        ))}
-      </div>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Bone key={i} variant={i % 3 === 2 ? 'lineShort' : i % 3 === 1 ? 'lineMid' : 'lineFull'} />
+              ))}
+              <div className={styles.spacer} />
+              <Bone variant="lineTitle" />
+              <div className={styles.spacer} />
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Bone key={`b${i}`} variant={i % 3 === 0 ? 'lineFull' : i % 3 === 1 ? 'lineMid' : 'lineShort'} />
+              ))}
 
-      {/* Screen-reader text */}
+              {/* Author Card Skeleton */}
+              <div className={styles.authorCard}>
+                <div className={`${styles.authorAvatar} ${styles.shimmer}`} />
+                <div className={styles.authorInfo}>
+                  <Bone variant="authorTitle" />
+                  <Bone variant="authorBio1" />
+                  <Bone variant="authorBio2" />
+                </div>
+              </div>
+            </main>
+
+            {/* Sticky Sidebar Column (Table of Contents Skeleton) */}
+            <aside className={styles.sidebar}>
+              <div className={styles.tocCard}>
+                <Bone variant="tocHeader" />
+                <div className={styles.spacer} />
+                <Bone variant="tocItem1" />
+                <Bone variant="tocItem2" />
+                <Bone variant="tocItem3" />
+                <Bone variant="tocItem4" />
+                <Bone variant="tocItem5" />
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
       <span className="sr-only">Loading article content, please wait.</span>
     </div>
   );

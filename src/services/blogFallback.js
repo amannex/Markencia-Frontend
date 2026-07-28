@@ -156,9 +156,16 @@ export function getStaticPostContent(slug) {
  * Maps a raw WordPress REST API post to the clean internal data structure.
  */
 export function mapWordPressPost(wpPost) {
-  const authorName = wpPost._embedded?.author?.[0]?.name || 'Markencia Team';
-  const authorAvatar = wpPost._embedded?.author?.[0]?.avatar_urls?.['96'] || null;
-  const authorBio = wpPost._embedded?.author?.[0]?.description || 'AI, Automation, and WordPress development specialists at Markencia.';
+  const authorObj = wpPost._embedded?.author?.[0] || {};
+  const authorName = authorObj.name || 'Markencia Team';
+  const authorAvatar = authorObj.avatar_urls?.['96'] || null;
+  const authorBio = authorObj.description || 'AI, Automation, and WordPress development specialists at Markencia.';
+  const authorSocial = {
+    linkedin: authorObj.linkedin || authorObj.acf?.linkedin || '',
+    twitter: authorObj.twitter || authorObj.acf?.twitter || '',
+    github: authorObj.github || authorObj.acf?.github || '',
+    website: authorObj.website || authorObj.url || '',
+  };
   
   const featuredImage = wpPost._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
   const imageAlt = wpPost._embedded?.['wp:featuredmedia']?.[0]?.alt_text || wpPost.title?.rendered || '';
@@ -172,18 +179,33 @@ export function mapWordPressPost(wpPost) {
 
   // Extract FAQs selected via ACF Post Object ('related_faqs' CPT items)
   const selectedFaqs = (wpPost.acf?.related_faqs || []).map((item) => ({
-    question: item.post_title || item.title?.rendered || item.title || '',
-    answer:   item.acf?.answer || item.post_content || '',
+    question: (item.post_title || item.title?.rendered || item.title || '').replace(/<[^>]*>/g, '').trim(),
+    answer:   (item.acf?.answer || item.post_content || '').replace(/<[^>]*>/g, '').trim(),
+  })).filter((faq) => Boolean(faq.question && faq.answer));
+
+  const inlineFaqs = (wpPost.acf?.faqs || []).map((item) => ({
+    question: (item.question || item.title || '').replace(/<[^>]*>/g, '').trim(),
+    answer:   (item.answer || item.content || '').replace(/<[^>]*>/g, '').trim(),
   })).filter((faq) => Boolean(faq.question && faq.answer));
 
   // Use selected CPT FAQs if available; otherwise fall back to inline ACF faqs
-  const faqs = selectedFaqs.length > 0 ? selectedFaqs : (wpPost.acf?.faqs || []);
+  const faqs = selectedFaqs.length > 0 ? selectedFaqs : inlineFaqs;
+
+  const excerptText = wpPost.excerpt?.rendered?.replace(/<[^>]*>/g, '') || '';
+
+  // Extract RankMath SEO metadata if available, fallback to standard WP fields
+  const seo = {
+    title: wpPost.rank_math_title || wpPost.title?.rendered || '',
+    description: wpPost.rank_math_description || excerptText,
+    ogImage: wpPost.rank_math_seo?.og_image || featuredImage || null,
+    twitterCard: wpPost.rank_math_seo?.twitter_card || 'summary_large_image',
+  };
 
   return {
     id: wpPost.id,
     slug: wpPost.slug,
     title: wpPost.title?.rendered || '',
-    excerpt: wpPost.excerpt?.rendered?.replace(/<[^>]*>/g, '') || '',
+    excerpt: excerptText,
     content: textContent,
     date: new Date(wpPost.date).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -193,12 +215,14 @@ export function mapWordPressPost(wpPost) {
     author: authorName,
     authorAvatar,
     authorBio,
+    authorSocial,
     readTime,
     category,
     featuredImage,
     imageAlt,
     gradient: 'linear-gradient(135deg, #003818, #001f0d)',
-    faqs
+    faqs,
+    seo
   };
 }
 
@@ -211,8 +235,20 @@ export function mapStaticPost(staticPost) {
     content: getStaticPostContent(staticPost.slug),
     authorAvatar: null,
     authorBio: 'AI, Automation, and WordPress development specialists at Markencia.',
+    authorSocial: {
+      linkedin: 'https://linkedin.com/company/markencia',
+      twitter: 'https://x.com/markencia',
+      github: 'https://github.com/markencia',
+      website: 'https://markencia.com'
+    },
     featuredImage: staticPost.featuredImage || null,
     imageAlt: staticPost.title,
-    faqs: staticPost.faqs || []
+    faqs: staticPost.faqs || [],
+    seo: {
+      title: staticPost.title,
+      description: staticPost.excerpt,
+      ogImage: staticPost.featuredImage || null,
+      twitterCard: 'summary_large_image'
+    }
   };
 }
