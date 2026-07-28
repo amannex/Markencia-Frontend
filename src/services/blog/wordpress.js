@@ -313,3 +313,90 @@ export async function getFaqsBySearch({ search, per_page = 5, signal } = {}) {
     return [];
   }
 }
+
+// ============================================================
+// PUBLIC API: Comments
+// ============================================================
+
+/**
+ * Fetches approved comments for a specific post.
+ *
+ * @param {number}       postId            The WordPress post ID.
+ * @param {Object}       [options]
+ * @param {number}       [options.per_page=50] Max comments to return.
+ * @param {AbortSignal}  [options.signal]      AbortController signal.
+ * @returns {Promise<Array>} Array of formatted comment objects.
+ */
+export async function getCommentsByPostId(postId, { per_page = 50, signal } = {}) {
+  if (!postId) return [];
+
+  const query = buildQuery({
+    post: postId,
+    per_page,
+    status: 'approve',
+    orderby: 'date',
+    order: 'asc',
+  });
+
+  try {
+    const { body } = await wpFetch(`${WP}/comments?${query}`, { signal });
+    if (!Array.isArray(body)) return [];
+
+    return body.map((comment) => ({
+      id: comment.id,
+      author: comment.author_name || 'Anonymous',
+      avatar: comment.author_avatar_urls?.['96'] || null,
+      date: new Date(comment.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+      }),
+      content: comment.content?.rendered || '',
+    }));
+  } catch (err) {
+    if (err.name === 'AbortError') throw err;
+    return [];
+  }
+}
+
+/**
+ * Submits a new comment for a post via WordPress REST API.
+ * Supports anonymous visitor comments if enabled on backend.
+ *
+ * @param {Object} payload
+ * @param {number} payload.post         The WordPress post ID.
+ * @param {string} payload.author_name  Visitor's name.
+ * @param {string} payload.author_email Visitor's email address.
+ * @param {string} payload.content      Comment text body.
+ * @returns {Promise<Object>} The created comment object.
+ */
+export async function submitComment({ post, author_name, author_email, content }) {
+  if (!post || !content) {
+    throw new Error('Post ID and comment content are required.');
+  }
+
+  const payload = {
+    post,
+    author_name: author_name || 'Anonymous',
+    author_email: author_email || 'guest@example.com',
+    content,
+  };
+
+  const { body } = await wpFetch(`${WP}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  return {
+    id: body.id,
+    author: body.author_name || author_name || 'Anonymous',
+    avatar: body.author_avatar_urls?.['96'] || null,
+    date: 'Just now',
+    content: body.content?.rendered || content,
+  };
+}
+

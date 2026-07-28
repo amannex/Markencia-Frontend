@@ -1,14 +1,61 @@
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
-import { BLOG_POSTS, BLOG_CATEGORIES } from '../data/staticData';
+import { useState, useEffect } from 'react';
+import { getAllPosts } from '../services/blog/wordpress';
+import { mapWordPressPost } from '../services/blogFallback';
 import BlogCard from '../components/ui/BlogCard';
 import styles from './BlogsPage.module.css';
 
 export default function BlogsPage() {
   const [activeFilter, setActiveFilter] = useState('All Articles');
   const [search, setSearch] = useState('');
+  const [posts, setPosts] = useState([]);
+  const [categories, setCategories] = useState(['All Articles']);
+  const [loading, setLoading] = useState(true);
 
-  const filtered = BLOG_POSTS.filter((post) => {
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchPosts() {
+      setLoading(true);
+      try {
+        const { posts: wpPosts } = await getAllPosts({
+          _embed: true,
+          per_page: 50,
+          signal: controller.signal,
+        });
+
+        if (wpPosts && wpPosts.length > 0) {
+          const mapped = wpPosts.map(mapWordPressPost);
+          setPosts(mapped);
+
+          // Dynamically collect unique categories from live WordPress posts
+          const uniqueCats = Array.from(
+            new Set(mapped.map((p) => p.category).filter(Boolean))
+          );
+          setCategories(['All Articles', ...uniqueCats]);
+        } else {
+          setPosts([]);
+          setCategories(['All Articles']);
+        }
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.warn('WordPress API unreachable on /blogs:', err.message);
+          setPosts([]);
+          setCategories(['All Articles']);
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchPosts();
+
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
+  const filtered = posts.filter((post) => {
     const matchesCategory =
       activeFilter === 'All Articles' || post.category === activeFilter;
     const matchesSearch =
@@ -59,7 +106,7 @@ export default function BlogsPage() {
         <div className="mk-container">
           {/* Filters */}
           <div className={styles.filters}>
-            {BLOG_CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat}
                 className={[styles.filterBtn, activeFilter === cat ? styles.active : ''].join(' ')}
@@ -73,10 +120,22 @@ export default function BlogsPage() {
           </div>
 
           {/* Grid */}
-          {filtered.length > 0 ? (
+          {loading ? (
+            <div className={styles.emptyState}>
+              <div className={styles.emptyStateIcon}>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.spinner}>
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                </svg>
+              </div>
+              <h3 className={styles.emptyStateTitle}>Loading Journal...</h3>
+              <p className={styles.emptyStateSubtitle}>
+                Fetching the latest articles and insights from WordPress.
+              </p>
+            </div>
+          ) : filtered.length > 0 ? (
             <div className={styles.grid}>
               {filtered.map((post) => (
-                <BlogCard key={post.id} post={post} featured={post.featured && activeFilter === 'All Articles'} />
+                <BlogCard key={post.id || post.slug} post={post} featured={post.featured && activeFilter === 'All Articles'} />
               ))}
             </div>
           ) : (
@@ -91,10 +150,10 @@ export default function BlogsPage() {
                 </svg>
               </div>
               <h3 className={styles.emptyStateTitle}>
-                {BLOG_POSTS.length === 0 ? "Journal Coming Soon" : "No Articles Found"}
+                {posts.length === 0 ? "No blog posts found at the moment" : "No Articles Found"}
               </h3>
               <p className={styles.emptyStateSubtitle}>
-                {BLOG_POSTS.length === 0 
+                {posts.length === 0 
                   ? "We're currently writing our latest insights. Check back soon for deep dives into AI marketing and strategies." 
                   : "We couldn't find any articles matching your search or category filter. Try clearing your search or checking other categories."}
               </p>

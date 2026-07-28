@@ -1,13 +1,12 @@
 // ============================================================
 // useTableOfContents.js
 // ============================================================
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 
 const HEADING_LEVELS = ['h2', 'h3'];
-const ROOT_MARGIN = '-80px 0px -60% 0px';
 
 function toSlugId(text, index) {
-  const stripped = text.replace(/<[^>]+>/g, '').trim();
+  const stripped = (text || '').replace(/<[^>]+>/g, '').trim();
   const slug = stripped
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
@@ -22,12 +21,12 @@ export function injectHeadingIds(html, headings) {
   let headingIndex = 0;
 
   return html.replace(
-    /<(h[23])(\s[^>]*)?>([^<]*(?:<(?!\/h[23]>)[^<]*)*)<\/h[23]>/gi,
+    /<(h[23])(\s[^>]*)?>([\s\S]*?)<\/\1>/gi,
     (match, tag, attrs = '', innerText) => {
-      if (/id\s*=/i.test(attrs)) return match;
       const heading = headings[headingIndex++];
       if (!heading) return match;
-      return `<${tag}${attrs} id="${heading.id}">${innerText}</${tag}>`;
+      const cleanAttrs = attrs.replace(/\s+id=["'][^"']*["']/i, '');
+      return `<${tag}${cleanAttrs} id="${heading.id}">${innerText}</${tag}>`;
     },
   );
 }
@@ -73,35 +72,71 @@ export function useTableOfContents({ htmlContent, containerRef, levels = HEADING
   const headings = containerRef ? domHeadings : parsedHeadings;
 
   useEffect(() => {
-    if (headings.length === 0) return;
+    if (!headings.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length === 0) return;
+    setActiveId((prev) => prev || headings[0].id);
 
-        const topmost = visible.reduce((prev, cur) =>
-          prev.target.getBoundingClientRect().top < cur.target.getBoundingClientRect().top ? prev : cur
-        );
-        setActiveId(topmost.target.id);
-      },
-      { rootMargin: ROOT_MARGIN, threshold: 0 }
-    );
+    let ticking = false;
+    const updateActiveHeading = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        if (!headings.length) return;
 
-    headings.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
 
-    return () => observer.disconnect();
+        // If scrolled to bottom of document, highlight the last heading
+        if (scrollY + windowHeight >= documentHeight - 30) {
+          setActiveId(headings[headings.length - 1].id);
+          return;
+        }
+
+        const activationOffset = 140;
+        let currentActiveId = headings[0].id;
+
+        for (const heading of headings) {
+          const el = document.getElementById(heading.id);
+          if (!el) continue;
+
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= activationOffset) {
+            currentActiveId = heading.id;
+          } else {
+            break;
+          }
+        }
+
+        setActiveId(currentActiveId);
+      });
+    };
+
+    updateActiveHeading();
+    const t1 = setTimeout(updateActiveHeading, 50);
+    const t2 = setTimeout(updateActiveHeading, 150);
+    const t3 = setTimeout(updateActiveHeading, 350);
+
+    window.addEventListener('scroll', updateActiveHeading, { passive: true });
+    window.addEventListener('resize', updateActiveHeading, { passive: true });
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      window.removeEventListener('scroll', updateActiveHeading);
+      window.removeEventListener('resize', updateActiveHeading);
+    };
   }, [headings]);
 
-  function scrollToHeading(id, offset = 88) {
+  const scrollToHeading = useCallback((id, offset = 100) => {
     const el = document.getElementById(id);
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: 'smooth' });
-  }
+    setActiveId(id);
+  }, []);
 
   return { headings, activeId, scrollToHeading };
 }

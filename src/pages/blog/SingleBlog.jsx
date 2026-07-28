@@ -14,14 +14,13 @@
 //   6. Fetch related posts independently (non-blocking).
 // ============================================================
 
-import { lazy, Suspense, useState, useEffect, useMemo, useRef } from 'react';
+import { lazy, Suspense, useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // ── Services ────────────────────────────────────────────────
 import { getPostBySlug, getRelatedPosts, getFaqsBySearch } from '../../services/blog/wordpress';
-import { mapWordPressPost, mapStaticPost } from '../../services/blogFallback';
-import { BLOG_POSTS } from '../../data/staticData';
+import { mapWordPressPost } from '../../services/blogFallback';
 
 // ── Blog domain hooks ────────────────────────────────────────
 import { useReadingTime }                          from '../../hooks/blog/useReadingTime';
@@ -43,8 +42,6 @@ import BlogFaq            from '../../components/ui/blog/BlogFaq';
 import RelatedPosts from '../../components/sections/blog/RelatedPosts';
 import NewsletterSection from '../../components/sections/blog/NewsletterSection';
 
-// ── Existing global sections ─────────────────────────────────
-import CTASection from '../../components/sections/CTASection';
 
 // ── Layout stylesheet (grid columns only — no visual styles) ─
 import styles from './SingleBlog.module.css';
@@ -93,15 +90,9 @@ export default function SingleBlog() {
       } catch (err) {
         if (err.name === 'AbortError') return; // Component unmounted — bail.
 
-        // Fallback: local static data (dev / API offline)
-        const staticMatch = BLOG_POSTS.find((p) => p.slug === slug);
-        if (staticMatch) {
-          resolvedPost = mapStaticPost(staticMatch);
-        } else {
-          setFetchError(err.message || 'Post not found.');
-          setLoading(false);
-          return;
-        }
+        setFetchError('No blog posts found at the moment. Check back soon!');
+        setLoading(false);
+        return;
       }
 
       setPost(resolvedPost);
@@ -136,16 +127,7 @@ export default function SingleBlog() {
         const rawRelated = await getRelatedPosts(resolvedPost, { count: 3, signal });
         setRelatedPosts(rawRelated.map(mapWordPressPost));
       } catch {
-        // Static fallback: match by category string when WP API is offline.
-        let fallback = BLOG_POSTS
-          .filter((p) => p.category === resolvedPost.category && p.slug !== slug);
-        
-        // If no posts in the same category, just show the latest posts
-        if (fallback.length === 0) {
-          fallback = BLOG_POSTS.filter((p) => p.slug !== slug);
-        }
-        
-        setRelatedPosts(fallback.slice(0, 3).map(mapStaticPost));
+        setRelatedPosts([]);
       }
 
     }
@@ -181,9 +163,11 @@ export default function SingleBlog() {
   }, [post?.content, headings]);
 
   // ── SEO meta values (memoised to prevent Helmet thrash) ─
-  const seoTitle       = post ? `${post.title} | Markencia Journal` : 'Markencia Journal';
-  const seoDescription = post?.excerpt ?? '';
+  const seoTitle       = post ? (post.seo?.title || `${post.title} | Markencia Journal`) : 'Markencia Journal';
+  const seoDescription = post?.seo?.description ?? post?.excerpt ?? '';
   const seoUrl         = typeof window !== 'undefined' ? window.location.href : '';
+  const seoImage       = post?.seo?.ogImage || post?.featuredImage || null;
+  const twitterCard    = post?.seo?.twitterCard || 'summary_large_image';
 
   // ── Early returns ────────────────────────────────────────
   if (loading) return <PostSkeleton />;
@@ -200,11 +184,11 @@ export default function SingleBlog() {
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type"        content="article" />
         <meta property="og:url"         content={seoUrl} />
-        {post.featuredImage && <meta property="og:image" content={post.featuredImage} />}
-        <meta name="twitter:card"        content="summary_large_image" />
+        {seoImage && <meta property="og:image" content={seoImage} />}
+        <meta name="twitter:card"        content={twitterCard} />
         <meta name="twitter:title"       content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
-        {post.featuredImage && <meta name="twitter:image" content={post.featuredImage} />}
+        {seoImage && <meta name="twitter:image" content={seoImage} />}
       </Helmet>
 
       {/* ── Reading progress indicator (fixed, above header) ── */}
