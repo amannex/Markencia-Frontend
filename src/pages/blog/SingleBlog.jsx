@@ -98,8 +98,8 @@ export default function SingleBlog() {
       setPost(resolvedPost);
       setLoading(false);
 
-      // Automated FAQ Lookup: if no FAQs were manually selected for this article,
-      // dynamically query the WP REST API for FAQs matching the post title keywords!
+      // Priority 1: Check if FAQs were manually assigned directly to the post via ACF in WordPress editor.
+      // Only run dynamic REST API queries if no manually assigned FAQs exist on the post.
       if (resolvedPost && (!resolvedPost.faqs || resolvedPost.faqs.length === 0)) {
         try {
           const keywords = (resolvedPost.title || '')
@@ -109,11 +109,20 @@ export default function SingleBlog() {
             .slice(0, 3)
             .join(' ');
 
+          let matchingFaqs = [];
+
+          // Priority 2: Search WP REST API for FAQs matching the article's keywords (/wp-json/wp/v2/faqs?search=...)
           if (keywords) {
-            const matchingFaqs = await getFaqsBySearch({ search: keywords, per_page: 5, signal });
-            if (matchingFaqs.length > 0) {
-              setPost((prev) => prev ? { ...prev, faqs: matchingFaqs } : prev);
-            }
+            matchingFaqs = await getFaqsBySearch({ search: keywords, per_page: 5, signal });
+          }
+
+          // Priority 3: If no keyword-specific FAQs are found, automatically query the latest published FAQs (/wp-json/wp/v2/faqs?per_page=5)
+          if (!matchingFaqs || matchingFaqs.length === 0) {
+            matchingFaqs = await getFaqsBySearch({ per_page: 5, signal });
+          }
+
+          if (matchingFaqs && matchingFaqs.length > 0) {
+            setPost((prev) => prev ? { ...prev, faqs: matchingFaqs } : prev);
           }
         } catch {
           // Non-blocking: leave post.faqs as-is if search is offline
@@ -147,20 +156,27 @@ export default function SingleBlog() {
 
   // ToC parses HTML string (Mode A) — no live DOM ref needed
   // because PostBody stamps the IDs via injectHeadingIds below.
-  const { headings, activeId, scrollToHeading } = useTableOfContents({
+  const faqHeading = useMemo(() => {
+    return post?.faqs && post.faqs.length > 0
+      ? [{ id: 'frequently-asked-questions', text: 'Frequently Asked Questions', level: 2 }]
+      : [];
+  }, [post?.faqs]);
+
+  const { headings, parsedHeadings, activeId, scrollToHeading } = useTableOfContents({
     htmlContent: post?.content ?? '',
+    extraHeadings: faqHeading,
   });
 
   // Copy link state for PostShare.
   const { copied, copy } = useCopyLink();
 
   // ── Processed content: inject heading IDs ───────────────
-  // Must run after `headings` is derived so the ID list matches
+  // Must run after `parsedHeadings` is derived so the ID list matches
   // the exact order the regex parsed them.
   const processedContent = useMemo(() => {
-    if (!post?.content || headings.length === 0) return post?.content ?? '';
-    return injectHeadingIds(post.content, headings);
-  }, [post?.content, headings]);
+    if (!post?.content || !(parsedHeadings || headings).length) return post?.content ?? '';
+    return injectHeadingIds(post.content, parsedHeadings || headings);
+  }, [post?.content, parsedHeadings, headings]);
 
   // ── SEO meta values (memoised to prevent Helmet thrash) ─
   const seoTitle       = post ? (post.seo?.title || `${post.title} | Markencia Journal`) : 'Markencia Journal';

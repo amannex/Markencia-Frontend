@@ -31,7 +31,7 @@ export function injectHeadingIds(html, headings) {
   );
 }
 
-export function useTableOfContents({ htmlContent, containerRef, levels = HEADING_LEVELS } = {}) {
+export function useTableOfContents({ htmlContent, containerRef, levels = HEADING_LEVELS, extraHeadings = [] } = {}) {
   const [activeId, setActiveId] = useState('');
   const [domHeadings, setDomHeadings] = useState([]);
 
@@ -69,7 +69,11 @@ export function useTableOfContents({ htmlContent, containerRef, levels = HEADING
     setDomHeadings(items);
   }, [containerRef, levels]);
 
-  const headings = containerRef ? domHeadings : parsedHeadings;
+  const headings = useMemo(() => {
+    const base = containerRef ? domHeadings : parsedHeadings;
+    if (!extraHeadings || extraHeadings.length === 0) return base;
+    return [...base, ...extraHeadings];
+  }, [containerRef, domHeadings, parsedHeadings, extraHeadings]);
 
   useEffect(() => {
     if (!headings.length) return;
@@ -138,5 +142,5 @@ export function useTableOfContents({ htmlContent, containerRef, levels = HEADING
     setActiveId(id);
   }, []);
 
-  return { headings, activeId, scrollToHeading };
+  return { headings, parsedHeadings, activeId, scrollToHeading };
 }

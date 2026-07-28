@@ -304,10 +304,11 @@ export async function getFaqsBySearch({ search, per_page = 5, signal } = {}) {
     const { body } = await wpFetch(`${WP}/faqs?${query}`, { signal });
     if (!Array.isArray(body)) return [];
 
-    return body.map((faq) => ({
-      question: faq.title?.rendered || '',
-      answer:   faq.acf?.answer || faq.content?.rendered || '',
-    })).filter((faq) => Boolean(faq.question && faq.answer));
+    return body.map((faq) => {
+      const question = (faq.title?.rendered || '').replace(/<[^>]*>/g, '').trim();
+      const answer = (faq.acf?.answer || faq.content?.rendered || '').replace(/<[^>]*>/g, '').trim();
+      return { question, answer };
+    }).filter((faq) => Boolean(faq.question && faq.answer));
   } catch (err) {
     if (err.name === 'AbortError') throw err;
     return [];

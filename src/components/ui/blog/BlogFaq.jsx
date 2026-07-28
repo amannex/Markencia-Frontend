@@ -6,7 +6,7 @@ export default function BlogFaq({ faqs = [] }) {
 
   return (
     <section className={styles.section} aria-label="Frequently Asked Questions">
-      <h3 className={styles.title}>Frequently Asked Questions</h3>
+      <h2 id="frequently-asked-questions" className={styles.title}>Frequently Asked Questions</h2>
       <div className={styles.accordion}>
         {faqs.map((faq, index) => (
           <details key={index} className={styles.details} name="blog-faqs">

@@ -179,12 +179,17 @@ export function mapWordPressPost(wpPost) {
 
   // Extract FAQs selected via ACF Post Object ('related_faqs' CPT items)
   const selectedFaqs = (wpPost.acf?.related_faqs || []).map((item) => ({
-    question: item.post_title || item.title?.rendered || item.title || '',
-    answer:   item.acf?.answer || item.post_content || '',
+    question: (item.post_title || item.title?.rendered || item.title || '').replace(/<[^>]*>/g, '').trim(),
+    answer:   (item.acf?.answer || item.post_content || '').replace(/<[^>]*>/g, '').trim(),
+  })).filter((faq) => Boolean(faq.question && faq.answer));
+
+  const inlineFaqs = (wpPost.acf?.faqs || []).map((item) => ({
+    question: (item.question || item.title || '').replace(/<[^>]*>/g, '').trim(),
+    answer:   (item.answer || item.content || '').replace(/<[^>]*>/g, '').trim(),
   })).filter((faq) => Boolean(faq.question && faq.answer));
 
   // Use selected CPT FAQs if available; otherwise fall back to inline ACF faqs
-  const faqs = selectedFaqs.length > 0 ? selectedFaqs : (wpPost.acf?.faqs || []);
+  const faqs = selectedFaqs.length > 0 ? selectedFaqs : inlineFaqs;
 
   const excerptText = wpPost.excerpt?.rendered?.replace(/<[^>]*>/g, '') || '';
 
