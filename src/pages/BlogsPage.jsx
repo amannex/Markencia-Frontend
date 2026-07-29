@@ -66,6 +66,8 @@ export default function BlogsPage() {
     return matchesCategory && matchesSearch;
   });
 
+  const hasExplicitFeatured = filtered.some((post) => Boolean(post.featured));
+
   return (
     <>
       <Helmet>
@@ -129,8 +131,12 @@ export default function BlogsPage() {
             </div>
           ) : filtered.length > 0 ? (
             <div className={styles.grid}>
-              {filtered.map((post) => (
-                <BlogCard key={post.id || post.slug} post={post} featured={post.featured && activeFilter === 'All Articles'} />
+              {filtered.map((post, index) => (
+                <BlogCard
+                  key={post.id || post.slug}
+                  post={post}
+                  featured={(post.featured || (!hasExplicitFeatured && index === 0)) && activeFilter === 'All Articles'}
+                />
               ))}
             </div>
           ) : (

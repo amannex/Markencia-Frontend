@@ -218,6 +218,7 @@ export function mapWordPressPost(wpPost) {
     authorSocial,
     readTime,
     category,
+    featured: wpPost.sticky || Boolean(wpPost.acf?.featured) || false,
     featuredImage,
     imageAlt,
     gradient: 'linear-gradient(135deg, #003818, #001f0d)',
