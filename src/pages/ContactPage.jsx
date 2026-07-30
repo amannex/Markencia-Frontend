@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 import { CONTACT_INTERESTS, SITE_INFO } from '../data/staticData';
-import { submitContactForm } from '../services/wpApi';
+import { submitContactForm } from '../services/forms';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import styles from './ContactPage.module.css';
