@@ -109,6 +109,59 @@
   gap: 2.5rem;
 }
 
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.pageBtn,
+.pageNavBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 0.95rem;
+  background: var(--mk-bg-main);
+  border: 1.5px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-pill);
+  font-family: var(--mk-font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--mk-text-main);
+  cursor: pointer;
+  transition: var(--mk-transition);
+  user-select: none;
+}
+
+.pageBtn:hover:not(:disabled),
+.pageNavBtn:hover:not(:disabled) {
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(var(--mk-primary-rgb, 0, 180, 80), 0.18);
+}
+
+.pageBtn.activePage {
+  background: var(--mk-primary);
+  border-color: var(--mk-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 180, 80, 0.35);
+}
+
+.pageBtn:disabled,
+.pageNavBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .emptyState {
   text-align: center;
   padding: 6rem 20px;

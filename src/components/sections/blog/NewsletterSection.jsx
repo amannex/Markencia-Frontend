@@ -7,7 +7,7 @@
 
 import { useState, useCallback } from 'react';
 import { CheckCircle } from 'lucide-react';
-import { subscribeNewsletter } from '../../../services/wpApi';
+import { subscribeNewsletter } from '../../../services/forms';
 import styles from './NewsletterSection.module.css';
 
 export default function NewsletterSection() {

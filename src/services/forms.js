@@ -1,13 +1,9 @@
 // ============================================================
-// MARKENCIA — WordPress REST API Service
-// Base URL is read from environment variable VITE_WP_API_URL
-// Falls back to static data when the API is unavailable
+// MARKENCIA — Forms & Newsletter Service
+// Handles contact form submissions and newsletter subscriptions
 // ============================================================
 
 const BASE_URL = import.meta.env.VITE_WP_API_URL || 'http://localhost:8888/wp-json/';
-
-const WP_API = `${BASE_URL}/wp/v2`;
-const ACF_API = `${BASE_URL}/acf/v3`;
 
 // ---- Generic fetch helper ----
 async function apiFetch(url, options = {}) {
@@ -19,39 +15,6 @@ async function apiFetch(url, options = {}) {
     throw new Error(`WP API Error: ${response.status} ${response.statusText} — ${url}`);
   }
   return response.json();
-}
-
-// ---- Posts ----
-export async function getPosts(params = {}) {
-  const query = new URLSearchParams({
-    _embed: true,
-    per_page: 10,
-    ...params,
-  });
-  return apiFetch(`${WP_API}/posts?${query}`);
-}
-
-export async function getPostBySlug(slug) {
-  const data = await apiFetch(`${WP_API}/posts?slug=${slug}&_embed=true`);
-  if (!data || data.length === 0) throw new Error(`Post not found: ${slug}`);
-  return data[0];
-}
-
-// ---- Pages ----
-export async function getPageBySlug(slug) {
-  const data = await apiFetch(`${WP_API}/pages?slug=${slug}&_embed=true&acf_format=standard`);
-  if (!data || data.length === 0) throw new Error(`Page not found: ${slug}`);
-  return data[0];
-}
-
-// ---- ACF Fields ----
-export async function getAcfFields(postType, id) {
-  return apiFetch(`${ACF_API}/${postType}/${id}`);
-}
-
-// ---- Media ----
-export async function getMedia(id) {
-  return apiFetch(`${WP_API}/media/${id}`);
 }
 
 // ---- Contact Form Submission ----

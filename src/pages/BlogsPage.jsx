@@ -12,6 +12,11 @@ export default function BlogsPage() {
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState(['All Articles']);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter, search]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -31,11 +36,11 @@ export default function BlogsPage() {
           const mapped = wpPosts.map(mapWordPressPost);
           setPosts(mapped);
 
-          // Dynamically collect unique categories from live WordPress posts
-          const uniqueCats = Array.from(
-            new Set(mapped.map((p) => p.category).filter(Boolean))
-          );
-          setCategories(['All Articles', ...uniqueCats]);
+          const uniqueCategories = [
+            'All Articles',
+            ...new Set(mapped.map((post) => post.category).filter(Boolean)),
+          ];
+          setCategories(uniqueCategories);
         } else {
           setPosts([]);
           setCategories(['All Articles']);
@@ -87,6 +92,36 @@ export default function BlogsPage() {
       return 0;
     });
 
+  // Calculate maximum 3 rows per page (9 columns total per page)
+  const isFirstPageFeatured = activeFilter === 'All Articles' && Boolean(filtered[0]?.featured);
+  const firstPageLimit = isFirstPageFeatured ? 8 : 9;
+  const regularPageLimit = 9;
+
+  let totalPages = 1;
+  if (filtered.length <= firstPageLimit) {
+    totalPages = 1;
+  } else {
+    totalPages = 1 + Math.ceil((filtered.length - firstPageLimit) / regularPageLimit);
+  }
+
+  const validPage = Math.min(currentPage, Math.max(1, totalPages));
+
+  let currentPosts = [];
+  if (validPage === 1) {
+    currentPosts = filtered.slice(0, firstPageLimit);
+  } else {
+    const startIndex = firstPageLimit + (validPage - 2) * regularPageLimit;
+    currentPosts = filtered.slice(startIndex, startIndex + regularPageLimit);
+  }
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    const gridSection = document.getElementById('blog-grid-section');
+    if (gridSection) {
+      gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -124,7 +159,7 @@ export default function BlogsPage() {
       </section>
 
       {/* Blog Grid */}
-      <section className={`mk-section mk-bg-texture ${styles.blogGridSection}`}>
+      <section id="blog-grid-section" className={`mk-section mk-bg-texture ${styles.blogGridSection}`}>
         <div className="mk-container">
           {/* Filters */}
           <div className={styles.filters}>
@@ -144,17 +179,17 @@ export default function BlogsPage() {
           {/* Grid */}
           {loading ? (
             <div className={styles.grid}>
-              {Array.from({ length: 6 }).map((_, i) => (
+              {Array.from({ length: isFirstPageFeatured ? 8 : 9 }).map((_, i) => (
                 <BlogCardSkeleton key={i} featured={i === 0 && activeFilter === 'All Articles'} />
               ))}
             </div>
           ) : filtered.length > 0 ? (
             <div className={styles.grid}>
-              {filtered.map((post) => (
+              {currentPosts.map((post) => (
                 <BlogCard
                   key={post.id || post.slug}
                   post={post}
-                  featured={post.featured && activeFilter === 'All Articles'}
+                  featured={validPage === 1 && post.featured && activeFilter === 'All Articles'}
                 />
               ))}
             </div>
@@ -177,6 +212,53 @@ export default function BlogsPage() {
                   ? "We're currently writing our latest insights. Check back soon for deep dives into AI marketing and strategies." 
                   : "We couldn't find any articles matching your search or category filter. Try clearing your search or checking other categories."}
               </p>
+            </div>
+          )}
+
+          {/* Pagination Controls */}
+          {!loading && totalPages > 1 && (
+            <div className={styles.pagination} role="navigation" aria-label="Blog pagination">
+              <button
+                type="button"
+                className={styles.pageNavBtn}
+                onClick={() => handlePageChange(Math.max(1, validPage - 1))}
+                disabled={validPage === 1}
+                aria-label="Previous page"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+                <span style={{ marginLeft: '4px' }}>Prev</span>
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <button
+                  key={pageNum}
+                  type="button"
+                  className={[
+                    styles.pageBtn,
+                    validPage === pageNum ? styles.activePage : ''
+                  ].join(' ')}
+                  onClick={() => handlePageChange(pageNum)}
+                  aria-label={`Page ${pageNum}`}
+                  aria-current={validPage === pageNum ? 'page' : undefined}
+                >
+                  {pageNum}
+                </button>
+              ))}
+
+              <button
+                type="button"
+                className={styles.pageNavBtn}
+                onClick={() => handlePageChange(Math.min(totalPages, validPage + 1))}
+                disabled={validPage === totalPages}
+                aria-label="Next page"
+              >
+                <span style={{ marginRight: '4px' }}>Next</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
             </div>
           )}
         </div>
