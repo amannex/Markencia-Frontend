@@ -216,7 +216,7 @@ export default function BlogsPage() {
           )}
 
           {/* Pagination Controls */}
-          {!loading && totalPages > 1 && (
+          {!loading && totalPages == 1 && (
             <div className={styles.pagination} role="navigation" aria-label="Blog pagination">
               <button
                 type="button"

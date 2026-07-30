@@ -142,7 +142,7 @@
 .pageBtn:hover:not(:disabled),
 .pageNavBtn:hover:not(:disabled) {
   border-color: var(--mk-primary);
-  color: var(--mk-primary);
+  color: var(--mk-text-white);
   transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(var(--mk-primary-rgb, 0, 180, 80), 0.18);
 }
