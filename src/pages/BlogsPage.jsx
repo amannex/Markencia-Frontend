@@ -16,7 +16,7 @@ export default function BlogsPage() {
   useEffect(() => {
     const controller = new AbortController();
 
-    async function fetchPosts() {
+    async function fetchPosts(retries = 1) {
       setLoading(true);
       try {
         const { posts: wpPosts } = await getAllPosts({
@@ -24,6 +24,8 @@ export default function BlogsPage() {
           per_page: 50,
           signal: controller.signal,
         });
+
+        if (controller.signal.aborted) return;
 
         if (wpPosts && wpPosts.length > 0) {
           const mapped = wpPosts.map(mapWordPressPost);
@@ -39,13 +41,23 @@ export default function BlogsPage() {
           setCategories(['All Articles']);
         }
       } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.warn('WordPress API unreachable on /blogs:', err.message);
-          setPosts([]);
-          setCategories(['All Articles']);
+        if (err.name === 'AbortError' || controller.signal.aborted) return;
+
+        if (retries > 0) {
+          // Retry once after 600ms if rapid refresh / connection reset occurred
+          setTimeout(() => {
+            if (!controller.signal.aborted) fetchPosts(retries - 1);
+          }, 600);
+          return;
         }
+
+        console.warn('WordPress API unreachable on /blogs:', err.message);
+        setPosts([]);
+        setCategories(['All Articles']);
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
       }
     }
 
@@ -56,17 +68,24 @@ export default function BlogsPage() {
     };
   }, []);
 
-  const filtered = posts.filter((post) => {
-    const matchesCategory =
-      activeFilter === 'All Articles' || post.category === activeFilter;
-    const matchesSearch =
-      !search ||
-      post.title.toLowerCase().includes(search.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(search.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const hasExplicitFeatured = filtered.some((post) => Boolean(post.featured));
+  const filtered = posts
+    .filter((post) => {
+      const matchesCategory =
+        activeFilter === 'All Articles' || post.category === activeFilter;
+      const matchesSearch =
+        !search ||
+        post.title.toLowerCase().includes(search.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(search.toLowerCase());
+      return matchesCategory && matchesSearch;
+    })
+    .sort((a, b) => {
+      // Always bring featured/sticky posts to the very top when viewing 'All Articles'
+      if (activeFilter === 'All Articles') {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+      }
+      return 0;
+    });
 
   return (
     <>
@@ -131,11 +150,11 @@ export default function BlogsPage() {
             </div>
           ) : filtered.length > 0 ? (
             <div className={styles.grid}>
-              {filtered.map((post, index) => (
+              {filtered.map((post) => (
                 <BlogCard
                   key={post.id || post.slug}
                   post={post}
-                  featured={(post.featured || (!hasExplicitFeatured && index === 0)) && activeFilter === 'All Articles'}
+                  featured={post.featured && activeFilter === 'All Articles'}
                 />
               ))}
             </div>
