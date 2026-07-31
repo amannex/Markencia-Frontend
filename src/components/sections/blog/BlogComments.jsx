@@ -38,7 +38,7 @@ export default function BlogComments({ postId, postSlug }) {
     }
 
     fetchComments();
-    return () => controller.abort();
+    return () => controller.abort('Component unmounted');
   }, [postId]);
 
   const handleChange = (e) => {

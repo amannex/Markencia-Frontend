@@ -31,7 +31,7 @@ export default function PostHero({ post, readingTime }) {
             alt={post.imageAlt}
             className={styles.bgImage}
             // High priority: this is the LCP candidate
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
           />
           <div className={styles.overlay} />

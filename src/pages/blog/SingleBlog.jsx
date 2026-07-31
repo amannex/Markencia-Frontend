@@ -153,7 +153,7 @@ export default function SingleBlog({ slug: slugProp } = {}) {
     load();
 
     // Abort all in-flight requests when slug changes or unmounts.
-    return () => controller.abort();
+    return () => controller.abort('Component unmounted');
   }, [slug]);
 
   // ── Domain hooks (run after post is resolved) ────────────

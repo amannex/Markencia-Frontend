@@ -49,10 +49,16 @@ async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}
   }
 
   const timeoutController = new AbortController();
-  const timeoutId = setTimeout(() => timeoutController.abort(), DEFAULT_TIMEOUT_MS);
+  const timeoutId = setTimeout(() => timeoutController.abort('Request timed out'), DEFAULT_TIMEOUT_MS);
 
-  // Safely forward external aborts without AbortSignal.any to prevent browser extension errors
-  const onAbort = () => timeoutController.abort();
+  // Safely forward external aborts with an explicit reason to prevent browser extension / Next.js errors
+  const onAbort = () => {
+    try {
+      timeoutController.abort('Request cancelled');
+    } catch {
+      // ignore
+    }
+  };
   if (externalSignal) {
     externalSignal.addEventListener('abort', onAbort, { once: true });
   }

@@ -78,7 +78,7 @@ export default function BlogsPage() {
     fetchPosts();
 
     return () => {
-      controller.abort();
+      controller.abort('Component unmounted');
     };
   }, []);
 
