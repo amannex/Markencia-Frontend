@@ -91,7 +91,13 @@ export default function AboutPage() {
           <div className={styles.teamGrid}>
             {TEAM_MEMBERS.map((m) => (
               <div key={m.id} className={styles.teamMember}>
-                <div className={styles.teamPhoto}><img src={m.photo} alt={m.name} /></div>
+                <div className={styles.teamPhoto}>
+                  {m.photo ? (
+                    <img src={m.photo} alt={m.name} />
+                  ) : (
+                    <span>{m.name.split(' ').map(n => n[0]).join('')}</span>
+                  )}
+                </div>
                 <h3>{m.name}</h3>
                 <span className={styles.teamRole}>{m.role}</span>
                 <p>{m.bio}</p>
