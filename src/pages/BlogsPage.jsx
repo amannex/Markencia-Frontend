@@ -20,7 +20,7 @@ export default function BlogsPage() {
   }, [activeFilter, search]);
 
   useEffect(() => {
-    const controller = new AbortController();
+    let isMounted = true;
 
     async function fetchPosts(retries = 1) {
       setLoading(true);
@@ -28,10 +28,9 @@ export default function BlogsPage() {
         const { posts: wpPosts } = await getAllPosts({
           _embed: true,
           per_page: 50,
-          signal: controller.signal,
         });
 
-        if (controller.signal.aborted) return;
+        if (!isMounted) return;
 
         if (wpPosts && wpPosts.length > 0) {
           const mapped = wpPosts.map(mapWordPressPost);
@@ -47,19 +46,11 @@ export default function BlogsPage() {
           setCategories(['All Articles']);
         }
       } catch (err) {
-        if (
-          controller.signal.aborted ||
-          err.name === 'AbortError' ||
-          err.message?.includes('aborted') ||
-          err.message?.includes('signal') ||
-          err.message?.includes('cancelled')
-        ) {
-          return;
-        }
+        if (!isMounted) return;
 
         if (retries > 0) {
           setTimeout(() => {
-            if (!controller.signal.aborted) fetchPosts(retries - 1);
+            if (isMounted) fetchPosts(retries - 1);
           }, 600);
           return;
         }
@@ -69,7 +60,7 @@ export default function BlogsPage() {
         setPosts([]);
         setCategories(['All Articles']);
       } finally {
-        if (!controller.signal.aborted) {
+        if (isMounted) {
           setLoading(false);
         }
       }
@@ -78,7 +69,7 @@ export default function BlogsPage() {
     fetchPosts();
 
     return () => {
-      controller.abort('Component unmounted');
+      isMounted = false;
     };
   }, []);
 

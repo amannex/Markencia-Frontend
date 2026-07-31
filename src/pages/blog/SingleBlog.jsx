@@ -74,8 +74,7 @@ export default function SingleBlog({ slug: slugProp } = {}) {
   useEffect(() => {
     if (!slug) return;
 
-    const controller = new AbortController();
-    const { signal } = controller;
+    let isMounted = true;
 
     setLoading(true);
     setFetchError(null);
@@ -87,23 +86,18 @@ export default function SingleBlog({ slug: slugProp } = {}) {
 
       try {
         // Primary: live WordPress REST API
-        const wpData = await getPostBySlug(slug, { signal });
+        const wpData = await getPostBySlug(slug);
+        if (!isMounted) return;
         resolvedPost = mapWordPressPost(wpData);
       } catch (err) {
-        if (
-          controller.signal.aborted ||
-          err.name === 'AbortError' ||
-          err.message?.includes('aborted') ||
-          err.message?.includes('signal')
-        ) {
-          return;
-        }
+        if (!isMounted) return;
 
         setFetchError('No blog posts found at the moment. Check back soon!');
         setLoading(false);
         return;
       }
 
+      if (!isMounted) return;
       setPost(resolvedPost);
       setLoading(false);
 
@@ -122,14 +116,16 @@ export default function SingleBlog({ slug: slugProp } = {}) {
 
           // Priority 2: Search WP REST API for FAQs matching the article's keywords (/wp-json/wp/v2/faqs?search=...)
           if (keywords) {
-            matchingFaqs = await getFaqsBySearch({ search: keywords, per_page: 5, signal });
+            matchingFaqs = await getFaqsBySearch({ search: keywords, per_page: 5 });
           }
 
           // Priority 3: If no keyword-specific FAQs are found, automatically query the latest published FAQs (/wp-json/wp/v2/faqs?per_page=5)
+          if (!isMounted) return;
           if (!matchingFaqs || matchingFaqs.length === 0) {
-            matchingFaqs = await getFaqsBySearch({ per_page: 5, signal });
+            matchingFaqs = await getFaqsBySearch({ per_page: 5 });
           }
 
+          if (!isMounted) return;
           if (matchingFaqs && matchingFaqs.length > 0) {
             setPost((prev) => prev ? { ...prev, faqs: matchingFaqs } : prev);
           }
@@ -142,9 +138,11 @@ export default function SingleBlog({ slug: slugProp } = {}) {
       // getRelatedPosts returns a raw array of WP objects (with _embed),
       // so we map each one through mapWordPressPost for a consistent shape.
       try {
-        const rawRelated = await getRelatedPosts(resolvedPost, { count: 3, signal });
+        const rawRelated = await getRelatedPosts(resolvedPost, { count: 3 });
+        if (!isMounted) return;
         setRelatedPosts(rawRelated.map(mapWordPressPost));
       } catch {
+        if (!isMounted) return;
         setRelatedPosts([]);
       }
 
@@ -152,8 +150,10 @@ export default function SingleBlog({ slug: slugProp } = {}) {
 
     load();
 
-    // Abort all in-flight requests when slug changes or unmounts.
-    return () => controller.abort('Component unmounted');
+    // Prevent state updates on unmounted component without aborting requests
+    return () => {
+      isMounted = false;
+    };
   }, [slug]);
 
   // ── Domain hooks (run after post is resolved) ────────────
