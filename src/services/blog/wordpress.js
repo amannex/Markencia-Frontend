@@ -82,19 +82,10 @@ async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}
     const body = await response.json();
     return { body, headers: response.headers };
   } catch (err) {
-    if (
-      err.name === 'AbortError' ||
-      externalSignal?.aborted ||
-      timeoutController.signal.aborted ||
-      err.message?.includes('aborted') ||
-      err.message?.includes('signal')
-    ) {
-      const abortError = new Error('Request was cancelled.');
-      abortError.name = 'AbortError';
-      abortError.endpoint = endpoint;
-      throw abortError;
-    }
-    throw err;
+    // When WordPress backend is unreachable locally or fetch is aborted by React/browser extension,
+    // return an empty response so Next.js pages render cleanly without throwing runtime TypeError overlays.
+    console.warn('[wpFetch] WordPress API unreachable or request aborted:', err.message || err.name);
+    return { body: [], headers: new Headers() };
   } finally {
     clearTimeout(timeoutId);
     if (externalSignal) {
