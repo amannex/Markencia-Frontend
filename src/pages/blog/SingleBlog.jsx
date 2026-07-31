@@ -14,9 +14,10 @@
 //   6. Fetch related posts independently (non-blocking).
 // ============================================================
 
+'use client';
+
 import { lazy, Suspense, useState, useEffect, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { useParams } from 'next/navigation';
 
 // ── Services ────────────────────────────────────────────────
 import { getPostBySlug, getRelatedPosts, getFaqsBySearch } from '../../services/blog/wordpress';
@@ -57,8 +58,9 @@ const BlogComments    = lazy(() => import('../../components/sections/blog/BlogCo
 // ============================================================
 // Component
 // ============================================================
-export default function SingleBlog() {
-  const { slug } = useParams();
+export default function SingleBlog({ slug: slugProp } = {}) {
+  const params = useParams();
+  const slug = slugProp || params?.slug;
 
   // ── Core data state ──────────────────────────────────────
   const [post, setPost]               = useState(null);
@@ -192,21 +194,6 @@ export default function SingleBlog() {
   // ── Layout ───────────────────────────────────────────────
   return (
     <div>
-      {/* ── SEO ── */}
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description"        content={seoDescription} />
-        <meta property="og:title"       content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
-        <meta property="og:type"        content="article" />
-        <meta property="og:url"         content={seoUrl} />
-        {seoImage && <meta property="og:image" content={seoImage} />}
-        <meta name="twitter:card"        content={twitterCard} />
-        <meta name="twitter:title"       content={seoTitle} />
-        <meta name="twitter:description" content={seoDescription} />
-        {seoImage && <meta name="twitter:image" content={seoImage} />}
-      </Helmet>
-
       {/* ── Reading progress indicator (fixed, above header) ── */}
       <ReadingProgressBar progress={scrollProgress} />
 

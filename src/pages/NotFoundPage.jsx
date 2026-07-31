@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import styles from './NotFoundPage.module.css';
 
 export default function NotFoundPage() {
@@ -10,8 +10,8 @@ export default function NotFoundPage() {
         <h1>Page Not Found</h1>
         <p>Looks like this page got lost in our AI algorithms. Let's get you back on track.</p>
         <div className={styles.actions}>
-          <Link to="/" className={styles.btnPrimary} id="404-home-link">Go Back Home</Link>
-          <Link to="/contact" className={styles.btnOutline} id="404-contact-link">Contact Support</Link>
+          <Link href="/" className={styles.btnPrimary} id="404-home-link">Go Back Home</Link>
+          <Link href="/contact" className={styles.btnOutline} id="404-contact-link">Contact Support</Link>
         </div>
       </div>
     </section>

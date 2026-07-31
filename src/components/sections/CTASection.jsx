@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Button from '../ui/Button';
 import styles from './CTASection.module.css';

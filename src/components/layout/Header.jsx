@@ -1,5 +1,8 @@
+'use client';
+
 import { useState, useEffect, useRef } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import { NAV_LINKS, MEGA_MENU_SERVICES } from '../../data/staticData';
 import styles from './Header.module.css';
@@ -9,14 +12,14 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpenDesktop, setServicesOpenDesktop] = useState(false);
   const [servicesOpenMobile, setServicesOpenMobile] = useState(false);
-  
-  const { pathname } = useLocation();
+
+  const pathname = usePathname();
   const menuRef = useRef(null);
   const hideTimeoutRef = useRef(null);
 
   // Close mobile menu and mega menu on route change
-  useEffect(() => { 
-    setMobileOpen(false); 
+  useEffect(() => {
+    setMobileOpen(false);
     setServicesOpenDesktop(false);
     setServicesOpenMobile(false);
   }, [pathname]);
@@ -51,34 +54,41 @@ export default function Header() {
     }, 150); // slight delay to prevent flickering
   };
 
+  const isLinkActive = (path) => {
+    if (!pathname) return false;
+    if (path === '/') return pathname === '/';
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
+
   return (
     <header className={[styles.header, scrolled ? styles.scrolled : ''].join(' ')} role="banner">
       <div className={styles.container} ref={menuRef}>
         {/* Logo */}
-        <Link to="/" className={styles.logo} title="Markencia Home">
+        <Link href="/" className={styles.logo} title="Markencia Home">
           <span className={styles.logoText}>Markencia</span>
           <span className={styles.logoDot}>.</span>
         </Link>
 
         {/* Desktop Nav */}
         <nav className={styles.desktopNav} aria-label="Primary Navigation" id="nav-links">
-          {NAV_LINKS.filter(l => l.label !== 'Contact').map((link) => {
+          {NAV_LINKS.filter((l) => l.label !== 'Contact').map((link) => {
             if (link.path === '/services') {
+              const active = isLinkActive(link.path);
               return (
-                <div 
+                <div
                   key={link.path}
                   className={styles.megaMenuWrapper}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) => [styles.navLink, isActive || servicesOpenDesktop ? styles.active : ''].join(' ')}
+                  <Link
+                    href={link.path}
+                    className={[styles.navLink, active || servicesOpenDesktop ? styles.active : ''].filter(Boolean).join(' ')}
                   >
                     {link.label}
                     <ChevronDown className={[styles.chevron, servicesOpenDesktop ? styles.chevronOpen : ''].join(' ')} size={16} />
-                  </NavLink>
-                  
+                  </Link>
+
                   {/* Mega Menu Dropdown */}
                   <div className={[styles.megaMenuDropdown, servicesOpenDesktop ? styles.megaMenuOpen : ''].join(' ')}>
                     <div className={styles.megaMenuGrid}>
@@ -86,9 +96,9 @@ export default function Header() {
                         <div key={idx} className={styles.megaMenuColumn}>
                           <h4 className={styles.megaMenuCategory}>{col.category}</h4>
                           <ul className={styles.megaMenuList}>
-                            {col.items.map(item => (
+                            {col.items.map((item) => (
                               <li key={item.path}>
-                                <Link to={item.path} className={styles.megaMenuItem}>
+                                <Link href={item.path} className={styles.megaMenuItem}>
                                   <span className={styles.megaMenuIcon}>{item.icon}</span>
                                   <div>
                                     <span className={styles.megaMenuItemLabel}>{item.label}</span>
@@ -106,21 +116,24 @@ export default function Header() {
               );
             }
 
+            const active = isLinkActive(link.path);
             return (
-              <NavLink
+              <Link
                 key={link.path}
-                to={link.path}
-                className={({ isActive }) => [styles.navLink, isActive ? styles.active : ''].join(' ')}
+                href={link.path}
+                className={[styles.navLink, active ? styles.active : ''].filter(Boolean).join(' ')}
               >
                 {link.label}
-              </NavLink>
+              </Link>
             );
           })}
         </nav>
 
         {/* Actions */}
         <div className={styles.actions}>
-          <Link to="/contact" className={styles.ctaBtn}>Free AI Strategy</Link>
+          <Link href="/contact" className={styles.ctaBtn}>
+            Free AI Strategy
+          </Link>
 
           {/* Hamburger */}
           <button
@@ -151,8 +164,8 @@ export default function Header() {
             if (link.path === '/services') {
               return (
                 <div key={link.path} className={styles.mobileMegaMenuWrapper}>
-                  <button 
-                    className={styles.mobileLink} 
+                  <button
+                    className={styles.mobileLink}
                     onClick={() => setServicesOpenMobile(!servicesOpenMobile)}
                   >
                     {link.label}
@@ -163,9 +176,9 @@ export default function Header() {
                       <div key={idx} className={styles.mobileMegaMenuColumn}>
                         <h4 className={styles.mobileMegaMenuCategory}>{col.category}</h4>
                         <ul className={styles.mobileMegaMenuList}>
-                          {col.items.map(item => (
+                          {col.items.map((item) => (
                             <li key={item.path}>
-                              <Link to={item.path} className={styles.mobileMegaMenuItem}>
+                              <Link href={item.path} className={styles.mobileMegaMenuItem}>
                                 {item.label}
                               </Link>
                             </li>
@@ -177,17 +190,20 @@ export default function Header() {
                 </div>
               );
             }
+            const active = isLinkActive(link.path);
             return (
-              <NavLink
+              <Link
                 key={link.path}
-                to={link.path}
-                className={({ isActive }) => [styles.mobileLink, isActive ? styles.active : ''].join(' ')}
+                href={link.path}
+                className={[styles.mobileLink, active ? styles.active : ''].filter(Boolean).join(' ')}
               >
                 {link.label}
-              </NavLink>
+              </Link>
             );
           })}
-          <Link to="/contact" className={styles.mobileCta}>Free AI Strategy</Link>
+          <Link href="/contact" className={styles.mobileCta}>
+            Free AI Strategy
+          </Link>
         </div>
       </nav>
     </header>

@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { SITE_INFO, FOOTER_LINKS } from '../../data/staticData';
 import styles from './Footer.module.css';
 
@@ -50,7 +52,6 @@ export default function Footer() {
   const handleNewsletter = (e) => {
     e.preventDefault();
     if (!email) return;
-    // TODO: wire up to WP API
     setSubmitted(true);
   };
 
@@ -99,7 +100,7 @@ export default function Footer() {
               <h4>Capabilities</h4>
               <ul>
                 {FOOTER_LINKS.capabilities.map((l) => (
-                  <li key={l.label}><Link to={l.path}>{l.label}</Link></li>
+                  <li key={l.label}><Link href={l.path}>{l.label}</Link></li>
                 ))}
               </ul>
             </div>
@@ -107,7 +108,7 @@ export default function Footer() {
               <h4>Company</h4>
               <ul>
                 {FOOTER_LINKS.company.map((l) => (
-                  <li key={l.label}><Link to={l.path}>{l.label}</Link></li>
+                  <li key={l.label}><Link href={l.path}>{l.label}</Link></li>
                 ))}
               </ul>
             </div>
@@ -118,7 +119,7 @@ export default function Footer() {
                   <li key={l.label}>
                     {l.external
                       ? <a href={l.path}>{l.label}</a>
-                      : <Link to={l.path}>{l.label}</Link>
+                      : <Link href={l.path}>{l.label}</Link>
                     }
                   </li>
                 ))}

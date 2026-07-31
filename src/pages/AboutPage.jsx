@@ -1,4 +1,6 @@
-import { Helmet } from 'react-helmet-async';
+'use client';
+
+// AboutPage view component
 import { TEAM_MEMBERS, CORE_VALUES, ABOUT_STATS } from '../data/staticData';
 import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
@@ -7,11 +9,6 @@ import styles from './AboutPage.module.css';
 export default function AboutPage() {
   return (
     <>
-      <Helmet>
-        <title>About Us | Markencia</title>
-        <meta name="description" content="We are a collective of data scientists, creative strategists, and growth hackers united by one goal: engineering predictable revenue for our partners." />
-        <link rel="canonical" href="https://markencia.com/about" />
-      </Helmet>
       {/* ── 1. HERO ── */}
       <section className={styles.hero}>
         <div className="mk-container">

@@ -1,6 +1,7 @@
-import { Helmet } from 'react-helmet-async';
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
 import styles from './CaseStudiesPage.module.css';
@@ -12,11 +13,6 @@ export default function CaseStudiesPage() {
   const filteredCaseStudies = CASE_STUDIES.filter(cs => activeFilter === 'All Work' || cs.category === activeFilter);
   return (
     <>
-      <Helmet>
-        <title>Case Studies | Markencia</title>
-        <meta name="description" content="Discover how we've helped leading brands scale their revenue through AI and data-driven marketing." />
-        <link rel="canonical" href="https://markencia.com/case-studies" />
-      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Proof of Work</div>
@@ -59,7 +55,7 @@ export default function CaseStudiesPage() {
                     ))}
                   </div>
                   
-                  <Link to={`/case-studies/${cs.slug}`} className={styles.readMore}>
+                  <Link href={`/case-studies/${cs.slug}`} className={styles.readMore}>
                     Read Full Case Study <span className={styles.arrow}>→</span>
                   </Link>
                 </div>
