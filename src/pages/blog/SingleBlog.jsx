@@ -90,7 +90,14 @@ export default function SingleBlog({ slug: slugProp } = {}) {
         const wpData = await getPostBySlug(slug, { signal });
         resolvedPost = mapWordPressPost(wpData);
       } catch (err) {
-        if (err.name === 'AbortError') return; // Component unmounted — bail.
+        if (
+          controller.signal.aborted ||
+          err.name === 'AbortError' ||
+          err.message?.includes('aborted') ||
+          err.message?.includes('signal')
+        ) {
+          return;
+        }
 
         setFetchError('No blog posts found at the moment. Check back soon!');
         setLoading(false);

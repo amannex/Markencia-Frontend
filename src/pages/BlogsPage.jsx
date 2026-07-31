@@ -47,16 +47,24 @@ export default function BlogsPage() {
           setCategories(['All Articles']);
         }
       } catch (err) {
-        if (err.name === 'AbortError' || controller.signal.aborted) return;
+        if (
+          controller.signal.aborted ||
+          err.name === 'AbortError' ||
+          err.message?.includes('aborted') ||
+          err.message?.includes('signal') ||
+          err.message?.includes('cancelled')
+        ) {
+          return;
+        }
 
         if (retries > 0) {
-          // Retry once after 600ms if rapid refresh / connection reset occurred
           setTimeout(() => {
             if (!controller.signal.aborted) fetchPosts(retries - 1);
           }, 600);
           return;
         }
 
+        // Graceful fallback when WordPress API is not running locally
         console.warn('WordPress API unreachable on /blogs:', err.message);
         setPosts([]);
         setCategories(['All Articles']);

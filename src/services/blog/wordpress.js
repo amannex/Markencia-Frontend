@@ -42,32 +42,34 @@ const DEFAULT_TIMEOUT_MS = 12000;
  */
 async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}) {
   // Create an internal timeout controller.
-  // If the caller also provides a signal we link them together
-  // so that either one can abort the request.
+  if (externalSignal?.aborted) {
+    const abortError = new Error('Request was cancelled.');
+    abortError.name = 'AbortError';
+    throw abortError;
+  }
+
   const timeoutController = new AbortController();
   const timeoutId = setTimeout(() => timeoutController.abort(), DEFAULT_TIMEOUT_MS);
 
-  // Combine the external signal (from React) with the internal timeout.
-  // If the external signal fires first, it cancels the request.
-  // If the timeout fires first, it cancels the request.
-  const combinedSignal = externalSignal
-    ? AbortSignal.any([externalSignal, timeoutController.signal])
-    : timeoutController.signal;
+  // Safely forward external aborts without AbortSignal.any to prevent browser extension errors
+  const onAbort = () => timeoutController.abort();
+  if (externalSignal) {
+    externalSignal.addEventListener('abort', onAbort, { once: true });
+  }
 
   try {
     const response = await fetch(endpoint, {
       headers: { 'Accept': 'application/json' },
-      signal: combinedSignal,
+      signal: timeoutController.signal,
       ...restOptions,
     });
 
     if (!response.ok) {
-      // Build a descriptive error from the WP REST API response.
       let errorBody = {};
       try {
         errorBody = await response.json();
       } catch {
-        // Response body wasn't JSON; that's fine, we still have status.
+        // Response body wasn't JSON; status is sufficient.
       }
       const error = new Error(
         errorBody.message || `WordPress API Error: ${response.status} ${response.statusText}`
@@ -80,8 +82,13 @@ async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}
     const body = await response.json();
     return { body, headers: response.headers };
   } catch (err) {
-    // Re-throw AbortError with a cleaner message for consumer hooks.
-    if (err.name === 'AbortError') {
+    if (
+      err.name === 'AbortError' ||
+      externalSignal?.aborted ||
+      timeoutController.signal.aborted ||
+      err.message?.includes('aborted') ||
+      err.message?.includes('signal')
+    ) {
       const abortError = new Error('Request was cancelled.');
       abortError.name = 'AbortError';
       abortError.endpoint = endpoint;
@@ -90,6 +97,9 @@ async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}
     throw err;
   } finally {
     clearTimeout(timeoutId);
+    if (externalSignal) {
+      externalSignal.removeEventListener('abort', onAbort);
+    }
   }
 }
 
