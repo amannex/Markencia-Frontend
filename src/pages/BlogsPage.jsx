@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../services/blog/wordpress';
-import { mapWordPressPost } from '../services/blogFallback';
+import { mapWordPressPost, mapStaticPost } from '../services/blogFallback';
+import { BLOG_POSTS, BLOG_CATEGORIES } from '../data/staticData';
 import BlogCard from '../components/ui/BlogCard';
 import BlogCardSkeleton from '../components/ui/blog/BlogCardSkeleton';
 import styles from './BlogsPage.module.css';
@@ -43,8 +44,10 @@ export default function BlogsPage() {
           ];
           setCategories(uniqueCategories);
         } else {
-          setPosts([]);
-          setCategories(['All Articles']);
+          // Fallback to rich static articles when WordPress has no posts or is offline
+          const fallbackPosts = BLOG_POSTS.map(mapStaticPost);
+          setPosts(fallbackPosts);
+          setCategories(BLOG_CATEGORIES);
         }
       } catch (err) {
         if (
@@ -64,10 +67,11 @@ export default function BlogsPage() {
           return;
         }
 
-        // Graceful fallback when WordPress API is not running locally
-        console.warn('WordPress API unreachable on /blogs:', err.message);
-        setPosts([]);
-        setCategories(['All Articles']);
+        // Seamless fallback to static blog articles when local WordPress API is not running
+        console.warn('WordPress API unreachable on /blogs — using fallback articles:', err.message);
+        const fallbackPosts = BLOG_POSTS.map(mapStaticPost);
+        setPosts(fallbackPosts);
+        setCategories(BLOG_CATEGORIES);
       } finally {
         if (!controller.signal.aborted) {
           setLoading(false);

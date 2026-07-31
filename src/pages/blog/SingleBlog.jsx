@@ -21,7 +21,8 @@ import { useParams } from 'next/navigation';
 
 // ── Services ────────────────────────────────────────────────
 import { getPostBySlug, getRelatedPosts, getFaqsBySearch } from '../../services/blog/wordpress';
-import { mapWordPressPost } from '../../services/blogFallback';
+import { mapWordPressPost, mapStaticPost } from '../../services/blogFallback';
+import { BLOG_POSTS } from '../../data/staticData';
 
 // ── Blog domain hooks ────────────────────────────────────────
 import { useReadingTime }                          from '../../hooks/blog/useReadingTime';
@@ -99,9 +100,15 @@ export default function SingleBlog({ slug: slugProp } = {}) {
           return;
         }
 
-        setFetchError('No blog posts found at the moment. Check back soon!');
-        setLoading(false);
-        return;
+        // Fallback: Check local static blog posts when WordPress API is unreachable
+        const staticMatch = BLOG_POSTS.find((p) => p.slug === slug);
+        if (staticMatch) {
+          resolvedPost = mapStaticPost(staticMatch);
+        } else {
+          setFetchError('No blog posts found at the moment. Check back soon!');
+          setLoading(false);
+          return;
+        }
       }
 
       setPost(resolvedPost);
@@ -145,7 +152,12 @@ export default function SingleBlog({ slug: slugProp } = {}) {
         const rawRelated = await getRelatedPosts(resolvedPost, { count: 3, signal });
         setRelatedPosts(rawRelated.map(mapWordPressPost));
       } catch {
-        setRelatedPosts([]);
+        // Fallback to static related posts when WP API is offline
+        const staticRelated = BLOG_POSTS
+          .filter((p) => p.slug !== resolvedPost?.slug)
+          .slice(0, 3)
+          .map(mapStaticPost);
+        setRelatedPosts(staticRelated);
       }
 
     }
