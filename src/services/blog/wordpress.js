@@ -43,30 +43,24 @@ const DEFAULT_TIMEOUT_MS = 12000;
 async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}) {
   // Create an internal timeout controller.
   if (externalSignal?.aborted) {
-    const abortError = new Error('Request was cancelled.');
-    abortError.name = 'AbortError';
-    throw abortError;
+    return { body: [], headers: new Headers() };
   }
 
   const timeoutController = new AbortController();
-  const timeoutId = setTimeout(() => timeoutController.abort('Request timed out'), DEFAULT_TIMEOUT_MS);
-
-  // Safely forward external aborts with an explicit reason to prevent browser extension / Next.js errors
-  const onAbort = () => {
+  const timeoutId = setTimeout(() => {
     try {
-      timeoutController.abort('Request cancelled');
-    } catch {
-      // ignore
-    }
-  };
-  if (externalSignal) {
-    externalSignal.addEventListener('abort', onAbort, { once: true });
-  }
+      timeoutController.abort();
+    } catch {}
+  }, DEFAULT_TIMEOUT_MS);
+
+  // Use the external signal directly if provided, otherwise fallback to timeout controller.
+  // We avoid adding any custom addEventListener('abort') listener so Next.js never intercepts AbortSignal.onAbort.
+  const signal = externalSignal || timeoutController.signal;
 
   try {
     const response = await fetch(endpoint, {
       headers: { 'Accept': 'application/json' },
-      signal: timeoutController.signal,
+      signal,
       ...restOptions,
     });
 
@@ -94,9 +88,6 @@ async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}
     return { body: [], headers: new Headers() };
   } finally {
     clearTimeout(timeoutId);
-    if (externalSignal) {
-      externalSignal.removeEventListener('abort', onAbort);
-    }
   }
 }
 
