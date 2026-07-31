@@ -1,6 +1,7 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { SERVICES, STATS, WHY_US_POINTS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
 import ServiceCard from '../components/ui/ServiceCard';
 import TestimonialCard from '../components/ui/TestimonialCard';
@@ -74,11 +75,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Helmet>
-        <title>Markencia | AI-Powered Creative Marketing Agency</title>
-        <meta name="description" content="Scale your brand with AI-driven creative marketing. We combine predictive analytics, automation, and viral creativity to build unstoppable growth systems." />
-        <link rel="canonical" href="https://markencia.com/" />
-      </Helmet>
       {/* ── 1. HERO ── */}
       <section className={styles.hero}>
         <div className={styles.heroShape1} aria-hidden="true" />
@@ -95,7 +91,7 @@ export default function HomePage() {
             unstoppable growth systems for modern brands.
           </p>
           <div className={styles.heroCtas}>
-            <Link to="/contact" className={styles.btnPrimary} id="hero-cta-strategy">
+            <Link href="/contact" className={styles.btnPrimary} id="hero-cta-strategy">
               Get Your Free AI Strategy
             </Link>
             <a href="#services" className={styles.btnSecondary} id="hero-cta-services">

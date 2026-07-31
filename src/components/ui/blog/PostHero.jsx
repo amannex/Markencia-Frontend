@@ -10,7 +10,7 @@
 //   readingTime {string} — e.g. "4 min read" from useReadingTime.
 // ============================================================
 
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowLeft, User, Calendar, Clock } from 'lucide-react';
 import styles from './PostHero.module.css';
 
@@ -31,7 +31,7 @@ export default function PostHero({ post, readingTime }) {
             alt={post.imageAlt}
             className={styles.bgImage}
             // High priority: this is the LCP candidate
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
           />
           <div className={styles.overlay} />
@@ -41,7 +41,7 @@ export default function PostHero({ post, readingTime }) {
       <div className="mk-container" style={{ maxWidth: '1350px', width: '100%' }}>
         <div className={styles.inner}>
           {/* Back navigation */}
-          <Link to="/blogs" className={styles.back}>
+          <Link href="/blogs" className={styles.back}>
             <ArrowLeft size={15} aria-hidden="true" />
             Back to Journal
           </Link>

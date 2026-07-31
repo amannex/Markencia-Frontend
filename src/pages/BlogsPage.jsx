@@ -1,4 +1,5 @@
-import { Helmet } from 'react-helmet-async';
+'use client';
+
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../services/blog/wordpress';
 import { mapWordPressPost } from '../services/blogFallback';
@@ -19,7 +20,7 @@ export default function BlogsPage() {
   }, [activeFilter, search]);
 
   useEffect(() => {
-    const controller = new AbortController();
+    let isMounted = true;
 
     async function fetchPosts(retries = 1) {
       setLoading(true);
@@ -27,10 +28,9 @@ export default function BlogsPage() {
         const { posts: wpPosts } = await getAllPosts({
           _embed: true,
           per_page: 50,
-          signal: controller.signal,
         });
 
-        if (controller.signal.aborted) return;
+        if (!isMounted) return;
 
         if (wpPosts && wpPosts.length > 0) {
           const mapped = wpPosts.map(mapWordPressPost);
@@ -46,21 +46,21 @@ export default function BlogsPage() {
           setCategories(['All Articles']);
         }
       } catch (err) {
-        if (err.name === 'AbortError' || controller.signal.aborted) return;
+        if (!isMounted) return;
 
         if (retries > 0) {
-          // Retry once after 600ms if rapid refresh / connection reset occurred
           setTimeout(() => {
-            if (!controller.signal.aborted) fetchPosts(retries - 1);
+            if (isMounted) fetchPosts(retries - 1);
           }, 600);
           return;
         }
 
+        // Graceful fallback when WordPress API is not running locally
         console.warn('WordPress API unreachable on /blogs:', err.message);
         setPosts([]);
         setCategories(['All Articles']);
       } finally {
-        if (!controller.signal.aborted) {
+        if (isMounted) {
           setLoading(false);
         }
       }
@@ -69,7 +69,7 @@ export default function BlogsPage() {
     fetchPosts();
 
     return () => {
-      controller.abort();
+      isMounted = false;
     };
   }, []);
 
@@ -124,11 +124,6 @@ export default function BlogsPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Journal & Insights | Markencia</title>
-        <meta name="description" content="Data-backed strategies, deep dives, and expert perspectives on AI-driven marketing and growth." />
-        <link rel="canonical" href="https://markencia.com/blogs" />
-      </Helmet>
       {/* Hero */}
       <section className={styles.hero}>
         <div className="mk-container">

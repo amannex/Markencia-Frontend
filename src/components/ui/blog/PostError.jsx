@@ -6,7 +6,7 @@
 //   message {string|null} — Optional error detail from the API.
 // ============================================================
 
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowLeft, FileQuestion } from 'lucide-react';
 
 export default function PostError({ message }) {
@@ -33,7 +33,7 @@ export default function PostError({ message }) {
 
       {/* Recovery CTA */}
       <Link
-        to="/blogs"
+        href="/blogs"
         className="
           inline-flex items-center gap-2 px-7 py-3.5
           bg-[#003818] text-white font-semibold rounded-full

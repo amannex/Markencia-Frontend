@@ -21,24 +21,28 @@ export default function BlogComments({ postId, postSlug }) {
 
   useEffect(() => {
     if (!postId) return;
-    const controller = new AbortController();
+    let isMounted = true;
 
     async function fetchComments() {
       setLoading(true);
       try {
-        const data = await getCommentsByPostId(postId, { signal: controller.signal });
+        const data = await getCommentsByPostId(postId);
+        if (!isMounted) return;
         setComments(data);
       } catch (err) {
-        if (err.name !== 'AbortError') {
-          setComments([]);
-        }
+        if (!isMounted) return;
+        setComments([]);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchComments();
-    return () => controller.abort();
+    return () => {
+      isMounted = false;
+    };
   }, [postId]);
 
   const handleChange = (e) => {

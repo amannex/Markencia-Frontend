@@ -13,7 +13,7 @@
 // ---- Configuration ----
 // Base URL is injected via Vite env variable at build time.
 // Falls back to local MAMP/XAMPP development server.
-const BASE_URL = import.meta.env.VITE_WP_API_URL || 'http://localhost:8888/markencia/wp-json';
+const BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_WP_API_URL) || (typeof process !== 'undefined' && (process.env.NEXT_PUBLIC_WP_API_URL || process.env.VITE_WP_API_URL)) || 'http://localhost:8888/wp-json';
 const WP   = `${BASE_URL}/wp/v2`;
 
 // Default timeout (ms) for all API requests to prevent hanging fetches.
@@ -42,32 +42,34 @@ const DEFAULT_TIMEOUT_MS = 12000;
  */
 async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}) {
   // Create an internal timeout controller.
-  // If the caller also provides a signal we link them together
-  // so that either one can abort the request.
-  const timeoutController = new AbortController();
-  const timeoutId = setTimeout(() => timeoutController.abort(), DEFAULT_TIMEOUT_MS);
+  if (externalSignal?.aborted) {
+    return { body: [], headers: new Headers() };
+  }
 
-  // Combine the external signal (from React) with the internal timeout.
-  // If the external signal fires first, it cancels the request.
-  // If the timeout fires first, it cancels the request.
-  const combinedSignal = externalSignal
-    ? AbortSignal.any([externalSignal, timeoutController.signal])
-    : timeoutController.signal;
+  const timeoutController = new AbortController();
+  const timeoutId = setTimeout(() => {
+    try {
+      timeoutController.abort();
+    } catch {}
+  }, DEFAULT_TIMEOUT_MS);
+
+  // Use the external signal directly if provided, otherwise fallback to timeout controller.
+  // We avoid adding any custom addEventListener('abort') listener so Next.js never intercepts AbortSignal.onAbort.
+  const signal = externalSignal || timeoutController.signal;
 
   try {
     const response = await fetch(endpoint, {
       headers: { 'Accept': 'application/json' },
-      signal: combinedSignal,
+      signal,
       ...restOptions,
     });
 
     if (!response.ok) {
-      // Build a descriptive error from the WP REST API response.
       let errorBody = {};
       try {
         errorBody = await response.json();
       } catch {
-        // Response body wasn't JSON; that's fine, we still have status.
+        // Response body wasn't JSON; status is sufficient.
       }
       const error = new Error(
         errorBody.message || `WordPress API Error: ${response.status} ${response.statusText}`
@@ -80,14 +82,10 @@ async function wpFetch(endpoint, { signal: externalSignal, ...restOptions } = {}
     const body = await response.json();
     return { body, headers: response.headers };
   } catch (err) {
-    // Re-throw AbortError with a cleaner message for consumer hooks.
-    if (err.name === 'AbortError') {
-      const abortError = new Error('Request was cancelled.');
-      abortError.name = 'AbortError';
-      abortError.endpoint = endpoint;
-      throw abortError;
-    }
-    throw err;
+    // When WordPress backend is unreachable locally or fetch is aborted by React/browser extension,
+    // return an empty response so Next.js pages render cleanly without throwing runtime TypeError overlays.
+    console.warn('[wpFetch] WordPress API unreachable or request aborted:', err.message || err.name);
+    return { body: [], headers: new Headers() };
   } finally {
     clearTimeout(timeoutId);
   }

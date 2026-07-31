@@ -242,7 +242,7 @@ export const TEAM_MEMBERS = [
     name: 'Aman Saifi',
     role: 'Founder & CEO',
     bio: 'Former tech lead turned marketing polymath, pioneering AI-integrated growth models.',
-    photo: 'src/assets/images/founder&ceo.png',
+    photo: '/images/founder&ceo.png',
   },
   {
     id: 2,

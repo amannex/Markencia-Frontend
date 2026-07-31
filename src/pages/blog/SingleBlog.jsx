@@ -14,9 +14,10 @@
 //   6. Fetch related posts independently (non-blocking).
 // ============================================================
 
+'use client';
+
 import { lazy, Suspense, useState, useEffect, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { useParams } from 'next/navigation';
 
 // ── Services ────────────────────────────────────────────────
 import { getPostBySlug, getRelatedPosts, getFaqsBySearch } from '../../services/blog/wordpress';
@@ -57,8 +58,9 @@ const BlogComments    = lazy(() => import('../../components/sections/blog/BlogCo
 // ============================================================
 // Component
 // ============================================================
-export default function SingleBlog() {
-  const { slug } = useParams();
+export default function SingleBlog({ slug: slugProp } = {}) {
+  const params = useParams();
+  const slug = slugProp || params?.slug;
 
   // ── Core data state ──────────────────────────────────────
   const [post, setPost]               = useState(null);
@@ -72,8 +74,7 @@ export default function SingleBlog() {
   useEffect(() => {
     if (!slug) return;
 
-    const controller = new AbortController();
-    const { signal } = controller;
+    let isMounted = true;
 
     setLoading(true);
     setFetchError(null);
@@ -85,16 +86,18 @@ export default function SingleBlog() {
 
       try {
         // Primary: live WordPress REST API
-        const wpData = await getPostBySlug(slug, { signal });
+        const wpData = await getPostBySlug(slug);
+        if (!isMounted) return;
         resolvedPost = mapWordPressPost(wpData);
       } catch (err) {
-        if (err.name === 'AbortError') return; // Component unmounted — bail.
+        if (!isMounted) return;
 
         setFetchError('No blog posts found at the moment. Check back soon!');
         setLoading(false);
         return;
       }
 
+      if (!isMounted) return;
       setPost(resolvedPost);
       setLoading(false);
 
@@ -113,14 +116,16 @@ export default function SingleBlog() {
 
           // Priority 2: Search WP REST API for FAQs matching the article's keywords (/wp-json/wp/v2/faqs?search=...)
           if (keywords) {
-            matchingFaqs = await getFaqsBySearch({ search: keywords, per_page: 5, signal });
+            matchingFaqs = await getFaqsBySearch({ search: keywords, per_page: 5 });
           }
 
           // Priority 3: If no keyword-specific FAQs are found, automatically query the latest published FAQs (/wp-json/wp/v2/faqs?per_page=5)
+          if (!isMounted) return;
           if (!matchingFaqs || matchingFaqs.length === 0) {
-            matchingFaqs = await getFaqsBySearch({ per_page: 5, signal });
+            matchingFaqs = await getFaqsBySearch({ per_page: 5 });
           }
 
+          if (!isMounted) return;
           if (matchingFaqs && matchingFaqs.length > 0) {
             setPost((prev) => prev ? { ...prev, faqs: matchingFaqs } : prev);
           }
@@ -133,9 +138,11 @@ export default function SingleBlog() {
       // getRelatedPosts returns a raw array of WP objects (with _embed),
       // so we map each one through mapWordPressPost for a consistent shape.
       try {
-        const rawRelated = await getRelatedPosts(resolvedPost, { count: 3, signal });
+        const rawRelated = await getRelatedPosts(resolvedPost, { count: 3 });
+        if (!isMounted) return;
         setRelatedPosts(rawRelated.map(mapWordPressPost));
       } catch {
+        if (!isMounted) return;
         setRelatedPosts([]);
       }
 
@@ -143,8 +150,10 @@ export default function SingleBlog() {
 
     load();
 
-    // Abort all in-flight requests when slug changes or unmounts.
-    return () => controller.abort();
+    // Prevent state updates on unmounted component without aborting requests
+    return () => {
+      isMounted = false;
+    };
   }, [slug]);
 
   // ── Domain hooks (run after post is resolved) ────────────
@@ -192,21 +201,6 @@ export default function SingleBlog() {
   // ── Layout ───────────────────────────────────────────────
   return (
     <div>
-      {/* ── SEO ── */}
-      <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description"        content={seoDescription} />
-        <meta property="og:title"       content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
-        <meta property="og:type"        content="article" />
-        <meta property="og:url"         content={seoUrl} />
-        {seoImage && <meta property="og:image" content={seoImage} />}
-        <meta name="twitter:card"        content={twitterCard} />
-        <meta name="twitter:title"       content={seoTitle} />
-        <meta name="twitter:description" content={seoDescription} />
-        {seoImage && <meta name="twitter:image" content={seoImage} />}
-      </Helmet>
-
       {/* ── Reading progress indicator (fixed, above header) ── */}
       <ReadingProgressBar progress={scrollProgress} />
 

@@ -1,5 +1,6 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
 import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
@@ -80,11 +81,6 @@ export default function PricingPage() {
   };
   return (
     <>
-      <Helmet>
-        <title>Pricing | Markencia</title>
-        <meta name="description" content="Transparent pricing for AI-powered marketing growth systems." />
-        <link rel="canonical" href="https://markencia.com/pricing" />
-      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Simple Pricing</div>

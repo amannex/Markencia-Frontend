@@ -3,7 +3,7 @@
 // Handles contact form submissions and newsletter subscriptions
 // ============================================================
 
-const BASE_URL = import.meta.env.VITE_WP_API_URL || 'http://localhost:8888/wp-json/';
+const BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_WP_API_URL) || (typeof process !== 'undefined' && (process.env.NEXT_PUBLIC_WP_API_URL || process.env.VITE_WP_API_URL)) || 'http://localhost:8888/wp-json/';
 
 // ---- Generic fetch helper ----
 async function apiFetch(url, options = {}) {

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import styles from './BlogCard.module.css';
 
 export default function BlogCard({ post, featured = false }) {
@@ -7,7 +7,7 @@ export default function BlogCard({ post, featured = false }) {
   return (
     <article className={[styles.card, featured ? styles.featured : ''].filter(Boolean).join(' ')}>
       <div className={styles.imageWrapper}>
-        <Link to={`/blogs/${slug}`} className={styles.imageLink} aria-label={title}>
+        <Link href={`/blogs/${slug}`} className={styles.imageLink} aria-label={title}>
           {post.featuredImage ? (
             <img 
               src={post.featuredImage} 
@@ -29,11 +29,11 @@ export default function BlogCard({ post, featured = false }) {
           {readTime && <><span className={styles.sep}>•</span><span>{readTime}</span></>}
         </div>
         {featured
-          ? <h2 className={styles.title}><Link to={`/blogs/${slug}`}>{title}</Link></h2>
-          : <h3 className={styles.title}><Link to={`/blogs/${slug}`}>{title}</Link></h3>
+          ? <h2 className={styles.title}><Link href={`/blogs/${slug}`}>{title}</Link></h2>
+          : <h3 className={styles.title}><Link href={`/blogs/${slug}`}>{title}</Link></h3>
         }
         <p className={styles.excerpt}>{excerpt}</p>
-        <Link to={`/blogs/${slug}`} className={styles.readMore}>Read Full Article</Link>
+        <Link href={`/blogs/${slug}`} className={styles.readMore}>Read Full Article</Link>
       </div>
     </article>
   );

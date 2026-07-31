@@ -1,5 +1,6 @@
+'use client';
+
 import { useState, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
 import CTASection from '../components/sections/CTASection';
 import styles from './WorksPage.module.css';
 import { WORKS_CATEGORIES, WORKS } from '../data/staticData';
@@ -29,11 +30,6 @@ export default function WorksPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Our Work | Markencia</title>
-        <meta name="description" content="Explore our portfolio of cutting-edge marketing and design projects." />
-        <link rel="canonical" href="https://markencia.com/our-works" />
-      </Helmet>
       <section className={styles.hero}>
         <div className="mk-container">
           <div className="mk-hero-badge">Portfolio</div>
