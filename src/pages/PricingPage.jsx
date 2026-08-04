@@ -99,11 +99,23 @@ export default function PricingPage() {
         order_id:    data.orderId,
         theme:       { color: '#7C3AED' }, // Markencia purple
 
-        // 4a. On payment success
-        handler: function (response) {
-          // TODO: Optionally verify payment on server-side via a /verify-payment endpoint
-          alert(`✅ Payment Successful!\nPayment ID: ${response.razorpay_payment_id}`);
-          // window.location.href = '/thank-you'; // Redirect to a thank-you page
+        // 4a. On payment success — verify server-side and send confirmation email
+        handler: async function (response) {
+          try {
+            const confirmUrl = `${process.env.NEXT_PUBLIC_WP_API_URL}/markencia/v1/confirm-payment`;
+            await axios.post(confirmUrl, {
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id:   response.razorpay_order_id,
+              razorpay_signature:  response.razorpay_signature,
+              planName:            plan.name,
+            });
+            // Redirect to thank-you page after confirmation
+            window.location.href = `/thank-you?plan=${encodeURIComponent(plan.name)}&pid=${response.razorpay_payment_id}`;
+          } catch (err) {
+            // Payment was captured — email may have failed, but don't block user
+            console.warn('Confirmation email error (payment still succeeded):', err);
+            window.location.href = `/thank-you?plan=${encodeURIComponent(plan.name)}&pid=${response.razorpay_payment_id}`;
+          }
         },
 
         // 4b. Prefill user details if available
@@ -114,7 +126,7 @@ export default function PricingPage() {
         },
 
         modal: {
-          // 4c. On modal dismiss / failure
+          // 4c. On modal dismiss — just reset the loading state
           ondismiss: function () {
             setLoadingPlan(null);
           },
@@ -123,10 +135,19 @@ export default function PricingPage() {
 
       const rzp = new window.Razorpay(options);
 
-      // Handle payment failures (card decline, etc.)
+      // Handle REAL payment failures (card decline, insufficient funds, etc.)
+      // NOTE: Razorpay also fires this on modal close with an empty error object.
+      // We guard against that by checking for a valid error code.
       rzp.on('payment.failed', function (response) {
-        console.error('Razorpay payment failed:', response.error);
-        alert(`❌ Payment Failed: ${response.error.description}`);
+        const errCode = response?.error?.code;
+        const errDesc = response?.error?.description || response?.error?.reason || 'Payment was not completed.';
+
+        if (errCode) {
+          // Real failure (e.g. BAD_REQUEST_ERROR, GATEWAY_ERROR)
+          console.error('Razorpay payment failed:', response.error);
+          alert(`❌ Payment Failed: ${errDesc}`);
+        }
+        // If no error code → user just closed the modal (handled by ondismiss above)
         setLoadingPlan(null);
       });
 
