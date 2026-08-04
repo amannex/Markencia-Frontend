@@ -6,41 +6,57 @@ import CTASection from '../components/sections/CTASection';
 import SectionHead from '../components/ui/SectionHead';
 import styles from './PricingPage.module.css';
 
+// Prices must be in paise (1 INR = 100 paise)
 const PRICING_PLANS = [
   {
     name: 'Starter',
     price: '₹25,000',
+    amountPaise: 2500000, // ₹25,000 × 100
     period: '/month',
     desc: 'Perfect for small businesses taking their first step into AI marketing.',
     features: ['AI Market Research', '2 Ad Campaigns/month', 'Email Automation Setup', 'Monthly Report', 'Dedicated Account Manager'],
     cta: 'Get Started',
     popular: false,
-    stripePriceId: 'price_1TseyWK1238yEf796RNfXJ14', // ⚠️ REPLACE THIS
     isCustom: false,
   },
   {
     name: 'Growth',
     price: '₹60,000',
+    amountPaise: 6000000, // ₹60,000 × 100
     period: '/month',
     desc: 'For scaling businesses ready to go all-in on AI-driven revenue.',
     features: ['Full Predictive Analytics Suite', 'Unlimited Ad Campaigns', 'WhatsApp + Email Automation', 'Weekly Reports & Optimization', 'Landing Page Development', 'CRM Integration'],
     cta: 'Most Popular',
     popular: true,
-    stripePriceId: 'price_1TsdSPK1238yEf79Tv1PEe4p', // ⚠️ REPLACE THIS
     isCustom: false,
   },
   {
     name: 'Enterprise',
     price: 'Custom',
+    amountPaise: null,
     period: '',
     desc: 'Full-scale AI growth infrastructure for high-growth companies.',
     features: ['Everything in Growth', 'Custom AI Models', 'Dedicated Team of Specialists', 'Priority 24/7 Support', 'Quarterly Strategy Summits', 'White-label Solutions'],
     cta: 'Contact Us',
     popular: false,
-    stripePriceId: null,
-    isCustom: true, // true lets us skip Stripe processing and handle manually
+    isCustom: true,
   },
 ];
+
+/**
+ * Dynamically load the Razorpay checkout.js script.
+ * Safe to call multiple times — resolves immediately if already loaded.
+ */
+function loadRazorpayScript() {
+  return new Promise((resolve) => {
+    if (window.Razorpay) return resolve(true);
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload  = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+}
 
 export default function PricingPage() {
 
@@ -48,7 +64,7 @@ export default function PricingPage() {
   const [loadingPlan, setLoadingPlan] = useState(null);
 
   const handlePlanSelection = async (plan) => {
-    // If it's the custom enterprise tier, immediately forward them to your contact forms
+    // Enterprise tier → forward to contact page
     if (plan.isCustom) {
       window.location.href = '/contact';
       return;
@@ -56,29 +72,74 @@ export default function PricingPage() {
 
     try {
       setLoadingPlan(plan.name);
-      
-      // Uses NEXT_PUBLIC_WP_API_URL from .env (e.g. https://markencia.com/cms/wp-json)
-      const wpBackendUrl = `${process.env.NEXT_PUBLIC_WP_API_URL}/markencia/v1/create-checkout`;
 
-      // Request a checkout session from WordPress
-      const response = await axios.post(wpBackendUrl, {
-        priceId: plan.stripePriceId
+      // 1. Load Razorpay checkout SDK
+      const sdkLoaded = await loadRazorpayScript();
+      if (!sdkLoaded) throw new Error('Razorpay SDK failed to load. Check your internet connection.');
+
+      // 2. Ask our WordPress backend to create a Razorpay order
+      const wpApiUrl = `${import.meta.env.VITE_WP_API_URL}/markencia/v1/create-razorpay-order`;
+      const { data } = await axios.post(wpApiUrl, {
+        amount:   plan.amountPaise,
+        currency: 'INR',
+        planName: plan.name,
       });
 
-      // Redirect the client to the hosted Stripe checkout session screen
-      if (response.data && response.data.checkoutUrl) {
-        window.location.href = response.data.checkoutUrl;
-      } else {
-        throw new Error("Invalid URL signature returned from API");
+      if (!data.success || !data.orderId) {
+        throw new Error('Invalid order response from server.');
       }
 
+      // 3. Open the Razorpay payment modal
+      const options = {
+        key:         data.keyId,       // rzp_test_... (safe to use on frontend)
+        amount:      data.amount,      // in paise (echoed back from Razorpay)
+        currency:    data.currency,
+        name:        'Markencia',
+        description: `${plan.name} Plan — Monthly Subscription`,
+        order_id:    data.orderId,
+        theme:       { color: '#7C3AED' }, // Markencia purple
+
+        // 4a. On payment success
+        handler: function (response) {
+          // TODO: Optionally verify payment on server-side via a /verify-payment endpoint
+          alert(`✅ Payment Successful!\nPayment ID: ${response.razorpay_payment_id}`);
+          // window.location.href = '/thank-you'; // Redirect to a thank-you page
+        },
+
+        // 4b. Prefill user details if available
+        prefill: {
+          name:    '',
+          email:   '',
+          contact: '',
+        },
+
+        modal: {
+          // 4c. On modal dismiss / failure
+          ondismiss: function () {
+            setLoadingPlan(null);
+          },
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+
+      // Handle payment failures (card decline, etc.)
+      rzp.on('payment.failed', function (response) {
+        console.error('Razorpay payment failed:', response.error);
+        alert(`❌ Payment Failed: ${response.error.description}`);
+        setLoadingPlan(null);
+      });
+
+      rzp.open();
+
     } catch (error) {
-      console.error("Stripe Checkout Redirect Failed:", error);
-      alert("System busy. We couldn't connect to the payment gateway. Please try again.");
+      console.error('Razorpay Checkout Error:', error);
+      alert('Could not initiate payment. Please try again or contact us.');
     } finally {
       setLoadingPlan(null);
     }
   };
+
   return (
     <>
       <section className={styles.hero}>
@@ -102,8 +163,7 @@ export default function PricingPage() {
                   {plan.features.map((f) => <li key={f}>{f}</li>)}
                 </ul>
 
-                {/* Replaced old static anchor link layout tagging with custom interactive buttons */}
-                <button 
+                <button
                   onClick={() => handlePlanSelection(plan)}
                   disabled={loadingPlan !== null}
                   className={[styles.planBtn, plan.popular ? styles.planBtnPrimary : styles.planBtnOutline].join(' ')}
@@ -117,13 +177,14 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <CTASection 
-        showForm={false} 
-        title='Still Have <span class="mk-highlight-text">Questions?</span>' 
-        subtitle="Talk to our team and we'll build a custom plan around your exact goals." 
-        buttonText="Book a Free Call" 
-        buttonHref="/contact" 
+      <CTASection
+        showForm={false}
+        title='Still Have <span class="mk-highlight-text">Questions?</span>'
+        subtitle="Talk to our team and we'll build a custom plan around your exact goals."
+        buttonText="Book a Free Call"
+        buttonHref="/contact"
       />
     </>
   );
 }
+
