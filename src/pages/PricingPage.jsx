@@ -57,8 +57,8 @@ export default function PricingPage() {
     try {
       setLoadingPlan(plan.name);
       
-      // ⚠️ REPLACE THIS DOMAIN WITH YOUR ACTUAL LIVE WORDPRESS BACKEND DOMAIN ADDRESS
-      const wpBackendUrl = 'http://localhost:8888/wp-json/markencia/v1/create-checkout';
+      // Uses NEXT_PUBLIC_WP_API_URL from .env (e.g. https://markencia.com/cms/wp-json)
+      const wpBackendUrl = `${process.env.NEXT_PUBLIC_WP_API_URL}/markencia/v1/create-checkout`;
 
       // Request a checkout session from WordPress
       const response = await axios.post(wpBackendUrl, {
