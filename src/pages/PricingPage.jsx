@@ -78,7 +78,7 @@ export default function PricingPage() {
       if (!sdkLoaded) throw new Error('Razorpay SDK failed to load. Check your internet connection.');
 
       // 2. Ask our WordPress backend to create a Razorpay order
-      const wpApiUrl = `${import.meta.env.VITE_WP_API_URL}/markencia/v1/create-razorpay-order`;
+      const wpApiUrl = `${process.env.NEXT_PUBLIC_WP_API_URL}/markencia/v1/create-razorpay-order`;
       const { data } = await axios.post(wpApiUrl, {
         amount:   plan.amountPaise,
         currency: 'INR',
