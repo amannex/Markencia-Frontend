@@ -52,7 +52,8 @@
 }
 
 .heroContainer {
-  max-width: 800px;
+  max-width: 1140px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   position: relative;
@@ -60,9 +61,9 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
   color: var(--mk-text-white);
   letter-spacing: -1px;
@@ -71,6 +72,7 @@
 .heroAccent {
   color: var(--mk-secondary);
   position: relative;
+  white-space: nowrap;
 }
 
 .heroSubtitle {
