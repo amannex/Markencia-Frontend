@@ -80,22 +80,22 @@ export default function HomePage() {
         <div className={styles.heroShape1} aria-hidden="true" />
         <div className={styles.heroShape2} aria-hidden="true" />
         <div className={styles.heroContainer}>
-          <div className="mk-hero-badge">Welcome to the Future of Marketing</div>
+          <div className="mk-hero-badge">AI &amp; DIGITAL TRANSFORMATION CONSULTANCY</div>
           <h1 className={styles.heroTitle}>
-            Scale Your Brand with{' '}
-            <span className={styles.heroAccent}>AI-Driven</span>{' '}
-            Creative Marketing
+            Turn Business Bottlenecks Into{' '}
+            <span className={styles.heroAccent}>AI-Powered</span>{' '}
+            Systems.
           </h1>
           <p className={styles.heroSubtitle}>
-            We combine predictive analytics, automation, and viral creativity to build
-            unstoppable growth systems for modern brands.
+            We help businesses identify repetitive work, streamline operations, and implement
+            AI-powered systems that save time, reduce costs, and help teams scale.
           </p>
           <div className={styles.heroCtas}>
             <Link href="/contact" className={styles.btnPrimary} id="hero-cta-strategy">
-              Get Your Free AI Strategy
+              Book an AI Strategy Call &rarr;
             </Link>
             <a href="#services" className={styles.btnSecondary} id="hero-cta-services">
-              Explore Services
+              Explore Our Solutions
             </a>
           </div>
         </div>

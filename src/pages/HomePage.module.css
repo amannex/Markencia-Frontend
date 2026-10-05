@@ -44,15 +44,15 @@
   bottom: -150px; right: -150px;
   pointer-events: none;
   box-shadow: 
-      inset -40px -40px 80px rgba(0,0,0,0.5), 
-      inset 20px 20px 60px rgba(255,255,255,0.2), 
-      0 20px 50px rgba(0,0,0,0.3);
-    opacity: 0.3;
-    z-index: 0;
+      inset 40px 40px 80px rgba(0,0,0,0.5), 
+      inset -20px -20px 60px rgba(255,255,255,0.2);
+  opacity: 0.3;
+  z-index: 0;
 }
 
 .heroContainer {
-  max-width: 800px;
+  max-width: 1140px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   position: relative;
@@ -62,7 +62,7 @@
 .heroTitle {
   font-size: clamp(2.8rem, 5.5vw, 5.2rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 1.5rem;
   color: var(--mk-text-white);
   letter-spacing: -1px;
@@ -71,12 +71,13 @@
 .heroAccent {
   color: var(--mk-secondary);
   position: relative;
+  white-space: nowrap;
 }
 
 .heroSubtitle {
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   color: var(--mk-text-white);
-  max-width: 620px;
+  max-width: 820px;
   margin: 0 auto 2.5rem;
   line-height: 1.7;
 }
@@ -91,14 +92,21 @@
 .btnPrimary {
   display: inline-flex;
   align-items: center;
-  padding: 1rem 2.2rem;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  padding: clamp(0.8rem, 1.4vw, 1rem) clamp(1.2rem, 2.2vw, 2rem);
+  min-width: clamp(230px, 32vw, 275px);
+  max-width: 100%;
   background: var(--mk-secondary);
   color: var(--mk-primary);
   font-family: var(--mk-font-heading);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
   border-radius: var(--mk-radius-pill);
   text-decoration: none;
+  border: 1px solid transparent;
+  box-sizing: border-box;
   transition: var(--mk-transition);
   box-shadow: 0 6px 20px rgba(0, 56, 24, 0.3);
 }
@@ -112,15 +120,21 @@
 .btnSecondary {
   display: inline-flex;
   align-items: center;
-  padding: 1rem 2.2rem;
-  background: var(--mk-primary-hover);;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  padding: clamp(0.8rem, 1.4vw, 1rem) clamp(1.2rem, 2.2vw, 2rem);
+  min-width: clamp(230px, 32vw, 275px);
+  max-width: 100%;
+  background: var(--mk-primary-hover);
   color: var(--mk-text-white);
   font-family: var(--mk-font-heading);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
   border-radius: var(--mk-radius-pill);
   text-decoration: none;
   border: 1px solid var(--mk-glass-border);
+  box-sizing: border-box;
   transition: var(--mk-transition);
 }
 
@@ -436,6 +450,20 @@
 }
 
 @media (max-width: 600px) {
+  .heroCtas {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .btnPrimary,
+  .btnSecondary {
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+    white-space: nowrap;
+    font-size: clamp(0.82rem, 3.6vw, 0.95rem);
+    padding: 0.85rem clamp(0.8rem, 2vw, 1.4rem);
+  }
   .servicesGrid { grid-template-columns: 1fr; }
   .timeline { grid-template-columns: 1fr; }
   .statsGrid { grid-template-columns: 1fr 1fr; }
