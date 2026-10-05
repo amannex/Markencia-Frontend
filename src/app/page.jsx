@@ -1,9 +1,9 @@
 import HomePage from '../pages/HomePage';
 
 export const metadata = {
-  title: 'Markencia | AI-Powered Creative Marketing Agency',
+  title: 'Markencia | AI & Digital Transformation Consultancy',
   description:
-    'Scale your brand with AI-driven creative marketing. We combine predictive analytics, automation, and viral creativity to build unstoppable growth systems.',
+    'Turn Business Bottlenecks Into AI-Powered Systems. We help businesses identify repetitive work, streamline operations, and implement AI-powered systems that save time, reduce costs, and help teams scale.',
   alternates: {
     canonical: 'https://markencia.com/',
   },
