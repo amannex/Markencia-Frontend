@@ -7,11 +7,12 @@
   min-height: 90vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
   background-color: #004523;
   background: radial-gradient(circle at 85% 25%, #00391D 0%, #004523 60%, #00391D 100%);
-  padding: clamp(7.5rem, 11vw, 9.5rem) clamp(1.2rem, 3.5vw, 3rem) clamp(4.5rem, 7vw, 6.5rem);
+  padding: clamp(7.5rem, 11vw, 9.5rem) clamp(1.2rem, 3.5vw, 3rem) clamp(5rem, 8vw, 7rem);
 }
 
 .heroBgGrid {
@@ -26,63 +27,47 @@
 }
 
 .heroContainer {
-  max-width: 1320px;
+  max-width: 1160px;
   width: 100%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
-  text-align: left;
+  text-align: center;
 }
 
-.heroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: clamp(2.5rem, 4vw, 4.5rem);
-  align-items: center;
-}
-
-/* Left Content Column (approx 45%) */
 .heroContent {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .heroEyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.38rem 0.95rem;
+  display: inline-block;
+  padding: 0.45rem 1.2rem;
   background: rgba(255, 184, 0, 0.12);
   border: 1px solid rgba(255, 184, 0, 0.32);
   border-radius: var(--mk-radius-pill, 50px);
   font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-size: clamp(0.68rem, 1vw, 0.78rem);
+  font-size: clamp(0.7rem, 1vw, 0.82rem);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.4px;
   color: #FFB800;
-  margin-bottom: 1.5rem;
-}
-
-.eyebrowDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #FFB800;
-  box-shadow: 0 0 8px rgba(255, 184, 0, 0.8);
+  margin-bottom: 1.75rem;
 }
 
 .heroTitle {
   font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-size: clamp(2.35rem, 3.8vw, 3.75rem);
+  font-size: clamp(2.5rem, 4.8vw, 4.35rem);
   font-weight: 800;
-  line-height: 1.12;
-  margin-bottom: 1.5rem;
+  line-height: 1.15;
+  margin: 0 auto 1.6rem;
   color: #FFFFFF;
   letter-spacing: -0.025em;
-  text-align: left;
+  text-align: center;
+  max-width: 940px;
 }
 
 .desktopBr {
@@ -97,20 +82,20 @@
 
 .heroSubtitle {
   font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(0.95rem, 1.25vw, 1.125rem);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
   color: rgba(255, 255, 255, 0.82);
-  max-width: 530px;
-  margin: 0 0 2.25rem;
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
   line-height: 1.7;
-  text-align: left;
+  text-align: center;
 }
 
 .heroCtas {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: flex-start;
 }
 
 .btnPrimary {
@@ -119,8 +104,8 @@
   justify-content: center;
   text-align: center;
   white-space: nowrap;
-  padding: 0.88rem 1.85rem;
-  min-width: 220px;
+  padding: 0.88rem 1.95rem;
+  min-width: 230px;
   background: #FFB800;
   color: #10231B;
   font-family: var(--mk-font-heading, 'Outfit', sans-serif);
@@ -146,8 +131,8 @@
   justify-content: center;
   text-align: center;
   white-space: nowrap;
-  padding: 0.88rem 1.85rem;
-  min-width: 195px;
+  padding: 0.88rem 1.95rem;
+  min-width: 205px;
   background: rgba(0, 57, 29, 0.45);
   color: #FFFFFF;
   font-family: var(--mk-font-heading, 'Outfit', sans-serif);
@@ -168,30 +153,14 @@
   transform: translateY(-2px);
 }
 
-/* Right Workflow Visualization Column (approx 55%) */
-.heroVisual {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .hero {
     min-height: auto;
     padding: clamp(6.5rem, 10vw, 8rem) 1.5rem clamp(4rem, 6vw, 5rem);
   }
 
-  .heroGrid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
   .desktopBr {
     display: inline;
-  }
-
-  .heroSubtitle {
-    max-width: 620px;
   }
 }
 
@@ -205,7 +174,7 @@
   .btnSecondary {
     width: 100%;
     min-width: auto;
-    max-width: 100%;
+    max-width: 320px;
   }
 }
 
