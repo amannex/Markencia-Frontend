@@ -77,29 +77,27 @@ export default function HomePage() {
   return (
     <>
       {/* ── 1. HERO ── */}
-      <section className={styles.hero} aria-label="Markencia Hero">
-        <div className={styles.heroBgGrid} aria-hidden="true" />
+      <section className={styles.hero}>
+        <div className={styles.heroShape1} aria-hidden="true" />
+        <div className={styles.heroShape2} aria-hidden="true" />
         <div className={styles.heroContainer}>
-          <div className={styles.heroContent}>
-            <div className={styles.heroEyebrow}>
-              AI &amp; DIGITAL TRANSFORMATION CONSULTANCY
-            </div>
-            <h1 className={styles.heroTitle}>
-              Turn Business Bottlenecks <br className={styles.desktopBr} />
-              Into <span className={styles.heroAccent}>AI-Powered</span> Systems.
-            </h1>
-            <p className={styles.heroSubtitle}>
-              We help businesses identify repetitive work, streamline operations, and implement
-              AI-powered systems that save time, reduce costs, and help teams scale.
-            </p>
-            <div className={styles.heroCtas}>
-              <Link href="/contact" className={styles.btnPrimary} id="hero-cta-strategy">
-                Book an AI Strategy Call &rarr;
-              </Link>
-              <a href="#bottlenecks" className={styles.btnSecondary} id="hero-cta-services">
-                Explore Our Solutions
-              </a>
-            </div>
+          <div className="mk-hero-badge">AI &amp; DIGITAL TRANSFORMATION CONSULTANCY</div>
+          <h1 className={styles.heroTitle}>
+            Turn Business Bottlenecks Into{' '}
+            <span className={styles.heroAccent}>AI-Powered</span>{' '}
+            Systems.
+          </h1>
+          <p className={styles.heroSubtitle}>
+            We help businesses identify repetitive work, streamline operations, and implement
+            AI-powered systems that save time, reduce costs, and help teams scale.
+          </p>
+          <div className={styles.heroCtas}>
+            <Link href="/contact" className={styles.btnPrimary} id="hero-cta-strategy">
+              Book an AI Strategy Call &rarr;
+            </Link>
+            <a href="#bottlenecks" className={styles.btnSecondary} id="hero-cta-services">
+              Explore Our Solutions
+            </a>
           </div>
         </div>
       </section>
