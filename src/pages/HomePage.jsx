@@ -89,9 +89,8 @@ export default function HomePage() {
                 <span>AI &amp; DIGITAL TRANSFORMATION CONSULTANCY</span>
               </div>
               <h1 className={styles.heroTitle}>
-                Turn Business Bottlenecks Into{' '}
-                <span className={styles.heroAccent}>AI-Powered</span>{' '}
-                Systems.
+                Turn Business Bottlenecks <br className={styles.desktopBr} />
+                Into <span className={styles.heroAccent}>AI-Powered</span> Systems.
               </h1>
               <p className={styles.heroSubtitle}>
                 We help businesses identify repetitive work, streamline operations, and implement

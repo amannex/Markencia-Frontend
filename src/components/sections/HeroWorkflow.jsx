@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Mail, Sparkles, CheckCircle2, ArrowRight, ArrowDown, Bot, Check, Play, Pause } from 'lucide-react';
+import { Mail, Sparkles, CheckCircle2, ArrowRight, ArrowDown, Bot, Check } from 'lucide-react';
 import styles from './HeroWorkflow.module.css';
 
 const ACTIONS = [
@@ -69,25 +69,6 @@ export default function HeroWorkflow() {
       role="region"
       aria-label="Markencia AI Automated Workflow"
     >
-      {/* Top Header Label */}
-      <div className={styles.workflowHeader}>
-        <div className={styles.headerLabel}>
-          <span className={styles.livePulseDot} aria-hidden="true" />
-          <span>A SIMPLE EXAMPLE OF WHAT MARKENCIA DOES</span>
-        </div>
-
-        <button
-          type="button"
-          onClick={() => setIsPaused(!isPaused)}
-          className={styles.pauseToggle}
-          title={isPaused ? 'Resume animation' : 'Pause animation'}
-          aria-label={isPaused ? 'Resume workflow animation' : 'Pause workflow animation'}
-        >
-          {isPaused ? <Play size={12} /> : <Pause size={12} />}
-          <span>{isPaused ? 'Paused' : 'Active Flow'}</span>
-        </button>
-      </div>
-
       {/* Main Workflow Visualization Nodes */}
       <div className={styles.nodesWrapper}>
         {/* STEP 1: BEFORE — LEAD COMES IN */}
