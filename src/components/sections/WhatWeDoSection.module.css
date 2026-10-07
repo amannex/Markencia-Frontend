@@ -128,11 +128,10 @@
   transform: scaleX(1);
 }
 
-/* Card Header: Index Badge + Icon Tile */
+/* Card Header: Index Badge */
 .cardHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 1.35rem;
 }
 
@@ -148,24 +147,6 @@
   border: 1px solid rgba(0, 69, 35, 0.1);
   display: inline-flex;
   align-items: center;
-}
-
-.iconTile {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background-color: rgba(0, 69, 35, 0.04);
-  border: 1px solid rgba(0, 69, 35, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 240ms ease, background-color 240ms ease, border-color 240ms ease;
-}
-
-.card:hover .iconTile {
-  transform: scale(1.08);
-  background-color: rgba(0, 69, 35, 0.08);
-  border-color: rgba(0, 69, 35, 0.18);
 }
 
 /* Card Body */

@@ -9,11 +9,11 @@ const CARDS_DATA = [
     title: 'AI Strategy',
     description: 'Identify high-impact AI opportunities across your business.',
     deliverableLabel: 'Focus Areas',
-    icon: <StrategyIcon />,
     items: [
       'AI readiness assessment',
-      'Use-case discovery',
+      'Workflow automation',
       'AI roadmap',
+      'Prototype development',
       'ROI prioritization',
     ],
   },
@@ -22,7 +22,6 @@ const CARDS_DATA = [
     title: 'Workflow Automation',
     description: 'Turn repetitive business processes into automated workflows.',
     deliverableLabel: 'Automated Operations',
-    icon: <WorkflowIcon />,
     items: [
       'Lead management',
       'Data entry',
@@ -36,10 +35,9 @@ const CARDS_DATA = [
     title: 'AI Systems',
     description: 'Build AI-powered tools around your business.',
     deliverableLabel: 'Custom Intelligence',
-    icon: <AiSystemsIcon />,
     items: [
       'AI assistants',
-      'Knowledge systems',
+      'n8n workflow',
       'AI agents',
       'Document intelligence',
       'Custom AI applications',
@@ -50,14 +48,12 @@ const CARDS_DATA = [
     title: 'Digital Infrastructure',
     description: 'Connect AI to the systems your business already uses.',
     deliverableLabel: 'Integrated Stack',
-    icon: <InfrastructureIcon />,
     items: [
       'Websites',
-      'CRM',
+      'CRM Migration',
       'APIs',
       'WordPress',
       'Internal tools',
-      'Databases',
     ],
   },
 ];
@@ -75,10 +71,10 @@ export default function WhatWeDoSection() {
 
           <h2 className={styles.heading}>
             <span className={styles.headingLine1}>
-              We don&apos;t just recommend AI tools. We design systems
+              We don&apos;t just recommend AI tools.
             </span>
             <span className={styles.headingLine2}>
-              around how your business{' '}
+              We design systems around how your business{' '}
               <span className={styles.headingHighlight}>actually works.</span>
             </span>
           </h2>
@@ -92,9 +88,6 @@ export default function WhatWeDoSection() {
 
               <div className={styles.cardHeader}>
                 <span className={styles.cardIndex}>{card.number}</span>
-                <div className={styles.iconTile} aria-hidden="true">
-                  {card.icon}
-                </div>
               </div>
 
               <div className={styles.cardBody}>
@@ -135,7 +128,7 @@ export default function WhatWeDoSection() {
   );
 }
 
-/* ── BESPOKE MODERN ICONS ── */
+/* ── BULLET CHECK ICON ── */
 
 function CheckIcon() {
   return (
@@ -147,101 +140,6 @@ function CheckIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
-  );
-}
-
-function StrategyIcon() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Outer target ring */}
-      <circle cx="14" cy="14" r="11" stroke="#004523" strokeWidth="1.5" strokeOpacity="0.25" strokeDasharray="3 3" />
-      {/* Mid ring */}
-      <circle cx="14" cy="14" r="7.5" stroke="#004523" strokeWidth="1.6" />
-      {/* Bullseye center */}
-      <circle cx="14" cy="14" r="3" fill="#FFB800" />
-      {/* Compass crosshairs */}
-      <path d="M14 2V5" stroke="#004523" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M14 23V26" stroke="#004523" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M2 14H5" stroke="#004523" strokeWidth="1.6" strokeLinecap="round" />
-      <path d="M23 14H26" stroke="#004523" strokeWidth="1.6" strokeLinecap="round" />
-      {/* Dynamic trajectory node */}
-      <path d="M14 14L20.5 7.5" stroke="#FFB800" strokeWidth="1.5" strokeLinecap="round" />
-      <circle cx="20.5" cy="7.5" r="1.75" fill="#004523" />
-    </svg>
-  );
-}
-
-function WorkflowIcon() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Top flow node */}
-      <rect x="3" y="4" width="8" height="6" rx="2" fill="#004523" fillOpacity="0.1" stroke="#004523" strokeWidth="1.5" />
-      {/* Bottom right flow node */}
-      <rect x="17" y="18" width="8" height="6" rx="2" fill="#004523" fillOpacity="0.1" stroke="#004523" strokeWidth="1.5" />
-      {/* Central automation gear/lightning */}
-      <path
-        d="M11 7H15.5C17.7091 7 19.5 8.79086 19.5 11V18"
-        stroke="#004523"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M17 21H12.5C10.2909 21 8.5 19.2091 8.5 17V10"
-        stroke="#004523"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeDasharray="2 2"
-      />
-      {/* Lightning trigger symbol */}
-      <path
-        d="M15 11.5L12.5 15.5H15.5L14 19"
-        stroke="#FFB800"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Action pulse dots */}
-      <circle cx="7" cy="7" r="1.25" fill="#004523" />
-      <circle cx="21" cy="21" r="1.25" fill="#FFB800" />
-    </svg>
-  );
-}
-
-function AiSystemsIcon() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Central brain/neural core */}
-      <rect x="7" y="7" width="14" height="14" rx="4" fill="#004523" fillOpacity="0.08" stroke="#004523" strokeWidth="1.5" />
-      {/* Chip circuit pins */}
-      <path d="M11 3V7M17 3V7M11 21V25M17 21V25M3 11H7M3 17H7M21 11H25M21 17H25" stroke="#004523" strokeWidth="1.4" strokeLinecap="round" />
-      {/* Neural node spark */}
-      <circle cx="14" cy="14" r="2.5" fill="#004523" />
-      <circle cx="14" cy="14" r="4.5" stroke="#FFB800" strokeWidth="1.2" strokeOpacity="0.75" />
-      {/* AI Intelligence Sparkle in top right */}
-      <path
-        d="M20 5L20.8 7.2L23 8L20.8 8.8L20 11L19.2 8.8L17 8L19.2 7.2L20 5Z"
-        fill="#FFB800"
-      />
-    </svg>
-  );
-}
-
-function InfrastructureIcon() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Server/Database top disk */}
-      <ellipse cx="14" cy="6.5" rx="9" ry="3" fill="#004523" fillOpacity="0.1" stroke="#004523" strokeWidth="1.5" />
-      {/* Middle disk */}
-      <path d="M5 6.5V13.5C5 15.1569 9.02944 16.5 14 16.5C18.9706 16.5 23 15.1569 23 13.5V6.5" stroke="#004523" strokeWidth="1.5" />
-      {/* Bottom disk */}
-      <path d="M5 13.5V20.5C5 22.1569 9.02944 23.5 14 23.5C18.9706 23.5 23 22.1569 23 20.5V13.5" stroke="#004523" strokeWidth="1.5" />
-      {/* Connection node / API bus */}
-      <path d="M14 6.5V23.5" stroke="#FFB800" strokeWidth="1.5" strokeDasharray="2 2" strokeLinecap="round" />
-      <circle cx="14" cy="14" r="2" fill="#FFB800" />
-      {/* Mini status indicator */}
-      <circle cx="20" cy="13.5" r="1.2" fill="#004523" />
-      <circle cx="20" cy="20.5" r="1.2" fill="#004523" />
     </svg>
   );
 }
