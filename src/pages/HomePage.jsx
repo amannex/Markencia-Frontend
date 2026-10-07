@@ -2,12 +2,12 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { SERVICES, STATS, WHY_US_POINTS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
-import ServiceCard from '../components/ui/ServiceCard';
+import { STATS, WHY_US_POINTS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
+import WhatWeDoSection from '../components/sections/WhatWeDoSection';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -107,21 +107,8 @@ export default function HomePage() {
 
 
 
-      {/* ── 2. SERVICES ── */}
-      <section className="mk-section" id="services">
-        <div className="mk-container">
-          <SectionHead
-            centered
-            title='Our <span class="mk-highlight-text">AI-Powered</span> Arsenal'
-            subtitle="Data-backed strategies designed to scale your business predictably."
-          />
-          <div className={styles.servicesGrid}>
-            {SERVICES.map((s) => (
-              <ServiceCard key={s.id} icon={s.icon} title={s.title} description={s.description} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── 3. WHAT MARKENCIA ACTUALLY DOES ── */}
+      <WhatWeDoSection />
 
       {/* ── 3. WHY US ── */}
       <section className="mk-section mk-bg-texture">
