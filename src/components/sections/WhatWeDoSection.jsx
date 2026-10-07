@@ -74,7 +74,9 @@ export default function WhatWeDoSection() {
           </div>
 
           <h2 className={styles.heading}>
-            <span>We don&apos;t just recommend AI tools. </span>
+            <span className={styles.headingLine1}>
+              We don&apos;t just recommend AI tools.
+            </span>
             <span className={styles.headingLine2}>
               We design systems around how your business{' '}
               <span className={styles.headingHighlight}>actually works.</span>
