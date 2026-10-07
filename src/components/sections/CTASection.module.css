@@ -36,14 +36,21 @@
 .content {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
 .content h2 {
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.75rem, 2.7vw, 2.6rem);
   color: #fff;
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .content h2 {
+    white-space: nowrap;
+  }
 }
 
 .content h2 :global(.mk-highlight-text),
