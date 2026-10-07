@@ -41,7 +41,7 @@
 }
 
 .content h2 {
-  font-size: clamp(1.85rem, 2.7vw, 2.6rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   color: #fff;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
