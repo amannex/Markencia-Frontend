@@ -88,8 +88,10 @@
 .disclaimer {
   margin-top: 1.5rem !important;
   margin-bottom: 0 !important;
-  font-size: .9rem !important;
-  color: rgba(255,255,255,0.4) !important;
+  font-size: 0.92rem !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .success {
