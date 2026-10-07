@@ -1,0 +1,230 @@
+/* ============================================================
+   INDUSTRY FOCUS SECTION MODULE CSS
+   Brand Tokens:
+   - Primary Green: #166534
+   - Background: #FFFFFF
+   - Card Border: rgba(16, 35, 27, 0.08)
+   - Text Dark: #10231B
+   - Text Muted: #526059
+   ============================================================ */
+
+.section {
+  background-color: #FFFFFF;
+  color: #10231B;
+  padding: clamp(6rem, 9vw, 8rem) 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+/* ── TOP AREA (HEADLINE) ── */
+.topArea {
+  margin-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #166534;
+  margin-bottom: 1.15rem;
+}
+
+.eyebrowDash {
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: #166534;
+}
+
+.heading {
+  font-family: var(--mk-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #10231B;
+  margin: 0;
+  max-width: 820px;
+}
+
+.headingHighlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, #FDE096 65%);
+  padding: 0 0.1em;
+}
+
+/* ── 5-CARD GRID (6-COLUMN HARMONIC LAYOUT) ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+}
+
+/* Top row: 3 cards, each 2 columns */
+.card:nth-child(1),
+.card:nth-child(2),
+.card:nth-child(3) {
+  grid-column: span 2;
+}
+
+/* Bottom row: 2 cards centered (cols 2-3 and 4-5) */
+.card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.card:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+/* ── CARD STYLING ── */
+.card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(16, 35, 27, 0.08);
+  border-radius: 16px;
+  padding: 1.85rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(16, 35, 27, 0.02);
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(22, 101, 52, 0.28);
+  box-shadow: 0 16px 36px rgba(16, 35, 27, 0.08);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.iconBox {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: #EAF3ED;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover .iconBox {
+  background-color: #D6EADF;
+  transform: scale(1.04);
+}
+
+.cardIndex {
+  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #8C9C92;
+  letter-spacing: 0.05em;
+}
+
+.cardTitle {
+  font-family: var(--mk-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #10231B;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.15rem 0;
+}
+
+/* ── WORKFLOW ITEMS ── */
+.workflowList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-top: 1px solid rgba(16, 35, 27, 0.06);
+  padding-top: 1.15rem;
+}
+
+.workflowItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.94rem;
+  line-height: 1.45;
+  color: #43534B;
+}
+
+.workflowCheck {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: #EAF3ED;
+  color: #166534;
+  flex-shrink: 0;
+}
+
+.workflowText {
+  color: #384941;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(2),
+  .card:nth-child(3),
+  .card:nth-child(4) {
+    grid-column: span 1;
+  }
+
+  .card:nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card:nth-child(1),
+  .card:nth-child(2),
+  .card:nth-child(3),
+  .card:nth-child(4),
+  .card:nth-child(5) {
+    grid-column: span 1;
+    max-width: 100%;
+  }
+
+  .card {
+    padding: 1.5rem 1.35rem;
+  }
+}

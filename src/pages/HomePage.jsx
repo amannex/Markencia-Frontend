@@ -2,13 +2,14 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { STATS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
+import { STATS, TESTIMONIALS } from '../data/staticData';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
 import WhatWeDoSection from '../components/sections/WhatWeDoSection';
 import FrameworkSection from '../components/sections/FrameworkSection';
+import IndustryFocusSection from '../components/sections/IndustryFocusSection';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -139,23 +140,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 6. INDUSTRIES ── */}
-      <section className="mk-section mk-bg-texture">
-        <div className="mk-container">
-          <SectionHead
-            centered
-            title='Industries We <span class="mk-highlight-text">Dominate</span>'
-            subtitle="Precision-engineered strategies built for high-growth sectors."
-          />
-          <div className={styles.industryGrid}>
-            {INDUSTRIES.map((ind) => (
-              <div key={ind.label} className={styles.indCard}>
-                <span>{ind.icon}</span> {ind.label}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── 6. INDUSTRY FOCUS ── */}
+      <IndustryFocusSection />
 
       {/* ── 7. TESTIMONIALS ── */}
       <section className="mk-section">
