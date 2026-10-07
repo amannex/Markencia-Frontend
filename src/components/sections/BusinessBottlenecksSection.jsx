@@ -29,7 +29,6 @@ export default function BusinessBottlenecksSection() {
             <div className={styles.cardAccentBar} aria-hidden="true" />
             <div className={styles.cardHeader}>
               <span className={styles.cardIndex}>01</span>
-              <span className={styles.categoryLabel}>Workforce Strain</span>
             </div>
 
             <div className={styles.cardBody}>
@@ -61,7 +60,6 @@ export default function BusinessBottlenecksSection() {
             <div className={styles.cardAccentBar} aria-hidden="true" />
             <div className={styles.cardHeader}>
               <span className={styles.cardIndex}>02</span>
-              <span className={styles.categoryLabel}>Data Fragmentation</span>
             </div>
 
             <div className={styles.cardBody}>
@@ -107,7 +105,6 @@ export default function BusinessBottlenecksSection() {
             <div className={styles.cardAccentBar} aria-hidden="true" />
             <div className={styles.cardHeader}>
               <span className={styles.cardIndex}>03</span>
-              <span className={styles.categoryLabel}>Information Silos</span>
             </div>
 
             <div className={styles.cardBody}>
@@ -142,7 +139,6 @@ export default function BusinessBottlenecksSection() {
             <div className={styles.cardAccentBar} aria-hidden="true" />
             <div className={styles.cardHeader}>
               <span className={styles.cardIndex}>04</span>
-              <span className={styles.categoryLabel}>SaaS Sprawl</span>
             </div>
 
             <div className={styles.cardBody}>

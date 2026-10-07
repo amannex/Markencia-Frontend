@@ -125,7 +125,6 @@
 .cardHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 1.25rem;
 }
 
@@ -138,15 +137,6 @@
   padding: 0.2rem 0.6rem;
   background: rgba(0, 69, 35, 0.05);
   border-radius: 4px;
-}
-
-.categoryLabel {
-  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #68756E;
 }
 
 .cardBody {
