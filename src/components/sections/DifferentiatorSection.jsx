@@ -73,39 +73,7 @@ export default function DifferentiatorSection() {
                 Most agencies rush to build tools for problems that don&apos;t exist. We take a different path—diagnosing your operations first so every system we build drives undeniable leverage.
               </p>
 
-              {/* ── THE SIGNATURE CONSULTANCY CONTRAST CARD ── */}
-              <div className={styles.contrastCard}>
-                <div className={styles.contrastHeader}>
-                  <span className={styles.contrastBadge}>The Consultancy Distinction</span>
-                </div>
 
-                <div className={styles.contrastComparison}>
-                  <div className={styles.contrastBoxOther}>
-                    <div className={styles.contrastSpeakerOther}>Typical Agency</div>
-                    <blockquote className={styles.contrastQuoteOther}>
-                      &ldquo;We build AI agents.&rdquo;
-                    </blockquote>
-                    <p className={styles.contrastMetaOther}>Tool-first hype with no business context</p>
-                  </div>
-
-                  <div className={styles.contrastDivider} aria-hidden="true">
-                    <span>VS</span>
-                  </div>
-
-                  <div className={styles.contrastBoxMarkencia}>
-                    <div className={styles.contrastSpeakerMarkencia}>Markencia</div>
-                    <blockquote className={styles.contrastQuoteMarkencia}>
-                      &ldquo;First, we&apos;ll figure out whether you actually need one.&rdquo;
-                    </blockquote>
-                    <p className={styles.contrastMetaMarkencia}>Strategic consultancy focused on actual leverage</p>
-                  </div>
-                </div>
-
-                <div className={styles.consultancyPunchline}>
-                  <span className={styles.punchlineCheck}>&check;</span>
-                  <span>That&apos;s real consultancy.</span>
-                </div>
-              </div>
 
               <div className={styles.ctaWrapper}>
                 <Link href="/contact" className={styles.ctaButton} id="differentiator-cta-btn">
