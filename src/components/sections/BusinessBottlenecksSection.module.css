@@ -130,22 +130,22 @@
 }
 
 .editorialQuote {
-  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.55;
   color: #10231B;
-  font-style: italic;
   margin: 0;
-  padding: 0;
+  font-style: italic;
 }
 
 .editorialFooter {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.76rem;
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.8rem;
   color: #68756E;
-  font-weight: 600;
   border-top: 1px solid rgba(0, 69, 35, 0.08);
   padding-top: 0.85rem;
 }
@@ -209,7 +209,6 @@
 .cardHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 1.25rem;
 }
 
@@ -222,15 +221,6 @@
   padding: 0.2rem 0.6rem;
   background: rgba(0, 69, 35, 0.05);
   border-radius: 4px;
-}
-
-.categoryLabel {
-  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #68756E;
 }
 
 .cardBody {
@@ -261,92 +251,109 @@
   border-top: 1px dashed rgba(0, 69, 35, 0.1);
 }
 
-/* Visual Cue 01: Repetitive Work */
-.repetitionCue {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  transition: transform 220ms ease;
-}
-
-.card:hover .repetitionCue {
-  transform: translateX(2px);
-}
-
-.repeatRow {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.35rem 0.6rem;
-  background: #F8FAF8;
-  border: 1px solid rgba(0, 69, 35, 0.08);
-  border-radius: 6px;
-}
-
-.repeatCheckbox {
-  width: 11px;
-  height: 11px;
-  border: 1.5px solid rgba(0, 69, 35, 0.35);
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-
-.repeatLines {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  flex-grow: 1;
-}
-
-.repeatLinePrimary {
-  width: 75%;
-  height: 4px;
-  background: rgba(0, 69, 35, 0.18);
-  border-radius: 2px;
-}
-
-.repeatLineSecondary {
-  width: 45%;
-  height: 3px;
-  background: rgba(0, 69, 35, 0.1);
-  border-radius: 2px;
-}
-
-.repeatBadge {
-  font-size: 0.68rem;
-  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-weight: 600;
-  color: #68756E;
-}
-
-/* Visual Cue 02: Manual Processes */
+/* Visual Cue 01: Repetitive Work (Cyclic Flow) & Visual Cue 02: Manual Processes (Fragmented Flow) */
+.cyclicFlowCue,
 .fragmentedFlowCue {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.35rem;
-  padding: 0.45rem 0.25rem;
+  gap: 0.45rem;
+  padding: 0.5rem 0.25rem 0.25rem;
   transition: transform 220ms ease;
 }
 
+.card:hover .cyclicFlowCue,
 .card:hover .fragmentedFlowCue {
   transform: translateX(2px);
 }
 
 .flowNode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-shrink: 0;
+  cursor: default;
 }
 
-.nodeBox {
-  display: inline-block;
-  font-size: 0.72rem;
+.flowIconTile {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 69, 35, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 69, 35, 0.04);
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 220ms ease, border-color 220ms ease;
+  position: relative;
+}
+
+.card:hover .flowIconTile,
+.flowIconTile:hover {
+  border-color: rgba(0, 69, 35, 0.24);
+  box-shadow: 0 4px 14px rgba(0, 69, 35, 0.08);
+}
+
+.flowIconTile:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Distinct Repeat / Loop Tile Highlight */
+.repeatTile {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 100%);
+  border-color: rgba(0, 69, 35, 0.22);
+}
+
+.repeatTile::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 12px;
+  border: 1.5px dashed rgba(5, 150, 105, 0.4);
+  pointer-events: none;
+}
+
+.flowNodeLabel {
   font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.72rem;
   font-weight: 600;
+  color: #68756E;
+  margin-top: 0.45rem;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  line-height: 1.25;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 200ms ease;
+}
+
+.flowNode:hover .flowNodeLabel {
   color: #10231B;
-  background: #F8FAF8;
-  border: 1px solid rgba(0, 69, 35, 0.15);
-  padding: 0.25rem 0.55rem;
-  border-radius: 5px;
+}
+
+.repeatNodeLabel {
+  color: #004523;
+  font-weight: 700;
+}
+
+.repeatSymbol {
+  display: inline-block;
+  font-size: 0.8rem;
+  line-height: 1;
+  margin-left: 2px;
+  transform: translateY(-0.5px);
+}
+
+/* Micro-interaction: rotating sync arrows on hover */
+.repeatCycleIcon {
+  transition: transform 550ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card:hover .repeatCycleIcon,
+.flowNode:hover .repeatCycleIcon {
+  transform: rotate(180deg);
 }
 
 .flowConnector {
@@ -355,22 +362,23 @@
   flex-grow: 1;
   position: relative;
   min-width: 14px;
+  margin-top: 25px; /* align arrow with tile center vertically */
 }
 
 .flowLine {
   width: 100%;
   height: 1px;
-  background: dashed rgba(0, 69, 35, 0.25);
-  border-top: 1px dashed rgba(0, 69, 35, 0.35);
+  border-top: 1.5px dashed rgba(0, 69, 35, 0.3);
 }
 
 .flowArrow {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   color: rgba(0, 69, 35, 0.5);
-  margin-left: 1px;
+  margin-left: 2px;
+  line-height: 1;
 }
 
-/* Visual Cue 03: Slow Decisions */
+/* Visual Cue 03: Slow Decisions (Document Stack Cue) */
 .docStackCue {
   position: relative;
   height: 80px;
@@ -470,58 +478,43 @@
   border-radius: 2px;
 }
 
-/* Visual Cue 04: Tool Overload */
-.toolBlocksCue {
+/* Visual Cue 04: Tool Overload (Disconnected Tools) */
+.disconnectedToolsCue {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.5rem 0.25rem;
+  gap: 0.45rem;
+  padding: 0.5rem 0.25rem 0.25rem;
   transition: transform 220ms ease;
 }
 
-.card:hover .toolBlocksCue {
-  transform: scale(1.01);
+.card:hover .disconnectedToolsCue {
+  transform: translateX(2px);
 }
 
-.toolBlock {
-  flex: 1;
+.brokenConnector {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  padding: 0.45rem 0.3rem;
-  background: #F8FAF8;
-  border: 1px solid rgba(0, 69, 35, 0.15);
-  border-radius: 6px;
+  flex-grow: 1;
+  position: relative;
+  min-width: 14px;
+  margin-top: 25px; /* align arrow with tile center */
+  gap: 2px;
 }
 
-.toolDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(0, 69, 35, 0.4);
+.brokenLine {
+  width: 100%;
+  height: 1px;
+  border-top: 1.5px dashed rgba(239, 68, 68, 0.4);
 }
 
-.toolLabel {
-  font-size: 0.72rem;
-  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-weight: 700;
-  color: #10231B;
-}
-
-.brokenGap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 14px;
-  color: rgba(0, 69, 35, 0.35);
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.gapCross {
+.brokenCross {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #EF4444;
   line-height: 1;
+  padding: 0 1px;
 }
 
 /* ── BOTTOM STATEMENT ── */
@@ -626,5 +619,26 @@
 
   .bottomEmphasis {
     white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .flowIconTile {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+  .flowIconTile svg {
+    width: 28px;
+    height: 28px;
+  }
+  .flowNodeLabel {
+    font-size: 0.64rem;
+    margin-top: 0.35rem;
+  }
+  .flowConnector,
+  .brokenConnector {
+    min-width: 8px;
+    margin-top: 21px;
   }
 }
