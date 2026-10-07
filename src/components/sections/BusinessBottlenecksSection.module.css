@@ -28,16 +28,7 @@
 
 /* ── TOP AREA (EDITORIAL TWO-COLUMN) ── */
 .topArea {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
-  gap: clamp(2.5rem, 5vw, 5rem);
-  align-items: flex-start;
-  margin-bottom: clamp(4.5rem, 7vw, 6.5rem);
-}
-
-.topContentLeft {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: clamp(3.5rem, 5vw, 4.75rem);
 }
 
 .eyebrow {
@@ -62,12 +53,13 @@
 
 .heading {
   font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-size: clamp(2.2rem, 3.8vw, 3.35rem);
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.22;
   color: #10231B;
   letter-spacing: -0.025em;
-  margin-bottom: 1.75rem;
+  margin: 0;
+  max-width: 100%;
 }
 
 .headingHighlight {
@@ -78,84 +70,8 @@
   padding: 0 0.1em;
 }
 
-.subheadingBlock {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  max-width: 620px;
-}
-
-.subheading {
-  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
-  font-weight: 700;
-  color: #004523;
-  line-height: 1.4;
-  margin: 0;
-}
-
-.supportingText {
-  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: #68756E;
-  margin: 0;
-}
-
-/* ── RIGHT EDITORIAL STATEMENT ── */
-.topContentRight {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.editorialNote {
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 69, 35, 0.12);
-  border-radius: 14px;
-  padding: 1.75rem 1.85rem;
-  box-shadow: 0 4px 20px rgba(0, 69, 35, 0.03);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 440px;
-}
-
-.editorialTag {
-  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #004523;
-}
-
-.editorialQuote {
-  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #10231B;
-  font-style: italic;
-  margin: 0;
-  padding: 0;
-}
-
-.editorialFooter {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.76rem;
-  color: #68756E;
-  font-weight: 600;
-  border-top: 1px solid rgba(0, 69, 35, 0.08);
-  padding-top: 0.85rem;
-}
-
-.editorialDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #004523;
-  flex-shrink: 0;
+.headingLine2 {
+  display: block;
 }
 
 /* ── 4-CARD PROBLEM GRID (2 × 2) ── */
@@ -582,26 +498,15 @@
 
 /* ── RESPONSIVE: TABLET (< 1024PX) & MOBILE (< 768PX) ── */
 @media (max-width: 1024px) {
-  .topArea {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    margin-bottom: 3.5rem;
-  }
-
-  .topContentRight {
-    justify-content: flex-start;
-  }
-
-  .editorialNote {
-    max-width: 100%;
-  }
-
   .cardGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
+  .headingLine2 {
+    display: inline;
+  }
   .section {
     padding: clamp(4.5rem, 8vw, 6rem) 1.2rem;
   }

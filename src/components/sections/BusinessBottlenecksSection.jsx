@@ -6,42 +6,20 @@ export default function BusinessBottlenecksSection() {
   return (
     <section className={styles.section} id="bottlenecks" aria-label="Business Problems and Operational Bottlenecks">
       <div className={styles.container}>
-        {/* ── TOP AREA (EDITORIAL TWO-COLUMN) ── */}
+        {/* ── TOP AREA ── */}
         <div className={styles.topArea}>
-          <div className={styles.topContentLeft}>
-            <div className={styles.eyebrow}>
-              <span className={styles.eyebrowDash} aria-hidden="true" />
-              <span>WHERE BUSINESS GETS STUCK</span>
-            </div>
+          <div className={styles.eyebrow}>
+            <span className={styles.eyebrowDash} aria-hidden="true" />
+            <span>WHERE BUSINESS GETS STUCK</span>
+          </div>
 
-            <h2 className={styles.heading}>
+          <h2 className={styles.heading}>
+            <span>
               Your business probably has more{' '}
-              <span className={styles.headingHighlight}>automation</span>{' '}
-              opportunities than you think.
-            </h2>
-
-            <div className={styles.subheadingBlock}>
-              <p className={styles.subheading}>
-                AI isn't the starting point. Understanding your business is.
-              </p>
-              <p className={styles.supportingText}>
-                Before recommending technology, we look at how work actually moves through your business.
-              </p>
-            </div>
-          </div>
-
-          <div className={styles.topContentRight}>
-            <div className={styles.editorialNote}>
-              <div className={styles.editorialTag}>OPERATIONAL DIAGNOSTIC</div>
-              <blockquote className={styles.editorialQuote}>
-                &ldquo;Most operational friction isn't caused by a lack of software. It comes from disconnected workflows, manual data handoffs, and teams compensating for fragmented systems.&rdquo;
-              </blockquote>
-              <div className={styles.editorialFooter}>
-                <span className={styles.editorialDot} aria-hidden="true" />
-                <span>How Markencia diagnoses bottlenecks before writing code.</span>
-              </div>
-            </div>
-          </div>
+              <span className={styles.headingHighlight}>automation</span>
+            </span>{' '}
+            <span className={styles.headingLine2}>opportunities than you think.</span>
+          </h2>
         </div>
 
         {/* ── 4-CARD GRID (2 × 2 ON DESKTOP & TABLET, 1-COL ON MOBILE) ── */}
