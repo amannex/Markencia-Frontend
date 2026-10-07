@@ -2,12 +2,13 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { STATS, WHY_US_POINTS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
+import { STATS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
 import WhatWeDoSection from '../components/sections/WhatWeDoSection';
+import DifferentiatorSection from '../components/sections/DifferentiatorSection';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -110,44 +111,8 @@ export default function HomePage() {
       {/* ── 3. WHAT MARKENCIA ACTUALLY DOES ── */}
       <WhatWeDoSection />
 
-      {/* ── 3. WHY US ── */}
-      <section className="mk-section mk-bg-texture">
-        <div className={`mk-container ${styles.whyWrapper}`}>
-          <div className={styles.whyContent}>
-            <h2>
-              The <span className="mk-highlight-text">Unfair Advantage</span> for Your Business
-            </h2>
-            <p>
-              We don't just run ads; we engineer growth ecosystems. By leveraging
-              bleeding-edge AI and relentless automation, we leave traditional agencies in the dust.
-            </p>
-            <ul className={styles.whyList}>
-              {WHY_US_POINTS.map((p) => (
-                <li key={p.title}>
-                  <strong>{p.title}</strong> {p.body}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className={styles.whyVisual}>
-            <div className={styles.glassPanel}>
-              <div className={styles.comparisonRow}>
-                <h4>Traditional Agency</h4>
-                <div className={styles.barTrack}>
-                  <div className={styles.barSlow} />
-                </div>
-              </div>
-              <div className={styles.comparisonRow}>
-                <h4>Markencia (AI-Driven)</h4>
-                <div className={styles.barTrack}>
-                  <div className={styles.barFast} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── 4. OUR BIGGEST DIFFERENTIATOR ── */}
+      <DifferentiatorSection />
 
       {/* ── 4. PROCESS ── */}
       <section className="mk-section">

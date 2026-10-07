@@ -1,0 +1,481 @@
+/* ============================================================
+   SECTION 04: THE MARKENCIA DIFFERENTIATOR
+   "We don't start with AI. We start with your business."
+   Palette:
+     Background: #F8FAF8
+     Card Surfaces: #FFFFFF
+     Primary Brand Green: #004523
+     Accent Gold: #FFB800
+     Dark Text: #10231B
+     Muted Text: #526059
+   ============================================================ */
+
+.section {
+  background-color: #F8FAF8;
+  color: #10231B;
+  padding: clamp(6.5rem, 10vw, 8.5rem) 1.5rem;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 69, 35, 0.08);
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── 2-COLUMN LAYOUT GRID (DESKTOP) ── */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 5vw, 5.5rem);
+  align-items: start;
+}
+
+/* ── LEFT COLUMN: EDITORIAL NARRATIVE & STICKY HOLDER ── */
+.leftCol {
+  position: relative;
+}
+
+.stickyContent {
+  position: sticky;
+  top: 6rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #004523;
+  margin-bottom: 1.25rem;
+}
+
+.eyebrowDash {
+  width: 16px;
+  height: 2px;
+  background-color: #004523;
+  border-radius: 1px;
+}
+
+.heading {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.22;
+  color: #10231B;
+  letter-spacing: -0.025em;
+  margin: 0 0 1.25rem 0;
+  max-width: 100%;
+}
+
+.headingLine1 {
+  display: block;
+}
+
+.headingLine2 {
+  display: block;
+}
+
+.headingHighlight {
+  position: relative;
+  display: inline-block;
+  color: #10231B;
+  box-shadow: inset 0 -0.4em 0 0 rgba(255, 184, 0, 0.35);
+  padding: 0 0.1em;
+}
+
+.leadText {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #526059;
+  margin: 0 0 2rem 0;
+}
+
+/* ── SIGNATURE CONSULTANCY CONTRAST CARD ── */
+.contrastCard {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 69, 35, 0.14);
+  border-radius: 16px;
+  padding: 1.75rem 1.65rem;
+  box-shadow: 0 4px 20px rgba(0, 69, 35, 0.04);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contrastHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.contrastBadge {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #004523;
+  background-color: rgba(0, 69, 35, 0.06);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--mk-radius-pill, 50px);
+}
+
+.contrastComparison {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contrastBoxOther {
+  background: #F8FAFC;
+  border: 1px dashed rgba(100, 116, 139, 0.25);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+}
+
+.contrastSpeakerOther {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #64748B;
+  margin-bottom: 0.35rem;
+}
+
+.contrastQuoteOther {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #475569;
+  margin: 0 0 0.35rem 0;
+  font-style: normal;
+}
+
+.contrastMetaOther {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.82rem;
+  color: #94A3B8;
+  margin: 0;
+}
+
+.contrastDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.contrastDivider span {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #004523;
+  background: #EAF3EC;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--mk-radius-pill, 50px);
+  border: 1px solid rgba(0, 69, 35, 0.15);
+}
+
+.contrastBoxMarkencia {
+  background: linear-gradient(135deg, rgba(0, 69, 35, 0.04) 0%, rgba(255, 184, 0, 0.06) 100%);
+  border: 1.5px solid rgba(0, 69, 35, 0.22);
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 2px 10px rgba(0, 69, 35, 0.03);
+}
+
+.contrastSpeakerMarkencia {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #004523;
+  margin-bottom: 0.4rem;
+}
+
+.contrastQuoteMarkencia {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #10231B;
+  margin: 0 0 0.4rem 0;
+  font-style: normal;
+}
+
+.contrastMetaMarkencia {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.84rem;
+  color: #004523;
+  font-weight: 600;
+  margin: 0;
+}
+
+.consultancyPunchline {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(0, 69, 35, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #004523;
+}
+
+.punchlineCheck {
+  color: #FFB800;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+/* ── CTA BUTTON ── */
+.ctaWrapper {
+  margin-top: 1.5rem;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 2.25rem;
+  background-color: #004523;
+  color: #FFFFFF;
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  border-radius: var(--mk-radius-pill, 50px);
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(0, 69, 35, 0.16);
+  transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+  white-space: nowrap;
+}
+
+.ctaButton:hover {
+  background-color: #00331A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 69, 35, 0.24);
+  color: #FFFFFF;
+}
+
+.ctaArrow {
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 220ms ease;
+  color: #FFB800;
+}
+
+.ctaButton:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+/* ── RIGHT COLUMN: THE 7-STEP DIAGNOSTIC PIPELINE ── */
+.rightCol {
+  position: relative;
+}
+
+.pipelineHeader {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 69, 35, 0.1);
+}
+
+.pipelineBadge {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #004523;
+}
+
+.pipelineSubtitle {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.92rem;
+  color: #526059;
+  margin: 0.35rem 0 0 0;
+}
+
+.pipelineFlow {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Step Card */
+.stepCard {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 69, 35, 0.12);
+  border-radius: 14px;
+  padding: 1.45rem 1.65rem;
+  box-shadow: 0 2px 10px rgba(0, 69, 35, 0.03);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  position: relative;
+}
+
+.stepCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 69, 35, 0.28);
+  box-shadow: 0 10px 24px rgba(0, 69, 35, 0.07);
+}
+
+/* Special Highlight on Step 05: AI / Automation */
+.stepCardHighlighted {
+  border: 1.5px solid rgba(255, 184, 0, 0.6);
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 184, 0, 0.04) 100%);
+  box-shadow: 0 4px 18px rgba(255, 184, 0, 0.12);
+}
+
+.stepCardHighlighted:hover {
+  border-color: #FFB800;
+  box-shadow: 0 12px 28px rgba(255, 184, 0, 0.18);
+}
+
+.stepTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+}
+
+.stepNumber {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #004523;
+  background-color: rgba(0, 69, 35, 0.06);
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--mk-radius-pill, 50px);
+  border: 1px solid rgba(0, 69, 35, 0.1);
+}
+
+.stepStage {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #526059;
+}
+
+.stepStageAi {
+  color: #004523;
+  font-weight: 800;
+}
+
+.stepTitle {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #10231B;
+  margin: 0 0 0.45rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.aiTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #004523;
+  background: #FFB800;
+  padding: 0.22rem 0.55rem;
+  border-radius: var(--mk-radius-pill, 50px);
+  box-shadow: 0 2px 6px rgba(255, 184, 0, 0.3);
+}
+
+.stepDescription {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #526059;
+  margin: 0;
+}
+
+/* Connector Line & Arrow */
+.flowConnector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0;
+  color: #004523;
+}
+
+.connectorLine {
+  width: 2px;
+  height: 18px;
+  background: linear-gradient(180deg, rgba(0, 69, 35, 0.25) 0%, rgba(0, 69, 35, 0.5) 100%);
+}
+
+.connectorArrow {
+  margin-top: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #004523;
+}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+@media (max-width: 1024px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .stickyContent {
+    position: static;
+  }
+
+  .ctaButton {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: clamp(4.5rem, 8vw, 6rem) 1.2rem;
+  }
+
+  .headingLine1,
+  .headingLine2 {
+    display: inline;
+  }
+
+  .contrastCard {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .stepCard {
+    padding: 1.25rem 1.2rem;
+  }
+
+  .stepTitle {
+    font-size: 1.15rem;
+  }
+}
