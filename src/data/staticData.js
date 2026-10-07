@@ -164,23 +164,28 @@ export const WHY_US_POINTS = [
 export const PROCESS_STEPS = [
   {
     number: '01',
-    title: 'Deep Research',
-    description: 'We analyze your market, dissect competitors, and identify exactly what your ideal customer desires.',
+    title: 'Discover',
+    description: 'Understand your business, workflows and operational challenges.',
   },
   {
     number: '02',
-    title: 'AI Strategy',
-    description: 'We map out the funnels, position the offer, and craft compelling messaging that triggers action.',
+    title: 'Diagnose',
+    description: 'Find the repetitive work and bottlenecks worth solving.',
   },
   {
     number: '03',
-    title: 'Rapid Execution',
-    description: 'Landing pages drop, ad campaigns launch, and automated follow-ups are deployed flawlessly.',
+    title: 'Prioritize',
+    description: 'Evaluate opportunities based on impact, complexity and ROI.',
   },
   {
     number: '04',
-    title: 'Scale & Optimize',
-    description: 'We monitor data in real-time, kill losing variants, and aggressively scale the winning campaigns.',
+    title: 'Build',
+    description: 'Implement the right combination of AI, automation and software.',
+  },
+  {
+    number: '05',
+    title: 'Optimize',
+    description: 'Measure results and continuously improve the system.',
   },
 ];
 

@@ -2,13 +2,14 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { STATS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
+import { STATS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
 import WhatWeDoSection from '../components/sections/WhatWeDoSection';
 import DifferentiatorSection from '../components/sections/DifferentiatorSection';
+import FrameworkSection from '../components/sections/FrameworkSection';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -114,25 +115,8 @@ export default function HomePage() {
       {/* ── 4. OUR BIGGEST DIFFERENTIATOR ── */}
       <DifferentiatorSection />
 
-      {/* ── 4. PROCESS ── */}
-      <section className="mk-section">
-        <div className="mk-container">
-          <SectionHead
-            centered
-            title='Our <span class="mk-highlight-text">Growth Framework</span>'
-            subtitle="A methodical, 4-step system to turn total strangers into raving fans."
-          />
-          <div className={styles.timeline}>
-            {PROCESS_STEPS.map((step) => (
-              <div key={step.number} className={styles.step}>
-                <div className={styles.stepNumber}>{step.number}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── 5. AI TRANSFORMATION FRAMEWORK ── */}
+      <FrameworkSection />
 
       {/* ── 5. RESULTS ── */}
       <section className={styles.results}>
