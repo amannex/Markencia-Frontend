@@ -6,20 +6,42 @@ export default function BusinessBottlenecksSection() {
   return (
     <section className={styles.section} id="bottlenecks" aria-label="Business Problems and Operational Bottlenecks">
       <div className={styles.container}>
-        {/* ── TOP AREA ── */}
+        {/* ── TOP AREA (EDITORIAL TWO-COLUMN) ── */}
         <div className={styles.topArea}>
-          <div className={styles.eyebrow}>
-            <span className={styles.eyebrowDash} aria-hidden="true" />
-            <span>WHERE BUSINESS GETS STUCK</span>
+          <div className={styles.topContentLeft}>
+            <div className={styles.eyebrow}>
+              <span className={styles.eyebrowDash} aria-hidden="true" />
+              <span>WHERE BUSINESS GETS STUCK</span>
+            </div>
+
+            <h2 className={styles.heading}>
+              Your business probably has more{' '}
+              <span className={styles.headingHighlight}>automation</span>{' '}
+              opportunities than you think.
+            </h2>
+
+            <div className={styles.subheadingBlock}>
+              <p className={styles.subheading}>
+                AI isn't the starting point. Understanding your business is.
+              </p>
+              <p className={styles.supportingText}>
+                Before recommending technology, we look at how work actually moves through your business.
+              </p>
+            </div>
           </div>
 
-          <h2 className={styles.heading}>
-            <span>
-              Your business probably has more{' '}
-              <span className={styles.headingHighlight}>automation</span>
-            </span>{' '}
-            <span className={styles.headingLine2}>opportunities than you think.</span>
-          </h2>
+          <div className={styles.topContentRight}>
+            <div className={styles.editorialNote}>
+              <div className={styles.editorialTag}>OPERATIONAL DIAGNOSTIC</div>
+              <blockquote className={styles.editorialQuote}>
+                &ldquo;Most operational friction isn't caused by a lack of software. It comes from disconnected workflows, manual data handoffs, and teams compensating for fragmented systems.&rdquo;
+              </blockquote>
+              <div className={styles.editorialFooter}>
+                <span className={styles.editorialDot} aria-hidden="true" />
+                <span>How Markencia diagnoses bottlenecks before writing code.</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* ── 4-CARD GRID (2 × 2 ON DESKTOP & TABLET, 1-COL ON MOBILE) ── */}
@@ -270,28 +292,21 @@ function SpreadsheetIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#047857" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Background document */}
       <rect x="6" y="4" width="24" height="28" rx="4" fill="url(#sheetGrad)" filter="url(#sheetShadow)" />
-      {/* Top right folded corner effect */}
       <path d="M22 4L30 12H24C22.8954 12 22 11.1046 22 10V4Z" fill="#34D399" />
       <path d="M22 4L30 12V4H22Z" fill="#065F46" fillOpacity="0.25" />
 
-      {/* Main Grid Table Card */}
       <rect x="9.5" y="13.5" width="17" height="15" rx="2" fill="#FFFFFF" />
-      {/* Header bar of table */}
       <rect x="9.5" y="13.5" width="17" height="4" rx="1.5" fill="#059669" />
 
-      {/* Grid columns and rows */}
       <line x1="15" y1="13.5" x2="15" y2="28.5" stroke="#E2E8F0" strokeWidth="1" />
       <line x1="20.5" y1="13.5" x2="20.5" y2="28.5" stroke="#E2E8F0" strokeWidth="1" />
       <line x1="9.5" y1="21" x2="26.5" y2="21" stroke="#E2E8F0" strokeWidth="1" />
       <line x1="9.5" y1="24.5" x2="26.5" y2="24.5" stroke="#E2E8F0" strokeWidth="1" />
 
-      {/* Highlighted active cell */}
       <rect x="15" y="17.5" width="5.5" height="3.5" fill="#A7F3D0" />
       <rect x="20.5" y="21" width="6" height="3.5" fill="#D1FAE5" />
 
-      {/* Mini Sheet 'X' / Grid symbol badge in top-left */}
       <rect x="8.5" y="6.5" width="7" height="5" rx="1" fill="#FFFFFF" />
       <path d="M10 8L14 10.5M14 8L10 10.5" stroke="#059669" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
@@ -314,26 +329,20 @@ function EmailIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#1E3A8A" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Letter popping out of envelope */}
       <rect x="9.5" y="5.5" width="17" height="14" rx="2" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth="0.8" />
       <line x1="12.5" y1="8.5" x2="20.5" y2="8.5" stroke="#94A3B8" strokeWidth="1.3" strokeLinecap="round" />
       <line x1="12.5" y1="11.5" x2="23.5" y2="11.5" stroke="#60A5FA" strokeWidth="1.3" strokeLinecap="round" />
       <line x1="12.5" y1="14.5" x2="18.5" y2="14.5" stroke="#CBD5E1" strokeWidth="1.3" strokeLinecap="round" />
 
-      {/* Main Envelope Body */}
       <rect x="4.5" y="12" width="27" height="19" rx="3.5" fill="url(#emailGrad)" filter="url(#emailShadow)" />
 
-      {/* Envelope interior fold shadow */}
       <path d="M4.5 13.5L18 23.5L31.5 13.5V27.5C31.5 29.433 29.933 31 28 31H8C6.067 31 4.5 29.433 4.5 27.5V13.5Z" fill="#1E40AF" fillOpacity="0.35" />
 
-      {/* Diagonal envelope crease lines */}
       <path d="M5 29.5L14 20" stroke="#60A5FA" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.4" />
       <path d="M31 29.5L22 20" stroke="#60A5FA" strokeWidth="1" strokeLinecap="round" strokeOpacity="0.4" />
 
-      {/* Top Envelope Flap */}
       <path d="M4.5 13C4.5 12.1716 5.17157 11.5 6 11.5H30C30.8284 11.5 31.5 12.1716 31.5 13L18.832 21.8676C18.3283 22.2202 17.6717 22.2202 17.168 21.8676L4.5 13Z" fill="url(#emailFlapGrad)" stroke="#93C5FD" strokeWidth="0.8" />
 
-      {/* Notification badge / alert dot */}
       <circle cx="28.5" cy="11.5" r="3.2" fill="#EF4444" />
       <circle cx="28.5" cy="11.5" r="1.3" fill="#FFFFFF" />
     </svg>
@@ -352,13 +361,10 @@ function WhatsAppIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#075E54" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Background rounded squircle tile */}
       <rect x="4.5" y="4.5" width="27" height="27" rx="7.5" fill="url(#waGrad)" filter="url(#waShadow)" />
 
-      {/* Subtle glossy top curve */}
       <path d="M5.5 10C5.5 7.51472 7.51472 5.5 10 5.5H26C28.4853 5.5 30.5 7.51472 30.5 10V13C30.5 13 24 9.5 18 9.5C12 9.5 5.5 13 5.5 13V10Z" fill="#FFFFFF" fillOpacity="0.18" />
 
-      {/* Official WhatsApp Brand Sign (Distinct speech bubble with tail + handset) */}
       <g transform="translate(8.2, 8.2) scale(0.82)">
         <path
           fill="#FFFFFF"
@@ -381,30 +387,24 @@ function SoftwareIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#0F172A" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Window Body */}
       <rect x="4.5" y="5.5" width="27" height="25" rx="4" fill="url(#softGrad)" filter="url(#softShadow)" />
       <rect x="5" y="6" width="26" height="24" rx="3.5" stroke="#334155" strokeWidth="1" />
 
-      {/* Title bar header */}
       <rect x="4.5" y="5.5" width="27" height="7" rx="4" fill="#334155" />
       <rect x="4.5" y="8.5" width="27" height="4" fill="#334155" />
 
-      {/* Window Traffic Lights */}
       <circle cx="8" cy="9" r="1.4" fill="#EF4444" />
       <circle cx="11.5" cy="9" r="1.4" fill="#F59E0B" />
       <circle cx="15" cy="9" r="1.4" fill="#10B981" />
 
-      {/* Mini Sidebar */}
       <rect x="7" y="15" width="5.5" height="13" rx="1.5" fill="#1E293B" />
       <line x1="8.5" y1="17.5" x2="11" y2="17.5" stroke="#64748B" strokeWidth="1" strokeLinecap="round" />
       <line x1="8.5" y1="20.5" x2="11" y2="20.5" stroke="#64748B" strokeWidth="1" strokeLinecap="round" />
       <line x1="8.5" y1="23.5" x2="10" y2="23.5" stroke="#64748B" strokeWidth="1" strokeLinecap="round" />
 
-      {/* Code / Terminal Command Symbol */}
       <path d="M15.5 17L17.5 19L15.5 21" stroke="#38BDF8" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
       <line x1="19.5" y1="19" x2="26.5" y2="19" stroke="#94A3B8" strokeWidth="1.2" strokeLinecap="round" />
 
-      {/* Mini Dashboard Widget / Progress / API Block */}
       <rect x="15.5" y="23" width="12" height="4" rx="1.5" fill="#0284C7" fillOpacity="0.25" stroke="#38BDF8" strokeWidth="0.8" />
       <line x1="17.5" y1="25" x2="24" y2="25" stroke="#38BDF8" strokeWidth="1" strokeLinecap="round" />
     </svg>
@@ -425,26 +425,20 @@ function ExportDataIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#B45309" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Background document / table tile */}
       <rect x="5.5" y="4.5" width="25" height="27" rx="4" fill="url(#exportGrad)" filter="url(#exportShadow)" />
 
-      {/* Table paper sheet inner */}
       <rect x="8.5" y="8" width="19" height="20" rx="2.5" fill="#FFFFFF" />
 
-      {/* Header bar */}
       <rect x="8.5" y="8" width="19" height="5" rx="1.5" fill="#FEF3C7" />
       <circle cx="11.5" cy="10.5" r="1.2" fill="#F59E0B" />
       <line x1="15" y1="10.5" x2="24" y2="10.5" stroke="#D97706" strokeWidth="1.2" strokeLinecap="round" />
 
-      {/* Data rows */}
       <line x1="11" y1="16" x2="19" y2="16" stroke="#CBD5E1" strokeWidth="1.2" strokeLinecap="round" />
       <line x1="11" y1="19.5" x2="17" y2="19.5" stroke="#CBD5E1" strokeWidth="1.2" strokeLinecap="round" />
       <line x1="11" y1="23" x2="18" y2="23" stroke="#CBD5E1" strokeWidth="1.2" strokeLinecap="round" />
 
-      {/* Outward export circle badge */}
       <circle cx="23.5" cy="22.5" r="5" fill="#D97706" />
       <circle cx="23.5" cy="22.5" r="4" fill="#F59E0B" />
-      {/* Export download arrow */}
       <path d="M23.5 20V24.5M23.5 24.5L21.5 22.5M23.5 24.5L25.5 22.5" stroke="#FFFFFF" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -462,26 +456,20 @@ function FormatSheetIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#5B21B6" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Background container tile */}
       <rect x="5.5" y="4.5" width="25" height="27" rx="4" fill="url(#formatGrad)" filter="url(#formatShadow)" />
 
-      {/* White document body */}
       <rect x="8.5" y="8" width="19" height="20" rx="2.5" fill="#FFFFFF" />
 
-      {/* Top purple tab */}
       <rect x="13" y="6.5" width="10" height="3.5" rx="1.5" fill="#DDD6FE" stroke="#8B5CF6" strokeWidth="0.8" />
 
-      {/* Table grid lines */}
       <line x1="8.5" y1="13.5" x2="27.5" y2="13.5" stroke="#EDE9FE" strokeWidth="1" />
       <line x1="8.5" y1="18.5" x2="27.5" y2="18.5" stroke="#EDE9FE" strokeWidth="1" />
       <line x1="8.5" y1="23.5" x2="27.5" y2="23.5" stroke="#EDE9FE" strokeWidth="1" />
       <line x1="17.5" y1="13.5" x2="17.5" y2="28" stroke="#EDE9FE" strokeWidth="1" />
 
-      {/* Highlighted manual edit cell */}
       <rect x="10" y="14.5" width="6.5" height="3" rx="0.8" fill="#C4B5FD" />
       <rect x="18.5" y="19.5" width="7.5" height="3" rx="0.8" fill="#DDD6FE" />
 
-      {/* Edit pen / cursor indicator */}
       <circle cx="23.5" cy="11.5" r="4" fill="#6D28D9" />
       <path d="M22 12.8L24.5 10.3M24.5 10.3L25.2 11M24.5 10.3L23.2 9" stroke="#FFFFFF" strokeWidth="0.9" strokeLinecap="round" />
     </svg>
@@ -500,19 +488,15 @@ function EmailReportIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#0369A1" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Background tile */}
       <rect x="5.5" y="5" width="25" height="26" rx="4" fill="url(#reportGrad)" filter="url(#reportShadow)" />
 
-      {/* Report card */}
       <rect x="8.5" y="8" width="19" height="18" rx="2" fill="#FFFFFF" />
 
-      {/* Mini Bar Chart inside report */}
       <rect x="11" y="17" width="2.5" height="5" rx="0.6" fill="#BAE6FD" />
       <rect x="14.8" y="14" width="2.5" height="8" rx="0.6" fill="#38BDF8" />
       <rect x="18.5" y="11.5" width="2.5" height="10.5" rx="0.6" fill="#0284C7" />
       <line x1="10" y1="22.5" x2="22" y2="22.5" stroke="#CBD5E1" strokeWidth="0.8" />
 
-      {/* Dispatch dispatch badge */}
       <circle cx="23.5" cy="21.5" r="5" fill="#0369A1" />
       <path d="M21 21.5L25.5 19.5L23.5 24L22.8 22.3L21 21.5Z" fill="#FFFFFF" />
     </svg>
@@ -531,25 +515,17 @@ function RepeatCycleIcon() {
           <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" floodColor="#004523" floodOpacity="0.25" />
         </filter>
       </defs>
-      {/* Background tile */}
       <rect x="4.5" y="4.5" width="27" height="27" rx="7.5" fill="url(#repeatCycleGrad)" filter="url(#repeatCycleShadow)" />
 
-      {/* Subtle glossy top curve */}
       <path d="M5.5 10C5.5 7.51472 7.51472 5.5 10 5.5H26C28.4853 5.5 30.5 7.51472 30.5 10V13C30.5 13 24 9.5 18 9.5C12 9.5 5.5 13 5.5 13V10Z" fill="#FFFFFF" fillOpacity="0.18" />
 
-      {/* Circular clockwise repeating loop arrows */}
       <g transform="translate(18, 18)">
-        {/* Top arc (clockwise from left to right) */}
         <path d="M -6.5 0 A 6.5 6.5 0 0 1 6.5 -0.5" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
-        {/* Top arrowhead pointing downwards */}
         <path d="M 3.8 -2.2 L 6.5 1 L 9.2 -2.2" fill="none" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Bottom arc (clockwise from right to left) */}
         <path d="M 6.5 0 A 6.5 6.5 0 0 1 -6.5 0.5" stroke="#FFB800" strokeWidth="1.8" strokeLinecap="round" />
-        {/* Bottom arrowhead pointing upwards */}
         <path d="M -3.8 2.2 L -6.5 -1 L -9.2 2.2" fill="none" stroke="#FFB800" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
 
-        {/* Center dot */}
         <circle cx="0" cy="0" r="1.5" fill="#FFFFFF" />
       </g>
     </svg>
@@ -644,5 +620,3 @@ function OpsIcon() {
     </svg>
   );
 }
-
-
