@@ -66,7 +66,7 @@ export default function WhatWeDoSection() {
   return (
     <section className={styles.section} id="services" aria-label="What Markencia Actually Does">
       <div className={styles.container}>
-        {/* ── TOP AREA (EDITORIAL HEADLINE & SUBHEAD) ── */}
+        {/* ── TOP AREA (HEADLINE) ── */}
         <div className={styles.topArea}>
           <div className={styles.eyebrow}>
             <span className={styles.eyebrowDash} aria-hidden="true" />
@@ -74,13 +74,12 @@ export default function WhatWeDoSection() {
           </div>
 
           <h2 className={styles.heading}>
-            From AI Strategy to{' '}
-            <span className={styles.headingHighlight}>Implementation</span>
+            <span>We don&apos;t just recommend AI tools. </span>
+            <span className={styles.headingLine2}>
+              We design systems around how your business{' '}
+              <span className={styles.headingHighlight}>actually works.</span>
+            </span>
           </h2>
-
-          <p className={styles.subheading}>
-            We don&apos;t just recommend AI tools. We design systems around how your business actually works.
-          </p>
         </div>
 
         {/* ── 4 CARDS GRID (4-COL ON DESKTOP, 2-COL TABLET, 1-COL MOBILE) ── */}
