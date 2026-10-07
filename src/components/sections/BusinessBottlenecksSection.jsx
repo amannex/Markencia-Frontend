@@ -242,9 +242,6 @@ export default function BusinessBottlenecksSection() {
             <span>Identify Your Bottlenecks</span>
             <span className={styles.ctaArrow} aria-hidden="true">&rarr;</span>
           </Link>
-          <p className={styles.ctaSubtext}>
-            Free 30-minute diagnostic session with our operational team
-          </p>
         </div>
       </div>
     </section>
