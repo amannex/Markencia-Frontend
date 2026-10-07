@@ -8,7 +8,6 @@ import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
 import WhatWeDoSection from '../components/sections/WhatWeDoSection';
-import DifferentiatorSection from '../components/sections/DifferentiatorSection';
 import FrameworkSection from '../components/sections/FrameworkSection';
 import styles from './HomePage.module.css';
 
@@ -112,10 +111,7 @@ export default function HomePage() {
       {/* ── 3. WHAT MARKENCIA ACTUALLY DOES ── */}
       <WhatWeDoSection />
 
-      {/* ── 4. OUR BIGGEST DIFFERENTIATOR ── */}
-      <DifferentiatorSection />
-
-      {/* ── 5. AI TRANSFORMATION FRAMEWORK ── */}
+      {/* ── 4. AI TRANSFORMATION FRAMEWORK ── */}
       <FrameworkSection />
 
       {/* ── 5. RESULTS ── */}
