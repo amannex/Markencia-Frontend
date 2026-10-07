@@ -32,7 +32,7 @@ const FRAMEWORK_STEPS = [
 
 export default function FrameworkSection() {
   return (
-    <section className={styles.section} id="process" aria-label="The Markencia AI Transformation Framework">
+    <section className={styles.section} id="process" aria-label="The Markencia Transformation Framework">
       <div className={styles.container}>
         {/* ── TOP AREA (HEADLINE) ── */}
         <div className={styles.topArea}>
@@ -43,13 +43,9 @@ export default function FrameworkSection() {
 
           <h2 className={styles.heading}>
             The Markencia{' '}
-            <span className={styles.headingHighlight}>AI Transformation</span>{' '}
+            <span className={styles.headingHighlight}>Transformation</span>{' '}
             Framework
           </h2>
-
-          <p className={styles.subheading}>
-            A methodical, business-first approach to designing, deploying, and scaling intelligent systems.
-          </p>
         </div>
 
         {/* ── 5-STEP TIMELINE GRID ── */}
