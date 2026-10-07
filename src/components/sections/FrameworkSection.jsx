@@ -32,7 +32,7 @@ const FRAMEWORK_STEPS = [
 
 export default function FrameworkSection() {
   return (
-    <section className={styles.section} id="process" aria-label="The Markencia Transformation Framework">
+    <section className={styles.section} id="process" aria-label="A Practical Approach to Applying AI Across Your Business">
       <div className={styles.container}>
         {/* ── TOP AREA (HEADLINE) ── */}
         <div className={styles.topArea}>
@@ -42,9 +42,9 @@ export default function FrameworkSection() {
           </div>
 
           <h2 className={styles.heading}>
-            The Markencia{' '}
-            <span className={styles.headingHighlight}>Transformation</span>{' '}
-            Framework
+            A Practical Approach to{' '}
+            <span className={styles.headingHighlight}>Applying AI</span> Across
+            Your Business
           </h2>
         </div>
 
