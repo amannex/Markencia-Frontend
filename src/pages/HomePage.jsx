@@ -9,9 +9,9 @@ import styles from './HomePage.module.css';
 const BUSINESS_IMPACTS = [
   {
     number: '01',
-    title: 'Automate repetitive work and remove operational friction.',
+    title: 'Automate repetitive work and remove friction.',
     description:
-      'Reduce the time your team spends on routine tasks, identify slow processes, and redesign them with smarter workflows and automation.',
+      'Identify slow manual processes and automate routine tasks so your team can focus on higher-value work.',
   },
   {
     number: '02',
