@@ -73,10 +73,10 @@
   padding: 0 0.1em;
 }
 
-/* ── DESKTOP & TABLET TWO EQUAL-WIDTH COLUMNS (50% / 50%) ── */
+/* ── DESKTOP & TABLET TWO-COLUMN LAYOUT (COL 1 REDUCED BY 20%) ── */
 .desktopLayout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.8fr 1.2fr;
   gap: clamp(2rem, 3.5vw, 3rem);
   align-items: start;
 }
