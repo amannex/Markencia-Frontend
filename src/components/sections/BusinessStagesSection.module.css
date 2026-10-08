@@ -1,0 +1,357 @@
+/* ============================================================
+   BUSINESS STAGES SECTION MODULE CSS
+   Brand Tokens:
+   - Primary Green: #166534
+   - Warm Highlight: #FDE096
+   - Background: #F8FAF8
+   - Card Background: #FFFFFF
+   - Border: rgba(16, 35, 27, 0.08)
+   - Dark Text: #10231B
+   - Muted Text: #526059
+   ============================================================ */
+
+.section {
+  background-color: #F8FAF8;
+  color: #10231B;
+  padding: clamp(6rem, 9vw, 8.5rem) 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+/* ── TOP AREA (HEADLINE) ── */
+.topArea {
+  margin-bottom: clamp(3rem, 5vw, 4rem);
+  max-width: 860px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #166534;
+  margin-bottom: 1.15rem;
+}
+
+.eyebrowDash {
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: #166534;
+}
+
+.heading {
+  font-family: var(--mk-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: #10231B;
+  margin: 0;
+}
+
+.headingHighlight {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, #FDE096 65%);
+  padding: 0 0.1em;
+}
+
+/* ── 3 STAGE TABS (HORIZONTAL CARDS) ── */
+.tabsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.tabCard {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(16, 35, 27, 0.08);
+  border-radius: 16px;
+  padding: 1.75rem 1.75rem 1.6rem;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 175px;
+  outline: none;
+}
+
+.tabCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(22, 101, 52, 0.3);
+  box-shadow: 0 10px 25px rgba(16, 35, 27, 0.05);
+}
+
+.tabCardActive {
+  border-color: #166534;
+  box-shadow: 0 16px 36px rgba(16, 35, 27, 0.08);
+  background-color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.tabCardActive::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background-color: #FFFFFF;
+  border-right: 1px solid rgba(16, 35, 27, 0.1);
+  border-bottom: 1px solid rgba(16, 35, 27, 0.1);
+  transform: translateX(-50%) rotate(45deg);
+  z-index: 3;
+}
+
+.tabTop {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.tabNumber {
+  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #7D8E84;
+}
+
+.tabCardActive .tabNumber {
+  color: #166534;
+}
+
+.tabTitle {
+  font-family: var(--mk-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #10231B;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem 0;
+}
+
+.tabTeaser {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #55675F;
+  margin: 0;
+}
+
+.tabCardActive .tabTeaser {
+  color: #2D3D35;
+  font-weight: 500;
+}
+
+/* ── SUPPORTING CONTENT PANEL ── */
+.panel {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(16, 35, 27, 0.08);
+  border-radius: 24px;
+  padding: clamp(2.5rem, 4.5vw, 3.8rem);
+  box-shadow: 0 16px 40px rgba(16, 35, 27, 0.04);
+  position: relative;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.panelGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+/* Left side: narrative */
+.narrativeCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.stageLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #166534;
+  margin-bottom: 1.1rem;
+}
+
+.stageHeadline {
+  font-family: var(--mk-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.85rem, 2.5vw, 2.45rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #10231B;
+  margin: 0 0 1.25rem 0;
+}
+
+.stageDescription {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.02rem, 1.25vw, 1.12rem);
+  line-height: 1.7;
+  color: #4C5D55;
+  margin: 0 0 2rem 0;
+}
+
+.ctaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--mk-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #166534;
+  text-decoration: none;
+  background-color: #EAF3ED;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  width: fit-content;
+  transition: background-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.ctaLink:hover {
+  background-color: #166534;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.ctaArrow {
+  transition: transform 0.2s ease;
+}
+
+.ctaLink:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+/* Right side: focus points */
+.focusCol {
+  background-color: #F8FAF8;
+  border: 1px solid rgba(16, 35, 27, 0.06);
+  border-radius: 18px;
+  padding: clamp(1.75rem, 2.8vw, 2.4rem);
+}
+
+.focusHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(16, 35, 27, 0.08);
+}
+
+.focusHeaderTitle {
+  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6C7D74;
+}
+
+.focusList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.focusItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #1B2C24;
+  line-height: 1.45;
+}
+
+.focusIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(16, 35, 27, 0.1);
+  color: #166534;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── ANIMATIONS ── */
+.fadeContent {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .panelGrid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tabsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .tabCard {
+    min-height: auto;
+    padding: 1.35rem 1.25rem;
+  }
+
+  .tabCardActive::after {
+    display: none;
+  }
+
+  .panel {
+    padding: 1.85rem 1.4rem;
+    border-radius: 18px;
+  }
+
+  .focusCol {
+    padding: 1.4rem 1.15rem;
+  }
+}
