@@ -1,0 +1,824 @@
+/* ============================================================
+   LOCATION LANDING PAGE STYLES (Modular & Reusable)
+   ============================================================ */
+
+.pageWrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--mk-bg-main, #ffffff);
+  color: var(--mk-text-main, #0f172a);
+}
+
+/* ──────────────────────────────────────────────
+   1. HERO SECTION
+────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  padding: 8.5rem 1.5rem 5.5rem;
+  background: radial-gradient(ellipse at 20% 40%, rgba(0, 56, 24, 0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(255, 180, 0, 0.08) 0%, transparent 50%),
+              #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.heroBackgroundGrid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 56, 24, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 56, 24, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.eyebrowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-mk-primary, #003818);
+  background: rgba(0, 56, 24, 0.06);
+  border: 1px solid rgba(0, 56, 24, 0.15);
+  border-radius: 9999px;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrowDot {
+  width: 7px;
+  height: 7px;
+  background: var(--color-mk-secondary, #FFB400);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(255, 180, 0, 0.8);
+}
+
+.heroTitle {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.65;
+  color: #475569;
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+}
+
+.heroCtaGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-mk-primary, #003818);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.95rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 56, 24, 0.18);
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
+}
+
+.primaryBtn:hover {
+  background-color: var(--color-mk-primary-hover, #004d22);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 56, 24, 0.24);
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #1e293b !important;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.95rem 1.8rem;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  transition: all 0.25s ease;
+}
+
+.secondaryBtn:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+}
+
+.trustBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed #e2e8f0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.trustText {
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.85rem;
+  color: #64748b;
+  letter-spacing: 0.04em;
+}
+
+.localBadgeText {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-mk-primary, #003818);
+}
+
+/* ──────────────────────────────────────────────
+   SECTION BASE UTILITIES
+────────────────────────────────────────────── */
+.sectionHeader {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.sectionEyebrow {
+  display: inline-block;
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-mk-primary, #003818);
+  margin-bottom: 0.75rem;
+}
+
+.sectionHeading {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.sectionDescription {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #64748b;
+}
+
+/* ──────────────────────────────────────────────
+   2. LOCAL PROBLEMS SECTION
+────────────────────────────────────────────── */
+.problemsSection {
+  padding: 6rem 1.5rem;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.problemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.problemCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2.25rem 1.75rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.problemCard:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
+}
+
+.problemNumber {
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-mk-secondary, #FFB400);
+  background: #fffbeb;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.problemTitle {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.85rem;
+}
+
+.problemDesc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.problemImpact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+}
+
+/* ──────────────────────────────────────────────
+   3. SIGNATURE PILLARS (Modernize | Automate | Apply AI)
+────────────────────────────────────────────── */
+.signatureSection {
+  padding: 6.5rem 1.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .pillarsGrid {
+    grid-template-columns: 1fr;
+    max-width: 650px;
+  }
+}
+
+.pillarCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2.75rem 2.25rem;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.pillarCard:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-mk-primary, #003818);
+  box-shadow: 0 20px 40px rgba(0, 56, 24, 0.08);
+}
+
+.pillarTag {
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-mk-primary, #003818);
+  background: rgba(0, 56, 24, 0.08);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+}
+
+.pillarTitle {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.pillarDesc {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #475569;
+  margin-bottom: 1.75rem;
+}
+
+.pillarHighlights {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pillarHighlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.pillarCheckIcon {
+  color: var(--color-mk-primary, #003818);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pillarCtaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-mk-primary, #003818) !important;
+  transition: gap 0.2s ease;
+}
+
+.pillarCtaLink:hover {
+  gap: 0.85rem;
+  text-decoration: underline;
+}
+
+/* ──────────────────────────────────────────────
+   4. SERVICES SECTION
+────────────────────────────────────────────── */
+.servicesSection {
+  padding: 6.5rem 1.5rem;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.serviceCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem 1.75rem;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceCard:hover {
+  border-color: #94a3b8;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.05);
+}
+
+.serviceIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.serviceTitle {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+}
+
+.serviceDesc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.serviceLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-mk-primary, #003818) !important;
+}
+
+/* ──────────────────────────────────────────────
+   5. INDUSTRIES SECTION
+────────────────────────────────────────────── */
+.industriesSection {
+  padding: 6.5rem 1.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.industriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.industryCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  transition: all 0.25s ease;
+  border-left: 4px solid var(--color-mk-primary, #003818);
+}
+
+.industryCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.05);
+}
+
+.industryHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.industryIcon {
+  font-size: 1.75rem;
+}
+
+.industryTitle {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.industryDesc {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #64748b;
+}
+
+/* ──────────────────────────────────────────────
+   6. HOW WE WORK (PROCESS TIMELINE)
+────────────────────────────────────────────── */
+.processSection {
+  padding: 6.5rem 1.5rem;
+  background-color: #0f172a;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.processEyebrow {
+  color: var(--color-mk-secondary, #FFB400);
+}
+
+.processHeading {
+  color: #ffffff;
+}
+
+.processDescription {
+  color: #94a3b8;
+}
+
+.processStepsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .processStepsGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+}
+
+.processStepCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2.25rem 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.processStepCard:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--color-mk-secondary, #FFB400);
+  transform: translateY(-4px);
+}
+
+.stepBadge {
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-mk-secondary, #FFB400);
+  margin-bottom: 1rem;
+}
+
+.stepName {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.stepDesc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+/* ──────────────────────────────────────────────
+   7. CASE STUDIES (SELECTED WORK)
+────────────────────────────────────────────── */
+.caseStudiesSection {
+  padding: 6.5rem 1.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projectCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
+}
+
+.projectCategory {
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-mk-primary, #003818);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.projectName {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.whatWeBuiltBadge {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+}
+
+.projectDetailBlock {
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.detailLabel {
+  font-family: var(--font-mk-mono, 'Fira Code', monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.detailContent {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.projectCtaLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-mk-primary, #003818) !important;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ──────────────────────────────────────────────
+   8. FAQ SECTION
+────────────────────────────────────────────── */
+.faqSection {
+  padding: 6.5rem 1.5rem;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.faqContainer {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faqItem.open {
+  border-color: var(--color-mk-primary, #003818);
+  box-shadow: 0 8px 20px rgba(0, 56, 24, 0.05);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.35rem 1.5rem;
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faqChevron {
+  font-size: 1.25rem;
+  color: var(--color-mk-primary, #003818);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.faqItem.open .faqChevron {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  padding: 0 1.5rem 1.5rem;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #475569;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+/* ──────────────────────────────────────────────
+   9. FINAL CTA SECTION
+────────────────────────────────────────────── */
+.finalCtaSection {
+  padding: 6.5rem 1.5rem;
+  background: linear-gradient(135deg, #003818 0%, #002611 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.finalCtaContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.finalCtaHeadline {
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.finalCtaSubheading {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.65;
+  color: #d1fae5;
+  margin-bottom: 2.5rem;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.finalCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--color-mk-secondary, #FFB400);
+  color: #0f172a !important;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 1.1rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(255, 180, 0, 0.25);
+  transition: all 0.25s ease;
+  margin-bottom: 1.25rem;
+}
+
+.finalCtaBtn:hover {
+  background: #f5a600;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(255, 180, 0, 0.35);
+}
+
+.finalCtaSupporting {
+  font-size: 0.88rem;
+  color: #a7f3d0;
+  letter-spacing: 0.02em;
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 7rem 1.25rem 4rem;
+  }
+  .sectionHeader {
+    margin-bottom: 2.5rem;
+  }
+  .pillarCard, .projectCard, .problemCard {
+    padding: 1.75rem 1.25rem;
+  }
+  .heroCtaGroup {
+    flex-direction: column;
+    width: 100%;
+  }
+  .primaryBtn, .secondaryBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

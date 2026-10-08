@@ -429,6 +429,7 @@ export const FOOTER_LINKS = {
     { label: 'Case Studies', path: '/case-studies' },
     { label: 'Pricing', path: '/pricing' },
     { label: 'Careers', path: '/career' },
+    { label: 'Noida (HQ)', path: '/noida' },
   ],
   contact: [
     { label: '+91 6395543772', path: 'tel:+916395543772', external: true },

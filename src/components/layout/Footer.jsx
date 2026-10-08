@@ -168,7 +168,7 @@ export default function Footer({ showCta }) {
               Markencia<span className={styles.brandDot}>.</span>
             </h3>
             <p className={styles.brandDesc}>
-              Markencia is an AI consultancy helping modern businesses build intelligent systems, automate operations, and scale their digital infrastructure.
+              Markencia is a digital transformation agency helping growing businesses in Noida and across NCR modernize their digital infrastructure, automate workflows and implement practical AI systems.
             </p>
 
             {!isHome && (
