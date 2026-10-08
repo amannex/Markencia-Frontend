@@ -101,7 +101,6 @@ export default function Footer({ showCta }) {
         {isHome && (
           <section className={styles.ctaSection} aria-labelledby="footer-cta-heading">
             <div className={styles.ctaContent}>
-              <span className={styles.ctaEyebrow}>AI STRATEGY &amp; CONSULTING</span>
               <h2 id="footer-cta-heading" className={styles.ctaTitle}>
                 Not sure where <span className={styles.ctaHighlight}>AI fits</span> into your business?
               </h2>
