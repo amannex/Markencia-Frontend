@@ -5,6 +5,7 @@ import BusinessBottlenecksSection from '../components/sections/BusinessBottlenec
 import WhatWeDoSection from '../components/sections/WhatWeDoSection';
 import FrameworkSection from '../components/sections/FrameworkSection';
 import IndustryFocusSection from '../components/sections/IndustryFocusSection';
+import BusinessStagesSection from '../components/sections/BusinessStagesSection';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -75,7 +76,10 @@ export default function HomePage() {
       {/* ── 6. INDUSTRY FOCUS ── */}
       <IndustryFocusSection />
 
-      {/* ── 7. CTA ── */}
+      {/* ── 7. SOLUTIONS BY STAGE ── */}
+      <BusinessStagesSection />
+
+      {/* ── 8. CTA ── */}
       <CTASection />
     </>
   );
