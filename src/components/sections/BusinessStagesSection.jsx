@@ -141,7 +141,6 @@ export default function BusinessStagesSection() {
             <div className={styles.focusCol}>
               <div className={styles.focusHeader}>
                 <span className={styles.focusHeaderTitle}>Key Operational Focus</span>
-                <span className={styles.tabNumber}>{activeStage.number} / 03</span>
               </div>
 
               <ul className={styles.focusList}>
