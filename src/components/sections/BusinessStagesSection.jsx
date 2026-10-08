@@ -85,12 +85,6 @@ export default function BusinessStagesSection() {
             Wherever your business is, there&apos;s{' '}
             <span className={styles.headingHighlight}>room to optimize.</span>
           </h2>
-
-          <p className={styles.subheading}>
-            From eliminating repetitive work in a growing business to modernizing complex enterprise
-            infrastructure, Markencia helps you find where AI and technology can create meaningful
-            operational impact.
-          </p>
         </div>
 
         {/* ── 3 STAGE TABS (INTERACTIVE CATEGORIES) ── */}
@@ -109,12 +103,6 @@ export default function BusinessStagesSection() {
               >
                 <div className={styles.tabTop}>
                   <span className={styles.tabNumber}>{stage.number}</span>
-                  {isActive && (
-                    <span className={styles.activeBadge}>
-                      <span className={styles.activeDot} aria-hidden="true" />
-                      Active Stage
-                    </span>
-                  )}
                 </div>
 
                 <div>

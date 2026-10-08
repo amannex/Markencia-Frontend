@@ -67,15 +67,6 @@
   padding: 0 0.1em;
 }
 
-.subheading {
-  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
-  font-size: clamp(1.02rem, 1.3vw, 1.15rem);
-  line-height: 1.65;
-  color: #526059;
-  margin: 1.25rem 0 0 0;
-  max-width: 780px;
-}
-
 /* ── 3 STAGE TABS (HORIZONTAL CARDS) ── */
 .tabsGrid {
   display: grid;
@@ -134,7 +125,6 @@
 .tabTop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 0.9rem;
 }
 
@@ -148,27 +138,6 @@
 
 .tabCardActive .tabNumber {
   color: #166534;
-}
-
-.activeBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #166534;
-  background-color: #EAF3ED;
-  padding: 0.25rem 0.6rem;
-  border-radius: 9999px;
-  letter-spacing: 0.04em;
-}
-
-.activeDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #166534;
 }
 
 .tabTitle {
