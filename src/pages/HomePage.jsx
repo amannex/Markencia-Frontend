@@ -82,7 +82,6 @@ export default function HomePage() {
         <div className="mk-container">
           <div className={styles.resultsWrapper}>
             <div className={styles.resultText}>
-              <div className={styles.impactEyebrow}>THE BUSINESS IMPACT</div>
               <h2>
                 Turn AI Into <span className="mk-accent-text">Operational Advantage.</span>
               </h2>
@@ -97,7 +96,6 @@ export default function HomePage() {
             <div className={styles.statsGrid}>
               {BUSINESS_IMPACTS.map((item) => (
                 <div key={item.number} className={styles.impactCard}>
-                  <div className={styles.impactCardTag}>{item.label}</div>
                   <h3 className={styles.impactCardTitle}>{item.title}</h3>
                   <p className={styles.impactCardDesc}>{item.description}</p>
                 </div>
