@@ -253,7 +253,6 @@ export default function IndustryFocusSection() {
         <div className={styles.desktopLayout}>
           {/* Left Column: Industries Navigation */}
           <div className={styles.navColumn}>
-            <div className={styles.columnEyebrow}>INDUSTRIES</div>
             <div className={styles.navList} role="tablist" aria-label="Industries">
               {INDUSTRIES_DATA.map((ind) => {
                 const isActive = ind.id === activeId;
