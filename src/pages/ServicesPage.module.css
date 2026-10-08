@@ -29,6 +29,146 @@
   margin: 0 auto;
 }
 
+/* Core Architectural Pillars */
+.architecturePillarsSection {
+  padding: 5.5rem 0 3.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.archHeader {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+}
+
+.archEyebrow {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mk-primary, #003818);
+  margin-bottom: 0.75rem;
+  background: rgba(0, 56, 24, 0.08);
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--mk-radius-pill, 50px);
+}
+
+.archHeading {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  color: var(--mk-text-main, #0f172a);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.archSubtitle {
+  font-size: 1.0625rem;
+  color: var(--mk-text-muted, #64748b);
+  line-height: 1.6;
+}
+
+.archGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.archCard {
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--mk-radius-xl, 32px);
+  padding: 2.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.archCard:hover {
+  background: #ffffff;
+  transform: translateY(-5px);
+  border-color: rgba(0, 56, 24, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 56, 24, 0.08);
+}
+
+.archCardBadge {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mk-primary, #003818);
+  background: #ecfdf5;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--mk-radius-pill, 50px);
+  margin-bottom: 1.25rem;
+}
+
+.archCardTitle {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--mk-text-main, #0f172a);
+  margin-bottom: 0.85rem;
+  line-height: 1.3;
+}
+
+.archCardDesc {
+  font-size: 0.95rem;
+  color: var(--mk-text-muted, #64748b);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.archCardMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 56, 24, 0.08);
+  border-radius: var(--mk-radius-md, 16px);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.archMiniMetric {
+  display: flex;
+  flex-direction: column;
+}
+
+.archMetricVal {
+  font-family: var(--mk-font-heading, 'Outfit', sans-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--mk-primary, #003818);
+}
+
+.archMetricLbl {
+  font-size: 0.75rem;
+  color: var(--mk-text-muted, #64748b);
+  line-height: 1.3;
+}
+
+.archCardAction {
+  margin-top: auto;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--mk-primary, #003818);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+@media (max-width: 900px) {
+  .archGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Service Item */
 .serviceItem {
   display: grid;
