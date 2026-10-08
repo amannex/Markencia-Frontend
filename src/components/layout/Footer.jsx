@@ -105,7 +105,7 @@ export default function Footer({ showCta }) {
                 Not sure where <span className={styles.ctaHighlight}>AI fits</span> into your business?
               </h2>
               <p className={styles.ctaSubtitle}>
-                Let's identify the processes where AI and automation could create the most impact.
+                Cut through the hype. We'll review your systems and identify practical, high-impact AI use cases for your business.
               </p>
 
               {ctaSubmitted ? (

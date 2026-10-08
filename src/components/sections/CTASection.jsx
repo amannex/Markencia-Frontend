@@ -10,7 +10,7 @@ import styles from './CTASection.module.css';
  */
 export default function CTASection({
   title = 'Not sure where <span class="mk-highlight-text">AI fits</span> into your business?',
-  subtitle = "Let's identify the processes where AI and automation could create the most impact.",
+  subtitle = "Cut through the hype. We'll review your systems and identify practical, high-impact AI use cases for your business.",
   showForm = true,
   buttonText = 'Book an AI Strategy Call →',
   submitButtonText = 'Book an AI Strategy Call →',
