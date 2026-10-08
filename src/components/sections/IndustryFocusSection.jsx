@@ -292,8 +292,7 @@ export default function IndustryFocusSection() {
             aria-labelledby={`tab-${activeIndustry.id}`}
           >
             <div className={styles.panelHeader}>
-              <span className={styles.panelEyebrow}>AI OPPORTUNITIES</span>
-              <h3 className={styles.panelTitle}>{activeIndustry.subheading}</h3>
+              <h3 className={styles.panelTitle}>AI Opportunity</h3>
             </div>
 
             {/* Opportunities Grid */}
@@ -359,8 +358,8 @@ export default function IndustryFocusSection() {
                     id={`accordion-content-${ind.id}`}
                     className={styles.accordionBody}
                   >
-                    <div className={styles.accordionEyebrow}>
-                      AI OPPORTUNITIES {ind.subheading}
+                    <div className={styles.accordionPanelTitle}>
+                      AI Opportunity
                     </div>
 
                     <div className={styles.accordionOppList}>
