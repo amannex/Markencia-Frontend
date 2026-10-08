@@ -9,28 +9,18 @@ import styles from './HomePage.module.css';
 const BUSINESS_IMPACTS = [
   {
     number: '01',
-    label: '01 — More Time',
-    title: 'Automate repetitive work.',
+    title: 'Automate repetitive work and remove operational friction.',
     description:
-      'Reduce the time your team spends on routine tasks and redirect it toward higher-value work.',
+      'Reduce the time your team spends on routine tasks, identify slow processes, and redesign them with smarter workflows and automation.',
   },
   {
     number: '02',
-    label: '02 — Fewer Bottlenecks',
-    title: 'Remove operational friction.',
-    description:
-      'Identify slow, manual processes and redesign them with smarter workflows and automation.',
-  },
-  {
-    number: '03',
-    label: '03 — Connected Operations',
     title: 'Bring your systems together.',
     description:
       'Connect your tools, data, and workflows so information moves seamlessly across your business.',
   },
   {
-    number: '04',
-    label: '04 — Built to Scale',
+    number: '03',
     title: 'Create infrastructure that grows with you.',
     description:
       'Build flexible digital systems that support increasing complexity without adding unnecessary overhead.',
