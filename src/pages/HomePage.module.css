@@ -379,6 +379,38 @@
   letter-spacing: 0.5px;
 }
 
+/* ── INDUSTRIES ── */
+.industryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.indCard {
+  background: var(--mk-bg-card);
+  border: 1px solid var(--mk-glass-border);
+  border-radius: var(--mk-radius-md);
+  padding: 1.4rem 1.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--mk-transition);
+  cursor: default;
+}
+
+.indCard span {
+  font-size: 1.4rem;
+}
+
+.indCard:hover {
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
+  transform: translateY(-4px);
+  box-shadow: var(--mk-shadow-green);
+}
+
 /* ── TESTIMONIALS ── */
 .testiGrid {
   display: flex;
@@ -410,10 +442,24 @@
 }
 
 @media (max-width: 900px) {
-  .servicesGrid { grid-template-columns: repeat(2, 1fr); }
-  .whyWrapper { grid-template-columns: 1fr; gap: 2.5rem; }
-  .resultsWrapper { grid-template-columns: 1fr; }
-  .testiGrid > * {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .whyWrapper {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .resultsWrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .industryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testiGrid>* {
     flex: 0 0 calc(60% - 1rem);
   }
 }
@@ -433,14 +479,33 @@
     font-size: clamp(0.82rem, 3.6vw, 0.95rem);
     padding: 0.85rem clamp(0.8rem, 2vw, 1.4rem);
   }
-  .servicesGrid { grid-template-columns: 1fr; }
-  .timeline { grid-template-columns: 1fr; }
-  .statsGrid { grid-template-columns: 1fr 1fr; }
-  .testiGrid > * {
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .industryGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .testiGrid>* {
     flex: 0 0 85%;
   }
 }
 
 @media (max-width: 400px) {
-  .statsGrid { grid-template-columns: 1fr; }
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+  .industryGrid {
+    grid-template-columns: 1fr;
+  }
 }
