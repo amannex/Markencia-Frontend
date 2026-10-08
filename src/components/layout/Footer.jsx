@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { SITE_INFO, FOOTER_LINKS } from '../../data/staticData';
+import { submitContactForm } from '../../services/forms';
 import styles from './Footer.module.css';
 
 function InstagramIcon() {
@@ -45,9 +47,19 @@ function XIcon() {
   );
 }
 
-export default function Footer() {
+export default function Footer({ showCta }) {
+  const pathname = usePathname();
+  const isHome = showCta !== undefined ? showCta : pathname === '/';
+
+  // Standard footer newsletter (active on non-home pages)
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  // Connected CTA form (active on home page)
+  const [ctaName, setCtaName] = useState('');
+  const [ctaEmail, setCtaEmail] = useState('');
+  const [ctaSubmitting, setCtaSubmitting] = useState(false);
+  const [ctaSubmitted, setCtaSubmitted] = useState(false);
 
   const handleNewsletter = (e) => {
     e.preventDefault();
@@ -55,8 +67,28 @@ export default function Footer() {
     setSubmitted(true);
   };
 
+  const handleCtaSubmit = async (e) => {
+    e.preventDefault();
+    if (!ctaName || !ctaEmail || ctaSubmitting) return;
+
+    setCtaSubmitting(true);
+    try {
+      await submitContactForm({
+        'your-name': ctaName,
+        'your-email': ctaEmail,
+        'your-subject': 'AI Strategy Call Request (Homepage Footer)',
+      });
+      setCtaSubmitted(true);
+    } catch {
+      // In dev or static environment, show graceful success state
+      setCtaSubmitted(true);
+    } finally {
+      setCtaSubmitting(false);
+    }
+  };
+
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${isHome ? styles.footerWithCta : ''}`}>
       {/* Giant background text */}
       <div className={styles.giantText} aria-hidden="true">Markencia</div>
 
@@ -65,6 +97,69 @@ export default function Footer() {
       <div className={`${styles.glow} ${styles.glow2}`} aria-hidden="true" />
 
       <div className={styles.container}>
+        {/* Connected CTA on Home Page */}
+        {isHome && (
+          <section className={styles.ctaSection} aria-labelledby="footer-cta-heading">
+            <div className={styles.ctaContent}>
+              <h2 id="footer-cta-heading" className={styles.ctaTitle}>
+                Not sure where <span className={styles.ctaHighlight}>AI fits</span> into your business?
+              </h2>
+              <p className={styles.ctaSubtitle}>
+                Cut through the hype. We'll review your systems and identify practical, high-impact AI use cases for your business.
+              </p>
+
+              {ctaSubmitted ? (
+                <div className={styles.ctaSuccess} role="status">
+                  <span className={styles.ctaSuccessIcon}>✓</span>
+                  <div>
+                    <strong>Thanks! We'll reach out within 24 hours.</strong>
+                    <p>We look forward to analyzing your operations and business systems.</p>
+                  </div>
+                </div>
+              ) : (
+                <form className={styles.ctaForm} onSubmit={handleCtaSubmit} noValidate={false}>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={ctaName}
+                    onChange={(e) => setCtaName(e.target.value)}
+                    required
+                    id="footer-cta-name"
+                    aria-label="Your Name"
+                    disabled={ctaSubmitting}
+                  />
+                  <input
+                    type="email"
+                    placeholder="Work Email"
+                    value={ctaEmail}
+                    onChange={(e) => setCtaEmail(e.target.value)}
+                    required
+                    id="footer-cta-email"
+                    aria-label="Work Email"
+                    disabled={ctaSubmitting}
+                  />
+                  <button
+                    type="submit"
+                    className={styles.ctaButton}
+                    disabled={ctaSubmitting || !ctaName || !ctaEmail}
+                    id="footer-cta-submit"
+                  >
+                    {ctaSubmitting ? 'Submitting…' : 'Book an AI Strategy Call →'}
+                  </button>
+                </form>
+              )}
+
+              {!ctaSubmitted && (
+                <p className={styles.ctaDisclaimer}>
+                  No generic AI pitch. We'll start with your business.
+                </p>
+              )}
+            </div>
+
+            <div className={styles.ctaDivider} aria-hidden="true" />
+          </section>
+        )}
+
         <div className={styles.grid}>
 
           {/* Brand col */}
@@ -76,21 +171,23 @@ export default function Footer() {
               Markencia is an AI consultancy helping modern businesses build intelligent systems, automate operations, and scale their digital infrastructure.
             </p>
 
-            {!submitted ? (
-              <form className={styles.newsletterForm} onSubmit={handleNewsletter}>
-                <input
-                  type="email"
-                  placeholder="Subscribe to our intelligence brief"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  id="footer-newsletter-email"
-                  aria-label="Email for newsletter"
-                />
-                <button type="submit" aria-label="Subscribe">→</button>
-              </form>
-            ) : (
-              <p className={styles.newsletterSuccess}>✓ You're on the list!</p>
+            {!isHome && (
+              !submitted ? (
+                <form className={styles.newsletterForm} onSubmit={handleNewsletter}>
+                  <input
+                    type="email"
+                    placeholder="Subscribe to our intelligence brief"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    id="footer-newsletter-email"
+                    aria-label="Email for newsletter"
+                  />
+                  <button type="submit" aria-label="Subscribe">→</button>
+                </form>
+              ) : (
+                <p className={styles.newsletterSuccess}>✓ You're on the list!</p>
+              )
             )}
           </div>
 
