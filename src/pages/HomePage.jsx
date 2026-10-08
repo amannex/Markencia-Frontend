@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { STATS } from '../data/staticData';
-import CTASection from '../components/sections/CTASection';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
 import WhatWeDoSection from '../components/sections/WhatWeDoSection';
 import FrameworkSection from '../components/sections/FrameworkSection';
@@ -78,9 +77,6 @@ export default function HomePage() {
 
       {/* ── 7. SOLUTIONS BY STAGE ── */}
       <BusinessStagesSection />
-
-      {/* ── 8. CTA ── */}
-      <CTASection />
     </>
   );
 }
