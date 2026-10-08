@@ -112,7 +112,6 @@
 .cardHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 1.25rem;
 }
 
@@ -131,14 +130,6 @@
 .card:hover .iconBox {
   background-color: #D6EADF;
   transform: scale(1.04);
-}
-
-.cardIndex {
-  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #8C9C92;
-  letter-spacing: 0.05em;
 }
 
 .cardTitle {

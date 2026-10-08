@@ -5,7 +5,6 @@ import styles from './IndustryFocusSection.module.css';
 const VERTICALS = [
   {
     id: 'real-estate',
-    index: '01',
     title: 'Real Estate',
     workflows: [
       'Lead management',
@@ -28,7 +27,6 @@ const VERTICALS = [
   },
   {
     id: 'education',
-    index: '02',
     title: 'Education',
     workflows: [
       'Admissions',
@@ -44,7 +42,6 @@ const VERTICALS = [
   },
   {
     id: 'healthcare',
-    index: '03',
     title: 'Healthcare',
     workflows: [
       'Appointments',
@@ -59,7 +56,6 @@ const VERTICALS = [
   },
   {
     id: 'professional-services',
-    index: '04',
     title: 'Professional Services',
     workflows: [
       'Client onboarding',
@@ -76,7 +72,6 @@ const VERTICALS = [
   },
   {
     id: 'growing-businesses',
-    index: '05',
     title: 'Growing Businesses',
     workflows: [
       'Internal operations',
@@ -124,7 +119,6 @@ export default function IndustryFocusSection() {
                 <div className={styles.iconBox} aria-hidden="true">
                   {vertical.icon}
                 </div>
-                <span className={styles.cardIndex}>{vertical.index}</span>
               </div>
 
               <h3 className={styles.cardTitle}>{vertical.title}</h3>

@@ -419,10 +419,10 @@ export const BLOG_POSTS = [
 
 export const FOOTER_LINKS = {
   capabilities: [
-    { label: 'AI Marketing', path: '/services' },
-    { label: 'Creative Campaigns', path: '/services' },
-    { label: 'Sales Funnels', path: '/services' },
-    { label: 'Lead Automation', path: '/services' },
+    { label: 'AI Strategy', path: '/services' },
+    { label: 'Workflow Automation', path: '/services' },
+    { label: 'AI Engineering', path: '/services' },
+    { label: 'Digital Infrastructure', path: '/services' },
   ],
   company: [
     { label: 'About Us', path: '/about' },
@@ -433,14 +433,16 @@ export const FOOTER_LINKS = {
   contact: [
     { label: '+91 6395543772', path: 'tel:+916395543772', external: true },
     { label: 'Help & FAQs', path: '/faqs' },
-    { label: 'Documentations', path: '/documentations' },
+    { label: 'Privacy Policy', path: '/privacy-policy' },
+    { label: 'Terms & Conditions', path: '/terms-and-conditions' },
   ],
 };
 
 export const CONTACT_INTERESTS = [
-  { value: 'AI Marketing', label: 'AI Marketing Strategy' },
-  { value: 'Lead Gen', label: 'Automated Lead Generation' },
-  { value: 'Web Design', label: 'Web & Funnel Design' },
+  { value: 'AI Strategy', label: 'AI Strategy' },
+  { value: 'Workflow Automation', label: 'Workflow Automation' },
+  { value: 'Intelligent System', label: 'Intelligent System' },
+  { value: 'Digital Infrastructure', label: 'Digital Infrastructure' },
   { value: 'Other', label: 'Other / General Inquiry' },
 ];
 
