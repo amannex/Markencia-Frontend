@@ -9,13 +9,14 @@ import styles from './CTASection.module.css';
  * Appears on Home, About, Services, etc.
  */
 export default function CTASection({
-  title = 'Ready to <span class="mk-highlight-text">Automate</span> Your Growth?',
-  subtitle = "Stop wasting money on outdated marketing. Let's build an AI-powered system that prints revenue.",
+  title = 'Not sure where <span class="mk-highlight-text">AI fits</span> into your business?',
+  subtitle = "Let's identify the processes where AI and automation could create the most impact.",
   showForm = true,
-  buttonText = 'Book Your Strategy Call',
+  buttonText = 'Book an AI Strategy Call →',
+  submitButtonText = 'Book an AI Strategy Call →',
   buttonHref = '/contact',
   buttonVariant = 'primary',
-  disclaimer = 'No commitments. Just pure value and actionable strategies.',
+  disclaimer = "No generic AI pitch. We'll start with your business.",
 }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -66,7 +67,7 @@ export default function CTASection({
                     aria-label="Your work email"
                   />
                   <Button type="submit" variant="ctaButton">
-                    Claim Free Strategy Session
+                    {submitButtonText || buttonText}
                   </Button>
                 </form>
               )
@@ -76,7 +77,7 @@ export default function CTASection({
               </Button>
             )}
 
-            {showForm && !submitted && (
+            {!submitted && disclaimer && (
               <p className={styles.disclaimer}>{disclaimer}</p>
             )}
           </div>

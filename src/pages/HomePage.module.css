@@ -400,7 +400,9 @@
   cursor: default;
 }
 
-.indCard span { font-size: 1.4rem; }
+.indCard span {
+  font-size: 1.4rem;
+}
 
 .indCard:hover {
   border-color: var(--mk-primary);
@@ -443,7 +445,9 @@
   .servicesGrid { grid-template-columns: repeat(2, 1fr); }
   .whyWrapper { grid-template-columns: 1fr; gap: 2.5rem; }
   .resultsWrapper { grid-template-columns: 1fr; }
-  .industryGrid { grid-template-columns: repeat(2, 1fr); }
+  .industryGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .testiGrid > * {
     flex: 0 0 calc(60% - 1rem);
   }
@@ -467,7 +471,9 @@
   .servicesGrid { grid-template-columns: 1fr; }
   .timeline { grid-template-columns: 1fr; }
   .statsGrid { grid-template-columns: 1fr 1fr; }
-  .industryGrid { grid-template-columns: 1fr 1fr; }
+  .industryGrid {
+    grid-template-columns: 1fr 1fr;
+  }
   .testiGrid > * {
     flex: 0 0 85%;
   }
@@ -475,5 +481,7 @@
 
 @media (max-width: 400px) {
   .statsGrid { grid-template-columns: 1fr; }
-  .industryGrid { grid-template-columns: 1fr; }
+  .industryGrid {
+    grid-template-columns: 1fr;
+  }
 }

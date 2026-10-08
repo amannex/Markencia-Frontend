@@ -2,12 +2,14 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { SERVICES, STATS, WHY_US_POINTS, PROCESS_STEPS, INDUSTRIES, TESTIMONIALS } from '../data/staticData';
-import ServiceCard from '../components/ui/ServiceCard';
+import { STATS, TESTIMONIALS } from '../data/staticData';
 import TestimonialCard from '../components/ui/TestimonialCard';
 import SectionHead from '../components/ui/SectionHead';
 import CTASection from '../components/sections/CTASection';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
+import WhatWeDoSection from '../components/sections/WhatWeDoSection';
+import FrameworkSection from '../components/sections/FrameworkSection';
+import IndustryFocusSection from '../components/sections/IndustryFocusSection';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
@@ -107,80 +109,11 @@ export default function HomePage() {
 
 
 
-      {/* ── 2. SERVICES ── */}
-      <section className="mk-section" id="services">
-        <div className="mk-container">
-          <SectionHead
-            centered
-            title='Our <span class="mk-highlight-text">AI-Powered</span> Arsenal'
-            subtitle="Data-backed strategies designed to scale your business predictably."
-          />
-          <div className={styles.servicesGrid}>
-            {SERVICES.map((s) => (
-              <ServiceCard key={s.id} icon={s.icon} title={s.title} description={s.description} />
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── 3. WHAT MARKENCIA ACTUALLY DOES ── */}
+      <WhatWeDoSection />
 
-      {/* ── 3. WHY US ── */}
-      <section className="mk-section mk-bg-texture">
-        <div className={`mk-container ${styles.whyWrapper}`}>
-          <div className={styles.whyContent}>
-            <h2>
-              The <span className="mk-highlight-text">Unfair Advantage</span> for Your Business
-            </h2>
-            <p>
-              We don't just run ads; we engineer growth ecosystems. By leveraging
-              bleeding-edge AI and relentless automation, we leave traditional agencies in the dust.
-            </p>
-            <ul className={styles.whyList}>
-              {WHY_US_POINTS.map((p) => (
-                <li key={p.title}>
-                  <strong>{p.title}</strong> {p.body}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className={styles.whyVisual}>
-            <div className={styles.glassPanel}>
-              <div className={styles.comparisonRow}>
-                <h4>Traditional Agency</h4>
-                <div className={styles.barTrack}>
-                  <div className={styles.barSlow} />
-                </div>
-              </div>
-              <div className={styles.comparisonRow}>
-                <h4>Markencia (AI-Driven)</h4>
-                <div className={styles.barTrack}>
-                  <div className={styles.barFast} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. PROCESS ── */}
-      <section className="mk-section">
-        <div className="mk-container">
-          <SectionHead
-            centered
-            title='Our <span class="mk-highlight-text">Growth Framework</span>'
-            subtitle="A methodical, 4-step system to turn total strangers into raving fans."
-          />
-          <div className={styles.timeline}>
-            {PROCESS_STEPS.map((step) => (
-              <div key={step.number} className={styles.step}>
-                <div className={styles.stepNumber}>{step.number}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── 4. AI TRANSFORMATION FRAMEWORK ── */}
+      <FrameworkSection />
 
       {/* ── 5. RESULTS ── */}
       <section className={styles.results}>
@@ -207,23 +140,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 6. INDUSTRIES ── */}
-      <section className="mk-section mk-bg-texture">
-        <div className="mk-container">
-          <SectionHead
-            centered
-            title='Industries We <span class="mk-highlight-text">Dominate</span>'
-            subtitle="Precision-engineered strategies built for high-growth sectors."
-          />
-          <div className={styles.industryGrid}>
-            {INDUSTRIES.map((ind) => (
-              <div key={ind.label} className={styles.indCard}>
-                <span>{ind.icon}</span> {ind.label}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* ── 6. INDUSTRY FOCUS ── */}
+      <IndustryFocusSection />
 
       {/* ── 7. TESTIMONIALS ── */}
       <section className="mk-section">

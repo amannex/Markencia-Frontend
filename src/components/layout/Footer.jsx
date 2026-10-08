@@ -73,7 +73,7 @@ export default function Footer() {
               Markencia<span className={styles.brandDot}>.</span>
             </h3>
             <p className={styles.brandDesc}>
-              The AI-powered creative agency scaling modern brands through automation, data, and design. We don't just run ads; we engineer growth.
+              Markencia is an AI consultancy helping modern businesses build intelligent systems, automate operations, and scale their digital infrastructure.
             </p>
 
             {!submitted ? (

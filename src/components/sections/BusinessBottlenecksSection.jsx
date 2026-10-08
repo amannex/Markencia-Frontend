@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import styles from './BusinessBottlenecksSection.module.css';
 
 export default function BusinessBottlenecksSection() {
@@ -235,21 +236,12 @@ export default function BusinessBottlenecksSection() {
           </article>
         </div>
 
-        {/* ── BOTTOM STATEMENT ── */}
+        {/* ── BOTTOM CTA ── */}
         <div className={styles.bottomArea}>
-          <div className={styles.bottomDivider} aria-hidden="true" />
-          <div className={styles.bottomContent}>
-            <h3 className={styles.bottomStatement}>
-              We find these gaps{' '}
-              <span className={styles.bottomEmphasis}>
-                before recommending technology.
-                <span className={styles.underlineAccent} aria-hidden="true" />
-              </span>
-            </h3>
-            <p className={styles.bottomSupporting}>
-              Because the right solution starts with the right problem.
-            </p>
-          </div>
+          <Link href="/contact" className={styles.ctaButton} id="bottlenecks-cta-button">
+            <span>Identify Your Bottlenecks</span>
+            <span className={styles.ctaArrow} aria-hidden="true">&rarr;</span>
+          </Link>
         </div>
       </div>
     </section>
