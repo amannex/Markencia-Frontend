@@ -9,6 +9,19 @@ const INDUSTRIES_DATA = [
     id: 'real-estate',
     title: 'Real Estate',
     subheading: 'IN REAL ESTATE',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 21h18" />
+        <path d="M5 21V7l8-4v18" />
+        <path d="M13 3l6 4v14" />
+        <path d="M9 10h1" />
+        <path d="M9 14h1" />
+        <path d="M9 18h1" />
+        <path d="M15 10h1" />
+        <path d="M15 14h1" />
+        <path d="M15 18h1" />
+      </svg>
+    ),
     opportunities: [
       {
         title: 'Lead Qualification',
@@ -36,6 +49,12 @@ const INDUSTRIES_DATA = [
     id: 'education',
     title: 'Education',
     subheading: 'IN EDUCATION',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+        <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5" />
+      </svg>
+    ),
     opportunities: [
       {
         title: 'Admissions',
@@ -63,6 +82,11 @@ const INDUSTRIES_DATA = [
     id: 'healthcare',
     title: 'Healthcare',
     subheading: 'IN HEALTHCARE',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+      </svg>
+    ),
     opportunities: [
       {
         title: 'Patient Communication',
@@ -90,6 +114,13 @@ const INDUSTRIES_DATA = [
     id: 'professional-services',
     title: 'Professional Services',
     subheading: 'IN PROFESSIONAL SERVICES',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+        <path d="M12 12v2" />
+      </svg>
+    ),
     opportunities: [
       {
         title: 'Client Onboarding',
@@ -117,6 +148,13 @@ const INDUSTRIES_DATA = [
     id: 'e-commerce',
     title: 'E-commerce',
     subheading: 'IN E-COMMERCE',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <path d="M16 10a4 4 0 0 1-8 0" />
+      </svg>
+    ),
     opportunities: [
       {
         title: 'Customer Support',
@@ -144,6 +182,13 @@ const INDUSTRIES_DATA = [
     id: 'saas-technology',
     title: 'SaaS & Technology',
     subheading: 'IN SAAS & TECHNOLOGY',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    ),
     opportunities: [
       {
         title: 'User Onboarding',
@@ -196,19 +241,15 @@ export default function IndustryFocusSection() {
 
           <h2 className={styles.heading}>
             <span className={styles.headingLine1}>
-              AI works best when it fits your business.
+              AI solutions work best when built around 
             </span>{' '}
             <span className={styles.headingLine2}>
-              We identify opportunities and build{' '}
-              <span className={styles.headingHighlight}>intelligent solutions.</span>
+              <span className={styles.headingHighlight}>your business.</span>
             </span>
           </h2>
         </div>
 
-        {/* ── DIVIDER ── */}
-        <div className={styles.divider} aria-hidden="true" />
-
-        {/* ── DESKTOP & TABLET TWO-COLUMN LAYOUT ── */}
+        {/* ── DESKTOP & TABLET TWO EQUAL-WIDTH COLUMNS ── */}
         <div className={styles.desktopLayout}>
           {/* Left Column: Industries Navigation */}
           <div className={styles.navColumn}>
@@ -224,22 +265,27 @@ export default function IndustryFocusSection() {
                     id={`tab-${ind.id}`}
                     aria-selected={isActive}
                     aria-controls={`panel-${ind.id}`}
-                    className={`${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
+                    className={`${styles.navCard} ${isActive ? styles.navCardActive : ''}`}
                     onClick={() => setActiveId(ind.id)}
                   >
+                    <div className={styles.navCardLeft}>
+                      <div className={styles.iconBox} aria-hidden="true">
+                        {ind.icon}
+                      </div>
+                      <span className={styles.navTitle}>{ind.title}</span>
+                    </div>
                     <span className={styles.navArrow} aria-hidden="true">
-                      {isActive ? '→' : ''}
+                      &rarr;
                     </span>
-                    <span className={styles.navLabel}>{ind.title}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Right Column: AI Opportunities */}
+          {/* Right Column: AI Opportunities Panel */}
           <div
-            className={`${styles.contentColumn} ${styles.fadeContent}`}
+            className={`${styles.panel} ${styles.fadeContent}`}
             key={activeIndustry.id}
             id={`panel-${activeIndustry.id}`}
             role="tabpanel"
@@ -271,7 +317,9 @@ export default function IndustryFocusSection() {
                 id={`explore-desktop-${activeIndustry.id}`}
               >
                 <span>Explore this industry</span>
-                <span className={styles.ctaArrow} aria-hidden="true">→</span>
+                <span className={styles.ctaArrow} aria-hidden="true">
+                  &rarr;
+                </span>
               </Link>
             </div>
           </div>
@@ -295,8 +343,13 @@ export default function IndustryFocusSection() {
                   aria-controls={`accordion-content-${ind.id}`}
                   onClick={() => toggleMobileAccordion(ind.id)}
                 >
-                  <span className={styles.accordionTitle}>{ind.title}</span>
-                  <span className={styles.accordionIcon} aria-hidden="true">
+                  <div className={styles.accordionHeaderLeft}>
+                    <div className={styles.accordionIconBox} aria-hidden="true">
+                      {ind.icon}
+                    </div>
+                    <span className={styles.accordionTitle}>{ind.title}</span>
+                  </div>
+                  <span className={styles.accordionToggleIcon} aria-hidden="true">
                     {isExpanded ? '−' : '+'}
                   </span>
                 </button>
@@ -329,7 +382,9 @@ export default function IndustryFocusSection() {
                         id={`explore-mobile-${ind.id}`}
                       >
                         <span>Explore this industry</span>
-                        <span className={styles.ctaArrow} aria-hidden="true">→</span>
+                        <span className={styles.ctaArrow} aria-hidden="true">
+                          &rarr;
+                        </span>
                       </Link>
                     </div>
                   </div>
