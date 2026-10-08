@@ -1,11 +1,41 @@
 import Link from 'next/link';
-import { STATS } from '../data/staticData';
 import BusinessBottlenecksSection from '../components/sections/BusinessBottlenecksSection';
 import WhatWeDoSection from '../components/sections/WhatWeDoSection';
 import FrameworkSection from '../components/sections/FrameworkSection';
 import IndustryFocusSection from '../components/sections/IndustryFocusSection';
 import BusinessStagesSection from '../components/sections/BusinessStagesSection';
 import styles from './HomePage.module.css';
+
+const BUSINESS_IMPACTS = [
+  {
+    number: '01',
+    label: '01 — More Time',
+    title: 'Automate repetitive work.',
+    description:
+      'Reduce the time your team spends on routine tasks and redirect it toward higher-value work.',
+  },
+  {
+    number: '02',
+    label: '02 — Fewer Bottlenecks',
+    title: 'Remove operational friction.',
+    description:
+      'Identify slow, manual processes and redesign them with smarter workflows and automation.',
+  },
+  {
+    number: '03',
+    label: '03 — Connected Operations',
+    title: 'Bring your systems together.',
+    description:
+      'Connect your tools, data, and workflows so information moves seamlessly across your business.',
+  },
+  {
+    number: '04',
+    label: '04 — Built to Scale',
+    title: 'Create infrastructure that grows with you.',
+    description:
+      'Build flexible digital systems that support increasing complexity without adding unnecessary overhead.',
+  },
+];
 
 export default function HomePage() {
   return (
@@ -47,24 +77,29 @@ export default function HomePage() {
       {/* ── 4. AI TRANSFORMATION FRAMEWORK ── */}
       <FrameworkSection />
 
-      {/* ── 5. RESULTS ── */}
-      <section className={styles.results}>
+      {/* ── 5. THE BUSINESS IMPACT ── */}
+      <section className={styles.results} aria-label="The Business Impact: Turn AI Into Operational Advantage">
         <div className="mk-container">
           <div className={styles.resultsWrapper}>
             <div className={styles.resultText}>
+              <div className={styles.impactEyebrow}>THE BUSINESS IMPACT</div>
               <h2>
-                We Sell <span className="mk-accent-text">Results</span>, Not Retainers.
+                Turn AI Into <span className="mk-accent-text">Operational Advantage.</span>
               </h2>
               <p>
-                Your business doesn't need more "brand awareness"—it needs qualified leads,
-                lower acquisition costs, and explosive revenue growth. That is exactly what we deliver.
+                The right AI systems don&apos;t just add another tool to your stack. They reduce manual work, connect your operations, and give your team more capacity to focus on what matters.
               </p>
+              <Link href="/contact" className={styles.impactCta} id="business-impact-cta">
+                <span>See How We Can Help</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
             </div>
             <div className={styles.statsGrid}>
-              {STATS.map((stat) => (
-                <div key={stat.label} className={styles.statBox}>
-                  <h3 className="mk-accent-text">{stat.value}</h3>
-                  <p>{stat.label}</p>
+              {BUSINESS_IMPACTS.map((item) => (
+                <div key={item.number} className={styles.impactCard}>
+                  <div className={styles.impactCardTag}>{item.label}</div>
+                  <h3 className={styles.impactCardTitle}>{item.title}</h3>
+                  <p className={styles.impactCardDesc}>{item.description}</p>
                 </div>
               ))}
             </div>
