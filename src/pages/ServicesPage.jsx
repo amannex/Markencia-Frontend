@@ -1,7 +1,9 @@
 'use client';
 
 // ServicesPage view component
+import Link from 'next/link';
 import { SERVICES_DETAIL } from '../data/staticData';
+import { SERVICES_LIST } from '../data/services';
 import CTASection from '../components/sections/CTASection';
 import styles from './ServicesPage.module.css';
 
@@ -18,9 +20,47 @@ export default function ServicesPage() {
               <span className={styles.accent}>Your</span> Growth
             </h1>
             <p className={styles.heroSubtitle}>
-              We don't just offer services; we build end-to-end growth ecosystems. Discover how
-              our AI-driven strategies can scale your business to new heights.
+              We don't just offer disconnected services; we engineer resilient digital architectures.
+              Explore our core disciplines across workflow automation, WordPress, CMS migration, and enterprise AI.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Architectural Pillars */}
+      <section className={styles.architecturePillarsSection}>
+        <div className="mk-container">
+          <div className={styles.archHeader}>
+            <span className={styles.archEyebrow}>Core Systems Architecture</span>
+            <h2 className={styles.archHeading}>Enterprise Service Disciplines</h2>
+            <p className={styles.archSubtitle}>
+              Engineered software systems designed to eliminate operational friction and scale revenue predictably.
+            </p>
+          </div>
+
+          <div className={styles.archGrid}>
+            {SERVICES_LIST.map((service) => (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className={styles.archCard}
+              >
+                <div className={styles.archCardBadge}>{service.hero.badge}</div>
+                <h3 className={styles.archCardTitle}>{service.hero.title}</h3>
+                <p className={styles.archCardDesc}>{service.whatIsIt.description}</p>
+                <div className={styles.archCardMetrics}>
+                  {service.hero.metrics.slice(0, 2).map((m, idx) => (
+                    <div key={idx} className={styles.archMiniMetric}>
+                      <span className={styles.archMetricVal}>{m.value}</span>
+                      <span className={styles.archMetricLbl}>{m.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.archCardAction}>
+                  Explore Architecture <span>&rarr;</span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

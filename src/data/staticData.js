@@ -31,24 +31,24 @@ export const NAV_LINKS = [
 
 export const MEGA_MENU_SERVICES = [
   {
-    category: 'Strategy & Growth',
+    category: 'Architecture & Automation',
     items: [
-      { label: 'AI-Driven Marketing Strategy', path: '/services#ai-strategy', icon: '🧠', desc: 'Predictive analytics & behavioral learning.' },
-      { label: 'Performance Marketing', path: '/services#performance-marketing', icon: '🚀', desc: 'High-ROI paid advertising on Meta & Google.' },
+      { label: 'Business Automation', path: '/services/business-automation', icon: '⚡', desc: 'Autonomous workflow pipelines & API sync.' },
+      { label: 'Enterprise AI Systems', path: '/services/ai-systems', icon: '🧠', desc: 'Custom RAG & autonomous task agents.' },
     ]
   },
   {
-    category: 'Creative & Content',
+    category: 'CMS & Web Engineering',
     items: [
-      { label: 'Brand Identity & Creative', path: '/services#brand-identity', icon: '🎨', desc: 'Strategic branding and viral creatives.' },
-      { label: 'Organic SEO & Content', path: '/services#organic-seo', icon: '✍️', desc: 'Data-backed search domination & articles.' },
+      { label: 'WordPress Development', path: '/services/wordpress-development', icon: '🌐', desc: 'Custom Gutenberg blocks & Headless Next.js.' },
+      { label: 'CMS Migration', path: '/services/cms-migration', icon: '🔄', desc: 'Risk-free re-platforming & 100% SEO defense.' },
     ]
   },
   {
-    category: 'Development',
+    category: 'Growth & Strategy',
     items: [
-      { label: 'Sales Funnels & Web Dev', path: '/services#web-dev', icon: '⚡', desc: 'Lightning-fast, high-converting pages.' },
-      { label: 'Industry AI Solutions', path: '/services#ai-solutions', icon: '🎯', desc: 'Custom AI frameworks for your niche.' },
+      { label: 'Services Overview', path: '/services', icon: '🎯', desc: 'Explore all Markencia growth systems.' },
+      { label: 'Performance Marketing', path: '/services#performance-marketing', icon: '🚀', desc: 'High-ROI paid advertising & acquisition.' },
     ]
   }
 ];
@@ -419,16 +419,17 @@ export const BLOG_POSTS = [
 
 export const FOOTER_LINKS = {
   capabilities: [
-    { label: 'AI Strategy', path: '/services' },
-    { label: 'Workflow Automation', path: '/services' },
-    { label: 'AI Engineering', path: '/services' },
-    { label: 'Digital Infrastructure', path: '/services' },
+    { label: 'Business Automation', path: '/services/business-automation' },
+    { label: 'WordPress Development', path: '/services/wordpress-development' },
+    { label: 'CMS Migration', path: '/services/cms-migration' },
+    { label: 'Enterprise AI Systems', path: '/services/ai-systems' },
   ],
   company: [
     { label: 'About Us', path: '/about' },
     { label: 'Case Studies', path: '/case-studies' },
     { label: 'Pricing', path: '/pricing' },
     { label: 'Careers', path: '/career' },
+    { label: 'Noida (HQ)', path: '/noida' },
   ],
   contact: [
     { label: '+91 6395543772', path: 'tel:+916395543772', external: true },

@@ -332,22 +332,92 @@
   align-items: center;
 }
 
+.impactEyebrow {
+  font-family: var(--mk-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mk-secondary);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
 .resultText h2 {
   font-size: clamp(2rem, 3vw, 2.8rem);
   color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
+  line-height: 1.2;
 }
 
 .resultText p {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.72);
   font-size: 1.05rem;
   line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.impactCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--mk-secondary);
+  color: var(--mk-primary);
+  font-family: var(--mk-font-heading);
+  font-weight: 700;
+  font-size: 0.98rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--mk-radius-pill);
+  text-decoration: none;
+  transition: var(--mk-transition);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+}
+
+.impactCta:hover {
+  background: var(--mk-secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .statsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+.impactCard {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--mk-radius-md);
+  padding: 1.5rem 1.75rem;
+  text-align: left;
+  transition: var(--mk-transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.impactCard:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.impactCardTitle {
+  font-family: var(--mk-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: clamp(1.08rem, 1.35vw, 1.15rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 0.45rem 0;
+  line-height: 1.35;
+}
+
+.impactCardDesc {
+  font-family: var(--mk-font-body, 'Plus Jakarta Sans', sans-serif);
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
 }
 
 .statBox {

@@ -5,6 +5,10 @@ export default async function sitemap() {
     '',
     '/about',
     '/services',
+    '/services/business-automation',
+    '/services/wordpress-development',
+    '/services/cms-migration',
+    '/services/ai-systems',
     '/case-studies',
     '/our-works',
     '/blogs',
@@ -13,6 +17,7 @@ export default async function sitemap() {
     '/faqs',
     '/contact',
     '/testimonials',
+    '/noida',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
