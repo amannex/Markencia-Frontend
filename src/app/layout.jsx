@@ -6,22 +6,25 @@ import Footer from '../components/layout/Footer';
 export const metadata = {
   metadataBase: new URL('https://markencia.com'),
   title: {
-    default: 'Markencia — AI-Powered Marketing Agency & Growth Solutions',
+    default: 'Markencia | AI & Digital Transformation Consultancy',
     template: '%s | Markencia',
   },
   description:
-    'Markencia combines cutting-edge artificial intelligence with data-driven marketing strategies to scale brands, optimize conversions, and drive measurable ROI.',
+    'Turn business bottlenecks into AI-powered systems. Markencia designs autonomous workflows, custom WordPress web engineering, and enterprise AI systems to help teams scale.',
   keywords: [
-    'AI Marketing',
-    'Growth Agency',
-    'SEO',
-    'Performance Marketing',
+    'AI Systems',
+    'Business Automation',
+    'Digital Transformation',
+    'WordPress Development',
+    'CMS Migration',
+    'Workflow Automation',
+    'Enterprise AI',
     'Markencia',
   ],
   openGraph: {
-    title: 'Markencia — AI-Powered Marketing Agency & Growth Solutions',
+    title: 'Markencia | AI & Digital Transformation Consultancy',
     description:
-      'Data-driven marketing strategies powered by cutting-edge AI to scale your brand and drive ROI.',
+      'Turn business bottlenecks into AI-powered systems. Autonomous workflow automation, custom WordPress engineering, and enterprise AI systems.',
     url: 'https://markencia.com',
     siteName: 'Markencia',
     locale: 'en_US',
@@ -29,9 +32,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Markencia — AI-Powered Marketing Agency',
+    title: 'Markencia | AI & Digital Transformation Consultancy',
     description:
-      'Data-driven marketing strategies powered by cutting-edge AI to scale your brand.',
+      'Turn business bottlenecks into AI-powered systems. Autonomous workflow automation, custom WordPress engineering, and enterprise AI systems.',
   },
 };
 
