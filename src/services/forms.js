@@ -3,7 +3,9 @@
 // Handles contact form submissions and newsletter subscriptions
 // ============================================================
 
-const BASE_URL = process.env.NEXT_PUBLIC_WP_API_URL || 'http://localhost:8888/wp-json/';
+import { WP_API_BASE_URL } from '../config/api';
+
+const BASE_URL = WP_API_BASE_URL;
 
 // ---- Generic fetch helper ----
 async function apiFetch(url, options = {}) {

@@ -10,10 +10,10 @@
 // preventing state updates on unmounted React components.
 // ============================================================
 
+import { WP_API_BASE_URL } from '../../config/api';
+
 // ---- Configuration ----
-// Base URL is injected via Next.js env variable at build time.
-// Falls back to local MAMP/XAMPP development server.
-const BASE_URL = process.env.NEXT_PUBLIC_WP_API_URL || 'http://localhost:8888/wp-json';
+const BASE_URL = WP_API_BASE_URL;
 const WP   = `${BASE_URL}/wp/v2`;
 
 // Default timeout (ms) for all API requests to prevent hanging fetches.
