@@ -6,15 +6,16 @@ import Footer from '../components/layout/Footer';
 export const metadata = {
   metadataBase: new URL('https://markencia.com'),
   title: {
-    default: 'Markencia | AI & Digital Transformation Consultancy',
+    default: 'Markencia | AI Consultancy & Software Development Company',
     template: '%s | Markencia',
   },
   description:
     'Turn business bottlenecks into AI-powered systems. Markencia designs autonomous workflows, custom WordPress web engineering, and enterprise AI systems to help teams scale.',
   keywords: [
+    'AI Consultancy',
+    'Software Development Company',
     'AI Systems',
     'Business Automation',
-    'Digital Transformation',
     'WordPress Development',
     'CMS Migration',
     'Workflow Automation',
@@ -22,7 +23,7 @@ export const metadata = {
     'Markencia',
   ],
   openGraph: {
-    title: 'Markencia | AI & Digital Transformation Consultancy',
+    title: 'Markencia | AI Consultancy & Software Development Company',
     description:
       'Turn business bottlenecks into AI-powered systems. Autonomous workflow automation, custom WordPress engineering, and enterprise AI systems.',
     url: 'https://markencia.com',
@@ -32,7 +33,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Markencia | AI & Digital Transformation Consultancy',
+    title: 'Markencia | AI Consultancy & Software Development Company',
     description:
       'Turn business bottlenecks into AI-powered systems. Autonomous workflow automation, custom WordPress engineering, and enterprise AI systems.',
   },

@@ -6,7 +6,7 @@
 
 export const SITE_INFO = {
   name: 'Markencia',
-  tagline: 'AI & Digital Transformation Consultancy',
+  tagline: 'AI Consultancy & Software Development Company',
   email: 'contact@markencia.com',
   phone: '+91 6395543772',
   address: 'Noida, Uttar Pradesh, India',
