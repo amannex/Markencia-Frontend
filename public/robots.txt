@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/static/development/
+Disallow: /*?*preview=true
+Disallow: /*?*draft=true
 
+# Host & Sitemaps
+Host: https://markencia.com
 Sitemap: https://markencia.com/sitemap.xml
