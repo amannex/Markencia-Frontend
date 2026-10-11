@@ -111,41 +111,58 @@
 .primaryBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  background-color: var(--color-mk-primary, #003818);
-  color: #ffffff !important;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.95rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 56, 24, 0.18);
-  transition: all 0.25s ease;
+  text-align: center;
+  white-space: nowrap;
+  padding: clamp(0.8rem, 1.4vw, 1rem) clamp(1.2rem, 2.2vw, 2rem);
+  min-width: clamp(230px, 32vw, 275px);
+  max-width: 100%;
+  background: var(--mk-secondary, #FFB400);
+  color: var(--mk-primary, #003818) !important;
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
+  border-radius: 9999px;
+  text-decoration: none;
   border: 1px solid transparent;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0, 56, 24, 0.2);
 }
 
 .primaryBtn:hover {
-  background-color: var(--color-mk-primary-hover, #004d22);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(0, 56, 24, 0.24);
+  background: var(--mk-secondary-hover, #e5a200);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 56, 24, 0.3);
 }
 
 .secondaryBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  background-color: transparent;
-  color: #1e293b !important;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.95rem 1.8rem;
-  border-radius: 12px;
-  border: 1px solid #cbd5e1;
+  text-align: center;
+  white-space: nowrap;
+  padding: clamp(0.8rem, 1.4vw, 1rem) clamp(1.2rem, 2.2vw, 2rem);
+  min-width: clamp(230px, 32vw, 275px);
+  max-width: 100%;
+  background: #ffffff;
+  color: var(--mk-primary, #003818) !important;
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.6vw, 1rem);
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 1px solid rgba(0, 56, 24, 0.2);
+  box-sizing: border-box;
   transition: all 0.25s ease;
 }
 
 .secondaryBtn:hover {
-  background-color: #f8fafc;
-  border-color: #94a3b8;
+  border-color: var(--mk-secondary, #FFB400);
+  color: var(--mk-primary, #003818) !important;
+  background: rgba(0, 56, 24, 0.04);
   transform: translateY(-2px);
 }
 
@@ -791,22 +808,24 @@
 .finalCtaBtn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.65rem;
-  background: var(--color-mk-secondary, #FFB400);
-  color: #0f172a !important;
+  background: var(--mk-secondary, #FFB400);
+  color: var(--mk-primary, #003818) !important;
+  font-family: var(--font-mk-heading, 'Outfit', sans-serif);
   font-weight: 700;
-  font-size: 1.08rem;
-  padding: 1.1rem 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(255, 180, 0, 0.25);
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px rgba(0, 56, 24, 0.2);
   transition: all 0.25s ease;
   margin-bottom: 1.25rem;
 }
 
 .finalCtaBtn:hover {
-  background: #f5a600;
-  transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(255, 180, 0, 0.35);
+  background: var(--mk-secondary-hover, #e5a200);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0, 56, 24, 0.3);
 }
 
 .finalCtaSupporting {
@@ -834,6 +853,8 @@
   }
   .primaryBtn, .secondaryBtn {
     width: 100%;
+    max-width: 320px;
+    min-width: 0;
     justify-content: center;
   }
 }
