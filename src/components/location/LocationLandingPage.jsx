@@ -33,13 +33,28 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className={styles.heroBackgroundGrid} aria-hidden="true" />
         <div className={`mk-container ${styles.heroContent}`}>
           <div className={styles.eyebrowBadge}>
-            <span className={styles.eyebrowDot} />
             <span>{hero.eyebrow}</span>
           </div>
 
-          <h1 className={styles.heroTitle}>{hero.h1}</h1>
+          <h1 className={styles.heroTitle}>
+            {typeof hero.h1 === 'string' && hero.h1.includes('\n')
+              ? hero.h1.split('\n').map((line, idx) => (
+                  <span key={idx} className={styles.heroTitleLine}>
+                    {line.trim()}
+                  </span>
+                ))
+              : hero.h1}
+          </h1>
 
-          <p className={styles.heroSubtitle}>{hero.subheading}</p>
+          <p className={styles.heroSubtitle}>
+            {typeof hero.subheading === 'string' && hero.subheading.includes('\n')
+              ? hero.subheading.split('\n').map((line, idx) => (
+                  <span key={idx} className={styles.heroSubtitleLine}>
+                    {line.trim()}
+                  </span>
+                ))
+              : hero.subheading}
+          </p>
 
           <div className={styles.heroCtaGroup}>
             <Link href={hero.primaryCta.href} className={styles.primaryBtn}>
