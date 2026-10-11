@@ -37,7 +37,21 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
             <span>{hero.eyebrow}</span>
           </div>
 
-          <h1 className={styles.heroTitle}>{hero.h1}</h1>
+          <h1 className={styles.heroTitle}>
+            {typeof hero.h1 === 'string' && hero.h1.includes('\n')
+              ? hero.h1.split('\n').map((line, idx) => (
+                  <span key={idx} className={styles.heroTitleLine}>
+                    {line}
+                    {idx === 0 && (
+                      <>
+                        <br className={styles.heroLineBreak} />
+                        <span className={styles.heroLineSpace}> </span>
+                      </>
+                    )}
+                  </span>
+                ))
+              : hero.h1}
+          </h1>
 
           <p className={styles.heroSubtitle}>{hero.subheading}</p>
 
