@@ -35,7 +35,7 @@
 .heroContent {
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  max-width: 1140px;
   margin: 0 auto;
   text-align: center;
 }
@@ -68,30 +68,22 @@
 
 .heroTitle {
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
-  font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+  font-size: clamp(1.9rem, 3.2vw, 3.1rem);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
   color: #0f172a;
   margin: 0 auto 1.5rem;
-  max-width: 960px;
-  text-wrap: balance;
+  max-width: 1120px;
 }
 
 .heroTitleLine {
-  display: inline;
+  display: block;
 }
 
-.heroLineSpace {
-  display: none;
-}
-
-@media (max-width: 640px) {
-  .heroLineBreak {
-    display: none;
-  }
-  .heroLineSpace {
-    display: inline;
+@media (min-width: 900px) {
+  .heroTitleLine {
+    white-space: nowrap;
   }
 }
 

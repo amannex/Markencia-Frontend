@@ -42,12 +42,6 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
               ? hero.h1.split('\n').map((line, idx) => (
                   <span key={idx} className={styles.heroTitleLine}>
                     {line}
-                    {idx === 0 && (
-                      <>
-                        <br className={styles.heroLineBreak} />
-                        <span className={styles.heroLineSpace}> </span>
-                      </>
-                    )}
                   </span>
                 ))
               : hero.h1}
