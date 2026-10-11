@@ -81,11 +81,22 @@
 }
 
 .heroSubtitle {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   line-height: 1.65;
   color: #475569;
-  max-width: 760px;
+  max-width: 940px;
   margin: 0 auto 2.5rem;
+  text-wrap: balance;
+}
+
+.heroSubtitleLine {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .heroSubtitleLine {
+    white-space: nowrap;
+  }
 }
 
 .heroCtaGroup {

@@ -32,7 +32,7 @@ export const NOIDA_LOCATION_DATA = {
     eyebrow: 'SMARTER BUSINESS SYSTEMS - NOIDA',
     h1: 'Digital Transformation & Intelligent\n Systems for Noida Businesses',
     subheading:
-      'We help businesses modernize their digital systems, automate repetitive workflows, and use AI to build faster, smarter operations across Noida and Delhi-NCR.',
+      'We help businesses modernize their digital systems, automate repetitive workflows,\nand use AI to build faster, smarter operations across Noida and Delhi-NCR.',
     primaryCta: {
       label: 'Talk to Markencia',
       href: '/contact',

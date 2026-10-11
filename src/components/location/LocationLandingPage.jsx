@@ -46,7 +46,15 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
               : hero.h1}
           </h1>
 
-          <p className={styles.heroSubtitle}>{hero.subheading}</p>
+          <p className={styles.heroSubtitle}>
+            {typeof hero.subheading === 'string' && hero.subheading.includes('\n')
+              ? hero.subheading.split('\n').map((line, idx) => (
+                  <span key={idx} className={styles.heroSubtitleLine}>
+                    {line.trim()}
+                  </span>
+                ))
+              : hero.subheading}
+          </p>
 
           <div className={styles.heroCtaGroup}>
             <Link href={hero.primaryCta.href} className={styles.primaryBtn}>
