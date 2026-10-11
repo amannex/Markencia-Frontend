@@ -42,7 +42,7 @@ export const NOIDA_LOCATION_DATA = {
       href: '#solutions',
     },
     trustLine: 'Websites · Automation · AI · Digital Systems',
-    localBadge: 'Headquartered in Noida · Serving Delhi-NCR & Global Brands',
+    localBadge: 'Serving Delhi-NCR & Global Brands',
   },
 
   // 02 — Local Business Problem
