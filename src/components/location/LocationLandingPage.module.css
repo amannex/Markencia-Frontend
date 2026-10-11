@@ -68,10 +68,10 @@
 
 .heroTitle {
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
-  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
   font-weight: 800;
   line-height: 1.15;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   color: #0f172a;
   margin: 0 auto 1.5rem;
   max-width: 1220px;
@@ -80,6 +80,12 @@
 
 .heroTitleLine {
   display: block;
+}
+
+@media (min-width: 1024px) {
+  .heroTitleLine {
+    white-space: nowrap;
+  }
 }
 
 .heroSubtitle {
