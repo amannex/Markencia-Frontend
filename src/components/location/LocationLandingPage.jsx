@@ -33,7 +33,6 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className={styles.heroBackgroundGrid} aria-hidden="true" />
         <div className={`mk-container ${styles.heroContent}`}>
           <div className={styles.eyebrowBadge}>
-            <span className={styles.eyebrowDot} />
             <span>{hero.eyebrow}</span>
           </div>
 
@@ -41,7 +40,7 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
             {typeof hero.h1 === 'string' && hero.h1.includes('\n')
               ? hero.h1.split('\n').map((line, idx) => (
                   <span key={idx} className={styles.heroTitleLine}>
-                    {line}
+                    {line.trim()}
                   </span>
                 ))
               : hero.h1}
