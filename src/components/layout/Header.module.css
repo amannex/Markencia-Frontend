@@ -15,14 +15,28 @@
 }
 
 .container {
-  max-width: var(--mk-container-max);
+  max-width: 1220px;
   margin: 0 auto;
-  padding: 0 var(--mk-container-px);
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
   height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+}
+
+@media (max-width: 1268px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.2rem;
+  }
 }
 
 /* Logo */
