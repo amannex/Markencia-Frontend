@@ -125,8 +125,8 @@
   padding: clamp(0.8rem, 1.4vw, 1rem) clamp(1.2rem, 2.2vw, 2rem);
   min-width: clamp(230px, 32vw, 275px);
   max-width: 100%;
-  background: var(--mk-secondary, #FFB400);
-  color: var(--mk-primary, #003818) !important;
+  background: var(--mk-primary, #003818);
+  color: #ffffff !important;
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
   font-weight: 700;
   font-size: clamp(0.85rem, 1.6vw, 1rem);
@@ -135,13 +135,13 @@
   border: 1px solid transparent;
   box-sizing: border-box;
   transition: all 0.25s ease;
-  box-shadow: 0 6px 20px rgba(0, 56, 24, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 56, 24, 0.25);
 }
 
 .primaryBtn:hover {
-  background: var(--mk-secondary-hover, #e5a200);
+  background: var(--mk-primary-hover, #004d22);
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 56, 24, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 56, 24, 0.35);
 }
 
 .secondaryBtn {
@@ -167,7 +167,7 @@
 }
 
 .secondaryBtn:hover {
-  border-color: var(--mk-secondary, #FFB400);
+  border-color: var(--mk-primary, #003818);
   color: var(--mk-primary, #003818) !important;
   background: rgba(0, 56, 24, 0.04);
   transform: translateY(-2px);
