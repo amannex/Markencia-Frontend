@@ -24,6 +24,33 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
     finalCta,
   } = data;
 
+  const renderTitleWithHighlight = (text) => {
+    if (!text || typeof text !== 'string') return text;
+
+    const highlight =
+      hero.titleHighlight ||
+      hero.h1Highlight ||
+      (text.includes('Noida Businesses')
+        ? 'Noida Businesses'
+        : text.includes('Noida Business')
+        ? 'Noida Business'
+        : null);
+
+    if (highlight && text.includes(highlight)) {
+      const [before, ...rest] = text.split(highlight);
+      const after = rest.join(highlight);
+      return (
+        <>
+          {before}
+          <span className={styles.headingHighlight}>{highlight}</span>
+          {after}
+        </>
+      );
+    }
+
+    return text;
+  };
+
   return (
     <div className={styles.pageWrapper}>
       {/* ──────────────────────────────────────────────
@@ -40,10 +67,10 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
             {typeof hero.h1 === 'string' && hero.h1.includes('\n')
               ? hero.h1.split('\n').map((line, idx) => (
                   <span key={idx} className={styles.heroTitleLine}>
-                    {line.trim()}
+                    {renderTitleWithHighlight(line.trim())}
                   </span>
                 ))
-              : hero.h1}
+              : renderTitleWithHighlight(hero.h1)}
           </h1>
 
           <p className={styles.heroSubtitle}>
