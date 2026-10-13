@@ -84,9 +84,11 @@ ul, ol { list-style: none; }
 
 /* ---- Container ---- */
 .mk-container {
+  width: 100%;
   max-width: var(--mk-container-max);
   margin: 0 auto;
   padding: 0 var(--mk-container-px);
+  box-sizing: border-box;
 }
 
 /* ---- Section ---- */
