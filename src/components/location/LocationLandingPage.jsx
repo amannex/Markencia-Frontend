@@ -24,33 +24,53 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
     finalCta,
   } = data;
 
+  const renderTitleWithHighlight = (text) => {
+    if (!text || typeof text !== 'string') return text;
+
+    const highlight =
+      hero.titleHighlight ||
+      hero.h1Highlight ||
+      (text.includes('Noida Businesses')
+        ? 'Noida Businesses'
+        : text.includes('Noida Business')
+        ? 'Noida Business'
+        : null);
+
+    if (highlight && text.includes(highlight)) {
+      const [before, ...rest] = text.split(highlight);
+      const after = rest.join(highlight);
+      return (
+        <>
+          {before}
+          <span className={styles.headingHighlight}>{highlight}</span>
+          {after}
+        </>
+      );
+    }
+
+    return text;
+  };
+
   return (
     <div className={styles.pageWrapper}>
       {/* ──────────────────────────────────────────────
          01 — HERO SECTION
       ────────────────────────────────────────────── */}
       <section className={styles.hero}>
-        <div className={styles.heroGlowPrimary} aria-hidden="true" />
-        <div className={styles.heroGlowSecondary} aria-hidden="true" />
-        <div className={styles.heroGlowAccent} aria-hidden="true" />
         <div className={styles.heroBackgroundGrid} aria-hidden="true" />
         <div className={`mk-container ${styles.heroContent}`}>
           <div className={styles.eyebrowBadge}>
-            <span className={styles.eyebrowDot} aria-hidden="true" />
             <span>{hero.eyebrow}</span>
           </div>
 
           <h1 className={styles.heroTitle}>
             {typeof hero.h1 === 'string' && hero.h1.includes('\n')
               ? hero.h1.split('\n').map((line, idx) => (
-                  <span
-                    key={idx}
-                    className={`${styles.heroTitleLine} ${idx === 1 ? styles.heroTitleLineGradient : ''}`}
-                  >
-                    {line.trim()}
+                  <span key={idx} className={styles.heroTitleLine}>
+                    {renderTitleWithHighlight(line.trim())}
                   </span>
                 ))
-              : hero.h1}
+              : renderTitleWithHighlight(hero.h1)}
           </h1>
 
           <p className={styles.heroSubtitle}>
