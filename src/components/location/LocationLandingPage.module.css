@@ -9,6 +9,15 @@
   color: var(--mk-text-main, #0f172a);
 }
 
+.pageWrapper :global(.mk-container) {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  box-sizing: border-box;
+}
+
 /* ──────────────────────────────────────────────
    1. HERO SECTION
 ────────────────────────────────────────────── */
@@ -173,6 +182,7 @@
   transform: translateY(-2px);
 }
 
+
 .trustBar {
   display: flex;
   flex-direction: column;
@@ -247,6 +257,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+  width: 100%;
   max-width: 1220px;
   margin: 0 auto;
 }
@@ -324,6 +335,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  width: 100%;
   max-width: 1220px;
   margin: 0 auto;
 }
@@ -435,6 +447,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
+  width: 100%;
   max-width: 1220px;
   margin: 0 auto;
 }
@@ -498,6 +511,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.75rem;
+  width: 100%;
   max-width: 1220px;
   margin: 0 auto;
 }
@@ -566,6 +580,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
+  width: 100%;
   max-width: 1220px;
   margin: 0 auto;
   position: relative;
@@ -629,6 +644,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 2rem;
+  width: 100%;
   max-width: 1220px;
   margin: 0 auto;
 }
@@ -847,7 +863,18 @@
 ────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero {
-    padding: 7rem 1.25rem 4rem;
+    padding: 7rem 1.2rem 4rem;
+  }
+  .problemsSection,
+  .signatureSection,
+  .servicesSection,
+  .industriesSection,
+  .processSection,
+  .caseStudiesSection,
+  .faqSection,
+  .finalCtaSection {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
   .sectionHeader {
     margin-bottom: 2.5rem;

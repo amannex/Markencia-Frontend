@@ -43,7 +43,7 @@
   /* Spacing */
   --mk-section-py: 7rem;
   --mk-container-max: 1220px;
-  --mk-container-px: 2rem;
+  --mk-container-px: 1.5rem;
 
   /* Typography */
   --mk-font-heading: 'Outfit', sans-serif;

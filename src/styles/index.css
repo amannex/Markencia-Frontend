@@ -87,8 +87,20 @@ ul, ol { list-style: none; }
   width: 100%;
   max-width: var(--mk-container-max);
   margin: 0 auto;
-  padding: 0 var(--mk-container-px);
+  padding: 0;
   box-sizing: border-box;
+}
+
+@media (max-width: 1268px) {
+  .mk-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mk-container {
+    padding: 0 1.2rem;
+  }
 }
 
 /* ---- Section ---- */
