@@ -69,10 +69,10 @@
 
 .heroTitle {
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
-  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
   font-weight: 800;
   line-height: 1.15;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   color: #0f172a;
   margin: 0 auto 1.5rem;
   max-width: 1220px;
@@ -97,8 +97,8 @@
 }
 
 .heroSubtitle {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  line-height: 1.7;
   color: #475569;
   max-width: 940px;
   margin: 0 auto clamp(2rem, 3vw, 3rem);
@@ -219,9 +219,9 @@
 .sectionEyebrow {
   display: inline-block;
   font-family: var(--font-mk-mono, 'Fira Code', monospace);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
   color: var(--color-mk-primary, #003818);
   margin-bottom: 0.75rem;
@@ -229,16 +229,16 @@
 
 .sectionHeading {
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
-  font-size: clamp(2rem, 3.8vw, 2.75rem);
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  letter-spacing: -0.025em;
+  line-height: 1.22;
   color: #0f172a;
   margin-bottom: 1rem;
 }
 
 .sectionDescription {
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
   line-height: 1.65;
   color: #64748b;
   max-width: 760px;
@@ -812,15 +812,16 @@
 
 .finalCtaHeadline {
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 800;
   line-height: 1.15;
+  letter-spacing: -0.02em;
   color: #ffffff;
   margin-bottom: 1.25rem;
 }
 
 .finalCtaSubheading {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
   line-height: 1.65;
   color: #d1fae5;
   margin-bottom: 2.5rem;
