@@ -119,7 +119,23 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
                 <h3 className={styles.problemTitle}>{problem.title}</h3>
                 <p className={styles.problemDesc}>{problem.description}</p>
                 <div className={styles.problemImpact}>
-                  <span>⚠️</span> {problem.impact}
+                  <svg
+                    className={styles.impactIcon}
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                    <line x1="12" y1="9" x2="12" y2="13" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                  </svg>
+                  <span className={styles.problemImpactText}>{problem.impact}</span>
                 </div>
               </div>
             ))}
