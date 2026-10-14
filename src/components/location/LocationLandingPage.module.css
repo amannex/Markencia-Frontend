@@ -735,9 +735,19 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
+.faqHeader {
+  text-align: center;
+  margin: 0 auto 3.5rem;
+}
+
+.faqHeader .sectionDescription {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .faqContainer {
   max-width: 860px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .faqItem {
