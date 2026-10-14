@@ -509,10 +509,10 @@
   border-radius: 16px;
   padding: 2.25rem 2rem;
   transition: all 0.25s ease;
-  border-left: 4px solid var(--color-mk-primary, #003818);
 }
 
 .industryCard:hover {
+  border-color: #94a3b8;
   transform: translateY(-3px);
   box-shadow: 0 14px 28px rgba(15, 23, 42, 0.05);
 }
