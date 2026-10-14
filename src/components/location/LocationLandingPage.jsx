@@ -118,9 +118,6 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
                 <div className={styles.problemNumber}>{problem.number}</div>
                 <h3 className={styles.problemTitle}>{problem.title}</h3>
                 <p className={styles.problemDesc}>{problem.description}</p>
-                <div className={styles.problemImpact}>
-                  <span>⚠️</span> {problem.impact}
-                </div>
               </div>
             ))}
           </div>
