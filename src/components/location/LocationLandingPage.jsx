@@ -288,7 +288,7 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
       ────────────────────────────────────────────── */}
       <section className={styles.faqSection}>
         <div className="mk-container">
-          <div className={`${styles.sectionHeader} ${styles.faqHeader}`}>
+          <div className={styles.sectionHeader}>
             <span className={styles.sectionEyebrow}>{faqSection.eyebrow}</span>
             <h2 className={styles.sectionHeading}>{faqSection.heading}</h2>
             <p className={styles.sectionDescription}>{faqSection.description}</p>
