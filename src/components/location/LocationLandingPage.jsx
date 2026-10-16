@@ -331,9 +331,6 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
          09 — FINAL CTA SECTION
       ────────────────────────────────────────────── */}
       <section className={styles.finalCtaSection}>
-        {/* Giant background text */}
-        <div className={styles.giantText} aria-hidden="true">Markencia</div>
-
         {/* Glowing orbs */}
         <div className={`${styles.glow} ${styles.glow1}`} aria-hidden="true" />
         <div className={`${styles.glow} ${styles.glow2}`} aria-hidden="true" />
