@@ -31,7 +31,6 @@ export const NOIDA_LOCATION_DATA = {
   hero: {
     eyebrow: 'SMARTER BUSINESS SYSTEMS - NOIDA',
     h1: 'Digital Transformation & Intelligent\n Systems for Noida Businesses',
-    titleHighlight: 'Noida Businesses',
     subheading:
       'We help businesses modernize their digital systems, automate repetitive workflows,\nand use AI to build faster, smarter operations across Noida and Delhi-NCR.',
     primaryCta: {
@@ -50,6 +49,7 @@ export const NOIDA_LOCATION_DATA = {
   problemsSection: {
     eyebrow: 'THE NOIDA BUSINESS CHALLENGE',
     heading: 'Your business is growing. Your systems should keep up.',
+    highlight: 'keep up.',
     description:
       'From fast-scaling IT companies in Sector 62 to high-ticket real estate developers on the Noida Expressway, ambitious businesses are being throttled by legacy friction.',
     problems: [
@@ -88,6 +88,7 @@ export const NOIDA_LOCATION_DATA = {
   signatureSection: {
     eyebrow: 'WHAT MARKENCIA SOLVES',
     heading: 'Modernize. Automate. Apply AI.',
+    highlight: 'Automate.',
     subheading:
       'We do not just build websites—we engineer modern digital operating systems designed to eliminate bottlenecks.',
     pillars: [
@@ -149,6 +150,7 @@ export const NOIDA_LOCATION_DATA = {
   servicesSection: {
     eyebrow: 'SOLUTIONS FOR NOIDA BUSINESSES',
     heading: 'Specific capabilities engineered for scalable growth',
+    highlight: 'scalable growth',
     description:
       'Targeted technology interventions designed to modernize your brand and streamline operations.',
     services: [
@@ -207,6 +209,7 @@ export const NOIDA_LOCATION_DATA = {
   industriesSection: {
     eyebrow: 'INDUSTRIES WE WORK WITH',
     heading: "Built for businesses across Noida's growing economy",
+    highlight: 'growing economy',
     description:
       "Noida has emerged as a premier economic corridor in North India. We build tailored digital systems for key industry hubs across the region.",
     industries: [
@@ -247,6 +250,7 @@ export const NOIDA_LOCATION_DATA = {
   processSection: {
     eyebrow: 'HOW WE WORK',
     heading: 'From business problem to working solution.',
+    highlight: 'working solution.',
     description: 'A disciplined, engineering-first approach that ensures zero wasted cycles.',
     steps: [
       {
@@ -281,6 +285,7 @@ export const NOIDA_LOCATION_DATA = {
   caseStudiesSection: {
     eyebrow: 'SELECTED WORK',
     heading: 'Work that shows how we think.',
+    highlight: 'how we think.',
     description: 'Real outcomes from engineered systems, custom platforms, and automation frameworks.',
     projects: [
       {
@@ -317,6 +322,7 @@ export const NOIDA_LOCATION_DATA = {
   faqSection: {
     eyebrow: 'FREQUENTLY ASKED QUESTIONS',
     heading: 'Clear answers on how we collaborate',
+    highlight: 'how we collaborate',
     description: 'Everything you need to know about partnering with Markencia in Noida and beyond.',
     faqs: [
       {

@@ -24,28 +24,19 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
     finalCta,
   } = data;
 
-  const renderTitleWithHighlight = (text) => {
-    if (!text || typeof text !== 'string') return text;
+  const renderHeadingWithHighlight = (heading, highlight) => {
+    if (!heading || typeof heading !== 'string') return heading;
+    if (!highlight || !heading.includes(highlight)) return heading;
 
-    const raw = hero.titleHighlights || hero.titleHighlight || hero.h1Highlight || 'Noida Businesses';
-    const highlights = (Array.isArray(raw) ? raw : [raw]).filter(Boolean);
+    const [before, ...rest] = heading.split(highlight);
+    const after = rest.join(highlight);
 
-    if (!highlights.length) return text;
-
-    const regex = new RegExp(
-      `(${highlights.map((h) => h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
-      'g'
-    );
-    const parts = text.split(regex);
-
-    return parts.map((part, i) =>
-      highlights.includes(part) ? (
-        <span key={i} className={styles.headingHighlight}>
-          {part}
-        </span>
-      ) : (
-        part
-      )
+    return (
+      <>
+        {before}
+        <span className={styles.headingHighlight}>{highlight}</span>
+        {after}
+      </>
     );
   };
 
@@ -65,10 +56,10 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
             {typeof hero.h1 === 'string' && hero.h1.includes('\n')
               ? hero.h1.split('\n').map((line, idx) => (
                   <span key={idx} className={styles.heroTitleLine}>
-                    {renderTitleWithHighlight(line.trim())}
+                    {line.trim()}
                   </span>
                 ))
-              : renderTitleWithHighlight(hero.h1)}
+              : hero.h1}
           </h1>
 
           <p className={styles.heroSubtitle}>
@@ -106,7 +97,9 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className="mk-container">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionEyebrow}>{problemsSection.eyebrow}</span>
-            <h2 className={styles.sectionHeading}>{problemsSection.heading}</h2>
+            <h2 className={styles.sectionHeading}>
+              {renderHeadingWithHighlight(problemsSection.heading, problemsSection.highlight)}
+            </h2>
             <p className={styles.sectionDescription}>{problemsSection.description}</p>
           </div>
 
@@ -129,7 +122,9 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className="mk-container">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionEyebrow}>{signatureSection.eyebrow}</span>
-            <h2 className={styles.sectionHeading}>{signatureSection.heading}</h2>
+            <h2 className={styles.sectionHeading}>
+              {renderHeadingWithHighlight(signatureSection.heading, signatureSection.highlight)}
+            </h2>
             <p className={styles.sectionDescription}>{signatureSection.subheading}</p>
           </div>
 
@@ -165,7 +160,9 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className="mk-container">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionEyebrow}>{servicesSection.eyebrow}</span>
-            <h2 className={styles.sectionHeading}>{servicesSection.heading}</h2>
+            <h2 className={styles.sectionHeading}>
+              {renderHeadingWithHighlight(servicesSection.heading, servicesSection.highlight)}
+            </h2>
             <p className={styles.sectionDescription}>{servicesSection.description}</p>
           </div>
 
@@ -191,7 +188,9 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className="mk-container">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionEyebrow}>{industriesSection.eyebrow}</span>
-            <h2 className={styles.sectionHeading}>{industriesSection.heading}</h2>
+            <h2 className={styles.sectionHeading}>
+              {renderHeadingWithHighlight(industriesSection.heading, industriesSection.highlight)}
+            </h2>
             <p className={styles.sectionDescription}>{industriesSection.description}</p>
           </div>
 
@@ -219,7 +218,7 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
               {processSection.eyebrow}
             </span>
             <h2 className={`${styles.sectionHeading} ${styles.processHeading}`}>
-              {processSection.heading}
+              {renderHeadingWithHighlight(processSection.heading, processSection.highlight)}
             </h2>
             <p className={`${styles.sectionDescription} ${styles.processDescription}`}>
               {processSection.description}
@@ -245,7 +244,9 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className="mk-container">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionEyebrow}>{caseStudiesSection.eyebrow}</span>
-            <h2 className={styles.sectionHeading}>{caseStudiesSection.heading}</h2>
+            <h2 className={styles.sectionHeading}>
+              {renderHeadingWithHighlight(caseStudiesSection.heading, caseStudiesSection.highlight)}
+            </h2>
             <p className={styles.sectionDescription}>{caseStudiesSection.description}</p>
           </div>
 
@@ -285,7 +286,9 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
         <div className="mk-container">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionEyebrow}>{faqSection.eyebrow}</span>
-            <h2 className={styles.sectionHeading}>{faqSection.heading}</h2>
+            <h2 className={styles.sectionHeading}>
+              {renderHeadingWithHighlight(faqSection.heading, faqSection.highlight)}
+            </h2>
             <p className={styles.sectionDescription}>{faqSection.description}</p>
           </div>
 
