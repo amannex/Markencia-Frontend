@@ -27,28 +27,26 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
   const renderTitleWithHighlight = (text) => {
     if (!text || typeof text !== 'string') return text;
 
-    const highlight =
-      hero.titleHighlight ||
-      hero.h1Highlight ||
-      (text.includes('Noida Businesses')
-        ? 'Noida Businesses'
-        : text.includes('Noida Business')
-        ? 'Noida Business'
-        : null);
+    const raw = hero.titleHighlights || hero.titleHighlight || hero.h1Highlight || 'Noida Businesses';
+    const highlights = (Array.isArray(raw) ? raw : [raw]).filter(Boolean);
 
-    if (highlight && text.includes(highlight)) {
-      const [before, ...rest] = text.split(highlight);
-      const after = rest.join(highlight);
-      return (
-        <>
-          {before}
-          <span className={styles.headingHighlight}>{highlight}</span>
-          {after}
-        </>
-      );
-    }
+    if (!highlights.length) return text;
 
-    return text;
+    const regex = new RegExp(
+      `(${highlights.map((h) => h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
+      'g'
+    );
+    const parts = text.split(regex);
+
+    return parts.map((part, i) =>
+      highlights.includes(part) ? (
+        <span key={i} className={styles.headingHighlight}>
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
   };
 
   return (
