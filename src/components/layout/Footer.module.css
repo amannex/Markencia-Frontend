@@ -213,8 +213,12 @@
   width: 400px;
   height: 400px;
   background: rgba(255, 180, 0, 0.12);
-  top: -150px;
+  top: 40px;
   right: -100px;
+}
+
+.footerWithCta .glow1 {
+  top: -150px;
 }
 
 .glow2 {

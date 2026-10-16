@@ -331,6 +331,13 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
          09 — FINAL CTA SECTION
       ────────────────────────────────────────────── */}
       <section className={styles.finalCtaSection}>
+        {/* Giant background text */}
+        <div className={styles.giantText} aria-hidden="true">Markencia</div>
+
+        {/* Glowing orbs */}
+        <div className={`${styles.glow} ${styles.glow1}`} aria-hidden="true" />
+        <div className={`${styles.glow} ${styles.glow2}`} aria-hidden="true" />
+
         <div className={`mk-container ${styles.finalCtaContainer}`}>
           <h2 className={styles.finalCtaHeadline}>{finalCta.headline}</h2>
           <p className={styles.finalCtaSubheading}>{finalCta.subheading}</p>
@@ -342,6 +349,9 @@ export default function LocationLandingPage({ data = NOIDA_LOCATION_DATA }) {
           </div>
 
           <p className={styles.finalCtaSupporting}>{finalCta.supportingNote}</p>
+
+          {/* Divider merging into footer */}
+          <div className={styles.ctaDivider} />
         </div>
       </section>
     </div>
