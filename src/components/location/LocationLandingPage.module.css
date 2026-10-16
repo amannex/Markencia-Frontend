@@ -753,7 +753,8 @@
 }
 
 .faqContainer {
-  max-width: 860px;
+  width: 100%;
+  max-width: 1220px;
   margin: 0 auto;
 }
 
@@ -767,7 +768,7 @@
 }
 
 .faqItem.open {
-  border-color: var(--color-mk-primary, #003818);
+  border-color: var(--mk-primary, #003818);
   box-shadow: 0 8px 20px rgba(0, 56, 24, 0.05);
 }
 
@@ -777,7 +778,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.35rem 1.5rem;
+  padding: 1.35rem 1.75rem;
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
   font-size: 1.12rem;
   font-weight: 600;
@@ -790,7 +791,7 @@
 
 .faqChevron {
   font-size: 1.25rem;
-  color: var(--color-mk-primary, #003818);
+  color: var(--mk-primary, #003818);
   transition: transform 0.25s ease;
   flex-shrink: 0;
 }
@@ -800,7 +801,7 @@
 }
 
 .faqAnswer {
-  padding: 0 1.5rem 1.5rem;
+  padding: 0 1.75rem 1.5rem;
   font-size: 0.96rem;
   line-height: 1.65;
   color: #475569;
