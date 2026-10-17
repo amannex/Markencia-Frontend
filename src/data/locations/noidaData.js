@@ -31,6 +31,7 @@ export const NOIDA_LOCATION_DATA = {
   hero: {
     eyebrow: 'SMARTER BUSINESS SYSTEMS - NOIDA',
     h1: 'Digital Transformation & Intelligent\n Systems for Noida Businesses',
+    titleHighlight: 'Noida Businesses',
     subheading:
       'We help businesses modernize their digital systems, automate repetitive workflows,\nand use AI to build faster, smarter operations across Noida and Delhi-NCR.',
     primaryCta: {
