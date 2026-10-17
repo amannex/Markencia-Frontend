@@ -87,8 +87,21 @@
   position: relative;
   display: inline-block;
   color: inherit;
-  box-shadow: inset 0 -0.4em 0 0 rgba(255, 184, 0, 0.35);
-  padding: 0 0.1em;
+  z-index: 1;
+  padding: 0 0.12em;
+  white-space: nowrap;
+}
+
+.headingHighlight::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.08em;
+  width: 100%;
+  height: 0.38em;
+  background: #FDE68A;
+  border-radius: 2px;
+  z-index: -1;
 }
 @media (min-width: 1024px) {
   .heroTitleLine {
@@ -587,6 +600,10 @@
   color: #ffffff;
 }
 
+.processHeading .headingHighlight::after {
+  background: rgba(255, 180, 0, 0.45);
+}
+
 .processDescription {
   color: rgba(255, 255, 255, 0.8);
 }
@@ -753,8 +770,9 @@
 }
 
 .faqContainer {
-  max-width: 860px;
-  margin: 0;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
 }
 
 .faqItem {
@@ -767,7 +785,7 @@
 }
 
 .faqItem.open {
-  border-color: var(--color-mk-primary, #003818);
+  border-color: var(--mk-primary, #003818);
   box-shadow: 0 8px 20px rgba(0, 56, 24, 0.05);
 }
 
@@ -777,7 +795,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.35rem 1.5rem;
+  padding: 1.35rem 1.75rem;
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
   font-size: 1.12rem;
   font-weight: 600;
@@ -790,7 +808,7 @@
 
 .faqChevron {
   font-size: 1.25rem;
-  color: var(--color-mk-primary, #003818);
+  color: var(--mk-primary, #003818);
   transition: transform 0.25s ease;
   flex-shrink: 0;
 }
@@ -800,7 +818,7 @@
 }
 
 .faqAnswer {
-  padding: 0 1.5rem 1.5rem;
+  padding: 0 1.75rem 1.5rem;
   font-size: 0.96rem;
   line-height: 1.65;
   color: #475569;
@@ -812,15 +830,39 @@
    9. FINAL CTA SECTION
 ────────────────────────────────────────────── */
 .finalCtaSection {
-  padding: 6.5rem 1.5rem;
-  background: linear-gradient(135deg, #003818 0%, #002611 100%);
+  padding: clamp(5rem, 8vw, 6.5rem) 1.5rem 0;
+  background: var(--mk-primary, #003818);
   color: #ffffff;
   position: relative;
   overflow: hidden;
 }
 
+/* Glowing orbs matching Homepage Footer */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.glow1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 180, 0, 0.12);
+  top: -120px;
+  right: -100px;
+}
+
+.glow2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 180, 0, 0.07);
+  bottom: 80px;
+  left: -80px;
+}
+
 .finalCtaContainer {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
   text-align: center;
   position: relative;
@@ -829,20 +871,20 @@
 
 .finalCtaHeadline {
   font-family: var(--font-mk-heading, 'Outfit', sans-serif);
-  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-size: clamp(1.9rem, 3.8vw, 2.9rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.22;
   letter-spacing: -0.02em;
   color: #ffffff;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.9rem;
 }
 
 .finalCtaSubheading {
-  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  font-size: 1.05rem;
   line-height: 1.65;
-  color: #d1fae5;
-  margin-bottom: 2.5rem;
-  max-width: 680px;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 2.25rem;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -862,6 +904,7 @@
   box-shadow: 0 10px 25px rgba(0, 56, 24, 0.2);
   transition: all 0.25s ease;
   margin-bottom: 1.25rem;
+  text-decoration: none !important;
 }
 
 .finalCtaBtn:hover {
@@ -872,8 +915,24 @@
 
 .finalCtaSupporting {
   font-size: 0.88rem;
-  color: #a7f3d0;
-  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.58);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+/* Connected divider into footer columns */
+.ctaDivider {
+  width: 100%;
+  max-width: var(--mk-container-max, 1220px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.12) 15%,
+    rgba(255, 255, 255, 0.12) 85%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  margin-top: clamp(3.5rem, 5vw, 4.5rem);
 }
 
 /* ──────────────────────────────────────────────
